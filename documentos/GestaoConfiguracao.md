@@ -34,13 +34,12 @@
 - [Referências](#referências)
 
 # 1. Introdução
-_conteúdo_
+Este documento descreve as regras para usar o Git no projeto projeto, incluindo branches, commits e pull requests. O objetivo é manter o desenvolvimento simples, ajudar na organização e garantir que o projeto seja realizado de forma mais simples.
 
 ## 1.1 Objetivo do Documento
 Este documento estabelece diretrizes claras para a utilização de boas práticas no desenvolvimento de software, visando a organização e a qualidade do código. Todos os membros da equipe devem seguir as instruções definidas.
 
 # 2. Política de Branches
-_conteúdo_
 
 ## 2.1 Visão Geral do Gitflow
 Nota: Fornecer uma breve explicação sobre o Gitflow e sua importância para o gerenciamento eficiente do código fonte.
@@ -48,12 +47,13 @@ Nota: Fornecer uma breve explicação sobre o Gitflow e sua importância para o 
 ## 2.2 Estrutura de Branches
 Padrão de Nomenclatura das Branches:
 
-> **main**: Contém o código pronto para produção.
-> **dev**: Integração contínua das novas funcionalidades em desenvolvimento.
-> **feature/[nome-da-feature]**: Para desenvolvimento de novas funcionalidades. Exemplo: feature/integracao-api
-> **bugfix/[nome-do-bug]**: Para correção de bugs. Exemplo: bugfix/corrige-login
-> **release/[versao]**: Preparação para lançamento de uma nova versão. Exemplo: release/v1.0.0
-> **hotfix/[nome-do-hotfix]**: Correção urgente diretamente na produção. Exemplo: hotfix/corrige-bug-em-producao
+**main**: Contém o código pronto para produção. </br>
+**dev**: Integração contínua das novas funcionalidades em desenvolvimento. </br>
+**feature/[nome-da-feature]**: Para desenvolvimento de novas funcionalidades. Exemplo: feature/integracao-api </br>
+**fix/[nome-do-bug]**: Para correção de bugs. Exemplo: bugfix/corrige-login </br>
+**hotfix/[nome-do-hotfix]**: Correção urgente diretamente na produção. Exemplo: hotfix/corrige-bug-em-producao </br>
+**docs/[mudanca]**: Adição ou modificação de um arquivo da documentação. Exemplo: docs/implementa-matriz-risco </br>
+**config/[alteracao]**: Adição ou modificação de um arquivo de configuração. Exemplo: config/altera-gitignore </br>
 
 ## 2.3 Diretrizes de Uso das Branches
 - Cada nova funcionalidade deve ser desenvolvida em uma branch de feature criada a partir da branch develop.
@@ -69,22 +69,22 @@ Integrar "Conventional Commits" nas políticas de commit ajuda a manter um hist�
 
 As mensagens de commit devem seguir o padrão de Conventional Commits para garantir clareza e consistência.
 
-Formato: [Tipo][Escopo opcional]: Mensagem clara e descritiva.
+Formato: **[Tipo][Escopo opcional]: Mensagem clara e descritiva.**
 
 Os tipos devem ser:
 
-> **feat**: Uma nova funcionalidade para o usuário.
-> **fix**: Correção de bug.
-> **docs**: Mudanças na documentação.
-> **style**: Mudanças que não afetam o significado do código (espaços em branco, formatação, etc.).
-> **refactor**: Uma mudança de código que não corrige um bug nem adiciona uma funcionalidade.
-> **test**: Adição ou correção de testes.
-> **chore**: Atualizações de tarefas de build ou ferramentas auxiliares e bibliotecas, como a geração de documentação.
+**feat**: Uma nova funcionalidade para o usuário. <br>
+**fix**: Correção de bug. <br>
+**docs**: Mudanças na documentação. <br>
+**style**: Mudanças que não afetam o significado do código (espaços em branco, formatação, etc.). <br>
+**refactor**: Uma mudança de código que não corrige um bug nem adiciona uma funcionalidade. <br>
+**test**: Adição ou correção de testes. <br>
+**chore**: Atualizações de tarefas de build ou ferramentas auxiliares e bibliotecas, como a geração de documentação. <br>
 
-Exemplo de commit: feat(auth): add login feature with JWT
+Exemplo de commit: **feat(auth): add login feature with JWT**
 
 Proibido:
-- O uso de emojis nas mensagens de commit, e commits com mensagens vagas como "melhorias" ou "atualizações".
+**- O uso de emojis nas mensagens de commit, e commits com mensagens vagas como "melhorias" ou "atualizações".**
 
 IMPORTANTE!
 - Realizar commits frequentes (diários) para facilitar o rastreamento de mudanças e a colaboração.
