@@ -102,9 +102,32 @@ O Centro Paula Souza está inserido na indústria da educação técnica e super
 &emsp;O principal problema é a necessidade de um ambiente de gestão para os atendimentos realizados pela Assessoria de Inclusão do Centro Paula Souza. A ausência de um sistema integrado dificulta o controle das informações sobre os alunos atendidos, os profissionais responsáveis e os tipos de suporte prestados. O uso de formulários digitais e planilhas torna o processo suscetível a erros, inconsistências e falta de rastreabilidade, comprometendo a qualidade do acompanhamento. Além disso, a ausência de uma ferramenta de análise de dados impede uma visão estratégica sobre o impacto das ações realizadas, dificultando a tomada de decisão por parte dos gestores.
 
 ## 2.3 Visão do Projeto e do Produto
-  _conteúdo_
+## 2.3.1 Visão do Produto
+Criamos aplicação web que permite realizar o registro da conexão entre os alunos do Centro Paula Souza a profissionais especializados. Além disso, gestores acessam um dashboard com estatísticas detalhadas. O sistema facilita o acompanhamento e suporte a alunos com deficiência, promovendo inclusão.
 
-  **Nota**: _Insira aqui informações sobre o que se trata o projeto e que valor ele vai entregar, Objetivos do Produto e O que o produto faz e não faz._
+<div align="center">
+<sub>Figura x - Visão do Produto</sub><br>
+<img src="img/visao-do-produto.jpg" width="80%"><br>
+<sup>Fonte: Material produzido pelos autores (2025) </sup>
+</div>
+
+## 2.3.2 É - Não é - Faz - Não faz
+Nosso projeto é uma aplicação web que permite realizar o registro da conexão entre os alunos do Centro Paula Souza a profissionais especializados. O sistema permite gerenciar profissionais e visualizar dados via dashboard. **Faz** gestão de associações e estatísticas. **Não faz** controle acadêmico. O Lean Inception ajudou a delimitar funcionalidades essenciais para tornar o produto eficiente.
+
+<div align="center">
+<sub>Figura x - É - Não é - Faz - Não faz</sub><br>
+<img src="img/is-is-not-does-does-not.png" width="80%"><br>
+<sup>Fonte: Material produzido pelos autores (2025) </sup>
+</div>
+
+## 2.3.3 Objetivos do Produto
+A imagem representa os objetivos da solução: facilitar o acompanhamento de alunos com deficiência, garantir suporte especializado e fornecer estatísticas para gestão. Nossa plataforma possibilita associar alunos a profissionais, gerenciar dados e visualizar métricas estratégicas. O Business Intelligence embutido garante decisões informadas para gestores administrativos e unidades educacionais.
+
+<div align="center">
+<sub>Figura x - Objetivos do Produto</sub><br>
+<img src="img/objetivos.jpg" width="80%"><br>
+<sup>Fonte: Material produzido pelos autores (2025) </sup>
+</div>
 
 ## 2.4 Personas e Jornada do Usuário
 ## 2.4.1 Persona 1 - Mariana Santos
