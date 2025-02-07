@@ -93,11 +93,11 @@ IMPORTANTE!
 
 **Políticas de Push**:
 - Não é permitido fazer push diretamente para a main ou dev.
-- Todas as contribuições devem ser feitas via branches e submetidas por meio de pull requests.
+- Todas as contribuições devem ser feitas em suas respectivas branches, indicando que tipos de mudanças foram feitas nas mesmas ('feature', 'docs', etc.), e submetidas por meio de pull requests.
 
 **Regras de Push**:
 - Todo código deve passar por revisão de código por pares antes de ser mergeado.
-- A revisão só deve ser aprovada se os testes automatizados forem bem-sucedidos e os critérios de qualidade (cobertura de testes, análise de código) forem atendidos.
+- A revisão (de código) só deve ser aprovada se os testes automatizados forem bem-sucedidos e os critérios de qualidade (cobertura de testes, análise de código) forem atendidos.
 
 **Revisão por Pares - Critério de Aprovação**:
 - O pull request deve ser revisado por, no mínimo, uma pessoa.
@@ -105,7 +105,7 @@ IMPORTANTE!
   - Está funcional e resolve o problema proposto.
   - Passou em todos os testes automatizados.
   - Cobertura mínima de testes (60% ou mais). 
-  - Verificação de boas práticas de código.
+  - Verificação de boas práticas de código(como clean code).
   - Não introduz duplicidade de código.
 - Após a aprovação, a branch deve ser mergeada na dev e o pull request pode ser fechado. 
 - O Scrum Master da Sprint é responsável por subir os artefatos para a MAIN ao final da Sprint.
