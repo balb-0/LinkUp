@@ -130,6 +130,7 @@ A imagem representa os objetivos da solução: facilitar o acompanhamento de alu
 </div>
 
 ## 2.4 Personas e Jornada do Usuário
+
 ## 2.4.1 Persona 1 - Mariana Santos
 &nbsp;&nbsp;&nbsp;&nbsp;A seguir, apresenta-se a persona Mariana Santos, criada com base no workshop realizado com o parceiro. 
 
@@ -138,15 +139,31 @@ A imagem representa os objetivos da solução: facilitar o acompanhamento de alu
 <img src="img/persona-1.jpg" width="80%"><br>
 <sup>Fonte: Material produzido pelos autores (2025) </sup>
 </div>
-
+  
 &nbsp;&nbsp;&nbsp;&nbsp;Além disso, segue abaixo a sua jornada do usuário durante o processo de alocação de profissionais.
-
+  
 <div align="center">
 <sub>Figura x - Jornada do Usuário - Mariana Santos</sub><br>
 <img src="img/jornada-persona-1.jpg" width="80%"><br>
 <sup>Fonte: Material produzido pelos autores (2025) </sup>
 </div>
+  
+## 2.4.2 Persona 2 - Cleber Oliveira
+&nbsp;&nbsp;&nbsp;&nbsp;A seguir, apresenta-se a persona Cleber Oliveira, criada com base no workshop realizado com o parceiro, buscando evidenciar a necessidade apresentada de um sistema compatível com um leitor de tela. 
 
+<div align="center">
+<sub>Figura x - Persona 2 - Cleber Oliveira</sub><br>
+<img src="img/persona-2.jpg" width="80%"><br>
+<sup>Fonte: Material produzido pelos autores (2025) </sup>
+</div>
+
+&nbsp;&nbsp;&nbsp;&nbsp;Além disso, segue abaixo a sua jornada do usuário durante o processo de alocação de profissionais.
+  
+<div align="center">
+<sub>Figura x - Jornada do Usuário - Cleber Oliveira</sub><br>
+<img src="img/jornada-persona-2.jpg" width="80%"><br>
+<sup>Fonte: Material produzido pelos autores (2025) </sup>
+</div>
 
 
 ## 2.5 Modelagem do Fluxo de Negócio
