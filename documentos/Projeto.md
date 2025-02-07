@@ -107,7 +107,24 @@ O Centro Paula Souza está inserido na indústria da educação técnica e super
   **Nota**: _Insira aqui informações sobre o que se trata o projeto e que valor ele vai entregar, Objetivos do Produto e O que o produto faz e não faz._
 
 ## 2.4 Personas e Jornada do Usuário
-_conteúdo_
+## 2.4.1 Persona 1 - Mariana Santos
+&nbsp;&nbsp;&nbsp;&nbsp;A seguir, apresenta-se a persona Mariana Santos, criada com base no workshop realizado com o parceiro. 
+
+<div align="center">
+<sub>Figura x - Persona 1 - Mariana Santos</sub><br>
+<img src="img/persona-1.jpg" width="80%"><br>
+<sup>Fonte: Material produzido pelos autores (2025) </sup>
+</div>
+
+&nbsp;&nbsp;&nbsp;&nbsp;Além disso, segue abaixo a sua jornada do usuário durante o processo de alocação de profissionais.
+
+<div align="center">
+<sub>Figura x - Jornada do Usuário - Mariana Santos</sub><br>
+<img src="img/jornada-persona-1.jpg" width="80%"><br>
+<sup>Fonte: Material produzido pelos autores (2025) </sup>
+</div>
+
+
 
 ## 2.5 Modelagem do Fluxo de Negócio
 _conteúdo_
