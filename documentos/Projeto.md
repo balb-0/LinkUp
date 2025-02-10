@@ -192,7 +192,40 @@ _conteúdo_
 _conteúdo_
 
 ## 2.6 Matriz de Risco do Projeto
-_conteúdo_
+
+<div align="center">
+<sub>Figura X - Matriz de risco do projeto</sub>
+<br>
+<br>
+<img src="./img/matriz_de_risco.png" width="100%">
+<br>
+<br>
+<sup>Fonte: Material produzido pelo grupo LinkUp (2024)</sup>
+</div>
+
+| #   | Ameaças                                                      | Análise do Risco                                                               | Nível de Risco | Probabilidade de acontecer | Plano de Ação                                                                                                       |
+| --- | ------------------------------------------------------------ | ------------------------------------------------------------------------------ | -------------- | -------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| 01  | Mudanças nos Requisitos                                            | Podem causar retrabalho e atrasos  | Moderado           | 10%                        | Definir muito bem os requisitos do projeto, alinhando sempre com os stakeholders.                             |
+| 02  | Dependência Externa | Caso haja problema na API externa, também haverá mal funcinoamento na aplicação.             | Muito Alto           | 50%                        | Criar uma página de instrução ao usuário para caso isso aconteça.                      |
+| 03  | Falta de Testes                    | Devido ao curto prazo de entrega, os testes podem ser muito superficiais, podendo ter algum erro em uma parte da aplicação não coberta pelos testes.   | Muito Baixo     | 70%                        | Priorizar as partes essenciais do programa para a realização dos testes.                                           |
+| 04  | Baixa Escalabilidade                 | Pode impedir o crescimento contínuo da solução ao ser implementada.      | Alto       | 10%                        | Projetar a solução de forma escalável, garantindo que possa suportar grandes volumes de usuários e dados.                                  |
+| 05  | Atraso na Implementação                    | Atrasos podem ocorrer durante o desenvolvimento do projeto.    | Baixo       | 30%                        | Organizar o desenvolvimento e monitorá-lo com frequência, sempre definindo prazos realistas de entrega.                                   |
+| 06  | Latência Alta                            | A lentidão pode causar perda de tempo dos colaboradores, o que é o oposto do que a solução busca.  | Moderado           | 50%                        | Implementar cache, processamento assíncrono e retries, tentando garantir uma experiência estável mesmo com a dependência da API externa.                                     |
+| 07  | Vulnerabilidades de Cibersegurança   | Podem causar problemas com a justiça brasileira por conter dados pessoais.                               | Muito Alto          | 30%                        |  Aplicar boas práticas de segurança, como criptografia de dados e controle de acesso rigoroso. Além de utilizar ferramentas confiáveis de autenticação.                  |
+| 08  | Falta de Acessibilidade   | Caso tenha algum colaborador com deficiência, pode não conseguir utilizar a aplicação.                               | Muito Alto          | 10%                        |  Desenvolver o sistema tendo como base a NBR ISO 9241-171 para que o sistema seja inclusivo.                 |
+| 09  | Excesso de Carga   | Com muitos usuários simultâneos, o servidor pode ser sobrecarregado, causando falhas na aplicação.                              | Alto          | 50%                        |  Utilizar balanceamento de carga e arquitetura escalável para suportar picos de acesso.                  |
+
+
+| #   | Oportunidades                                      | Análise da Oportunidade                                                                 | Nível de Oportunidade | Probabilidade de acontecer | Plano de Ação                                                                                    |
+| --- | -------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------- | -------------------------- | ------------------------------------------------------------------------------------------------ |
+| 01  | Otimização de Trabalho                | Colaboradores conseguirão realizar o trabalho mais rápido.                   | Muito Alto                  | 70%                        | Implementar formas de otimizar o desempenho da aplicação. |
+| 02  | Geração de Relatórios Estatísticos | Permite análises de dados futuras.                         | Moderado                  | 70%                        | Implementar dashboards na aplicação.     |
+| 03  | Redução de Custo Operacional.                        | A substituição de planilhas por um banco de dados relacional diminui o armazenamento da nuvem.                   | Alto              | 70%                        | Criar um banco de dados de maneira a otimizar o espaço.                  |
+| 04  | Melhoria na Acessibilidade                           | Permite que usuários com deficiência utilizem o sistema.                                           | Moderado                  | 50%                        | Desenvolver desde o início pensando em acessibilidade, centralizado na NBR ISO 9241-171.                     |
+| 05  | Melhoria na Experiência do Usuário             | Permite que o colaborador tenha mais facilidade ao utilizar uma interface mais intuitiva que as planilhas.      | Muito Alto                 | 90%                        | Aplicar um design limpo, mas com constraste para acessibilidade.           |
+| 06  | Modulaização do Código                     | Torna o código de fácil manutenção e escalável. | Alto            | 90%                        | Desenvolver com boas práticas, como a separação do código em funções e objetos.       |
+
+
 
 ## 2.7 Ideação
 _conteúdo_
