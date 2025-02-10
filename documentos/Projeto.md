@@ -158,13 +158,29 @@ A imagem representa os objetivos da solução: facilitar o acompanhamento de alu
 </div>
 
 &nbsp;&nbsp;&nbsp;&nbsp;Além disso, segue abaixo a sua jornada do usuário durante o processo de alocação de profissionais.
-  
+
 <div align="center">
 <sub>Figura x - Jornada do Usuário - Cleber Oliveira</sub><br>
 <img src="img/jornada-persona-2.jpg" width="80%"><br>
 <sup>Fonte: Material produzido pelos autores (2025) </sup>
 </div>
 
+## 2.4.4 Persona 4 - Maria Rita
+&nbsp;&nbsp;&nbsp;&nbsp;A seguir, apresenta-se a persona Maria Rita, criada com base no workshop realizado com o parceiro, buscando evidenciar a necessidade apresentada de um dashboard com fácil visualização de dados com o objetivo de melhorar as decisões organizacionais.
+
+<div align="center">
+<sub>Figura x - Persona 2 - Cleber Oliveira</sub><br>
+<img src="img/persona-4.jpg" width="80%"><br>
+<sup>Fonte: Material produzido pelos autores (2025) </sup>
+</div>
+
+&nbsp;&nbsp;&nbsp;&nbsp;Além disso, segue abaixo a sua jornada do usuário durante o processo visualização de dados por meio do dashboard.
+
+<div align="center">
+<sub>Figura x - Jornada do Usuário - Cleber Oliveira</sub><br>
+<img src="img/jornada-persona-2.jpg" width="80%"><br>
+<sup>Fonte: Material produzido pelos autores (2025) </sup>
+</div>
 
 ## 2.5 Modelagem do Fluxo de Negócio
 _conteúdo_
