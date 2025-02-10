@@ -42,7 +42,8 @@ Este documento estabelece diretrizes claras para a utilização de boas prática
 # 2. Política de Branches
 
 ## 2.1 Visão Geral do Gitflow
-Nota: Fornecer uma breve explicação sobre o Gitflow e sua importância para o gerenciamento eficiente do código fonte.
+
+O **GitFlow** é um modelo de branching amplamente utilizado para estruturar o fluxo de desenvolvimento em projetos baseados em Git. Ele define uma organização clara das branches, separando o código em desenvolvimento (`develop`) do código de produção (`main`), além de permitir a criação de branches específicas para novas funcionalidades (`feature`), correções (`hotfix`), releases (`release`) e docs (`docs`). Essa abordagem melhora a colaboração da equipe, facilita a integração contínua e garante um ciclo de desenvolvimento mais organizado e previsível.
 
 ## 2.2 Estrutura de Branches
 Padrão de Nomenclatura das Branches:
@@ -56,13 +57,15 @@ Padrão de Nomenclatura das Branches:
 **config/[alteracao]**: Adição ou modificação de um arquivo de configuração. Exemplo: config/altera-gitignore </br>
 
 ## 2.3 Diretrizes de Uso das Branches
-- Cada nova funcionalidade deve ser desenvolvida em uma branch de feature criada a partir da branch develop.
-  - Nomeação das branches de features deve seguir o padrão feature/[nome-da-feature].
-- Todas as novas funcionalidades devem ser desenvolvidas em branches de features e integradas na branch develop através de pull requests.
-- Commits diretos na branch main são proibidos! 
-  - Configurem o Github para proteger de commits direto para a main.
-- Branches de hotfix devem ser criadas a partir da branch main para corrigir problemas críticos em produção.
-  - Nomeação das branches de hotfix deve seguir o padrão hotfix/[nome-do-hotfix].
+### Processo de Trabalho e Controle de Versionamento
+
+Para garantir um fluxo de desenvolvimento organizado e previsível, adotamos o modelo de versionamento GitFlow, que define a estrutura principal do repositório com as branches `main` e `develop`, além de `branches específicas` para cada tarefa, como `docs-task-1` ou `feat-task-2`. Esse modelo permite um ciclo de desenvolvimento bem estruturado e facilita a contribuição e o gerenciamento de entregas. Também seguimos o padrão de *Conventional Commits* para padronizar as mensagens de commit, o que garante maior organizaçõa e rastreabilidade das alterações no código. O fluxo de trabalho deve ser seguido rigorosamente para manter a consistência e a qualidade do desenvolvimento ao longo do projeto.
+
+<div align="center">
+<sub>Figura X - Diagrama de fluxo </sub><br>
+<img src="../documentos/img/diagramaFluxo.png" width="80%" ><br>
+<sup>Fonte: Material produzido pelos autores (2025)</sup>
+</div>
 
 # 3. Políticas de Commit
 Integrar "Conventional Commits" nas políticas de commit ajuda a manter um histórico de commits claro e estruturado, facilitando a automação de processos como geração de changelogs e versionamento semântico.
@@ -81,7 +84,7 @@ Os tipos devem ser:
 **test**: Adição ou correção de testes. <br>
 **chore**: Atualizações de tarefas de build ou ferramentas auxiliares e bibliotecas, como a geração de documentação. <br>
 
-Exemplo de commit: **feat(auth): add login feature with JWT**
+Exemplo de commit: **feat: adiciona sistema de login**
 
 Proibido:
 **- O uso de emojis nas mensagens de commit, e commits com mensagens vagas como "melhorias" ou "atualizações".**
