@@ -165,6 +165,24 @@ A imagem representa os objetivos da solução: facilitar o acompanhamento de alu
 <sup>Fonte: Material produzido pelos autores (2025) </sup>
 </div>
 
+
+## 2.4.3 Persona 3 - Valdemar Souza
+
+&nbsp;&nbsp;&nbsp;&nbsp;A seguir, apresenta-se a persona Valdemar Souza, criada com base no workshop realizado com o parceiro, buscando evidenciar a necessidade apresentada de um sistema eficiente de gerenciamento de atendimentos, com relatórios estruturados.
+
+<div align="center">
+<sub>Figura x - Persona 3 - Valdemar Souza</sub><br>
+<img src="img/persona-3.jpg" width="80%"><br>
+<sup>Fonte: Material produzido pelos autores (2025) </sup>
+</div>
+
+&nbsp;&nbsp;&nbsp;&nbsp;Além disso, segue abaixo a sua jornada do usuário durante o processo de gerenciamento dos atendimentos na unidade.
+
+<div align="center">
+<sub>Figura x - Jornada do Usuário - Valdemar Souza</sub><br>
+<img src="img/jornada-persona-3.png" width="80%"><br>
+</div>
+
 ## 2.4.4 Persona 4 - Maria Rita
 &nbsp;&nbsp;&nbsp;&nbsp;A seguir, apresenta-se a persona Maria Rita, criada com base no workshop realizado com o parceiro, buscando evidenciar a necessidade apresentada de um dashboard com fácil visualização de dados com o objetivo de melhorar as decisões organizacionais.
 
