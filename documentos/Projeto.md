@@ -237,7 +237,13 @@ _conteúdo_
 _conteúdo_
 
 ## 2.8 Canvas do Projeto
-_conteúdo_
+&nbsp;&nbsp;&nbsp;&nbsp;Segue abaixo, o canvas MVP da aplicação web desenvolvido a partir das atividades realizadas durante o Lean Inception proposto no workshop com o parceiro.
+
+<div align="center">
+<sub>Figura x - Canvas MVP do projeto</sub><br>
+<img src="img/canvas-mvp.jpg"><br>
+<sup>Fonte: Material produzido pelos autores (2025) </sup>
+</div>
 
 # 3. Requisitos do Projeto
 _conteúdo_
