@@ -306,7 +306,61 @@ Os requisitos funcionais definem as principais funcionalidades do sistema, detal
 </div>
 
 ## 3.2 Requisitos Não Funcionais (RNFs)
-_conteúdo_
+
+<div align="center">
+<sub>Quadro 2 - Requisitos não funcionais</sub>
+</div>
+<br>
+<br>
+
+| **RNF#** | **Descrição**                                                                                      | **Aspecto de qualidade**  | **Prioridade** |
+| -------- | -------------------------------------------------------------------------------------------------- | ------------------------- | -------------- |
+| RNF01    | A aplicação deve garantir que o tempo de resposta máximo para consultas de dados seja de 5 segundos. | Eficiência de performance | Moderada       |
+| RNF02    | A aplicação deve ser compatível com a API existente, com capacidade para integração contínua, mantendo a integridade dos dados. | Compatibilidade | Alta       |
+| RNF03    | A aplicação deve permitir que usuários com limitações visuais consigam utilizá-lo completamente. | Usabilidade | Alta       |
+| RNF04    | A aplicação deve permitir que o assessor consiga encontrar os alunos e profissionais com, no máximo, 3 cliques. | Usabilidade | Baixa       |
+| RNF05    | A aplicação deve garantir que cada tipo de usuário tenha acesso somente às suas respectivas funcionalidades. | Segurança | Alta       |
+| RNF06    | A aplicação deve garantir que os dados de alunos e profissionais sejam armazenados e transmitidos de acordo com a LGPD. | Segurança | Baixa       |
+| RNF07    | O código da aplicação deve ser modular e bem documentado, facilitando futuras atualizações e correções de bugs. | Manutenibilidade | Alta       |
+| RNF08    | A aplicação deve ter funcionamento íntegro nos principais navegadores: Chrome, Firefox, Edge e Safari. | Compatibilidade | Baixa       |
+| RNF09    | A aplicação deve ter um SLA de disponibilidade mínima de 99,5%. | Confiabilidade | Baixa       |
+| RNF10    | A aplicação deve emitir alertas com mensagens claras, em linguagem natural, em caso de erros e/ou falhas. | Confiabilidade | Moderada       |
+| RNF11    | A aplicação deve conter uma camada de validação dos dados, para suportar atualizações em tempo real, garantindo a integridade. | Integridade e Funcionalidade | Moderada       |
+
+
+<div align="center">
+<br>
+<br>
+<sup>Fonte: Material produzido pelo grupo LinkUp (2025)</sup>
+</div>
+
+<div align="center">
+<sub>Quadro 3 - Testes dos requisitos não funcionais</sub>
+</div>
+<br>
+<br>
+
+| **Caso de Teste** | **RNF#**  | **Descrição do Teste** | **Pré-condição** | **Caso de Aceite** | **Caso de Recusa** |
+|------------------|---------|--------------------|-----------------|------------------|------------------|
+| CT-001  | RNF01  | Testar o tempo de resposta para consultas de dados. | O sistema está operando com carga normal e sob estresse. | Consultas são feitas em menos de 5 segundos. | Consultas excedem 5 segundos de tempo de resposta. |
+| CT-002  | RNF02  | Testar integração com a API e verificar integridade dos dados. | A API está disponível e funcional. | Os dados trocados não possuem erros ou irregularidades. | Dados trocados são perdidos ou corrompidos. |
+| CT-003  | RNF03  | Testar usabilidade com leitor de tela e acessibilidade. | O leitor de tela está ativado. | Usuário com deficiência consegue usar a aplicação sem dificuldades. | Usuário com deficiência não consegue utilizar a aplicação. |
+| CT-004  | RNF04  | Testar se o assessor encontra alunos e profissionais com, no máximo, 3 cliques. | Usuário assessor logado no sistema. | Usuário encontra alunos e profissionais com até 3 cliques. | Usuário precisa de mais de 3 cliques para encontrar alunos e profissionais. |
+| CT-005  | RNF05  | Testar níveis de acesso dos usuários para garantir segurança. | Perfis de usuários criados com permissões diferenciadas. | Cada tipo de login acessa apenas suas funcionalidades. | Um tipo de login acessa informações de outro perfil. |
+| CT-006  | RNF06  | Testar segurança da transmissão de dados contra interceptação. | O sistema está em funcionamento normal. | O invasor não consegue obter os dados brutos. | O invasor consegue acessar os dados brutos. |
+| CT-007  | RNF07  | Testar a modularidade e documentação do código ao adicionar uma nova funcionalidade. | O código está modularizado e documentado. | A funcionalidade é adicionada sem impactar outras partes do sistema. | A adição da funcionalidade gera erros nas demais funções. |
+| CT-008  | RNF08  | Testar funcionamento da aplicação nos navegadores Chrome, Firefox, Edge e Safari. | A aplicação está acessível nos navegadores testados. | A aplicação funciona integralmente em todos os navegadores. | A aplicação apresenta falhas em um ou mais navegadores. |
+| CT-009  | RNF09  | Monitorar a disponibilidade do sistema ao longo do tempo. | O sistema está em produção. | A aplicação mantém disponibilidade de 99,5% ou mais. | O sistema fica fora do ar por mais tempo que o permitido. |
+| CT-010  | RNF10  | Testar exibição de mensagens claras em caso de erro. | O sistema está operando normalmente. | O sistema exibe mensagens de erro claras e compreensíveis. | O sistema não exibe mensagens ou elas são confusas. |
+| CT-011  | RNF11  | Testar atualização simultânea do mesmo dado em dois dispositivos. | Dois dispositivos acessando a aplicação ao mesmo tempo. | O sistema valida corretamente os dados e mantém a integridade. | A aplicação permite atualizações incorretas ou inconsistentes. |
+
+
+<div align="center">
+<br>
+<br>
+<sup>Fonte: Material produzido pelo grupo LinkUp (2025)</sup>
+</div>
+
 
 ## 3.3 Correlação RFs e RNFs
 _conteúdo_
