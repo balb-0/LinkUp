@@ -201,23 +201,59 @@ A imagem representa os objetivos da solução: facilitar o acompanhamento de alu
 </div>
 
 ## 2.5 Modelagem do Fluxo de Negócio
-_conteúdo_
 
-## 2.5.1 Fluxo de Negócio Atual (AS-IS)
-_conteúdo_
+&nbsp;&nbsp;&nbsp;&nbsp;A partir do workshop realizado com o parceiro, foi modelado o seguinte fluxo de negócio, baseado no entendimento do processo atual de alocação de profissionais para o atendimento dos alunos das FATECs e ETECs. A construção e aplicação do nosso sistema não altera o fluxo de negócio do parceiro. No entanto, com o uso da nossa aplicação, será possível substituir ferramentas como o Excel por uma solução personalizada, alinhada às necessidades específicas do parceiro.
 
-## 2.5.2 Fluxo de Negócio Proposto (TO-BE)
-_conteúdo_
+<div align="center">
+<sub>Figura x - Fluxo de Negócio </sub><br>
+<img src="img/fluxo-negocio.jpg" width="100%"><br>
+<sup>Fonte: Material produzido pelos autores (2025) </sup>
+</div>
+
+##  Objetivo do Processo
+O fluxo representa as etapas para:
+- Registrar os alunos no sistema via API.
+- Avaliar suas necessidades de atendimento.
+- Vincular recursos assistivos e profissionais.
+- Registrar os atendimentos prestados.
+- Gerar relatórios e estatísticas para acompanhamento.
+
+---
+
+## Descrição do Fluxo
+
+### 1. Início do Processo
+Evento Inicial: Solicitação de Atendimento  
+- O aluno é cadastrado via API integrada aos sistemas acadêmicos.
+
+### 2. Avaliação da Assessoria de Inclusão
+Tarefa: Analisar informações do aluno  
+Decisão: O aluno necessita de suporte?
+  - Se Não: O fluxo finaliza a análise sem necessidade de acompanhamento.
+  - Se Sim: O aluno avança para vinculação de recursos.
+
+### 3. Vinculação de Recursos
+Tarefa: Definir Tecnologia Assistiva e/ou Profissional
+  - Se necessário, selecionar tipo de tecnologia assistiva.
+  - Se necessário, associar profissional de atendimento.
+
+### 4. Registro de Atendimentos
+Tarefa: Registrar atendimento
+  - O profissional insere os detalhes do atendimento, incluindo data, tipo de suporte e observações.
+
+### 5. Geração de Relatórios e Estatísticas
+Tarefa: Gerar estatísticas dos atendimentos
+  - O sistema coleta dados sobre os atendimentos prestados e disponibiliza para análise.
+
+### 6. Fim do Processo
+Evento Final: Encerramento do Atendimento
+- O atendimento é registrado no sistema e pode ser consultado futuramente.
 
 ## 2.6 Matriz de Risco do Projeto
 
 <div align="center">
 <sub>Figura X - Matriz de risco do projeto</sub>
-<br>
-<br>
 <img src="./img/matriz_de_risco.png" width="100%">
-<br>
-<br>
 <sup>Fonte: Material produzido pelo grupo LinkUp (2024)</sup>
 </div>
 
