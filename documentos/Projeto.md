@@ -268,9 +268,10 @@ _conteúdo_
 
 ## 3.1 Requisitos Funcionais (RFs)
 
-Os requisitos funcionais definem as principais funcionalidades do sistema, detalhando o que ele deve realizar para atender às necessidades dos usuários. Nesta seção, são descritas as operações disponíveis, incluindo cadastro e associação de dados, integração com a API externa e funcionalidades voltadas à gestão e acompanhamento dos alunos pelo Business Intelligence.
+Os requisitos funcionais definem as principais funcionalidades do sistema, detalhando o que ele deve realizar para atender às necessidades dos usuários. Nesta seção, são descritas as operações disponíveis, incluindo cadastro e associação de dados, integração com a API externa e funcionalidades voltadas à gestão e acompanhamento dos alunos pelo Business Intelligence. Aqui estão os Requisitos:
 
-Aqui estão os Requisitos
+<div align="center">
+<sub>Tabela x - Requisitos Funcionais</sub><br>
 
 | ID    | Título                                    | Descrição (5W2H)                                                                                                                                                                                                 |
 |-------|------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -285,6 +286,24 @@ Aqui estão os Requisitos
 | RF009 | Histórico de Alterações                 | **What**: Manter um registro das alterações feitas no sistema (ex: cadastros, associações). <br> **Why**: Para auditoria e rastreabilidade. <br> **Who**: Administradores do sistema. <br> **Where**: Na aplicação web. <br> **When**: Sempre que uma alteração for feita. <br> **How**: Através de um log de atividades. <br> **How Much**: Sem custo adicional para o usuário. |
 | RF010 | Backup Automático de Dados              | **What**: Realizar backups automáticos da base de dados. <br> **Why**: Para prevenir perda de dados. <br> **Who**: Sistema (backend). <br> **Where**: No servidor da aplicação. <br> **When**: Diariamente ou conforme configurado. <br> **How**: Através de scripts automatizados. <br> **How Much**: Custo variável conforme a infraestrutura necessária. |
 | RF011 | Acessibilidade                          | **What**: Garantir que a aplicação seja acessível para pessoas com deficiência. <br> **Why**: Para cumprir normas de acessibilidade e inclusão. <br> **Who**: Todos os usuários. <br> **Where**: Na aplicação web. <br> **When**: Durante todo o uso da aplicação. <br> **How**: Seguindo diretrizes WCAG (Web Content Accessibility Guidelines). <br> **How Much**: Sem custo adicional para o usuário. |
+
+<sup>Fonte: Material produzido pelos autores (2025) </sup>
+</div>
+
+<div align="center">
+<sub>Tabela x - Testes associados aos Requisitos Funcionais</sub><br>
+
+## Tabela de Testes para Requisitos Funcionais
+
+| ID    | Teste                                                                 | Pré-condição                                                                 | Caso de Aceite                                                                 | Caso de Recusa                                                                 |
+|-------|----------------------------------------------------------------------|------------------------------------------------------------------------------|--------------------------------------------------------------------------------|--------------------------------------------------------------------------------|
+| RF001 | Testar o cadastro de um novo profissional.                           | O sistema está online e o usuário tem permissão para cadastrar profissionais. | O profissional é cadastrado com sucesso e aparece na lista de profissionais.   | O sistema exibe uma mensagem de erro e o profissional não é cadastrado. Outra possibilidade é que nada acontece depois de tentar cadastrar.       |
+| RF002 | Testar a associação de um aluno a um profissional.                   | O aluno e o profissional já estão cadastrados no sistema.                    | A associação é criada com sucesso e aparece na lista de associações.           | O sistema exibe uma mensagem de erro e a associação não é criada. Outra possibilidade é que nada acontece depois de tentar associar um profissional a um aluno.              |
+| RF003 | Testar a integração com a API do Centro Paula Souza.                 | A API do Centro Paula Souza está disponível e acessível.                      | Os dados dos alunos são obtidos com sucesso e exibidos no sistema.              | O sistema exibe uma mensagem de erro e/ou os dados não são obtidos.                |
+| RF004 | Testar a exibição do dashboard de BI.                                | O sistema possui dados de alunos, unidades e gestão.                         | O dashboard é exibido com gráficos e tabelas atualizados.                       | O dashboard não é exibido ou os dados estão incorretos.                         |
+
+<sup>Fonte: Material produzido pelos autores (2025) </sup>
+</div>
 
 ## 3.2 Requisitos Não Funcionais (RNFs)
 _conteúdo_
