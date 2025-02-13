@@ -353,7 +353,6 @@ Evento Final: Encerramento do Atendimento
 </div>
 
 # 3. Requisitos do Projeto
-_conteúdo_
 
 ## 3.1 Requisitos Funcionais (RFs)
 
@@ -379,28 +378,35 @@ Os requisitos funcionais definem as principais funcionalidades do sistema, detal
 <sup>Fonte: Material produzido pelos autores (2025) </sup>
 </div>
 
+
+### Tabela de Testes para Requisitos Funcionais
+
 <div align="center">
-<sub>Tabela x - Testes associados aos Requisitos Funcionais</sub><br>
+<sub>Tabela X - Testes associados aos Requisitos Funcionais</sub><br>
 
-## Tabela de Testes para Requisitos Funcionais
-
-| ID    | Teste                                                                 | Pré-condição                                                                 | Caso de Aceite                                                                 | Caso de Recusa                                                                 |
-|-------|----------------------------------------------------------------------|------------------------------------------------------------------------------|--------------------------------------------------------------------------------|--------------------------------------------------------------------------------|
-| RF001 | Testar o cadastro de um novo profissional.                           | O sistema está online e o usuário tem permissão para cadastrar profissionais. | O profissional é cadastrado com sucesso e aparece na lista de profissionais.   | O sistema exibe uma mensagem de erro e o profissional não é cadastrado. Outra possibilidade é que nada acontece depois de tentar cadastrar.       |
-| RF002 | Testar a associação de um aluno a um profissional.                   | O aluno e o profissional já estão cadastrados no sistema.                    | A associação é criada com sucesso e aparece na lista de associações.           | O sistema exibe uma mensagem de erro e a associação não é criada. Outra possibilidade é que nada acontece depois de tentar associar um profissional a um aluno.              |
-| RF003 | Testar a integração com a API do Centro Paula Souza.                 | A API do Centro Paula Souza está disponível e acessível.                      | Os dados dos alunos são obtidos com sucesso e exibidos no sistema.              | O sistema exibe uma mensagem de erro e/ou os dados não são obtidos.                |
-| RF004 | Testar a exibição do dashboard de BI.                                | O sistema possui dados de alunos, unidades e gestão.                         | O dashboard é exibido com gráficos e tabelas atualizados.                       | O dashboard não é exibido ou os dados estão incorretos.                         |
+| Caso de Teste | RF#  | Descrição Teste                                                                 | Pré-condição                                                                 | Caso de Aceite                                                                 | Caso de Recusa                                                                 |
+|---------------|------|--------------------------------------------------------------------------------|------------------------------------------------------------------------------|--------------------------------------------------------------------------------|--------------------------------------------------------------------------------|
+| CT001         | RF001| Testar o cadastro de um novo profissional.                                     | O sistema está online e o usuário tem permissão para cadastrar profissionais. | O profissional é cadastrado com sucesso e aparece na lista de profissionais.   | O sistema exibe uma mensagem de erro ou nada acontece após tentar cadastrar.   |
+| CT002         | RF002| Testar a associação de um aluno a um profissional.                             | O aluno e o profissional já estão cadastrados no sistema.                    | A associação é criada com sucesso e aparece na lista de associações.           | O sistema exibe uma mensagem de erro ou nada acontece após tentar associar.    |
+| CT003         | RF003| Testar a integração com a API do Centro Paula Souza.                           | A API do Centro Paula Souza está disponível e acessível.                      | Os dados dos alunos são obtidos com sucesso e exibidos no sistema.              | O sistema exibe uma mensagem de erro e/ou os dados não são obtidos.            |
+| CT004         | RF004| Testar a exibição do dashboard de BI.                                          | O sistema possui dados de alunos, unidades e gestão.                         | O dashboard é exibido com gráficos e tabelas atualizados.                       | O dashboard não é exibido ou os dados estão incorretos.                         |
+| CT005         | RF005| Testar o acompanhamento de um aluno com deficiência.                           | O aluno e o profissional já estão cadastrados e associados.                   | O histórico e o status do aluno são exibidos corretamente.                       | O sistema exibe uma mensagem de erro ou dados incorretos.                       |
+| CT006         | RF006| Testar a autenticação de um usuário.                                           | O usuário possui credenciais válidas.                                         | O usuário é autenticado com sucesso e tem acesso às funcionalidades permitidas. | O sistema exibe uma mensagem de erro ou o acesso é negado.                      |
+| CT007         | RF007| Testar a edição de perfil de um usuário.                                       | O usuário está autenticado e possui permissão para editar o perfil.           | As informações do perfil são atualizadas com sucesso.                           | O sistema exibe uma mensagem de erro ou as informações não são atualizadas.    |
+| CT008         | RF008| Testar a pesquisa de alunos e profissionais.                                   | O sistema possui dados de alunos e profissionais cadastrados.                 | Os resultados da pesquisa são exibidos corretamente.                            | O sistema exibe uma mensagem de erro ou resultados incorretos.                  |
+| CT009         | RF009| Testar a visualização do histórico de alterações.                              | O sistema possui registros de alterações.                                     | O histórico de alterações é exibido corretamente.                               | O sistema exibe uma mensagem de erro ou o histórico não é exibido.              |
+| CT010         | RF010| Testar a execução de um backup automático.                                     | O sistema está configurado para realizar backups automáticos.                 | O backup é realizado com sucesso e os dados são armazenados corretamente.       | O sistema exibe uma mensagem de erro ou o backup não é realizado.               |
+| CT011         | RF011| Testar a acessibilidade da aplicação.                                          | A aplicação está em conformidade com as diretrizes WCAG.                      | A aplicação é acessível para pessoas com deficiência.                           | A aplicação não atende a uma ou mais diretrizes de acessibilidade.              |
 
 <sup>Fonte: Material produzido pelos autores (2025) </sup>
 </div>
+
 
 ## 3.2 Requisitos Não Funcionais (RNFs)
 
 <div align="center">
 <sub>Quadro 2 - Requisitos não funcionais</sub>
 </div>
-<br>
-<br>
 
 | **RNF#** | **Descrição**                                                                                      | **Aspecto de qualidade**  | **Prioridade** |
 | -------- | -------------------------------------------------------------------------------------------------- | ------------------------- | -------------- |
@@ -418,8 +424,6 @@ Os requisitos funcionais definem as principais funcionalidades do sistema, detal
 
 
 <div align="center">
-<br>
-<br>
 <sup>Fonte: Material produzido pelo grupo LinkUp (2025)</sup>
 </div>
 
@@ -427,30 +431,6 @@ Os requisitos funcionais definem as principais funcionalidades do sistema, detal
 <sub>Quadro 3 - Testes dos requisitos não funcionais</sub>
 </div>
 
-| **RNF#** | **Descrição**                                                                                      | **Aspecto de qualidade**  | **Prioridade** |
-| -------- | -------------------------------------------------------------------------------------------------- | ------------------------- | -------------- |
-| RNF01    | A aplicação deve garantir que o tempo de resposta máximo para consultas de dados seja de 0,8 segundo. | Eficiência de performance | Moderada       |
-| RNF02    | A aplicação deve ser compatível com a API existente, com capacidade para integração contínua, mantendo a integridade dos dados. | Compatibilidade | Alta       |
-| RNF03    | A aplicação deve permitir que usuários com limitações visuais consigam utilizá-lo completamente. | Usabilidade | Alta       |
-| RNF04    | A aplicação deve permitir que o assessor consiga encontrar os alunos e profissionais com, no máximo, 3 cliques. | Usabilidade | Baixa       |
-| RNF05    | A aplicação deve garantir que cada tipo de usuário tenha acesso somente às suas respectivas funcionalidades. | Segurança | Alta       |
-| RNF06    | A aplicação deve garantir que os dados de alunos e profissionais sejam armazenados e transmitidos de acordo com a LGPD. | Segurança | Baixa       |
-| RNF07    | O código da aplicação deve ser modular e bem documentado, facilitando futuras atualizações e correções de bugs. | Manutenibilidade | Alta       |
-| RNF08    | A aplicação deve ter funcionamento íntegro nos principais navegadores: Chrome, Firefox, Edge e Safari. | Compatibilidade | Baixa       |
-| RNF09    | A aplicação deve ter um SLA de disponibilidade mínima de 99,5%. | Confiabilidade | Baixa       |
-| RNF10    | A aplicação deve emitir alertas com mensagens claras, em linguagem natural, em caso de erros e/ou falhas. | Confiabilidade | Moderada       |
-| RNF11    | A aplicação deve conter uma camada de validação dos dados, para suportar atualizações em tempo real, garantindo a integridade. | Integridade e Funcionalidade | Moderada       |
-
-
-<div align="center">
-<br>
-<br>
-<sup>Fonte: Material produzido pelo grupo LinkUp (2025)</sup>
-</div>
-
-<div align="center">
-<sub>Quadro 3 - Testes dos requisitos não funcionais</sub>
-</div>
 
 | **Caso de Teste** | **RNF#**  | **Descrição do Teste** | **Pré-condição** | **Caso de Aceite** | **Caso de Recusa** |
 |------------------|---------|--------------------|-----------------|------------------|------------------|
@@ -467,8 +447,6 @@ Os requisitos funcionais definem as principais funcionalidades do sistema, detal
 | CT-011  | RNF11  | Testar atualização simultânea do mesmo dado em dois dispositivos. | Dois dispositivos acessando a aplicação ao mesmo tempo. | O sistema valida corretamente os dados e mantém a integridade. | A aplicação permite atualizações incorretas ou inconsistentes. |
 
 <div align="center">
-<br>
-<br>
 <sup>Fonte: Material produzido pelo grupo LinkUp (2025)</sup>
 </div>
 
