@@ -310,7 +310,38 @@ Evento Final: Encerramento do Atendimento
 </div>
 
 ## 2.7.2 Sequenciamento/Priorização de entregas
-_conteúdo_
+<div align="center">
+<sub>Figura x - Sequenciamento/Priorização de entregas</sub><br>
+<img src="img/prioridades1.png"><br>
+<sup>Fonte: Material produzido pelos autores (2025) </sup>
+</div>
+### Sprint 1 - Entendimento do problema e definição do MVP
+- Lean Inception
+- Definição do MVP
+- Definição de prioridades
+- Definição de personas
+
+### Sprint 2 - Infraestrutura Base
+- Configuração da API - Alunos
+- Implementação do CRUD - Profissionais
+- Estruturação da Persistência de Dados
+
+### Sprint 3 - Segurança e Acessibilidade
+- Desenvolvimento da Tela de Perfil
+- Implementação de Acessibilidade (Leitor de Telas)
+- Definição dos Níveis de Acesso de Usuário
+- Implementação de Filtro de Dados
+
+### Sprint 4 - Monitoramento e Interação
+- Criação do Histórico de Atividade
+- Dashboard para Visualização de Dados
+- Implementação do Login
+- Sistema de Notificações com Link
+
+### Sprint 5 - Personalização e Atendimento
+- Funcionalidade para Edição da Foto de Perfil
+- Implementação de Classificação de Atendimentos
+- Desenvolvimento do Acompanhamento de Atendimentos em Andamento
 
 ## 2.8 Canvas do Projeto
 &nbsp;&nbsp;&nbsp;&nbsp;Segue abaixo, o canvas MVP da aplicação web desenvolvido a partir das atividades realizadas durante o Lean Inception proposto no workshop com o parceiro.
