@@ -88,6 +88,35 @@ _conteúdo_
   - Utilizar SWAGGER para documentação da API a partir dos comentários do código.
   - Configure uma rota, como /api-docs, para que a documentação gerada pelo Swagger seja facilmente acessível aos desenvolvedores e stakeholders.
 
+  ## 2.4 Boas Práticas para Revisão de Código
+
+Todos os Pull Requests (PRs) devem seguir as diretrizes abaixo para assegurar um processo eficiente.
+
+### 2.4.1 Antes de Criar um PR
+- [ ] Certifique-se de que os testes passam.
+- [ ] Revise seu próprio código antes de submeter.
+- [ ] Atualize a documentação, se necessário.
+- [ ] Garanta que os commits seguem o padrão do projeto.
+
+### 2.4.2 Criando um PR
+- [ ] O título deve ser claro e descritivo sobre a alteração.
+- [ ] Seguir o padrão estipulado no template.
+- [ ] A descrição deve explicar o motivo da mudança e seus impactos.
+- [ ] Adicione um checklist, se necessário.
+- [ ] Marque os revisores.
+
+### 2.4.3 Revisão de Código
+- [ ] O código segue os padrões do projeto?
+- [ ] As funções e classes possuem responsabilidades bem definidas?
+- [ ] Teste localmente se necessário, principalmente em mudanças críticas.
+
+### 2.4.4 Correção de PRs
+- [ ] Feedbacks devem ser objetivos e construtivos.
+- [ ] Sugestões devem indicar possíveis melhorias.
+- [ ] Se um problema for identificado, explique.
+- [ ] Se necessário, o autor deve aplicar as correções antes do merge.
+
+
 # 3. Padrões de Projeto
 _conteúdo_
 
