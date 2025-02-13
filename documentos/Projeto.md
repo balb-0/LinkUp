@@ -315,6 +315,7 @@ Evento Final: Encerramento do Atendimento
 <img src="img/prioridades1.png"><br>
 <sup>Fonte: Material produzido pelos autores (2025) </sup>
 </div>
+
 ### Sprint 1 - Entendimento do problema e definição do MVP
 - Lean Inception
 - Definição do MVP
