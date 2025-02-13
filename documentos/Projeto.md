@@ -421,7 +421,32 @@ Os requisitos funcionais definem as principais funcionalidades do sistema, detal
 
 
 ## 3.3 Correlação RFs e RNFs
-_conteúdo_
+
+Os requisitos não funcionais RNF07, referente a modularidade do código, e RNF09, referente a alta disponibilidade da aplicação, se aplicam a todos os requisitos funcionais porpostos. Os demais podem ser relacionados com seus respectivos requisitos na tabela abaixo:
+
+<div align="center">
+<sub>Quadro 4 - Relação entre requisitos</sub>
+</div>
+
+| **Requisito Funcional** | **Requisitos Não Funcionais Associados** | **Justificativa** |
+|-------------------------|------------------------------------------|---------------|
+| RF001 - Cadastro de Profissionais | RNF04, RNF05, RNF06 | Usabilidade aprimorada (RNF04), segurança para controle de acesso (RNF05) e conformidade com a LGPD (RNF06). |
+| RF002 - Associação de Alunos a Profissionais | RNF01, RNF04, RNF05, RNF06, RNF11 | Tempo de resposta das pesquisas (RNF01), usabilidade aprimorada para buscas (RNF04), controle de acesso (RNF05), conformidade com a LGPD (RNF06) e validação dos dados (RNF11). | 
+| RF003 - Integração com API do Centro Paulo Souza | RNF01, RNF02, RNF06, RNF10, RNF11 | Tempo de resposta das consultas (RNF01), compatibilidade com a API (RNF02), conformidade com a LGPD (RNF06), mensagens de erros (RNF10) e validação dos dados  (RNF11). |
+| RF004 - Dashboard de Business Intelligence | RNF01, RNF02, RNF05, , RNF10 | Tempo de resposta das consultas (RNF01), compatibilidade com a API (RNF02), controle de acesso (RNF05) e alertas de erros (RNF10) |
+| RF005 - Acompanhamento de Alunos com Deficiência | RNF03, RNF04, RNF05, RNF06,  | Acessibilidade para inclusão (RNF03), facilidade na busca de alunos (RNF04), controle de acesso por perfis (RNF05) e conformidade com LGPD (RNF06). |
+| RF006 - Autenticação e autorização de usuários | RNF06, RNF10 | Conformidade com a LGPD (RNF06) e mensagens claras de erros (RNF10). |
+| RF007 - Gerenciamento de perfis de usuários | RNF05, RNF06, RNF10 | Controle de acesso (RNF05), conformidade com a LGPD (RNF06) e mensagens claras de erros (RNF10). |
+| RF008 - Pesquisa e filtros avançados | RNF01, RNF04, RNF06, RNF10, RNF11 | Tempo de resposta das pesquisas (RNF01), usabilidade aprimorada (RNF04), conformidade com a LGPD, mensagens de erro claras (RNF10) e atualização de dados em tempo real (RNF11). |
+| RF009 - Histórico de alterações | RNF05, RNF06, RNF10 | Controle de acesso (RNF05), conformidade com a LGPD (RNF06) e mensagens claras de erros (RNF10). |
+| RF010 - Backup automático de dados | RNF11 | Integridade dos dados em tempo real (RNF11). |
+| RF011 - Acessibilidade | RNF03, RNF04, RNF08 | Garantia de acessibilidade (RNF03), usabilidade aprimorada (RNF04) e compatibilidade com navegadores (RNF08). |
+
+<div align="center">
+<sup>Fonte: Material produzido pelo grupo LinkUp (2025)</sup>
+</div>
+
+
 
 # 4. Modelagem de Dados
 _conteúdo_
