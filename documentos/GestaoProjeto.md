@@ -7,19 +7,19 @@
   </tr>
 </table>
 
-# Nome do Projeto: <nome do projeto>
+# Nome do Projeto: LinkUp
 
-## Nome do Grupo: <nome do grupo>
+## Nome do Grupo: LinkUp
 
 ## Integrantes:
 
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
+- <a href="https://www.linkedin.com/in/arthur-bretas/">Arthur Bretas Oliveira</a>
+- <a href="https://www.linkedin.com/in/felipe-zillo-72b367247/">Felipe Gutierres Zillo</a>
+- <a href="https://www.linkedin.com/in/kauarodrigues/">Kauã Rodrigues dos Santos</a>
+- <a href="https://www.linkedin.com/in/lucca-henrique-pereira/">Lucca Henrique Pereira</a>
+- <a href="https://www.linkedin.com/in/milena-castro-vieira/">Milena Aparecida Vieira Castro</a>
+- <a href="https://www.linkedin.com/in/rodrigo-lee/">Rodrigo Hu Tchie Lee</a>
+- <a href="https://www.linkedin.com/in/vitor-balbo/">Vitor Margarido Balbo</a>
 
 
 # Sumário
@@ -41,19 +41,58 @@
   - [4.3 Lições Aprendidas](#43-lições-aprendidas)
 
 # 1. Introdução
-_conteúdo_
 
 ## 1.1 Objetivo do Documento
+&nbsp;&nbsp;&nbsp;&nbsp;Este documento tem como objetivo registrar a evolução do trabalho realizado pelo grupo LinkUp, ao longo do desenvolvimento do projeto. Por meio do destaque dos pontos fortes e fracos ao longo das sprints, além de ações de melhorias a serem realizadas para melhor desenvolvimento do grupo.
 
 # 2. Backlog do Projeto
-_conteúdo_
 
 ## 2.2 Análise de desempenho
-_conteúdo_
 
 ## 2.2.1 Sprint 1
-_conteúdo_
- **Nota:** Insira informações sobre mudanças realizadas.
+
+### Análise da Sprint Review
+#### Pontos Fortes
+- Boa colaboração entre os membros da equipe
+- Comunicação eficiente em reuniões
+- Capacidade de adaptação a mudanças e novas demandas
+- Resolução rápida de bugs e impedimentos técnicos
+- Documentação de algumas tasks bem detalhada
+- Entrega dentro do prazo da sprint
+#### Pontos Fracos
+- Tempo exagerado em colunas não produtivas (ex: "Aguardando Review" por muito tempo)
+- Pouca utilização de Definição de Pronto e Feito
+- Pouca utilização do Slack para alinhamento rápido
+- Dificuldade em estimar corretamente o tempo necessário para cada task
+- Quebrar as tasks em tamanhos menores para evitar extrapolar o tempo de um dev.
+
+### Ações de Melhoria para os Pontos Fracos
+
+#### 1. Tempo exagerado em colunas não produtivas ("Aguardando Review" por muito tempo)
+##### Ações de melhoria:
+- Definir um SLA para revisões: Estabelecer um prazo máximo (ex: 24h) para que as PRs sejam revisadas.
+- Dailys: Utilizar as Dailys para lembrar os membros do grupo a revisar uma task ou então a puxar uma task.
+
+#### 2. Pouca utilização de Definição de Pronto e Feito
+##### Ações de melhoria:
+- Definir claramente o DoD (Definition of Done) e DoR (Definition of Ready): Definir DoD e DoR das tasks de documentação e código.
+- Incorporar nas dailies: Sempre reforçar o DoD/DoR durante as reuniões diárias para garantir alinhamento.
+
+#### 3. Pouca utilização do Slack para alinhamento rápido
+#### Ação de melhoria:
+- Padronizar o Slack como canal de comunicação principal.
+
+#### 4. Dificuldade em estimar corretamente o tempo necessário para cada task
+##### Ações de melhoria:
+- Revisão de estimativas anteriores: Analisar retrospectivamente as estimativas feitas e identificar padrões de erro.
+- Planning Poker: Utilizar técnicas de estimativa colaborativa para tornar os valores mais realistas.
+- Divisão por complexidade: Criar categorias de estimativas com base em critérios objetivos (ex: fácil = 30m, médio = 1h, difícil = 2h).
+
+#### 5. Quebrar as tasks em tamanhos menores para evitar extrapolar o tempo de um dev
+##### Ações de melhoria:
+- Seguir a regra do "se não pode ser feita em um dia, quebre mais": Garantir que nenhuma task seja grande demais para ser concluída em uma dev.
+- Checklist dentro das tasks: Criar subtarefas dentro de cada tarefa para ajudar na divisão.
+- Revisão antes de iniciar: Antes de começar qualquer tarefa grande, a equipe revisa para avaliar se pode ser melhor dividida.
 
 ## 2.2.2 Sprint 2
 _conteúdo_

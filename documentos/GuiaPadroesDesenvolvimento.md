@@ -7,26 +7,25 @@
   </tr>
 </table>
 
-# Nome do Projeto: <nome do projeto>
+# Nome do Projeto: LinkUp
 
-## Nome do Grupo: <nome do grupo>
+## Nome do Grupo: LinkUp
 
 ## Integrantes:
 
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
+- <a href="https://www.linkedin.com/in/arthur-bretas/">Arthur Bretas Oliveira</a>
+- <a href="https://www.linkedin.com/in/felipe-zillo-72b367247/">Felipe Gutierres Zillo</a>
+- <a href="https://www.linkedin.com/in/kauarodrigues/">Kauã Rodrigues dos Santos</a>
+- <a href="https://www.linkedin.com/in/lucca-henrique-pereira/">Lucca Henrique Pereira</a>
+- <a href="https://www.linkedin.com/in/milena-castro-vieira/">Milena Aparecida Vieira Castro</a>
+- <a href="https://www.linkedin.com/in/rodrigo-lee/">Rodrigo Hu Tchie Lee</a>
+- <a href="https://www.linkedin.com/in/vitor-balbo/">Vitor Margarido Balbo</a>
 
 # Sumário
 
 
 
 # 1. Introdução
-_conteúdo_
 
 ## 1.1 Objetivo do Documento
 
@@ -35,7 +34,6 @@ Este documento apresenta estabelecer padrões de codificação e práticas de de
 Nota: Explicar a importância de seguir padrões de desenvolvimento para facilitar a manutenção, melhorar a legibilidade e promover a colaboração.
 
 # 2. Padrões de Codificação
-_conteúdo_
 
 ## 2.1 Naming Conventions
 
@@ -88,8 +86,36 @@ _conteúdo_
   - Utilizar SWAGGER para documentação da API a partir dos comentários do código.
   - Configure uma rota, como /api-docs, para que a documentação gerada pelo Swagger seja facilmente acessível aos desenvolvedores e stakeholders.
 
+  ## 2.4 Boas Práticas para Revisão de Código
+
+Todos os Pull Requests (PRs) devem seguir as diretrizes abaixo para assegurar um processo eficiente.
+
+### 2.4.1 Antes de Criar um PR
+- [ ] Certifique-se de que os testes passam.
+- [ ] Revise seu próprio código antes de submeter.
+- [ ] Atualize a documentação, se necessário.
+- [ ] Garanta que os commits seguem o padrão do projeto.
+
+### 2.4.2 Criando um PR
+- [ ] O título deve ser claro e descritivo sobre a alteração.
+- [ ] Seguir o padrão estipulado no template.
+- [ ] A descrição deve explicar o motivo da mudança e seus impactos.
+- [ ] Adicione um checklist, se necessário.
+- [ ] Marque os revisores.
+
+### 2.4.3 Revisão de Código
+- [ ] O código segue os padrões do projeto?
+- [ ] As funções e classes possuem responsabilidades bem definidas?
+- [ ] Teste localmente se necessário, principalmente em mudanças críticas.
+
+### 2.4.4 Correção de PRs
+- [ ] Feedbacks devem ser objetivos e construtivos.
+- [ ] Sugestões devem indicar possíveis melhorias.
+- [ ] Se um problema for identificado, explique.
+- [ ] Se necessário, o autor deve aplicar as correções antes do merge.
+
+
 # 3. Padrões de Projeto
-_conteúdo_
 
 ## 3.1 Design Patterns
 
@@ -102,7 +128,6 @@ _Sugestão de leitura: https://refactoring.guru/_
   - Exemplo: Em uma aplicação Angular, utilize serviços para lógica de negócios, componentes para a interface e controladores para gerenciar a interação.
 
 # 4. Práticas de Desenvolvimento
-_conteúdo_
 
 ## 4.1 Testes Automatizados
 
