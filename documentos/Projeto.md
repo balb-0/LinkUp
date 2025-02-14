@@ -257,6 +257,9 @@ Evento Final: Encerramento do Atendimento
 <sup>Fonte: Material produzido pelo grupo LinkUp (2024)</sup>
 </div>
 
+<div align="center">
+<sub>Tabela X - Matriz de Risco do projeto</sub> 
+
 | #   | Ameaças                                                      | Análise do Risco                                                               | Nível de Risco | Probabilidade de acontecer | Plano de Ação                                                                                                       |
 | --- | ------------------------------------------------------------ | ------------------------------------------------------------------------------ | -------------- | -------------------------- | ------------------------------------------------------------------------------------------------------------------- |
 | 01  | Mudanças nos Requisitos                                            | Podem causar retrabalho e atrasos  | Moderado           | 10%                        | Definir muito bem os requisitos do projeto, alinhando sempre com os stakeholders.                             |
@@ -269,6 +272,11 @@ Evento Final: Encerramento do Atendimento
 | 08  | Falta de Acessibilidade   | Caso tenha algum colaborador com deficiência, pode não conseguir utilizar a aplicação.                               | Muito Alto          | 10%                        |  Desenvolver o sistema tendo como base a NBR ISO 9241-171 para que o sistema seja inclusivo.                 |
 | 09  | Excesso de Carga   | Com muitos usuários simultâneos, o servidor pode ser sobrecarregado, causando falhas na aplicação.                              | Alto          | 50%                        |  Utilizar balanceamento de carga e arquitetura escalável para suportar picos de acesso.                  |
 
+<sup>Fonte: Material produzido pelo grupo LinkUp (2024)</sup>
+</div>
+
+<div align="center">
+<sub>Tabela X - Matriz de Oportunidade do projeto</sub> 
 
 | #   | Oportunidades                                      | Análise da Oportunidade                                                                 | Nível de Oportunidade | Probabilidade de acontecer | Plano de Ação                                                                                    |
 | --- | -------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------- | -------------------------- | ------------------------------------------------------------------------------------------------ |
@@ -279,7 +287,8 @@ Evento Final: Encerramento do Atendimento
 | 05  | Melhoria na Experiência do Usuário             | Permite que o colaborador tenha mais facilidade ao utilizar uma interface mais intuitiva que as planilhas.      | Muito Alto                 | 90%                        | Aplicar um design limpo, mas com constraste para acessibilidade.           |
 | 06  | Modulaização do Código                     | Torna o código de fácil manutenção e escalável. | Alto            | 90%                        | Desenvolver com boas práticas, como a separação do código em funções e objetos.       |
 
-
+<sup>Fonte: Material produzido pelo grupo LinkUp (2024)</sup>
+</div>
 
 ## 2.7 Ideação
 
@@ -357,18 +366,17 @@ Evento Final: Encerramento do Atendimento
 
 ## 3.1 Requisitos Funcionais (RFs)
 
-Os requisitos funcionais definem as principais funcionalidades do sistema, detalhando o que ele deve realizar para atender às necessidades dos usuários. Nesta seção, são descritas as operações disponíveis, incluindo cadastro e associação de dados, integração com a API externa e funcionalidades voltadas à gestão e acompanhamento dos alunos pelo Business Intelligence. Aqui estão os Requisitos:
 
 <div align="center">
-<sub>Tabela x - Requisitos Funcionais</sub><br>
+<sub>Tabela X - Requisitos Funcionais</sub><br>
 
 | ID    | Título                                    | Descrição (5W2H)                                                                                                                                                                                                 |
 |-------|------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| RF001 | Cadastro de Profissionais               | **What**: Criar, ler, atualizar e deletar profissionais na base de dados. <br> **Why**: Para manter um registro atualizado dos profissionais que auxiliam os alunos. <br> **Who**: Mariana Santos (Assessora de Inclusão). <br> **Where**: Na aplicação web. <br> **When**: Sempre que um novo profissional for contratado ou houver mudanças. <br> **How**: Através de um formulário na interface do usuário. <br> **How Much**: Sem custo adicional para o usuário. |
-| RF002 | Associação de Alunos a Profissionais    | **What**: Associar um aluno do Centro Paula Souza a um profissional. <br> **Why**: Para garantir que cada aluno com deficiência tenha um profissional responsável. <br> **Who**: Mariana Santos (Assessora de Inclusão). <br> **Where**: Na aplicação web. <br> **When**: Após o cadastro do aluno e do profissional. <br> **How**: Através de uma interface que permita selecionar um aluno e um profissional. <br> **How Much**: Sem custo adicional para o usuário. |
+| RF001 | Cadastro de Profissionais               | **What**: Criar, ler, atualizar e deletar profissionais na base de dados. <br> **Why**: Para manter um registro atualizado dos profissionais que auxiliam os alunos. <br> **Who**: Mariana Santos, Cleber Oliveir (Assessores de Inclusão) e Maria Rita (Gestora administrativa), somente atualização: Valdemar Souza (Gestor de Unidade). <br> **Where**: Na aplicação web. <br> **When**: Sempre que um novo profissional for contratado ou houver mudanças. <br> **How**: Através de um formulário na interface do usuário. <br> **How Much**: Sem custo adicional para o usuário. |
+| RF002 | Associação de Alunos a Profissionais    | **What**: Associar um aluno do Centro Paula Souza a um profissional. <br> **Why**: Para garantir que cada aluno com deficiência tenha um profissional responsável. <br> **Who**: Mariana Santos e Cleber Oliveira (Assessores de Inclusão). <br> **Where**: Na aplicação web. <br> **When**: Após o cadastro do aluno e do profissional. <br> **How**: Através de uma interface que permita selecionar um aluno e um profissional. <br> **How Much**: Sem custo adicional para o usuário. |
 | RF003 | Integração com API do Centro Paula Souza | **What**: Obter dados dos alunos via API. <br> **Why**: Para acessar informações atualizadas dos alunos diretamente da base do Centro Paula Souza. <br> **Who**: Sistema (backend). <br> **Where**: Na aplicação web. <br> **When**: Sempre que um aluno for consultado ou associado. <br> **How**: Através de chamadas HTTP à API do Centro Paula Souza. <br> **How Much**: Sem custo adicional para o usuário. |
-| RF004 | Dashboard de Business Intelligence      | **What**: Exibir estatísticas gerais e específicas sobre alunos, unidades e gestão. <br> **Why**: Para auxiliar gerentes na tomada de decisões. <br> **Who**: Maria Rita (Gerente administrativa). <br> **Where**: Na aplicação web. <br> **When**: Sempre que necessário, com atualizações em tempo real. <br> **How**: Através de gráficos e tabelas interativas. <br> **How Much**: Sem custo adicional para o usuário. |
-| RF005 | Acompanhamento de Alunos com Deficiência | **What**: Permitir o acompanhamento e auxílio a alunos com deficiência. <br> **Why**: Para garantir que os alunos recebam o suporte necessário. <br> **Who**: Mariana Santos (Assessora de Inclusão). <br> **Where**: Na aplicação web. <br> **When**: Durante todo o período de acompanhamento do aluno. <br> **How**: Através de uma interface que exiba o histórico e o status do aluno. <br> **How Much**: Sem custo adicional para o usuário. |
+| RF004 | Dashboard de Business Intelligence      | **What**: Exibir estatísticas gerais e específicas sobre alunos, unidades e gestão. <br> **Why**: Para auxiliar gerentes na tomada de decisões. <br> **Who**: Maria Rita (Gerente administrativa) e Valdemar Souza (Gestor de Unidade). <br> **Where**: Na aplicação web. <br> **When**: Sempre que necessário, com atualizações em tempo real. <br> **How**: Através de gráficos e tabelas interativas. <br> **How Much**: Sem custo adicional para o usuário. |
+| RF005 | Acompanhamento de Alunos com Deficiência | **What**: Permitir o acompanhamento e auxílio a alunos com deficiência. <br> **Why**: Para garantir que os alunos recebam o suporte necessário. <br> **Who**: Todos os usuários. <br> **Where**: Na aplicação web. <br> **When**: Durante todo o período de acompanhamento do aluno. <br> **How**: Através de uma interface que exiba o histórico e o status do aluno. <br> **How Much**: Sem custo adicional para o usuário. |
 | RF006 | Autenticação e Autorização de Usuários  | **What**: Permitir que usuários se autentiquem e tenham acesso controlado às funcionalidades. <br> **Why**: Para garantir a segurança e privacidade dos dados. <br> **Who**: Todos os usuários. <br> **Where**: Na aplicação web. <br> **When**: No login e durante o uso da aplicação. <br> **How**: Através de um sistema de login com senha e níveis de permissão. <br> **How Much**: Sem custo adicional para o usuário. |
 | RF007 | Gerenciamento de Perfis de Usuários     | **What**: Permitir que certos usuários editem perfis (ex: nome, e-mail, senha). <br> **Why**: Para garantir que os dados dos usuários estejam atualizados. <br> **Who**: Todos os usuários. <br> **Where**: Na aplicação web. <br> **When**: Sempre que um usuário precisar atualizar informações. <br> **How**: Através de uma interface de edição de perfil. <br> **How Much**: Sem custo adicional para o usuário. |
 | RF008 | Pesquisa e Filtros Avançados            | **What**: Permitir a pesquisa e filtragem de alunos e profissionais. <br> **Why**: Para facilitar a localização de informações específicas. <br> **Who**: Todos os usuários. <br> **Where**: Na aplicação web. <br> **When**: Sempre que o usuário precisar buscar informações. <br> **How**: Através de campos de pesquisa e filtros dinâmicos. <br> **How Much**: Sem custo adicional para o usuário. |
@@ -406,7 +414,7 @@ Os requisitos funcionais definem as principais funcionalidades do sistema, detal
 ## 3.2 Requisitos Não Funcionais (RNFs)
 
 <div align="center">
-<sub>Quadro 2 - Requisitos não funcionais</sub>
+<sub>Tabela X - Requisitos não funcionais</sub>
 </div>
 
 | **RNF#** | **Descrição**                                                                                      | **Aspecto de qualidade**  | **Prioridade** |
@@ -425,11 +433,13 @@ Os requisitos funcionais definem as principais funcionalidades do sistema, detal
 
 
 <div align="center">
-<sup>Fonte: Material produzido pelo grupo LinkUp (2025)</sup>
+<sup>Material produzido pelos autores (2025)</sup>
 </div>
 
+### Tabela de Testes para Requisitos Não Funcionais
+
 <div align="center">
-<sub>Quadro 3 - Testes dos requisitos não funcionais</sub>
+<sub>Tabela X - Testes dos requisitos Não Funcionais</sub>
 </div>
 
 
@@ -448,7 +458,7 @@ Os requisitos funcionais definem as principais funcionalidades do sistema, detal
 | CT-011  | RNF11  | Testar atualização simultânea do mesmo dado em dois dispositivos. | Dois dispositivos acessando a aplicação ao mesmo tempo. | O sistema valida corretamente os dados e mantém a integridade. | A aplicação permite atualizações incorretas ou inconsistentes. |
 
 <div align="center">
-<sup>Fonte: Material produzido pelo grupo LinkUp (2025)</sup>
+<sup>Material produzido pelos autores (2025)</sup>
 </div>
 
 
@@ -457,7 +467,7 @@ Os requisitos funcionais definem as principais funcionalidades do sistema, detal
 Os requisitos não funcionais RNF07, referente a modularidade do código, e RNF09, referente a alta disponibilidade da aplicação, se aplicam a todos os requisitos funcionais porpostos. Os demais podem ser relacionados com seus respectivos requisitos na tabela abaixo:
 
 <div align="center">
-<sub>Quadro 4 - Relação entre requisitos</sub>
+<sub>Tabela X - Relação entre requisitos</sub>
 </div>
 
 | **Requisito Funcional** | **Requisitos Não Funcionais Associados** | **Justificativa** |
@@ -475,7 +485,7 @@ Os requisitos não funcionais RNF07, referente a modularidade do código, e RNF0
 | RF011 - Acessibilidade | RNF03, RNF04, RNF08 | Garantia de acessibilidade (RNF03), usabilidade aprimorada (RNF04) e compatibilidade com navegadores (RNF08). |
 
 <div align="center">
-<sup>Fonte: Material produzido pelo grupo LinkUp (2025)</sup>
+<sup>Material produzido pelos autores (2025)</sup>
 </div>
 
 
