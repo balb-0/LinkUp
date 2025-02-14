@@ -7,19 +7,19 @@
   </tr>
 </table>
 
-# Nome do Projeto: <nome do projeto>
+# Nome do Projeto: LinkUp
 
-## Nome do Grupo: <nome do grupo>
+## Nome do Grupo: LinkUp
 
 ## Integrantes:
 
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
+- <a href="https://www.linkedin.com/in/arthur-bretas/">Arthur Bretas Oliveira</a>
+- <a href="https://www.linkedin.com/in/felipe-zillo-72b367247/">Felipe Gutierres Zillo</a>
+- <a href="https://www.linkedin.com/in/kauarodrigues/">Kauã Rodrigues dos Santos</a>
+- <a href="https://www.linkedin.com/in/lucca-henrique-pereira/">Lucca Henrique Pereira</a>
+- <a href="https://www.linkedin.com/in/milena-castro-vieira/">Milena Aparecida Vieira Castro</a>
+- <a href="https://www.linkedin.com/in/rodrigo-lee/">Rodrigo Hu Tchie Lee</a>
+- <a href="https://www.linkedin.com/in/vitor-balbo/">Vitor Margarido Balbo</a>
 
 # Sumário
 
@@ -84,16 +84,14 @@
 
 
 # 1. Introdução
-_conteúdo_
 
 ## 1.1 Termos e Abreviações
-_conteúdo_
+- CPS: Centro Paula Souza
 
 ## 1.2 Objetivo do Documento
-_conteúdo_
+&nbsp;&nbsp;&nbsp;&nbsp;Este documento tem como objetivo apresentar o processo de desenvolvimento do projeto Linkup em parceria com o Centro Paula Souza, para o desenvolvimento de um sistema de gerenciamento dos atendimentos profissionais dos alunos portadores de deficiência das ETECs e FATECs que compõem o centro.
 
 # 2. Entendimento do Projeto e do Negócio
-_conteúdo_
 
 ## 2.1 Contexto da Indústria do Parceiro
 O Centro Paula Souza está inserido na indústria da educação técnica e superior tecnológica, um setor estratégico para o desenvolvimento econômico e social. Com as Etecs (Escolas Técnicas) e Fatecs (Faculdades de Tecnologia), a instituição atende à crescente demanda por formação qualificada, alinhada às necessidades do mercado de trabalho local, com cursos que na maior parte das vezes estão alinhados com a maior necessidade produtiva do local da Fatec/Etec. A educação profissional vem se tornando cada vez mais importante diante das transformações tecnológicas e produtivas, como é o caso da digitalização de processos. Nesse contexto, as Etecs e Fatecs desempenham um papel fundamental na capacitação de profissionais para setores como tecnologia, indústria, gestão e serviços, contribuindo para a inovação e competitividade das empresas e para o fortalecimento da economia.
@@ -419,7 +417,7 @@ Evento Final: Encerramento do Atendimento
 
 | **RNF#** | **Descrição**                                                                                      | **Aspecto de qualidade**  | **Prioridade** |
 | -------- | -------------------------------------------------------------------------------------------------- | ------------------------- | -------------- |
-| RNF01    | A aplicação deve garantir que o tempo de resposta máximo para consultas de dados seja de 5 segundos. | Eficiência de performance | Moderada       |
+| RNF01    | A aplicação deve garantir que o tempo de resposta máximo para consultas de dados seja de 0,8 segundo. | Eficiência de performance | Moderada       |
 | RNF02    | A aplicação deve ser compatível com a API existente, com capacidade para integração contínua, mantendo a integridade dos dados. | Compatibilidade | Alta       |
 | RNF03    | A aplicação deve permitir que usuários com limitações visuais consigam utilizá-lo completamente. | Usabilidade | Alta       |
 | RNF04    | A aplicação deve permitir que o assessor consiga encontrar os alunos e profissionais com, no máximo, 3 cliques. | Usabilidade | Baixa       |

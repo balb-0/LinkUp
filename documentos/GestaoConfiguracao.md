@@ -7,19 +7,19 @@
   </tr>
 </table>
 
-# Nome do Projeto: <nome do projeto>
+# Nome do Projeto: LinkUp
 
-## Nome do Grupo: <nome do grupo>
+## Nome do Grupo: LinkUp
 
 ## Integrantes:
 
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
+- <a href="https://www.linkedin.com/in/arthur-bretas/">Arthur Bretas Oliveira</a>
+- <a href="https://www.linkedin.com/in/felipe-zillo-72b367247/">Felipe Gutierres Zillo</a>
+- <a href="https://www.linkedin.com/in/kauarodrigues/">Kauã Rodrigues dos Santos</a>
+- <a href="https://www.linkedin.com/in/lucca-henrique-pereira/">Lucca Henrique Pereira</a>
+- <a href="https://www.linkedin.com/in/milena-castro-vieira/">Milena Aparecida Vieira Castro</a>
+- <a href="https://www.linkedin.com/in/rodrigo-lee/">Rodrigo Hu Tchie Lee</a>
+- <a href="https://www.linkedin.com/in/vitor-balbo/">Vitor Margarido Balbo</a>
 
 # Sumário
 

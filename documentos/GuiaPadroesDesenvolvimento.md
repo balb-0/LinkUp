@@ -7,26 +7,25 @@
   </tr>
 </table>
 
-# Nome do Projeto: <nome do projeto>
+# Nome do Projeto: LinkUp
 
-## Nome do Grupo: <nome do grupo>
+## Nome do Grupo: LinkUp
 
 ## Integrantes:
 
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
+- <a href="https://www.linkedin.com/in/arthur-bretas/">Arthur Bretas Oliveira</a>
+- <a href="https://www.linkedin.com/in/felipe-zillo-72b367247/">Felipe Gutierres Zillo</a>
+- <a href="https://www.linkedin.com/in/kauarodrigues/">Kauã Rodrigues dos Santos</a>
+- <a href="https://www.linkedin.com/in/lucca-henrique-pereira/">Lucca Henrique Pereira</a>
+- <a href="https://www.linkedin.com/in/milena-castro-vieira/">Milena Aparecida Vieira Castro</a>
+- <a href="https://www.linkedin.com/in/rodrigo-lee/">Rodrigo Hu Tchie Lee</a>
+- <a href="https://www.linkedin.com/in/vitor-balbo/">Vitor Margarido Balbo</a>
 
 # Sumário
 
 
 
 # 1. Introdução
-_conteúdo_
 
 ## 1.1 Objetivo do Documento
 
@@ -35,7 +34,6 @@ Este documento apresenta estabelecer padrões de codificação e práticas de de
 Nota: Explicar a importância de seguir padrões de desenvolvimento para facilitar a manutenção, melhorar a legibilidade e promover a colaboração.
 
 # 2. Padrões de Codificação
-_conteúdo_
 
 ## 2.1 Naming Conventions
 
@@ -118,7 +116,6 @@ Todos os Pull Requests (PRs) devem seguir as diretrizes abaixo para assegurar um
 
 
 # 3. Padrões de Projeto
-_conteúdo_
 
 ## 3.1 Design Patterns
 
@@ -131,7 +128,6 @@ _Sugestão de leitura: https://refactoring.guru/_
   - Exemplo: Em uma aplicação Angular, utilize serviços para lógica de negócios, componentes para a interface e controladores para gerenciar a interação.
 
 # 4. Práticas de Desenvolvimento
-_conteúdo_
 
 ## 4.1 Testes Automatizados
 
