@@ -321,7 +321,7 @@ Evento Final: Encerramento do Atendimento
 ## 2.7.2 Sequenciamento/Priorização de entregas
 <div align="center">
 <sub>Figura x - Sequenciamento/Priorização de entregas</sub><br>
-<img src="img/prioridades1.png"><br>
+<img src="img/sequenciamento-entrega.jpg"><br>
 <sup>Fonte: Material produzido pelos autores (2025) </sup>
 </div>
 
