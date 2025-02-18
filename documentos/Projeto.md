@@ -200,6 +200,26 @@ A imagem representa os objetivos da solução: facilitar o acompanhamento de alu
 <sup>Fonte: Material produzido pelos autores (2025) </sup>
 </div>
 
+&nbsp;&nbsp;&nbsp;&nbsp; Segue abaixo a User Stories da Mariana com a função de registrar um profissional ao banco de dados.
+
+<div align="center">
+<sub>Tabela X - Tabela User Stories Gestão de Unidade</sub>
+
+| Identificação        | USXX                                                                                                      |
+| -------------------- | ------------------------------------------------------------------------------------------------------ |
+| Persona              | Valdemar Souza                                                                                        |
+| User Story           | Como gestor de unidade, quero filtrar um(a) aluno(a) <br>da minha unidade para encontrá-lo(la) rapidamente     |
+| Critério de aceite 1 | Fazer login na plataforma                                                                              |
+| Critério de aceite 2 | Acessar a Home Page                                                                                    |
+| Critério de aceite 3 | Abrir o sistema de busca                                                                               |
+| Critério de aceite 4 | Inserir o nome ou outro filtro do aluno para realizar a busca                                             |
+| Critério de aceite 5 | Visualizar os resultados da pesquisa com os dados do aluno                                             |
+
+<sup>Fonte: Material produzido pelos autores (2025)</sup>
+
+</div>
+
+
 &nbsp;&nbsp;&nbsp;&nbsp;Além disso, segue abaixo a sua jornada do usuário durante o processo de gerenciamento dos atendimentos na unidade.
 
 <div align="center">
