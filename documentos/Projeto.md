@@ -245,6 +245,24 @@ A imagem representa os objetivos da solução: facilitar o acompanhamento de alu
 <sup>Fonte: Material produzido pelos autores (2025) </sup>
 </div>
 
+&nbsp;&nbsp;&nbsp;&nbsp;Produziu-se ainda uma user story para a persona.
+
+<div align="center">
+<sub>Tabela x - Tabela User Story Maria Rita </sub>
+
+| Identificação        | US04                                                                                                   |
+| -------------------- | ------------------------------------------------------------------------------------------------------ |
+| Persona              | Maria Rita                                                                                              |
+| User Story           | Como gestora administrativa, quero visualizar dados estatísticos dos alunos com deficiência do CPS, para que eu possa analisar os atendimentos e tomar decisões estratégicas.      |
+| Critério de aceite 1 | Fazer login na plataforma.                                                                               |
+| Critério de aceite 2 | Acessar a seção de dashboard.                                                                                   |
+| Critério de aceite 3 | Filtrar os dados por unidade, tipo de deficiência, turno, entre outros.                                                                          |
+| Critério de aceite 4 | Visualizar gráficos e tabelas com informações detalhadas.                                                         |
+
+<sup>Fonte: Material produzido pelos autores (2025)</sup>
+
+</div>
+
 ## 2.5 Modelagem do Fluxo de Negócio
 
 &nbsp;&nbsp;&nbsp;&nbsp;A partir do workshop realizado com o parceiro, foi modelado o seguinte fluxo de negócio, baseado no entendimento do processo atual de alocação de profissionais para o atendimento dos alunos das FATECs e ETECs. A construção e aplicação do nosso sistema não altera o fluxo de negócio do parceiro. No entanto, com o uso da nossa aplicação, será possível substituir ferramentas como o Excel por uma solução personalizada, alinhada às necessidades específicas do parceiro.
