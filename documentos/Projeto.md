@@ -219,6 +219,7 @@ A imagem representa os objetivos da solução: facilitar o acompanhamento de alu
 <sup>Fonte: Material produzido pelos autores (2025) </sup>
 </div>
 
+
 &nbsp;&nbsp;&nbsp;&nbsp; Segue abaixo a User Story da Mariana com a função de registrar um profissional ao banco de dados.
 
 <div align="center">
@@ -599,7 +600,74 @@ _conteúdo_
 
 ## 4.2 Modelo Lógico de Dados
 
-_conteúdo_
+O banco de dados deste projeto foi estruturado para armazenar informações sobre alunos, profissionais, atendimentos e tecnologias assistivas. A estrutura permite registrar os atendimentos realizados entre um aluno e um profissional, visualizar e acompanhar informações.
+
+## 1. Modelo Lógico
+O modelo lógico do banco de dados é composto pelas seguintes entidades:
+
+- **Usuário**: Representa os usuários do sistema, que podem ter diferentes cargos.
+- **Aluno**: Contém informações sobre o aluno que recebe atendimento.
+- **Profissional**: Contém informações sobre os profissionais que realizam atendimentos.
+- **Atendimento**: Registra o atendimento entre um aluno e um profissional, incluindo a data e o tipo de atendimento.
+
+## 2. Relacionamentos
+
+- **Aluno e Atendimento**: Um aluno pode ter vários atendimentos. Cada atendimento está vinculado a um único aluno.
+- **Profissional e Atendimento**: Um profissional pode realizar vários atendimentos. Cada atendimento está vinculado a um único profissional.
+- **Atendimento e Tecnologia Assistiva**: Caso uma tecnologia assistiva seja utilizada, ela é referenciada dentro do atendimento.
+
+## 3. Explicação sobre o Horário do Atendimento
+O modelo do banco de dados garante que alunos e profissionais possam realizar atendimentos de forma estruturada, sem necessidade de uma tabela intermediária para agendamentos. O campo **data_atendimento** dentro da tabela **Atendimento** define diretamente o horário do atendimento, assegurando que aluno e profissional estejam juntos nesse período.
+
+Isso significa que:
+- Um **Aluno** e um **Profissional** são vinculados na tabela **Atendimento**.
+- **data_atendimento** indica o momento exato do atendimento.
+- Como o aluno e o profissional compartilham o mesmo registro na tabela **Atendimento**, isso garante que ambos têm um horário comum.
+
+<div align="center">
+<sub>Figura x - Sequenciamento/Priorização de entregas</sub><br>
+<img src="img/modelo-logico.png"><br>
+<sup>Fonte: Material produzido pelos autores (2025) </sup>
+</div>
+
+## 4. Estrutura das Tabelas
+
+### **Usuário**
+| Campo  | Tipo  | Descrição  |
+|--------|------|--------------|
+| id  | INT (PK) | Identificador único do usuário |
+| nome  | VARCHAR  | Nome do usuário  |
+| email  | VARCHAR  | Email do usuário  |
+| senha  | VARCHAR  | Senha criptografada |
+| cargo  | VARCHAR  | Cargo do usuário no sistema |
+
+### **Aluno**
+| Campo  | Tipo  | Descrição  |
+|--------|------|--------------|
+| id  | INT (PK) | Identificador único do aluno |
+| nome  | VARCHAR  | Nome do aluno  |
+| unidade  | VARCHAR  | Unidade educacional do aluno |
+| curso  | VARCHAR  | Curso em que está matriculado |
+| turno  | VARCHAR  | Período de estudos |
+| necessidade_especial | VARCHAR | Indica qual deficiência o aluno possui |
+
+### **Profissional**
+| Campo  | Tipo  | Descrição  |
+|--------|------|--------------|
+| id  | INT (PK) | Identificador único do profissional |
+| nome  | VARCHAR  | Nome do profissional |
+| email  | VARCHAR  | Email do profissional |
+| profissao | VARCHAR  | Profissão do profissional |
+
+### **Atendimento**
+| Campo  | Tipo  | Descrição  |
+|--------|------|--------------|
+| id  | INT (PK) | Identificador único do atendimento |
+| aluno_id  | INT (FK) | Referência ao aluno atendido |
+| profissional_id  | INT (FK) | Referência ao profissional responsável |
+| data_atendimento  | DATETIME | Horário do atendimento |
+| tipo_atendimento  | VARCHAR  | Tipo de atendimento realizado |
+| tecnologia_assistiva | VARCHAR | Tecnologia assistiva usada |
 
 ## 4.3 Modelo Físico de Dados
 
