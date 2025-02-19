@@ -161,7 +161,7 @@ A imagem representa os objetivos da solução: facilitar o acompanhamento de alu
 
 | Identificação        | US01                                                                                                |
 | -------------------- | --------------------------------------------------------------------------------------------------- |
-| Persona              | Mariana Santos - Acessora de Inclusão                                                               |
+| Persona              | Mariana Santos - Assessora de Inclusão                                                               |
 | User Story           | Como acessora, quero registrar um profissional no banco de dados para manter o cadastro atualizado. |
 | Critério de aceite 1 | Fazer login na plataforma.                                                                          |
 | Critério de aceite 2 | Acessar a Home Page.                                                                                |
@@ -190,6 +190,25 @@ A imagem representa os objetivos da solução: facilitar o acompanhamento de alu
 <sup>Fonte: Material produzido pelos autores (2025) </sup>
 </div>
 
+<div align="center">
+<sub>Tabela X - Tabela User Story Cleber Oliveira</sub>
+
+<sub>Tabela X - Tabela User Stories Assessor de Inclusão</sub>
+
+| Identificação        | US02                                                                                                   |
+| -------------------- | ------------------------------------------------------------------------------------------------------ |
+| Persona              | Cleber Oliveira - Assessor de Inclusão                                                                |
+| User Story           | Como Assessor de Inclusão, quero associar um profissional a um aluno no sistema, utilizando comandos de leitor de tela, para garantir que o aluno receba o suporte necessário. |
+| Critério de aceite 1 | Ativar um leitor de tela compatível, como NVDA ou JAWS.                                               |
+| Critério de aceite 2 | Navegar pela interface do sistema utilizando apenas comandos do leitor de tela e teclado.             |
+| Critério de aceite 3 | Acessar a funcionalidade de associação de profissionais a alunos por meio de navegação sequencial.    |
+| Critério de aceite 4 | Buscar e selecionar um aluno e um profissional utilizando comandos do teclado.                        |
+| Critério de aceite 5 | Confirmar a associação e receber uma mensagem de sucesso audível pelo leitor de tela.                 |
+
+<sup>Fonte: Material produzido pelos autores (2025)</sup>
+</div>
+
+
 ## 2.4.3 Persona 3 - Valdemar Souza
 
 &nbsp;&nbsp;&nbsp;&nbsp;A seguir, apresenta-se a persona Valdemar Souza, criada com base no workshop realizado com o parceiro, buscando evidenciar a necessidade apresentada de um sistema eficiente de gerenciamento de atendimentos, com relatórios estruturados.
@@ -200,10 +219,10 @@ A imagem representa os objetivos da solução: facilitar o acompanhamento de alu
 <sup>Fonte: Material produzido pelos autores (2025) </sup>
 </div>
 
-&nbsp;&nbsp;&nbsp;&nbsp; Segue abaixo a User Stories da Mariana com a função de registrar um profissional ao banco de dados.
+&nbsp;&nbsp;&nbsp;&nbsp; Segue abaixo a User Story da Mariana com a função de registrar um profissional ao banco de dados.
 
 <div align="center">
-<sub>Tabela X - Tabela User Stories Gestão de Unidade</sub>
+<sub>Tabela X - Tabela User Stories Gestor de Unidade</sub>
 
 | Identificação        | USXX                                                                                                      |
 | -------------------- | ------------------------------------------------------------------------------------------------------ |
