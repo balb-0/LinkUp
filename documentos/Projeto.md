@@ -596,13 +596,107 @@ _conteúdo_
 
 ## 4.1 Modelo Conceitual de Dados
 
-_conteúdo_
+<div align="center">
+<sub>Figura x - Modelo Conceitual de Dados</sub><br>
+<img src="img/ModeloConceitual.jpeg"><br>
+<sup>Fonte: Material produzido pelos autores (2025) </sup>
+</div>
+
+### 4.1.1. Identificação das Entidades
+
+1. **ALUNO**  
+   Refere-se à pessoa que será atendida no sistema, podendo possuir diversas características acadêmicas (unidade, curso) e informações de acessibilidade (necessidade especial).
+
+2. **USUARIO**  
+   Representa o usuário do sistema, que pode ser um colaborador, administrador(Gerente de Unidade, Gerente Administrativo) ou qualquer outro perfil com acesso ao sistema. Armazena credenciais de acesso (login, senha) e cargo/função.
+
+3. **PROFISSIONAL**  
+   Entidade que descreve o profissional responsável pelos atendimentos (por exemplo, um psicólogo, pedagogo ou outro tipo de especialista).
+
+4. **ATENDIMENTO**  
+   Entidade que registra cada ocorrência de atendimento ao Aluno, definindo as datas, tipo de atendimento, quem foi o profissional responsável e, se necessário, alguma tecnologia assistiva empregada.
+
+---
+
+### 4.1.2. Definição dos Atributos
+
+Abaixo, detalham-se os principais atributos de cada entidade, descrevendo seu propósito no sistema.  
+
+#### 4.1.2.1. ALUNO
+- **id (PK)**: Identificador único do Aluno.  
+- **nome**: Nome completo do Aluno.  
+- **unidade**: Unidade na qual o Aluno está matriculado (por exemplo, Fatec ou Etec).  
+- **curso**: Curso específico que o Aluno está cursando.  
+- **turno**: Período em que o Aluno estuda (manhã, tarde, noite, integral ou EaD).  
+- **necessidade_especial**: Indica se o Aluno possui alguma necessidade especial (true/false).
+
+#### 4.1.2.2. USUARIO
+- **id (PK)**: Identificador único do Usuário do sistema.  
+- **nome**: Nome do Usuário (ex.: João da Silva).  
+- **email**: Endereço de e-mail para contato e/ou login.  
+- **senha**: Senha para acesso ao sistema (armazenada de forma segura).  
+- **cargo**: Função ou nível de permissão dentro do sistema (ex.: “Administrador”, “Assessor”).
+
+#### 4.1.2.3. PROFISSIONAL
+- **id (PK)**: Identificador único do Profissional.  
+- **nome**: Nome completo do Profissional.  
+- **email**: Endereço de e-mail do Profissional.  
+- **atendimento**: Uma descrição ou área em que o Profissional atua, ou campo para observações específicas.  
+
+#### 4.1.2.4. ATENDIMENTO
+- **id (PK)**: Identificador único para cada registro de atendimento.  
+- **aluno_id (FK)**: Referência ao *id* do Aluno que recebeu o atendimento.  
+- **data_atendimento**: Data em que o atendimento ocorreu.  
+- **tipo_atendimento**: Tipo ou categoria do atendimento (ex.: pedagógico, psicológico, orientação etc.).  
+- **profissional_id (FK)**: Referência ao *id* do Profissional que realizou o atendimento.  
+- **tecnologia_assistiva**: Caso tenha sido diagnosticada a necessidade de alguma tecnologia assistiva (ex.: software leitor de tela, lupa digital), este campo registra seu nome ou identificação.
+
+---
+
+### 4.1.3. Estabelecimento das Relações
+
+A seguir, explicamos como as entidades se relacionam, incluindo a cardinalidade (1:1, 1:N ou N:N) e a justificativa de cada vínculo:
+
+1. **ALUNO** – **ATENDIMENTO**  
+   - Relação **1:N** (um Aluno pode ter vários atendimentos).  
+   - Do ponto de vista do banco de dados, `ATENDIMENTO` contém a chave estrangeira `aluno_id` que aponta para `ALUNO.id`.  
+   - Exemplo: um Aluno pode ser atendido várias vezes ao longo do semestre, cada registro é um ATENDIMENTO diferente.
+
+2. **PROFISSIONAL** – **ATENDIMENTO**  
+   - Relação **1:N** (um Profissional pode realizar diversos atendimentos).  
+   - `ATENDIMENTO` contém a chave estrangeira `profissional_id` apontando para `PROFISSIONAL.id`.  
+   - Exemplo: o mesmo Profissional faz atendimentos semanais para alunos diferentes.
+
+3. **ALUNO** – **USUARIO**  
+   - No diagrama foi indicado como **1:1** (||--||). Contudo, esta relação depende das regras de negócio:
+     - *1:1* se cada Aluno também tiver exatamente uma conta de usuário no sistema.  
+     - *1:N* se um Aluno puder ter múltiplos logins/usuários (ou vice-versa).  
+   - A ideia base é que, caso o Aluno precise acessar o sistema, seus dados de login podem estar vinculados a `USUARIO`.
+
+*(Se no seu sistema for mais adequado que cada Aluno seja também um Usuário, mapeie isso como 1:1. Caso o Aluno não tenha login, mas existam muitos outros tipos de Usuário, poderá ser outra cardinalidade ou até mesmo entidades separadas.)*
+
+---
+
+### 4.1.4. Descrição Textual Completa
+
+**Fluxo Geral**  
+- Um **ALUNO** é a pessoa que será registrada no sistema com informações essenciais de identificação e de contexto acadêmico.  
+- O **USUARIO** representa qualquer perfil no sistema (por exemplo, um administrador que gerencia cadastros, um atendente que registra atendimentos, ou o próprio Aluno que acessa para consultar dados).  
+- Um **PROFISSIONAL** é responsável por realizar os atendimentos aos Alunos. Isso pode incluir professores especialistas, psicólogos ou outros membros de uma equipe multiprofissional.  
+- Cada **ATENDIMENTO** é um registro histórico que descreve quando ocorreu, qual foi o tipo de atendimento (por exemplo, “Reunião Pedagógica”, “Suporte Psicológico”), qual Profissional realizou e, se necessário, qual tecnologia assistiva foi utilizada.
+
+**Objetivos Atendidos pelos Requisitos**  
+- **Rastreabilidade de Atendimentos**: A tabela `ATENDIMENTO` permite armazenar dados de todas as sessões ou encontros que o Aluno teve com um Profissional, atendendo à necessidade de histórico.  
+- **Gestão de Usuários**: A tabela `USUARIO` viabiliza o controle de acesso, garantindo que diferentes perfis (incluindo potenciais administradores) se autentiquem no sistema e executem apenas as operações autorizadas.  
+- **Registros Acadêmicos e de Acessibilidade**: A tabela `ALUNO` centraliza informações de curso, unidade, turno e se o Aluno possui necessidades especiais, fundamental para oferecer suporte adequado.  
+- **Gerenciamento de Profissionais**: A tabela `PROFISSIONAL` mantém informações para identificar e contatar o responsável pelos atendimentos, associando cada atendimento a um profissional específico.  
+- **Tecnologia Assistiva**: Um atributo em `ATENDIMENTO` chamado `tecnologia_assistiva` permite armazenar se algum recurso específico (por exemplo, um software leitor de tela, impressora em braile etc.) foi utilizado para atender às necessidades do Aluno.
 
 ## 4.2 Modelo Lógico de Dados
 
 O banco de dados deste projeto foi estruturado para armazenar informações sobre alunos, profissionais, atendimentos e tecnologias assistivas. A estrutura permite registrar os atendimentos realizados entre um aluno e um profissional, visualizar e acompanhar informações.
 
-## 1. Modelo Lógico
+## 4.2.1. Modelo Lógico
 O modelo lógico do banco de dados é composto pelas seguintes entidades:
 
 - **Usuário**: Representa os usuários do sistema, que podem ter diferentes cargos.
@@ -610,13 +704,13 @@ O modelo lógico do banco de dados é composto pelas seguintes entidades:
 - **Profissional**: Contém informações sobre os profissionais que realizam atendimentos.
 - **Atendimento**: Registra o atendimento entre um aluno e um profissional, incluindo a data e o tipo de atendimento.
 
-## 2. Relacionamentos
+## 4.2.2. Relacionamentos
 
 - **Aluno e Atendimento**: Um aluno pode ter vários atendimentos. Cada atendimento está vinculado a um único aluno.
 - **Profissional e Atendimento**: Um profissional pode realizar vários atendimentos. Cada atendimento está vinculado a um único profissional.
 - **Atendimento e Tecnologia Assistiva**: Caso uma tecnologia assistiva seja utilizada, ela é referenciada dentro do atendimento.
 
-## 3. Explicação sobre o Horário do Atendimento
+## 4.2.3. Explicação sobre o Horário do Atendimento
 O modelo do banco de dados garante que alunos e profissionais possam realizar atendimentos de forma estruturada, sem necessidade de uma tabela intermediária para agendamentos. O campo **data_atendimento** dentro da tabela **Atendimento** define diretamente o horário do atendimento, assegurando que aluno e profissional estejam juntos nesse período.
 
 Isso significa que:
@@ -630,7 +724,7 @@ Isso significa que:
 <sup>Fonte: Material produzido pelos autores (2025) </sup>
 </div>
 
-## 4. Estrutura das Tabelas
+## 4.2.4. Estrutura das Tabelas
 
 ### **Usuário**
 | Campo  | Tipo  | Descrição  |
