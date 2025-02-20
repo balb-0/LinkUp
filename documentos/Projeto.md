@@ -725,7 +725,6 @@ Isso significa que:
 </div>
 
 ## 4.2.4. Estrutura das Tabelas
-
 ### **Usuário**
 | Campo  | Tipo  | Descrição  |
 |--------|------|--------------|
