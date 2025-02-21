@@ -778,7 +778,13 @@ _conteúdo_
 
 ## 5.2 Diagramas de Sequência da UML
 
-_conteúdo_
+&emsp;A seguir se encontra o diagrama de sequência da UML para as User Stories de Valdemar Souza, Gestor de Unidade:
+
+<div align="center">
+<sub>Figura X - Sequência da UML dos User Stories - Valdemar Souza</sub><br>
+<img src="img/sequenciaUML-userstory-persona3.png" width="80%"><br>
+<sup>Fonte: Material produzido pelos autores (2025) </sup>
+</div>
 
 ## 5.3 Descrição Textual dos Diagramas
 
