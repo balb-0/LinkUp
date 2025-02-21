@@ -598,7 +598,7 @@ _conteúdo_
 
 <div align="center">
 <sub>Figura x - Modelo Conceitual de Dados</sub><br>
-<img src="img/ModeloConceitual.jpeg"><br>
+<img src="img/ModeloConceitual.jpeg" width="80%"><br>
 <sup>Fonte: Material produzido pelos autores (2025) </sup>
 </div>
 
@@ -710,7 +710,7 @@ O modelo lógico do banco de dados é composto pelas seguintes entidades:
 - **Profissional e Atendimento**: Um profissional pode realizar vários atendimentos. Cada atendimento está vinculado a um único profissional.
 - **Atendimento e Tecnologia Assistiva**: Caso uma tecnologia assistiva seja utilizada, ela é referenciada dentro do atendimento.
 
-## 4.2.3. Explicação sobre o Horário do Atendimento
+## 4.2.3. Horário do Atendimento
 O modelo do banco de dados garante que alunos e profissionais possam realizar atendimentos de forma estruturada, sem necessidade de uma tabela intermediária para agendamentos. O campo **data_atendimento** dentro da tabela **Atendimento** define diretamente o horário do atendimento, assegurando que aluno e profissional estejam juntos nesse período.
 
 Isso significa que:
@@ -724,7 +724,27 @@ Isso significa que:
 <sup>Fonte: Material produzido pelos autores (2025) </sup>
 </div>
 
-## 4.2.4. Estrutura das Tabelas
+## 4.2.4. Chaves Primárias
+
+Cada tabela possui um identificador único (chave primária) para garantir a integridade dos registros no banco de dados:
+
+- **Usuário**: `id`
+- **Aluno**: `id`
+- **Profissional**: `id`
+- **Atendimento**: `id`
+- **Tecnologia Assistiva**: `id`
+
+## 4.2.5. Chaves estrangeiras
+
+As chaves estrangeiras estabelecem os relacionamentos entre as tabelas, garantindo a integridade de refeência entre as tabela por meio dos dados:
+
+- **Atendimento**:
+  - `aluno_id` → Referência para `Aluno(id)`
+  - `profissional_id` → Referência para `Profissional(id)`
+  - `tecnologia_assistiva_id` → Referência para `Tecnologia Assistiva(id)`
+
+## 4.2.6. Estrutura das Tabelas
+
 ### **Usuário**
 | Campo  | Tipo  | Descrição  |
 |--------|------|--------------|
