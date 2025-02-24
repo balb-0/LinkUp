@@ -157,12 +157,12 @@ A imagem representa os objetivos da solução: facilitar o acompanhamento de alu
 &nbsp;&nbsp;&nbsp;&nbsp; Segue abaixo a User Stories da Mariana com a função de registrar um profissional ao banco de dados.
 
 <div align="center">
-<sub>Tabela X - Tabela User Stories Acessora 1</sub>
+<sub>Tabela X - Tabela User Stories Assessora 1</sub>
 
 | Identificação        | US01                                                                                                |
 | -------------------- | --------------------------------------------------------------------------------------------------- |
 | Persona              | Mariana Santos - Assessora de Inclusão                                                               |
-| User Story           | Como acessora, quero registrar um profissional no banco de dados para manter o cadastro atualizado. |
+| User Story           | Como assessora, quero registrar um profissional no banco de dados para manter o cadastro atualizado. |
 | Critério de aceite 1 | Fazer login na plataforma.                                                                          |
 | Critério de aceite 2 | Acessar a Home Page.                                                                                |
 | Critério de aceite 3 | Navegar até a página de cadastro de profissionais.                                                  |
@@ -798,17 +798,35 @@ _conteúdo_
 
 ## 5.2 Diagramas de Sequência da UML
 
-&emsp;A seguir se encontra o diagrama de sequência da UML para as User Stories de Valdemar Souza, Gestor de Unidade:
+#### Registro de profissionais:
+<div align="center">
+<sub>Figura x - Diagrama de Registro de Profissionais</sub><br>
+<img src="./img/registro_profissionais.png"><br>
+<sup>Fonte: Material produzido pelos autores (2025) </sup>
+</div>
+
+#### Filtragem de Alunos:
 
 <div align="center">
-<sub>Figura X - Sequência da UML dos User Stories - Valdemar Souza</sub><br>
+<sub>Figura X - Diagrama de filtragem de alunos</sub><br>
 <img src="img/sequenciaUML-userstory-persona3.png" width="80%"><br>
 <sup>Fonte: Material produzido pelos autores (2025) </sup>
 </div>
 
 ## 5.3 Descrição Textual dos Diagramas
 
-_conteúdo_
+**Diagrama de Registro de profissionais**
+- User Story 01 ("Como assessora, quero registrar um profissional no banco de dados para manter o cadastro atualizado.")
+- Requisitos Funcionais relacionados ao diagrama: 
+  - **RF001 - Cadastro de Profissionais:** o diagrama representa o fluxo completo de interações entre o usuário acessor e o sistema para cadastrar um novo profissional no sistema.<br>
+  - **RF006 - Autenticação e Autorização de Usuários:** ao enviar a requisição à API Gateway, realiza-se uma verificação de Token para que o sistema certifique-se que a requisição foi feita por um usuário autorizado com acesso de acessor.
+  - **RF011 - Acessibilidade:** Toda a interface utilizada para o cadastro segue diretrizes de acessibilidade, embora não esteja diretamente representado no diagrama.
+
+- Requisitos não funcionais relacionados ao diagrama:
+  - **RNF01 - Tempo de Resposta:** apesar de haver uma sequência de interações, todo o fluxo, do começo ao fim, deve levar menos de 0,8 segundo.
+  - **RNF05 - Segurança:** ao fazer a verificação do Token, há uma resposta negativa caso o usuário não tenha permissão para realizar essa requisição.
+  - **RNF10 - Alertas Claros:** caso haja algum problema na requisição, como no caso de um usuário não autorizado, a interface deve comunicar o usuário de maneira clara.
+
 
 # 6. Mapeamento Técnico de Infraestrutura e Implantação
 
