@@ -719,10 +719,11 @@ Isso significa que:
 - Como o aluno e o profissional compartilham o mesmo registro na tabela **Atendimento**, isso garante que ambos têm um horário comum.
 
 <div align="center">
-<sub>Figura x - Sequenciamento/Priorização de entregas</sub><br>
-<img src="img/modelo-logico.png"><br>
+<sub>Figura X - Modelo Lógico do Banco de Dados</sub><br>
+<img src="img/modelo-logico.png" width="60%"><br>
 <sup>Fonte: Material produzido pelos autores (2025) </sup>
 </div>
+
 
 ## 4.2.4. Chaves Primárias
 
