@@ -794,7 +794,67 @@ _conteúdo_
 
 ## 5.1 Diagrama de Componentes da UML
 
-_conteúdo_
+<div align="center">
+<sub>Figura x - Diagrama de Componentes</sub><br>
+<img src="img/DiagramaCompo.jpeg"><br>
+<sup>Fonte: Material produzido pelos autores (2025) </sup>
+</div>
+
+
+
+# Arquitetura de 3 Camadas do Sistema
+
+## 1. Camada de Apresentação (Frontend)
+A Camada de Apresentação é responsável pela interface do usuário, permitindo que ele interaja com o sistema.
+
+### Componentes:
+- Usuário: Interage com o sistema por meio da interface web.
+- Interface Web: Apresenta a interface gráfica ao usuário e envia requisições ao servidor.
+
+### Fluxo:
+1. O Usuário acessa a aplicação via a Interface Web.
+2. A Interface Web encaminha as requisições para o Servidor de Aplicação.
+
+
+## 2. Camada de Negócio (Backend)
+A Camada de Negócio gerencia a lógica de processamento e a comunicação entre as camadas.
+
+### Componentes:
+- Servidor de Aplicação: Processa requisições e envia ao API Gateway
+.
+- API Gateway
+: Orquestra a comunicação entre os serviços do backend.
+- Função de Negócios: Executa as regras de negócio.
+- Middleware Externo: Realiza chamadas para APIs externas.
+- Validador de Tokens: Verifica autenticação e permissões.
+- Gerenciador de Permissões: Define e controla permissões de acesso.
+- Cofre de Credenciais: Armazena credenciais seguras para acesso a serviços protegidos.
+
+### Fluxo:
+1. O Servidor de Aplicação recebe a requisição da Interface Web e a repassa para o API Gateway
+.
+2. O API Gateway
+ decide qual componente do backend será acionado:  
+   - Função de Negócios para processar regras de negócio.  
+   - API Interna para acessar o banco de dados.  
+   - Middleware Externo para interagir com serviços externos.  
+3. O Validador de Tokens verifica permissões via o Gerenciador de Permissões antes de liberar determinadas operações.
+4. Se necessário, a Função de Negócios acessa o Cofre de Credenciais para obter credenciais seguras.
+
+
+## 3. Camada de Dados
+A Camada de Dados é responsável pelo armazenamento e recuperação de informações.
+
+### Componentes:
+- API Interna: Interface de comunicação entre o backend e o banco de dados.
+- Banco de Dados: Armazena as informações essenciais do sistema.
+
+### Fluxo:
+1. O API Gateway
+ encaminha as requisições para a API Interna.
+2. A API Interna consulta ou atualiza o Banco de Dados conforme necessário.
+3. O Banco de Dados responde com os dados solicitados.
+
 
 ## 5.2 Diagramas de Sequência da UML
 
