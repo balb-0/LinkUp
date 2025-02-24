@@ -790,8 +790,6 @@ _conteúdo_
 
 # 5. Solução Técnica (Design)
 
-_conteúdo_
-
 ## 5.1 Diagrama de Componentes da UML
 
 <div align="center">
@@ -858,6 +856,15 @@ A Camada de Dados é responsável pelo armazenamento e recuperação de informa�
 
 ## 5.2 Diagramas de Sequência da UML
 
+
+## 5.2.2 Diagrama de Sequência da UML de Associação de Profissional ao Aluno
+
+#### Associação de Alunos a Profissionais:
+
+<div align="center">
+<sub>Figura x - Diagrama de Associação de Profissional ao Aluno</sub><br>
+<img src="./img/diagrama-sequencia-associacao-prof.png" width=80%><br>
+
 #### Registro de profissionais:
 <div align="center">
 <sub>Figura x - Diagrama de Registro de Profissionais</sub><br>
@@ -875,7 +882,25 @@ A Camada de Dados é responsável pelo armazenamento e recuperação de informa�
 
 ## 5.3 Descrição Textual dos Diagramas
 
-**Diagrama de Registro de profissionais**
+&nbsp;&nbsp;&nbsp;&nbsp;Segue a descrição textual dos diagramas de sequência da UML, relacionando-os com uma User Story de alguma funcionalidade essencial do sistema e os RFs e RNFs atendidos.
+
+## 5.3.2 - Descrição Textual do Diagrama de Associação de Profissional ao Aluno
+
+- User Story 02 (" Como Assessor de Inclusão, quero associar um profissional a um aluno no sistema, utilizando comandos de leitor de tela, para garantir que o aluno receba o suporte necessário.")
+- Requisitos Funcionais relacionados ao diagrama:
+  - **RF002 - Associação de Alunos a Profissionais:** O diagrama representa todo o fluxo de associação de um aluno a um profissional, desde a busca pelo aluno até a confirmação da associação.
+  - **RF003 - Integração com API do Centro Paula Souza:** O fluxo inclui a consulta dos dados dos alunos via API, garantindo que as informações estejam sempre atualizadas.
+  - **RF008 - Pesquisa e Filtros Avançados:** O assessor realiza buscas filtradas tanto para alunos quanto para profissionais, facilitando a localização das informações.
+
+- Requisitos Não Funcionais relacionados ao diagrama:
+  - **RNF01 - Tempo de Resposta:** O diagrama apresenta várias interações entre a interface, API Gateway e API Interna, e todas as consultas e respostas devem ser processadas em menos de 0,8 segundo.
+  - **RNF02 - Compatibilidade com API:** A integração com a API do Centro Paula Souza precisa ser contínua e confiável, garantindo a integridade dos dados recuperados.
+  - **RNF03 - Acessibilidade:** Toda a interface utilizada para o cadastro segue diretrizes de acessibilidade, embora não esteja diretamente representado no diagrama.
+  - **RNF04 - Eficiência na Navegação:** O diagrama mostra que o assessor pode encontrar um aluno e um profissional rapidamente, garantindo que a busca seja feita em no máximo três cliques.
+  - **RNF05 - Segurança:** O sistema precisa garantir que apenas usuários autorizados possam acessar as informações de alunos e realizar associações.
+  - **RNF10 - Alertas Claros:** caso haja algum problema na requisição, como no caso de um usuário não autorizado, a interface deve comunicar o usuário de maneira clara.
+
+**Diagrama de Registro de Profissionais**
 - User Story 01 ("Como assessora, quero registrar um profissional no banco de dados para manter o cadastro atualizado.")
 - Requisitos Funcionais relacionados ao diagrama: 
   - **RF001 - Cadastro de Profissionais:** o diagrama representa o fluxo completo de interações entre o usuário acessor e o sistema para cadastrar um novo profissional no sistema.<br>
@@ -886,7 +911,6 @@ A Camada de Dados é responsável pelo armazenamento e recuperação de informa�
   - **RNF01 - Tempo de Resposta:** apesar de haver uma sequência de interações, todo o fluxo, do começo ao fim, deve levar menos de 0,8 segundo.
   - **RNF05 - Segurança:** ao fazer a verificação do Token, há uma resposta negativa caso o usuário não tenha permissão para realizar essa requisição.
   - **RNF10 - Alertas Claros:** caso haja algum problema na requisição, como no caso de um usuário não autorizado, a interface deve comunicar o usuário de maneira clara.
-
 
 # 6. Mapeamento Técnico de Infraestrutura e Implantação
 
