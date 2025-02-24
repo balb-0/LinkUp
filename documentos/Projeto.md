@@ -225,7 +225,7 @@ A imagem representa os objetivos da solução: facilitar o acompanhamento de alu
 <div align="center">
 <sub>Tabela X - Tabela User Stories Gestor de Unidade</sub>
 
-| Identificação        | USXX                                                                                                      |
+| Identificação        | US03                                                                                                     |
 | -------------------- | ------------------------------------------------------------------------------------------------------ |
 | Persona              | Valdemar Souza                                                                                        |
 | User Story           | Como gestor de unidade, quero filtrar um(a) aluno(a) <br>da minha unidade para encontrá-lo(la) rapidamente     |
@@ -857,14 +857,7 @@ A Camada de Dados é responsável pelo armazenamento e recuperação de informa�
 
 ## 5.2 Diagramas de Sequência da UML
 
-
-## 5.2.2 Diagrama de Sequência da UML de Associação de Profissional ao Aluno
-
-#### Associação de Alunos a Profissionais:
-
-<div align="center">
-<sub>Figura x - Diagrama de Associação de Profissional ao Aluno</sub><br>
-<img src="./img/diagrama-sequencia-associacao-prof.png" width=80%><br>
+## 5.2.1 Diagrama de Sequência da UML de Registro de Profissionais
 
 #### Registro de profissionais:
 <div align="center">
@@ -872,6 +865,17 @@ A Camada de Dados é responsável pelo armazenamento e recuperação de informa�
 <img src="./img/registro_profissionais.png"><br>
 <sup>Fonte: Material produzido pelos autores (2025) </sup>
 </div>
+
+## 5.2.2 Diagrama de Sequência da UML de Associação de Profissional ao Aluno
+
+#### Associação de Alunos a Profissionais:
+<div align="center">
+<sub>Figura x - Diagrama de Associação de Profissional ao Aluno</sub><br>
+<img src="./img/diagrama-sequencia-associacao-prof.png" width=80%><br>
+<sup>Fonte: Material produzido pelos autores (2025) </sup>
+</div>
+
+## 5.2.3 Diagramas de Sequência da UML de Filtragem de Alunos
 
 #### Filtragem de Alunos:
 
@@ -881,9 +885,24 @@ A Camada de Dados é responsável pelo armazenamento e recuperação de informa�
 <sup>Fonte: Material produzido pelos autores (2025) </sup>
 </div>
 
+
 ## 5.3 Descrição Textual dos Diagramas
 
 &nbsp;&nbsp;&nbsp;&nbsp;Segue a descrição textual dos diagramas de sequência da UML, relacionando-os com uma User Story de alguma funcionalidade essencial do sistema e os RFs e RNFs atendidos.
+
+## 5.3.1 - Descrição Textual do Diagrama de Registro de Profissionais
+
+**Diagrama de Registro de Profissionais**
+- User Story 01 ("Como assessora, quero registrar um profissional no banco de dados para manter o cadastro atualizado.")
+- Requisitos Funcionais relacionados ao diagrama: 
+  - **RF001 - Cadastro de Profissionais:** o diagrama representa o fluxo completo de interações entre o usuário acessor e o sistema para cadastrar um novo profissional no sistema.<br>
+  - **RF006 - Autenticação e Autorização de Usuários:** ao enviar a requisição à API Gateway, realiza-se uma verificação de Token para que o sistema certifique-se que a requisição foi feita por um usuário autorizado com acesso de acessor.
+  - **RF011 - Acessibilidade:** Toda a interface utilizada para o cadastro segue diretrizes de acessibilidade, embora não esteja diretamente representado no diagrama.
+
+- Requisitos não funcionais relacionados ao diagrama:
+  - **RNF01 - Tempo de Resposta:** apesar de haver uma sequência de interações, todo o fluxo, do começo ao fim, deve levar menos de 0,8 segundo.
+  - **RNF05 - Segurança:** ao fazer a verificação do Token, há uma resposta negativa caso o usuário não tenha permissão para realizar essa requisição.
+  - **RNF10 - Alertas Claros:** caso haja algum problema na requisição, como no caso de um usuário não autorizado, a interface deve comunicar o usuário de maneira clara.
 
 ## 5.3.2 - Descrição Textual do Diagrama de Associação de Profissional ao Aluno
 
@@ -901,17 +920,24 @@ A Camada de Dados é responsável pelo armazenamento e recuperação de informa�
   - **RNF05 - Segurança:** O sistema precisa garantir que apenas usuários autorizados possam acessar as informações de alunos e realizar associações.
   - **RNF10 - Alertas Claros:** caso haja algum problema na requisição, como no caso de um usuário não autorizado, a interface deve comunicar o usuário de maneira clara.
 
-**Diagrama de Registro de Profissionais**
-- User Story 01 ("Como assessora, quero registrar um profissional no banco de dados para manter o cadastro atualizado.")
-- Requisitos Funcionais relacionados ao diagrama: 
-  - **RF001 - Cadastro de Profissionais:** o diagrama representa o fluxo completo de interações entre o usuário acessor e o sistema para cadastrar um novo profissional no sistema.<br>
-  - **RF006 - Autenticação e Autorização de Usuários:** ao enviar a requisição à API Gateway, realiza-se uma verificação de Token para que o sistema certifique-se que a requisição foi feita por um usuário autorizado com acesso de acessor.
-  - **RF011 - Acessibilidade:** Toda a interface utilizada para o cadastro segue diretrizes de acessibilidade, embora não esteja diretamente representado no diagrama.
+## 5.3.3 - Descrição Textual do Diagrama de Filtragem de Alunos
 
-- Requisitos não funcionais relacionados ao diagrama:
-  - **RNF01 - Tempo de Resposta:** apesar de haver uma sequência de interações, todo o fluxo, do começo ao fim, deve levar menos de 0,8 segundo.
-  - **RNF05 - Segurança:** ao fazer a verificação do Token, há uma resposta negativa caso o usuário não tenha permissão para realizar essa requisição.
-  - **RNF10 - Alertas Claros:** caso haja algum problema na requisição, como no caso de um usuário não autorizado, a interface deve comunicar o usuário de maneira clara.
+- User Story 03 ("Como gestor de unidade, quero filtrar um(a) aluno(a) da minha unidade para encontrá-lo(la) rapidamente")
+- Requisitos Funcionais relacionados ao diagrama: 
+  - **RF006 - Autenticação e Autorização de Usuários:** O diagrama começa com o **Gestor de Unidade (Valdemar Souza)** fazendo login na plataforma, tratando da autenticação e autorização de usuários. O sistema valida as credenciais do gestor antes de permitir o acesso à funcionalidade de busca.
+  - **RF008 - Pesquisa e Filtros Avançados:** A funcionalidade de busca de alunos, que é o foco principal da User Story, está diretamente relacionada a esse requisito. O diagrama mostra o gestor inserindo o nome ou outro filtro do aluno, e o sistema processando essa busca, retornando os resultados correspondentes.
+  - **RF003 - Integração com API do Centro Paula Souza:** O diagrama demonstra a consulta ao banco de dados para buscar informações do aluno pode envolver a integração com a API do Centro Paula Souza. Isso garante que os dados dos alunos estejam sempre atualizados e sincronizados com a base oficial.
+  - **RF005 - Acompanhamento de Alunos com Deficiência:** A busca de alunos pode incluir filtros específicos para alunos com deficiência. Isso permite que o gestor encontre rapidamente alunos que necessitam de suporte adicional.
+
+- Requisitos Não Funcionais relacionados ao diagrama: 
+
+  - **RNF01 - Tempo de Resposta:** O diagrama de sequência mostra que a busca de alunos deve ser rápida e eficiente. O RNF01 estabelece que o tempo de resposta máximo para consultas de dados deve ser de 0,8 segundo, o que é essencial para garantir que o gestor possa encontrar o aluno rapidamente, conforme a User Story.
+  - **RNF02 - Compatibilidade com API Existente:** A integração com a API do Centro Paula Souza, mencionada no RF003, também está relacionada ao RNF02, que exige que a aplicação seja compatível com APIs existentes e mantenha a integridade dos dados durante a integração.
+  - **RNF03 - Acessibilidade:** Toda a interface utilizada para o cadastro segue diretrizes de acessibilidade, embora não esteja diretamente representado no diagrama.
+  - **RNF04 - Usabilidade (Número de Cliques):** O RNF04 estabelece que os usuários devem conseguir encontrar alunos e profissionais com, no máximo, 3 cliques. O diagrama de sequência reflete isso ao mostrar um fluxo simples e direto para a busca de alunos, desde o login até a exibição dos resultados.
+  - **RNF05 - Segurança (Controle de Acesso):** O RNF05 garante que cada tipo de usuário tenha acesso somente às suas respectivas funcionalidades. No diagrama, o gestor de unidade só pode acessar a funcionalidade de busca após a autenticação, o que está alinhado com esse requisito.
+  - **RNF11 - Validação de Dados:** Durante a busca, os dados retornados devem passar por validação para garantir a integridade e confiabilidade das informações apresentadas ao gestor.
+
 
 # 6. Mapeamento Técnico de Infraestrutura e Implantação
 
