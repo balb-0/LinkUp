@@ -859,7 +859,6 @@ A Camada de Dados é responsável pelo armazenamento e recuperação de informa�
 
 ## 5.2.1 Diagrama de Sequência da UML de Registro de Profissionais
 
-#### Registro de profissionais:
 <div align="center">
 <sub>Figura x - Diagrama de Registro de Profissionais</sub><br>
 <img src="./img/registro_profissionais.png"><br>
@@ -868,7 +867,6 @@ A Camada de Dados é responsável pelo armazenamento e recuperação de informa�
 
 ## 5.2.2 Diagrama de Sequência da UML de Associação de Profissional ao Aluno
 
-#### Associação de Alunos a Profissionais:
 <div align="center">
 <sub>Figura x - Diagrama de Associação de Profissional ao Aluno</sub><br>
 <img src="./img/diagrama-sequencia-associacao-prof.png" width=80%><br>
@@ -876,8 +874,6 @@ A Camada de Dados é responsável pelo armazenamento e recuperação de informa�
 </div>
 
 ## 5.2.3 Diagramas de Sequência da UML de Filtragem de Alunos
-
-#### Filtragem de Alunos:
 
 <div align="center">
 <sub>Figura X - Diagrama de filtragem de alunos</sub><br>
@@ -895,8 +891,8 @@ A Camada de Dados é responsável pelo armazenamento e recuperação de informa�
 **Diagrama de Registro de Profissionais**
 - User Story 01 ("Como assessora, quero registrar um profissional no banco de dados para manter o cadastro atualizado.")
 - Requisitos Funcionais relacionados ao diagrama: 
-  - **RF001 - Cadastro de Profissionais:** o diagrama representa o fluxo completo de interações entre o usuário acessor e o sistema para cadastrar um novo profissional no sistema.<br>
-  - **RF006 - Autenticação e Autorização de Usuários:** ao enviar a requisição à API Gateway, realiza-se uma verificação de Token para que o sistema certifique-se que a requisição foi feita por um usuário autorizado com acesso de acessor.
+  - **RF001 - Cadastro de Profissionais:** o diagrama representa o fluxo completo de interações entre o usuário assessor e o sistema para cadastrar um novo profissional no sistema.<br>
+  - **RF006 - Autenticação e Autorização de Usuários:** ao enviar a requisição à API Gateway, realiza-se uma verificação de Token para que o sistema certifique-se que a requisição foi feita por um usuário autorizado com acesso de assessor.
   - **RF011 - Acessibilidade:** Toda a interface utilizada para o cadastro segue diretrizes de acessibilidade, embora não esteja diretamente representado no diagrama.
 
 - Requisitos não funcionais relacionados ao diagrama:
@@ -917,7 +913,7 @@ A Camada de Dados é responsável pelo armazenamento e recuperação de informa�
   - **RNF02 - Compatibilidade com API:** A integração com a API do Centro Paula Souza precisa ser contínua e confiável, garantindo a integridade dos dados recuperados.
   - **RNF03 - Acessibilidade:** Toda a interface utilizada para o cadastro segue diretrizes de acessibilidade, embora não esteja diretamente representado no diagrama.
   - **RNF04 - Eficiência na Navegação:** O diagrama mostra que o assessor pode encontrar um aluno e um profissional rapidamente, garantindo que a busca seja feita em no máximo três cliques.
-  - **RNF05 - Segurança:** O sistema precisa garantir que apenas usuários autorizados possam acessar as informações de alunos e realizar associações.
+  - **RNF05 - Segurança:** O sistema precisa garantir que apenas usuários autorizados possam acessar as informações de alunos e realizar associações. Isso acontece por meio de validações de Tokens a cada requisição.
   - **RNF10 - Alertas Claros:** caso haja algum problema na requisição, como no caso de um usuário não autorizado, a interface deve comunicar o usuário de maneira clara.
 
 ## 5.3.3 - Descrição Textual do Diagrama de Filtragem de Alunos
@@ -935,7 +931,7 @@ A Camada de Dados é responsável pelo armazenamento e recuperação de informa�
   - **RNF02 - Compatibilidade com API Existente:** A integração com a API do Centro Paula Souza, mencionada no RF003, também está relacionada ao RNF02, que exige que a aplicação seja compatível com APIs existentes e mantenha a integridade dos dados durante a integração.
   - **RNF03 - Acessibilidade:** Toda a interface utilizada para o cadastro segue diretrizes de acessibilidade, embora não esteja diretamente representado no diagrama.
   - **RNF04 - Usabilidade (Número de Cliques):** O RNF04 estabelece que os usuários devem conseguir encontrar alunos e profissionais com, no máximo, 3 cliques. O diagrama de sequência reflete isso ao mostrar um fluxo simples e direto para a busca de alunos, desde o login até a exibição dos resultados.
-  - **RNF05 - Segurança (Controle de Acesso):** O RNF05 garante que cada tipo de usuário tenha acesso somente às suas respectivas funcionalidades. No diagrama, o gestor de unidade só pode acessar a funcionalidade de busca após a autenticação, o que está alinhado com esse requisito.
+  - **RNF05 - Segurança (Controle de Acesso):** O RNF05 garante que cada tipo de usuário tenha acesso somente às suas respectivas funcionalidades. No diagrama, o gestor de unidade só pode acessar a funcionalidade de busca depois que o validador valida o token de acesso.
   - **RNF11 - Validação de Dados:** Durante a busca, os dados retornados devem passar por validação para garantir a integridade e confiabilidade das informações apresentadas ao gestor.
 
 
