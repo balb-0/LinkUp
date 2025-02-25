@@ -857,6 +857,7 @@ A Camada de Dados é responsável pelo armazenamento e recuperação de informa�
 
 ## 5.2 Diagramas de Sequência da UML
 
+
 ## 5.2.1 Diagrama de Sequência da UML de Registro de Profissionais
 
 <div align="center">
@@ -881,6 +882,13 @@ A Camada de Dados é responsável pelo armazenamento e recuperação de informa�
 <sup>Fonte: Material produzido pelos autores (2025) </sup>
 </div>
 
+## 5.2.4 Diagrama de Sequência da UML de Visualização de Dados Estatísticos
+
+<div align="center">
+<sub>Figura x - Diagrama de Sequência - Gestora Admistrativa</sub><br>
+<img src="img/diagrama_sequencia_GA.png"><br>
+<sup>Fonte: Material produzido pelos autores (2025) </sup>
+</div>
 
 ## 5.3 Descrição Textual dos Diagramas
 
