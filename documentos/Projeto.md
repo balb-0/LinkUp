@@ -942,6 +942,26 @@ A Camada de Dados é responsável pelo armazenamento e recuperação de informa�
   - **RNF05 - Segurança (Controle de Acesso):** O RNF05 garante que cada tipo de usuário tenha acesso somente às suas respectivas funcionalidades. No diagrama, o gestor de unidade só pode acessar a funcionalidade de busca depois que o validador valida o token de acesso.
   - **RNF11 - Validação de Dados:** Durante a busca, os dados retornados devem passar por validação para garantir a integridade e confiabilidade das informações apresentadas ao gestor.
 
+  ## 5.3.4 - Descrição Textual do Diagrama de Visualização de Dados Estatísticos
+
+- Como gestora administrativa, quero visualizar dados estatísticos dos alunos com deficiência do CPS, para que eu possa analisar os atendimentos e tomar decisões estratégicas.
+
+- Requisitos Funcionais relacionados ao diagrama:
+  - **RF004 - Dashboard de Business Intelligence:** O diagrama descreve o passo a passo da Gestora Administrativa ao acessar o dashboard para visualização dos dados.
+  - **RF005 - Acompanhamento de Alunos com Deficiência:** Embora não esteja diretamente representado no diagrama, ao analisar os dados estatísticos, pode-se tirar _insights_  relevantes para o acompanhamento dos alunos.
+  - **RF006 - Autenticação e Autorização de Usuários:** O diagrama pressupõe que o usuário já tenha realizado a autenticação, o que gera um token que é validado após a tentativa de acesso.
+
+- Requisitos Não Funcionais relacionados ao diagrama:
+  - **RNF01 - Tempo de Resposta:** Embora não esteja representado diretamente no diagrama, o tempo máximo de resposta após o usuário clicar para acessar o dashboard é de 0,8 segundo em caso de falha ou sucesso na autenticação.
+  - **RNF03 - Acessibilidade:** A interface do sistema segue as diretrizes de acessibilidade, porém não é possível representar no diagrama.
+  - **RNF04 - Usabilidade:** Segundo o diagrama, a Gestora Administrativa acessa o dashboard com apenas um único clique do mouse.
+  - **RNF05 - Segurança:** Há uma etapa de validação do token de acesso do usuário antes da requisição na API interna do sistema, assim garantindo que somente usuários autorizados acessem os dados estatísticos.
+  - **RNF06 - Privacidade:** Ao utilizar a camada de validação de token, garante que apenas usuários autorizados acessem os dados e não será exibido nenhum dado pessoal ou sensível para o gestor administrativo.
+  - **RNF09 - Disponibilidade:** O diagrama pressupõe que o sistema deve estar no ar quando o usuário faz a requisição.
+  - **RNF10 - Mensagens de Erro:** Caso o usuário não seja autorizado a relizar aquela requisição ou o sistema houve algum problema ao acessar os dados, o usuário receberá uma mensagem de erro correspondente.
+  - **RNF11 - Integridade:** Com a visualização dos dados, é necessário que eles estejam sempre atualizados e íntegros. De modo que seja possível a criação de um dashboard para _insights_.
+
+
 
 # 6. Mapeamento Técnico de Infraestrutura e Implantação
 
