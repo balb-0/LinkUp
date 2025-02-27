@@ -169,7 +169,7 @@ A imagem representa os objetivos da solução: facilitar o acompanhamento de alu
 | Critério de aceite 4 | Preencher os dados obrigatórios do profissional.                                                    |
 | Critério de aceite 5 | Confirmar o cadastro e garantir que os dados sejam salvos no banco de dados.                        |
 
-<sup>Fonte: Material produzido pelos autores (2024)</sup>
+<sup>Fonte: Material produzido pelos autores (2025)</sup>
 
 </div>
 
@@ -351,7 +351,7 @@ Evento Final: Encerramento do Atendimento
 <div align="center">
 <sub>Figura X - Matriz de risco do projeto</sub>
 <img src="./img/matriz_de_risco.png" width="100%">
-<sup>Fonte: Material produzido pelo grupo LinkUp (2024)</sup>
+<sup>Fonte: Material produzido pelo grupo LinkUp (2025)</sup>
 </div>
 
 <div align="center">
@@ -369,7 +369,7 @@ Evento Final: Encerramento do Atendimento
 | 08  | Falta de Acessibilidade            | Caso tenha algum colaborador com deficiência, pode não conseguir utilizar a aplicação.                                                               | Muito Alto     | 10%                        | Desenvolver o sistema tendo como base a NBR ISO 9241-171 para que o sistema seja inclusivo.                                                            |
 | 09  | Excesso de Carga                   | Com muitos usuários simultâneos, o servidor pode ser sobrecarregado, causando falhas na aplicação.                                                   | Alto           | 50%                        | Utilizar balanceamento de carga e arquitetura escalável para suportar picos de acesso.                                                                 |
 
-<sup>Fonte: Material produzido pelo grupo LinkUp (2024)</sup>
+<sup>Fonte: Material produzido pelo grupo LinkUp (2025)</sup>
 
 </div>
 
@@ -385,7 +385,7 @@ Evento Final: Encerramento do Atendimento
 | 05  | Melhoria na Experiência do Usuário | Permite que o colaborador tenha mais facilidade ao utilizar uma interface mais intuitiva que as planilhas. | Muito Alto            | 90%                        | Aplicar um design limpo, mas com constraste para acessibilidade.                         |
 | 06  | Modulaização do Código             | Torna o código de fácil manutenção e escalável.                                                            | Alto                  | 90%                        | Desenvolver com boas práticas, como a separação do código em funções e objetos.          |
 
-<sup>Fonte: Material produzido pelo grupo LinkUp (2024)</sup>
+<sup>Fonte: Material produzido pelo grupo LinkUp (2025)</sup>
 
 </div>
 
@@ -1034,7 +1034,60 @@ _conteúdo_
 
 ## 7.2 Desenvolvimento de Mockups
 
-_conteúdo_
+## 7.2.1 Primeira versão da aplicação web
+
+&nbsp;&nbsp;&nbsp;&nbsp; Para a primeira etapa do desenvolvimento, foram criadas algumas telas para demonstrar a navegação, a usablidade e a experiência do usuário. As telas incluem a página de perfil do aluno, o filtro de alunos, o pop-up de perfil do aluno e o dashboard estatístico.
+
+### 7.2.1.1 Página de Perfil do Aluno
+
+&nbsp;&nbsp;&nbsp;&nbsp; A página de perfil do aluno oferece uma visão completa sobre o estudante, incluindo dados pessoais, deficiências e informações acadêmicas. Além disso, optamos uma seção específica para exibir os atendimentos recebidos, categorizados de acordo com o tipo de suporte oferecido.
+
+&nbsp;&nbsp;&nbsp;&nbsp; A interface também permite que novos atendimentos sejam adicionados facilmente, garantindo um acompanhamento detalhado do aluno. O layout foi projetado para ser acessível e visualmente organizado, melhorando a experiência de quem gerencia essas informações.
+
+<div align="center">
+<sub>Figura X - Página de perfil do aluno</sub><br>
+<img src="../documentos/img/perfil-aluno.png" width="80%"><br>
+<sup>Fonte: Material produzido pelos autores (2025)</sup>
+</div>
+
+### 7.2.1.2 Tela de Listagem e Filtro de Alunos
+
+&nbsp;&nbsp;&nbsp;&nbsp; A tela de listagem e filtro de alunos permite que o usuário pesquise e filtre alunos de forma simples e rápida. A interface foi projetada para ser intuitiva e organizada, garantindo que as informações fiquem acessíveis sem sobrecarregar o usuário com informações que atrapalhem o objetivo.
+
+&nbsp;&nbsp;&nbsp;&nbsp; A listagem exibe o nome do aluno e a sua unidade, apresentados em uma estrutura simples e direta. Um campo de pesquisa foi incluído para facilitar a localização de alunos específicos.
+
+<div align="center">
+<sub>Figura X - Tela de filtro de alunos</sub><br>
+<img src="../documentos/img/filtro-de-alunos.png" width="80%"><br>
+<sup>Fonte: Material produzido pelos autores (2025)</sup>
+</div>
+
+### 7.2.1.3 Pop-up de Perfil do Aluno
+
+&nbsp;&nbsp;&nbsp;&nbsp; Ao clicar em um aluno na listagem, um pop-up com detalhes é exibido com nome, deficiências cadastradas e dados acadêmicos. Esse design permite que o usuário visualize rapidamente as informações sem precisar navegar para outra página, tornando a interação mais ágil. Ao clicar no ícone de expansão, o usuário é levado para a tela de completa de Perfil do Aluno.
+
+&nbsp;&nbsp;&nbsp;&nbsp; A interface do pop-up mantém o estilo visual do sistema, garantindo coerência no design e usabilidade intuitiva.
+
+<div align="center">
+<sub>Figura X - Pop-up de perfil do aluno</sub><br>
+<img src="../documentos/img/pop-up-perfil-do-aluno.png" width="80%"><br>
+<sup>Fonte: Material produzido pelos autores (2025)</sup>
+</div>
+
+### 7.2.1.4 Dashboard Estatístico
+
+&nbsp;&nbsp;&nbsp;&nbsp; O dashboard foi projetado para oferecer uma visão geral dos principais indicadores do sistema. Ele apresenta informações resumidas sobre o status do sistema, gráficos de desempenho e acesso rápido a áreas importantes, como profissionais, alunos, histórico e documentos.
+
+&nbsp;&nbsp;&nbsp;&nbsp; Os gráficos foram desenvolvidos para exibir informações de maneira clara e dinâmica, permitindo que o usuário compreenda rapidamente os dados representados. Além disso, há um painel lateral que proporciona acesso rápido a funcionalidades do sistema.
+
+<div align="center">
+<sub>Figura X - Dashboard Estatístico</sub><br>
+<img src="../documentos/img/dashboard.png" width="80%"><br>
+<sup>Fonte: Material produzido pelos autores (2025)</sup>
+</div>
+
+&nbsp;&nbsp;&nbsp;&nbsp; Essas telas demonstram a funcionalidade do sistema, que torna a navegação intuitiva e ajuda o usuário a acessarem informações relevantes de forma simples. A implementação dessas telas busca uma experiência mais fluida e dinâmica para o usuário, o que facilita a gestão dos alunos e atendimentos a ser realizada de maneira clara e organizada. Além disso, essas novas funcionalidades criam uma base sólida para futuras melhorias, permitindo que o sistema continue evoluindo para atender as necessidades do usuário de maneira mais completa.
+
 
 ## 7.3 Guia Visual
 
@@ -1049,8 +1102,6 @@ _conteúdo_
 _conteúdo_
 
 ## 8.2 Desenvolvimento de Features
-
-_conteúdo_
 
 **Nota:** Insira uma explicação de entregas em cada Sprint.
 
