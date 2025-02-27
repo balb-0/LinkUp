@@ -603,7 +603,7 @@ _conteúdo_
 ### 4.1.1. Identificação das Entidades
 
 1. **ALUNO**  
-   Refere-se à pessoa que será atendida no sistema, podendo possuir diversas características acadêmicas (unidade, curso) e informações de acessibilidade (necessidade especial).
+   Refere-se à pessoa que será atendida no sistema, podendo possuir diversas características acadêmicas (unidade, curso) e informações de acessibilidade (deficiência).
 
 2. **USUARIO**  
    Representa o usuário do sistema, que pode ser um colaborador, administrador(Gerente de Unidade, Gerente Administrativo) ou qualquer outro perfil com acesso ao sistema. Armazena credenciais de acesso (login, senha) e cargo/função.
@@ -626,7 +626,7 @@ Abaixo, detalham-se os principais atributos de cada entidade, descrevendo seu pr
 - **unidade**: Unidade na qual o Aluno está matriculado (por exemplo, Fatec ou Etec).  
 - **curso**: Curso específico que o Aluno está cursando.  
 - **turno**: Período em que o Aluno estuda (manhã, tarde, noite, integral ou EaD).  
-- **necessidade_especial**: Indica se o Aluno possui alguma necessidade especial (true/false).
+- **deficiencia**: Indica se o Aluno possui alguma deficiência (true/false).
 
 #### 4.1.2.2. USUARIO
 - **id (PK)**: Identificador único do Usuário do sistema.  
@@ -761,7 +761,7 @@ As chaves estrangeiras estabelecem os relacionamentos entre as tabelas, garantin
 | unidade  | VARCHAR  | Unidade educacional do aluno |
 | curso  | VARCHAR  | Curso em que está matriculado |
 | turno  | VARCHAR  | Período de estudos |
-| necessidade_especial | VARCHAR | Indica qual deficiência o aluno possui |
+| deficiencia | VARCHAR | Indica qual deficiência o aluno possui |
 
 ### **Profissional**
 | Campo  | Tipo  | Descrição  |
