@@ -983,7 +983,54 @@ _conteúdo_
 
 ## 7.1 Desenvolvimento de Wireframes
 
-_conteúdo_
+&nbsp;&nbsp;&nbsp;&nbsp;O _Wireframe_, protótipo de baixa fidelidade, foi desenvolvidos utilizando a ferramenta [Figma](https://www.figma.com/) que é amplamente utilizada no mercado. Com ela, também foi possível fazer o _Wireframe Flow_ que demonstra como é o fluxo de utilização do usuário, ao clicar em cada botão da aplicação. Tudo pode ser visualizado [neste link](https://www.figma.com/design/Dh3whOUONs9F1R0HpX1jlH/LinkUp?node-id=7-40559&t=ZiXU0hTNdn7z8nHQ-1). Abaixo está uma breve descrição de cada tela principal.
+
+### 7.1.1 Dashboard Estatístico
+
+<div align="center">
+<sub>Figura x - Wireframe Dashboard Estatístico</sub><br>
+<img src="img/wireframe_dashboard.png"><br>
+<sup>Fonte: Material produzido pelos autores (2025) </sup>
+</div>
+
+&nbsp;&nbsp;&nbsp;&nbsp;O dashboard estatístico está representado acima. Nele conterá algumas informações numéricas, como número total de alunos atendidos. Logo abaixo, ficam posicionados alguns gráficos para relacionar informações entre unidades ou profissionais. 
+
+----
+
+### 7.1.2  Filtro de Alunos
+
+<div align="center">
+<sub>Figura x - Wireframe Filtro Alunos</sub><br>
+<img src="img/wireframe_alunos.png"><br>
+<sup>Fonte: Material produzido pelos autores (2025) </sup>
+</div>
+
+&nbsp;&nbsp;&nbsp;&nbsp;A tela de filtro de alunos será acessada quando precisar consultar dados de algum aluno e/ou conectá-lo a algum profissional de atendimento. Nela ficará uma lista de alunos da unidade, separados por páginas, com uma barra de pesquisa para procurar o nome do aluno, agilizando a busca. O filtro à esquerda da barra de pesquisa serve para escolher a unidade dos alunos exibidos.
+
+----
+
+### 7.1.3 Pop-up de Perfil 
+
+<div align="center">
+<sub>Figura x - Wireframe Pop-up do Perfil do Aluno</sub><br>
+<img src="img/wireframe_popup_perfil.png"><br>
+<sup>Fonte: Material produzido pelos autores (2025) </sup>
+</div>
+
+&nbsp;&nbsp;&nbsp;&nbsp;O pop-up do perfil do aluno aparece ao clicar em um aluno selecionado. Ela é uma pré-visualização do perfil completo dele para que o usuário se certifique de que é o aluno correto a selecionar. Nesta tela haverá o nome do aluno, sua foto e informações como deficiência, curso, turno e unidade. Vale mencionar que esse pop-up também é aparece ao selecionar um profissional.
+
+----
+
+### 7.1.4 Wireframe Perfil do Aluno
+
+<div align="center">
+<sub>Figura x - Wireframe Perfil do Aluno</sub><br>
+<img src="img/wireframe_perfil_aluno.png"><br>
+<sup>Fonte: Material produzido pelos autores (2025) </sup>
+</div>
+
+&nbsp;&nbsp;&nbsp;&nbsp; A tela acima representa o perfil do aluno. Após o pop-up, ao clicar no ícone de expandir, abre esta tela. Nela contém todas as informações do aluno, na parte esquerda, e os atendimentos dele com profissionais especializados, na direita. Também há um botão, na parte superior direita, para adicionar um profissional para atender o aluno.
+
 
 ## 7.2 Desenvolvimento de Mockups
 
