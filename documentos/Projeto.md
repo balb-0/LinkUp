@@ -1075,7 +1075,44 @@ _conteúdo_
 
 ## 7.3 Guia Visual
 
-_conteúdo_
+&emsp;O _Guia Visual_, documento que define a identidade visual do projeto, foi desenvolvido utilizando a ferramenta [Figma](https://www.figma.com/). Nele, foram estabelecidas diretrizes como tipografia, paleta de cores e ícones, garantindo consistência no design. Além disso, o _Guia de Estilos_ criado possibilita a padronização de elementos gráficos em toda a aplicação. Tudo pode ser visualizado [neste link](https://www.figma.com/design/Dh3whOUONs9F1R0HpX1jlH/LinkUp?node-id=93-1096&t=1arFbCPYQBf12Gm1-1).  
+
+Abaixo estão imagens de algumas seções dos componentes do guia.
+
+
+### 7.3.1 Tipografia
+
+&emsp;As fontes escolhidas foram Poppins e League Spartan, combinando modernidade e legibilidade. Poppins traz um visual versátil e profissional, enquanto League Spartan, com seu estilo geométrico, adiciona personalidade e impacto ao design do projeto.
+
+<div align="center">
+<sub>Figura X - Tipografia Poppins</sub><br>
+<img src="../documentos/img/tipografia-poppins.png" width="80%"><br>
+<sup>Fonte: Material produzido pelos autores (2025)</sup>
+</div>
+
+<div align="center">
+<sub>Figura X - Tipografia League Spartan</sub><br>
+<img src="../documentos/img/tipografia-leaguespartan.png" width="80%"><br>
+<sup>Fonte: Material produzido pelos autores (2025)</sup>
+</div>
+
+### 7.3.2 Paleta de Cores
+
+&emsp;Criamos um branding exclusivo para o LinkUp, inspirado na identidade visual do Centro Paula Souza, especialmente nos tons de vermelho. Equilibramos tradição e inovação com um design moderno e monocromático, garantindo harmonia visual e acessibilidade.
+
+<div align="center">
+<sub>Figura X - Cores Utilizadas</sub><br>
+<img src="../documentos/img/cores-utilizadas.png" width="80%"><br>
+<sup>Fonte: Material produzido pelos autores (2025)</sup>
+</div>
+
+<div align="center">
+<sub>Figura X - Aplicação das Cores</sub><br>
+<img src="../documentos/img/aplicacao-cores.png" width="80%"><br>
+<sup>Fonte: Material produzido pelos autores (2025)</sup>
+</div>
+
+&emsp;A imagem acima apresenta exemplos de aplicação das cores em diferentes elementos da interface, como botões e componentes. Essa padronização garante consistência visual, facilitando a navegação e reforçando a identidade do projeto.
 
 # 8. Desenvolvimento do Projeto
 
