@@ -21,17 +21,16 @@
 - <a href="https://www.linkedin.com/in/rodrigo-lee/">Rodrigo Hu Tchie Lee</a>
 - <a href="https://www.linkedin.com/in/vitor-balbo/">Vitor Margarido Balbo</a>
 
-
 # Sumário
+
 - [1. Introdução](#1-introdução)
   - [1.1 Objetivo do Documento](#11-objetivo-do-documento)
-- [2. Backlog do Projeto](#2-backlog-do-projeto)
-  - [2.2 Atualizações do Backlog](#22-atualizações-do-backlog)
-    - [2.2.1 Sprint 1](#221-sprint-1)
-    - [2.2.2 Sprint 2](#222-sprint-2)
-    - [2.2.3 Sprint 3](#223-sprint-3)
-    - [2.2.4 Sprint 4](#224-sprint-4)
-    - [2.2.5 Sprint 5](#225-sprint-5)
+- [2. Avaliação das Sprints](#2-backlog-do-projeto)
+  - [2.1 Sprint 1](#221-sprint-1)
+  - [2.2 Sprint 2](#222-sprint-2)
+  - [2.3 Sprint 3](#223-sprint-3)
+  - [2.4 Sprint 4](#224-sprint-4)
+  - [2.5 Sprint 5](#225-sprint-5)
 - [3. Análise de Riscos](#3-análise-de-riscos)
   - [3.1 Riscos identificados](#31-riscos-identificados)
   - [3.2 Mitigação de Riscos](#32-mitigação-de-riscos)
@@ -43,23 +42,26 @@
 # 1. Introdução
 
 ## 1.1 Objetivo do Documento
+
 &nbsp;&nbsp;&nbsp;&nbsp;Este documento tem como objetivo registrar a evolução do trabalho realizado pelo grupo LinkUp, ao longo do desenvolvimento do projeto. Por meio do destaque dos pontos fortes e fracos ao longo das sprints, além de ações de melhorias a serem realizadas para melhor desenvolvimento do grupo.
 
-# 2. Backlog do Projeto
+# 2. Avaliação das Sprints
 
-## 2.2 Análise de desempenho
-
-## 2.2.1 Sprint 1
+## 2.1 Sprint 1
 
 ### Análise da Sprint Review
+
 #### Pontos Fortes
+
 - Boa colaboração entre os membros da equipe
 - Comunicação eficiente em reuniões
 - Capacidade de adaptação a mudanças e novas demandas
 - Resolução rápida de bugs e impedimentos técnicos
 - Documentação de algumas tasks bem detalhada
 - Entrega dentro do prazo da sprint
+
 #### Pontos Fracos
+
 - Tempo exagerado em colunas não produtivas (ex: "Aguardando Review" por muito tempo)
 - Pouca utilização de Definição de Pronto e Feito
 - Pouca utilização do Slack para alinhamento rápido
@@ -69,60 +71,120 @@
 ### Ações de Melhoria para os Pontos Fracos
 
 #### 1. Tempo exagerado em colunas não produtivas ("Aguardando Review" por muito tempo)
+
 ##### Ações de melhoria:
+
 - Definir um SLA para revisões: Estabelecer um prazo máximo (ex: 24h) para que as PRs sejam revisadas.
 - Dailys: Utilizar as Dailys para lembrar os membros do grupo a revisar uma task ou então a puxar uma task.
 
 #### 2. Pouca utilização de Definição de Pronto e Feito
+
 ##### Ações de melhoria:
+
 - Definir claramente o DoD (Definition of Done) e DoR (Definition of Ready): Definir DoD e DoR das tasks de documentação e código.
 - Incorporar nas dailies: Sempre reforçar o DoD/DoR durante as reuniões diárias para garantir alinhamento.
 
 #### 3. Pouca utilização do Slack para alinhamento rápido
+
 #### Ação de melhoria:
+
 - Padronizar o Slack como canal de comunicação principal.
 
 #### 4. Dificuldade em estimar corretamente o tempo necessário para cada task
+
 ##### Ações de melhoria:
+
 - Revisão de estimativas anteriores: Analisar retrospectivamente as estimativas feitas e identificar padrões de erro.
 - Planning Poker: Utilizar técnicas de estimativa colaborativa para tornar os valores mais realistas.
 - Divisão por complexidade: Criar categorias de estimativas com base em critérios objetivos (ex: fácil = 30m, médio = 1h, difícil = 2h).
 
 #### 5. Quebrar as tasks em tamanhos menores para evitar extrapolar o tempo de um dev
+
 ##### Ações de melhoria:
+
 - Seguir a regra do "se não pode ser feita em um dia, quebre mais": Garantir que nenhuma task seja grande demais para ser concluída em uma dev.
 - Checklist dentro das tasks: Criar subtarefas dentro de cada tarefa para ajudar na divisão.
 - Revisão antes de iniciar: Antes de começar qualquer tarefa grande, a equipe revisa para avaliar se pode ser melhor dividida.
 
-## 2.2.2 Sprint 2
+## 2.2 Sprint 2
+
+### Análise da Sprint Review
+
+#### **Pontos Fortes**
+
+- Melhora na comunicação sobre problemas internos do grupo.
+- Dailys foram eficientes.
+- Atribuição de tasks para os artefatos no kanban foi eficiente.
+- Resolução rápida de impedimentos
+
+#### **Pontos Fracos**
+
+- Retrabalho exagerado em tasks.
+- Falta de hábito de compartilhar atualizações sobre tasks que impactam o projeto como um todo.
+- Realização de atividades que se sobrepõem a várias tasks, sem prestar atenção em qual task específica está sendo executada.
+
+### Ações de Melhoria para os Pontos Fracos
+
+#### 1. Retrabalho exagerado em tasks
+
+##### Ações de melhoria:
+
+- Alinhamento antes da execução:* Garantir que todas as tasks estejam bem definidas antes de iniciar o desenvolvimento.
+- Revisão constante das tasks:* Criar checkpoints para verificar se a task ainda está alinhada com os requisitos antes de avançar.
+- Uso de ferramentas de documentação:* Manter um histórico claro do que já foi feito para evitar refações desnecessárias.
+
+#### 2. Falta de hábito de compartilhar atualizações sobre tasks que impactam o projeto como um todo
+
+##### Ações de melhoria:
+
+- Check-ins rápidos durante as dailys:* Incentivar os membros a mencionarem qualquer task que possa afetar o projeto como um todo.
+- Uso ativo do Slack ou outra ferramenta de comunicação:* Criar um canal específico para atualizações críticas e incentivar seu uso.
+- Marcação de responsáveis em atualizações:* Quando uma task impactar outras áreas, garantir que os envolvidos sejam notificados.
+
+#### 3. Realização de atividades que se sobrepõem a várias tasks, sem prestar atenção em qual task específica está sendo executada
+
+##### Ações de melhoria:
+
+- Quebrar melhor as tasks antes da execução:* Garantir que cada task seja clara e independente para evitar sobreposição.
+- Definição de prioridades no kanban:* Reforçar o uso correto das colunas para que cada task siga seu fluxo adequado.
+- Revisão antes de iniciar atividades:* Antes de iniciar um conjunto de tasks, validar com o time se faz sentido realizá-las juntas.
+
+## 2.3 Sprint 3
+
 _conteúdo_
 
-## 2.2.3 Sprint 3
+## 2.4 Sprint 4
+
 _conteúdo_
 
-## 2.2.4 Sprint 4
-_conteúdo_
+## 2.5 Sprint 5
 
-## 2.2.5 Sprint 5
 _conteúdo_
 
 # 3. Análise de Riscos
+
 _conteúdo_
 
 ## 3.1 Riscos identificados
+
 _conteúdo_
 
 ## 3.2 Mitigação de Riscos
+
 _conteúdo_
 
 # 4. Análise Post Mortem
+
 _conteúdo_
 
 ## 4.1 Sucessos do Projeto
+
 _conteúdo_
 
 ## 4.2 Oportunidades de Melhoria
+
 _conteúdo_
 
 ## 4.3 Lições Aprendidas
+
 _conteúdo_
