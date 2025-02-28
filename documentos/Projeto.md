@@ -682,7 +682,7 @@ O banco de dados deste projeto foi estruturado para armazenar informações sobr
 O modelo lógico do banco de dados é composto pelas seguintes entidades:
 
 - **Usuário**: Representa os usuários do sistema, que podem ter diferentes cargos.
-- **Aluno**: Contém informações sobre o aluno que recebe atendimento.
+- **Aluno**: Contém apenas o id sobre o aluno que recebe atendimento, uma vez que outras informações sensíveis serão acessadas pela API conjunta da turma.
 - **Profissional**: Contém informações sobre os profissionais que realizam atendimentos.
 - **Atendimento**: Registra o atendimento entre um aluno e um profissional, incluindo a data e o tipo de atendimento.
 
@@ -741,11 +741,6 @@ As chaves estrangeiras estabelecem os relacionamentos entre as tabelas, garantin
 | Campo  | Tipo  | Descrição  |
 |--------|------|--------------|
 | id  | INT (PK) | Identificador único do aluno |
-| nome  | VARCHAR  | Nome do aluno  |
-| unidade  | VARCHAR  | Unidade educacional do aluno |
-| curso  | VARCHAR  | Curso em que está matriculado |
-| turno  | VARCHAR  | Período de estudos |
-| deficiencia | VARCHAR | Indica qual deficiência o aluno possui |
 
 ### **Profissional**
 | Campo  | Tipo  | Descrição  |
@@ -753,6 +748,8 @@ As chaves estrangeiras estabelecem os relacionamentos entre as tabelas, garantin
 | id  | INT (PK) | Identificador único do profissional |
 | nome  | VARCHAR  | Nome do profissional |
 | email  | VARCHAR  | Email do profissional |
+| unidade  | VARCHAR  | Unidade do profissional |
+| telefone  | VARCHAR  | Telefone do profissional |
 | profissao | VARCHAR  | Profissão do profissional |
 
 ### **Atendimento**
@@ -764,6 +761,12 @@ As chaves estrangeiras estabelecem os relacionamentos entre as tabelas, garantin
 | data_atendimento  | DATETIME | Horário do atendimento |
 | tipo_atendimento  | VARCHAR  | Tipo de atendimento realizado |
 | tecnologia_assistiva | VARCHAR | Tecnologia assistiva usada |
+
+### **Tecnologia Assistiva**
+| Campo  | Tipo  | Descrição  |
+|--------|------|--------------|
+| id  | INT (PK) | Identificador único da tecnologia assistiva |
+| nome  | INT (FK) | Nome da tecnologia assistiva |
 
 ## 4.3 Modelo Físico de Dados
 
