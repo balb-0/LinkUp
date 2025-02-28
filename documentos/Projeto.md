@@ -1025,6 +1025,9 @@ _conteúdo_
 
 &nbsp;&nbsp;&nbsp;&nbsp; Para a primeira etapa do desenvolvimento, foram criadas algumas telas para demonstrar a navegação, a usablidade e a experiência do usuário. As telas incluem a página de perfil do aluno, o filtro de alunos, o pop-up de perfil do aluno e o dashboard estatístico.
 
+&nbsp;&nbsp;&nbsp;&nbsp; A apresentação completa dos _mockups_ pode ser visualizada diretamente pelo [link do Figma](https://www.figma.com/design/Dh3whOUONs9F1R0HpX1jlH/LinkUp?node-id=154-8177&p=f&t=J13h7P6hOsOVYcEz-0).  
+
+
 ### 7.2.1.1 Página de Perfil do Aluno
 
 &nbsp;&nbsp;&nbsp;&nbsp; A página de perfil do aluno oferece uma visão completa sobre o estudante, incluindo dados pessoais, deficiências e informações acadêmicas. Além disso, optamos uma seção específica para exibir os atendimentos recebidos, categorizados de acordo com o tipo de suporte oferecido.
