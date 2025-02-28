@@ -149,6 +149,13 @@
 - Definição de prioridades no kanban:* Reforçar o uso correto das colunas para que cada task siga seu fluxo adequado.
 - Revisão antes de iniciar atividades:* Antes de iniciar um conjunto de tasks, validar com o time se faz sentido realizá-las juntas.
 
+### Ações realizadas após a Sprint 1
+&nbsp;&nbsp;&nbsp;&nbsp;Após a Sprint 1, a equipe implementou diversas melhorias para corrigir os pontos fracos identificados. Para reduzir o tempo excessivo em colunas não produtivas, foi estabelecido um tempo máximo de 24 horas para revisões de PRs e reforçada a importância dessa atividade durante as Dailys. Além disso, os critérios de Definição de Pronto e Feito (DoD/DoR) foram claramente documentados e passaram a ser reforçados em reuniões diárias, garantindo melhor alinhamento entre os membros.
+
+&nbsp;&nbsp;&nbsp;&nbsp;Quanto à estimativa de tempo das tasks, foi adotada a técnica de Planning Poker e categorização por complexidade, o que trouxe mais precisão para o planejamento da sprint. Também foi estabelecida a regra de que nenhuma task deveria ser grande demais para ser concluída em um único dia, incentivando a divisão em subtarefas menores, fazendo com que todas as tasks pudessem ser terminadas em no máximo uma dev.
+
+&nbsp;&nbsp;&nbsp;&nbsp;Foi reforçado também a importância de conversar sobre os problemas internos do grupo mesmo durante a sprint, fazendo com que todos consigam alinhar expectativas e corrigir erros individuais que acabavam por prejudicar o grupo como um todo.
+
 ## 2.3 Sprint 3
 
 _conteúdo_
