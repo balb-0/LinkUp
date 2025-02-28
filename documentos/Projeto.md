@@ -834,66 +834,65 @@ A Camada de Dados é responsável pelo armazenamento e recuperação de informa�
 - User Story 01 ("Como assessora, quero registrar um profissional no banco de dados para manter o cadastro atualizado.")
 - Requisitos Funcionais relacionados ao diagrama: 
   - **RF001 - Cadastro de Profissionais:** o diagrama representa o fluxo completo de interações entre o usuário assessor e o sistema para cadastrar um novo profissional no sistema.<br>
-  - **RF006 - Autenticação e Autorização de Usuários:** ao enviar a requisição à API Gateway, realiza-se uma verificação de Token para que o sistema certifique-se que a requisição foi feita por um usuário autorizado com acesso de assessor.
-  - **RF011 - Acessibilidade:** Toda a interface utilizada para o cadastro segue diretrizes de acessibilidade, embora não esteja diretamente representado no diagrama.
+  - **RF005 - Autenticação e Autorização de Usuários:** ao enviar a requisição à API Gateway, realiza-se uma verificação de Token para que o sistema certifique-se que a requisição foi feita por um usuário autorizado com acesso de assessor.
 
 - Requisitos não funcionais relacionados ao diagrama:
   - **RNF01 - Tempo de Resposta:** apesar de haver uma sequência de interações, todo o fluxo, do começo ao fim, deve levar menos de 0,8 segundo.
-  - **RNF05 - Segurança:** ao fazer a verificação do Token, há uma resposta negativa caso o usuário não tenha permissão para realizar essa requisição.
-  - **RNF10 - Alertas Claros:** caso haja algum problema na requisição, como no caso de um usuário não autorizado, a interface deve comunicar o usuário de maneira clara.
+  - **RNF04 - Segurança:** ao fazer a verificação do Token, há uma resposta negativa caso o usuário não tenha permissão para realizar essa requisição.
+  - **RNF05 - Proteção de Dados:** todos os dados dos profissionais que serão armazenados seguirão as diretrizes da LGPD.
+  - **RNF09 - Alertas Claros:** caso haja algum problema na requisição, como no caso de um usuário não autorizado, a interface deve comunicar o usuário de maneira clara.
+  - **RNF13 & RNF02 - Acessibilidade:** toda a interface utilizada para o cadastro segue diretrizes de acessibilidade, embora não esteja diretamente representado no diagrama.
 
 ## 5.3.2 - Descrição Textual do Diagrama de Associação de Profissional ao Aluno
 
 - User Story 02 (" Como Assessor de Inclusão, quero associar um profissional a um aluno no sistema, utilizando comandos de leitor de tela, para garantir que o aluno receba o suporte necessário.")
 - Requisitos Funcionais relacionados ao diagrama:
-  - **RF002 - Associação de Alunos a Profissionais:** O diagrama representa todo o fluxo de associação de um aluno a um profissional, desde a busca pelo aluno até a confirmação da associação.
-  - **RF003 - Integração com API do Centro Paula Souza:** O fluxo inclui a consulta dos dados dos alunos via API, garantindo que as informações estejam sempre atualizadas.
-  - **RF008 - Pesquisa e Filtros Avançados:** O assessor realiza buscas filtradas tanto para alunos quanto para profissionais, facilitando a localização das informações.
+  - **RF002 - Associação de Alunos a Profissionais:** o diagrama representa todo o fluxo de associação de um aluno a um profissional, desde a busca pelo aluno até a confirmação da associação.
+  - **RF007 - Pesquisa e Filtros Avançados:** o assessor realiza buscas filtradas tanto para alunos quanto para profissionais, facilitando a localização das informações.
 
 - Requisitos Não Funcionais relacionados ao diagrama:
-  - **RNF01 - Tempo de Resposta:** O diagrama apresenta várias interações entre a interface, API Gateway e API Interna, e todas as consultas e respostas devem ser processadas em menos de 0,8 segundo.
-  - **RNF02 - Compatibilidade com API:** A integração com a API do Centro Paula Souza precisa ser contínua e confiável, garantindo a integridade dos dados recuperados.
-  - **RNF03 - Acessibilidade:** Toda a interface utilizada para o cadastro segue diretrizes de acessibilidade, embora não esteja diretamente representado no diagrama.
-  - **RNF04 - Eficiência na Navegação:** O diagrama mostra que o assessor pode encontrar um aluno e um profissional rapidamente, garantindo que a busca seja feita em no máximo três cliques.
-  - **RNF05 - Segurança:** O sistema precisa garantir que apenas usuários autorizados possam acessar as informações de alunos e realizar associações. Isso acontece por meio de validações de Tokens a cada requisição.
+  - **RNF01 - Tempo de Resposta:** o diagrama apresenta várias interações entre a interface, API Gateway e API Interna, e todas as consultas e respostas devem ser processadas em menos de 0,8 segundo.
+  - **RNF03 - Eficiência na Navegação:** o diagrama mostra que o assessor pode encontrar um aluno e um profissional rapidamente, garantindo que a busca seja feita em no máximo três cliques.
+  - **RNF04 - Segurança:** o sistema precisa garantir que apenas usuários autorizados possam acessar as informações de alunos e realizar associações. Isso acontece por meio de validações de Tokens a cada requisição.
   - **RNF10 - Alertas Claros:** caso haja algum problema na requisição, como no caso de um usuário não autorizado, a interface deve comunicar o usuário de maneira clara.
+  - **RNF11 - Compatibilidade com API:** a integração com a API do Centro Paula Souza precisa ser contínua e confiável, garantindo a integridade dos dados recuperados.
+  - **RNF13 & RNF02 - Acessibilidade:** toda a interface utilizada para o cadastro segue diretrizes de acessibilidade, embora não esteja diretamente representado no diagrama.
 
 ## 5.3.3 - Descrição Textual do Diagrama de Filtragem de Alunos
 
 - User Story 03 ("Como gestor de unidade, quero filtrar um(a) aluno(a) da minha unidade para encontrá-lo(la) rapidamente")
 - Requisitos Funcionais relacionados ao diagrama: 
-  - **RF006 - Autenticação e Autorização de Usuários:** O diagrama começa com o **Gestor de Unidade (Valdemar Souza)** fazendo login na plataforma, tratando da autenticação e autorização de usuários. O sistema valida as credenciais do gestor antes de permitir o acesso à funcionalidade de busca.
-  - **RF008 - Pesquisa e Filtros Avançados:** A funcionalidade de busca de alunos, que é o foco principal da User Story, está diretamente relacionada a esse requisito. O diagrama mostra o gestor inserindo o nome ou outro filtro do aluno, e o sistema processando essa busca, retornando os resultados correspondentes.
-  - **RF003 - Integração com API do Centro Paula Souza:** O diagrama demonstra a consulta ao banco de dados para buscar informações do aluno pode envolver a integração com a API do Centro Paula Souza. Isso garante que os dados dos alunos estejam sempre atualizados e sincronizados com a base oficial.
-  - **RF005 - Acompanhamento de Alunos com Deficiência:** A busca de alunos pode incluir filtros específicos para alunos com deficiência. Isso permite que o gestor encontre rapidamente alunos que necessitam de suporte adicional.
+  - **RF004 - Acompanhamento de Alunos com Deficiência:** a busca de alunos pode incluir filtros específicos para alunos com deficiência. Isso permite que o gestor encontre rapidamente alunos que necessitam de suporte adicional.
+  - **RF005 - Autenticação e Autorização de Usuários:** o diagrama começa com o **Gestor de Unidade (Valdemar Souza)** fazendo login na plataforma, tratando da autenticação e autorização de usuários. O sistema valida as credenciais do gestor antes de permitir o acesso à funcionalidade de busca.
+  - **RF007 - Pesquisa e Filtros Avançados:** a funcionalidade de busca de alunos, que é o foco principal da User Story, está diretamente relacionada a esse requisito. O diagrama mostra o gestor inserindo o nome ou outro filtro do aluno, e o sistema processando essa busca, retornando os resultados correspondentes.
 
 - Requisitos Não Funcionais relacionados ao diagrama: 
 
-  - **RNF01 - Tempo de Resposta:** O diagrama de sequência mostra que a busca de alunos deve ser rápida e eficiente. O RNF01 estabelece que o tempo de resposta máximo para consultas de dados deve ser de 0,8 segundo, o que é essencial para garantir que o gestor possa encontrar o aluno rapidamente, conforme a User Story.
-  - **RNF02 - Compatibilidade com API Existente:** A integração com a API do Centro Paula Souza, mencionada no RF003, também está relacionada ao RNF02, que exige que a aplicação seja compatível com APIs existentes e mantenha a integridade dos dados durante a integração.
-  - **RNF03 - Acessibilidade:** Toda a interface utilizada para o cadastro segue diretrizes de acessibilidade, embora não esteja diretamente representado no diagrama.
-  - **RNF04 - Usabilidade (Número de Cliques):** O RNF04 estabelece que os usuários devem conseguir encontrar alunos e profissionais com, no máximo, 3 cliques. O diagrama de sequência reflete isso ao mostrar um fluxo simples e direto para a busca de alunos, desde o login até a exibição dos resultados.
-  - **RNF05 - Segurança (Controle de Acesso):** O RNF05 garante que cada tipo de usuário tenha acesso somente às suas respectivas funcionalidades. No diagrama, o gestor de unidade só pode acessar a funcionalidade de busca depois que o validador valida o token de acesso.
-  - **RNF11 - Validação de Dados:** Durante a busca, os dados retornados devem passar por validação para garantir a integridade e confiabilidade das informações apresentadas ao gestor.
+  - **RNF01 - Tempo de Resposta:** o diagrama de sequência mostra que a busca de alunos deve ser rápida e eficiente. O RNF01 estabelece que o tempo de resposta máximo para consultas de dados deve ser de 0,8 segundo, o que é essencial para garantir que o gestor possa encontrar o aluno rapidamente, conforme a User Story.
+  - **RNF03 - Usabilidade (Número de Cliques):** o RNF04 estabelece que os usuários devem conseguir encontrar alunos e profissionais com, no máximo, 3 cliques. O diagrama de sequência reflete isso ao mostrar um fluxo simples e direto para a busca de alunos, desde o login até a exibição dos resultados.
+  - **RNF04 - Segurança (Controle de Acesso):** o RNF05 garante que cada tipo de usuário tenha acesso somente às suas respectivas funcionalidades. No diagrama, o gestor de unidade só pode acessar a funcionalidade de busca depois que o validador valida o token de acesso.
+  - **RNF10 - Validação de Dados:** durante a busca, os dados retornados devem passar por validação para garantir a integridade e confiabilidade das informações apresentadas ao gestor.
+  - **RNF11 - Compatibilidade com API Existente:** a integração com a API do Centro Paula Souza, mencionada no RF003, também está relacionada ao RNF02, que exige que a aplicação seja compatível com APIs existentes e mantenha a integridade dos dados durante a integração.
+  - **RNF13 & RNF02 - Acessibilidade:** toda a interface utilizada para o cadastro segue diretrizes de acessibilidade, embora não esteja diretamente representado no diagrama.
 
   ## 5.3.4 - Descrição Textual do Diagrama de Visualização de Dados Estatísticos
 
 - Como gestora administrativa, quero visualizar dados estatísticos dos alunos com deficiência do CPS, para que eu possa analisar os atendimentos e tomar decisões estratégicas.
 
 - Requisitos Funcionais relacionados ao diagrama:
-  - **RF004 - Dashboard de Business Intelligence:** O diagrama descreve o passo a passo da Gestora Administrativa ao acessar o dashboard para visualização dos dados.
-  - **RF005 - Acompanhamento de Alunos com Deficiência:** Embora não esteja diretamente representado no diagrama, ao analisar os dados estatísticos, pode-se tirar _insights_  relevantes para o acompanhamento dos alunos.
-  - **RF006 - Autenticação e Autorização de Usuários:** O diagrama pressupõe que o usuário já tenha realizado a autenticação, o que gera um token que é validado após a tentativa de acesso.
+  - **RF003 - Dashboard de Business Intelligence:** o diagrama descreve o passo a passo da Gestora Administrativa ao acessar o dashboard para visualização dos dados.
+  - **RF004 - Acompanhamento de Alunos com Deficiência:** embora não esteja diretamente representado no diagrama, ao analisar os dados estatísticos, pode-se tirar _insights_  relevantes para o acompanhamento dos alunos.
+  - **RF005 - Autenticação e Autorização de Usuários:** o diagrama pressupõe que o usuário já tenha realizado a autenticação, o que gera um token que é validado após a tentativa de acesso.
 
 - Requisitos Não Funcionais relacionados ao diagrama:
-  - **RNF01 - Tempo de Resposta:** Embora não esteja representado diretamente no diagrama, o tempo máximo de resposta após o usuário clicar para acessar o dashboard é de 0,8 segundo em caso de falha ou sucesso na autenticação.
-  - **RNF03 - Acessibilidade:** A interface do sistema segue as diretrizes de acessibilidade, porém não é possível representar no diagrama.
-  - **RNF04 - Usabilidade:** Segundo o diagrama, a Gestora Administrativa acessa o dashboard com apenas um único clique do mouse.
-  - **RNF05 - Segurança:** Há uma etapa de validação do token de acesso do usuário antes da requisição na API interna do sistema, assim garantindo que somente usuários autorizados acessem os dados estatísticos.
-  - **RNF06 - Privacidade:** Ao utilizar a camada de validação de token, garante que apenas usuários autorizados acessem os dados e não será exibido nenhum dado pessoal ou sensível para o gestor administrativo.
-  - **RNF09 - Disponibilidade:** O diagrama pressupõe que o sistema deve estar no ar quando o usuário faz a requisição.
-  - **RNF10 - Mensagens de Erro:** Caso o usuário não seja autorizado a relizar aquela requisição ou o sistema houve algum problema ao acessar os dados, o usuário receberá uma mensagem de erro correspondente.
-  - **RNF11 - Integridade:** Com a visualização dos dados, é necessário que eles estejam sempre atualizados e íntegros. De modo que seja possível a criação de um dashboard para _insights_.
+  - **RNF01 - Tempo de Resposta:** embora não esteja representado diretamente no diagrama, o tempo máximo de resposta após o usuário clicar para acessar o dashboard é de 0,8 segundo em caso de falha ou sucesso na autenticação.
+  - **RNF03 - Usabilidade:** segundo o diagrama, a Gestora Administrativa acessa o dashboard com apenas um único clique do mouse.
+  - **RNF04 - Segurança:** há uma etapa de validação do token de acesso do usuário antes da requisição na API interna do sistema, assim garantindo que somente usuários autorizados acessem os dados estatísticos.
+  - **RNF05 - Privacidade:** ao utilizar a camada de validação de token, garante que apenas usuários autorizados acessem os dados e não será exibido nenhum dado pessoal ou sensível para o gestor administrativo.
+  - **RNF08 - Disponibilidade:** o diagrama pressupõe que o sistema deve estar no ar quando o usuário faz a requisição.
+  - **RNF09 - Mensagens de Erro:** caso o usuário não seja autorizado a relizar aquela requisição ou o sistema houve algum problema ao acessar os dados, o usuário receberá uma mensagem de erro correspondente.
+  - **RNF10 - Integridade:** com a visualização dos dados, é necessário que eles estejam sempre atualizados e íntegros. De modo que seja possível a criação de um dashboard para _insights_.
+  - **RNF13 & RNF02 - Acessibilidade:** a interface do sistema segue as diretrizes de acessibilidade, porém não é possível representar no diagrama.
 
 
 
