@@ -419,44 +419,28 @@ Evento Final: Encerramento do Atendimento
 
 ## 2.7.2 Sequenciamento/Priorização de entregas
 
-<div align="center">
-<sub>Figura x - Sequenciamento/Priorização de entregas</sub><br>
-<img src="img/sequenciamento-entrega.jpg"><br>
-<sup>Fonte: Material produzido pelos autores (2025) </sup>
-</div>
+### Sprint 3 - Fundamentos e Base do Sistema
 
-### Sprint 1 - Entendimento do problema e definição do MVP
-
-- Lean Inception
-- Definição do MVP
-- Definição de prioridades
-- Definição de personas
-
-### Sprint 2 - Infraestrutura Base
-
-- Configuração da API - Alunos
-- Implementação do CRUD - Profissionais
-- Estruturação da Persistência de Dados
-
-### Sprint 3 - Segurança e Acessibilidade
-
-- Desenvolvimento da Tela de Perfil
-- Implementação de Acessibilidade (Leitor de Telas)
+- Configuração da API - Alunos 
+- Estruturação da Persistência de Dados 
 - Definição dos Níveis de Acesso de Usuário
-- Implementação de Filtro de Dados
+- Implementação do CRUD - Profissionais 
+- Implementação do Login
 
-### Sprint 4 - Monitoramento e Interação
+### Sprint 4 - Funcionalidades Essenciais
+
+- Desenvolvimento da Tela de Perfil 
+- Funcionalidade para Edição da Foto de Perfil 
+- Dashboard para Visualização de Dados 
+- Implementação de Filtro de Dados 
+- Desenvolvimento do Criação e Acompanhamento de Atendimentos 
+
+### Sprint 5 - Refinamento e Melhorias
 
 - Criação do Histórico de Atividade
-- Dashboard para Visualização de Dados
-- Implementação do Login
-- Sistema de Notificações com Link
-
-### Sprint 5 - Personalização e Atendimento
-
-- Funcionalidade para Edição da Foto de Perfil
-- Implementação de Classificação de Atendimentos
-- Desenvolvimento do Acompanhamento de Atendimentos em Andamento
+- Sistema de Notificações com Link 
+- Implementação de Classificação de Atendimentos 
+- Implementação de Acessibilidade (Leitor de Telas) 
 
 ## 2.8 Canvas do Projeto
 
