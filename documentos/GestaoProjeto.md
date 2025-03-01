@@ -8,7 +8,9 @@
 </table>
 
 # Nome do Projeto: LinkUp
+# Nome do Projeto: LinkUp
 
+## Nome do Grupo: LinkUp
 ## Nome do Grupo: LinkUp
 
 ## Integrantes:
