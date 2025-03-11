@@ -1,3 +1,116 @@
+# OS specific files
 .DS_Store
+Thumbs.db
+desktop.ini
 
-node_modules
+# Dependencies
+node_modules/
+/node_modules
+**/node_modules
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+.pnpm-debug.log
+package-lock.json
+yarn.lock
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+# Build outputs
+dist/
+build/
+out/
+.next/
+.nuxt/
+.output/
+.cache/
+coverage/
+*.tsbuildinfo
+
+# Environment variables and secrets
+.env
+.env.*
+.env.local
+.env.development
+.env.test
+.env.production
+*.env
+config.json
+**/config/secrets.json
+**/secrets/
+**/credentials/
+**/*.pem
+**/*.key
+**/*.crt
+
+# IDE and editors
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+*.sublime-project
+*.sublime-workspace
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.tmproj
+.history/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Angular specific
+.angular/cache
+.sass-cache/
+connect.lock
+libpeerconnection.log
+testem.log
+/typings
+
+# Database
+*.sqlite
+*.sqlite3
+*.db
+dump.rdb
+
+# Temporary files
+tmp/
+temp/
+.tmp/
+.temp/
+
+# Testing
+/coverage
+/.nyc_output
+.coverage
+htmlcov/
+
+# Misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.directory
+*~
+*.bak
+*.swp

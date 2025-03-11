@@ -1,0 +1,19 @@
+export default [
+  js.configs.recommended,
+  {
+    ignores: ["node_modules", "dist"]
+  },
+  {
+    files: ["**/*.ts"],
+    languageOptions: {
+      parser: tsParser
+    },
+    plugins: {
+      "@typescript-eslint": tseslint
+    },
+    rules: {
+      "no-console": "warn",
+      "@typescript-eslint/no-explicit-any": "error"
+    }
+  }
+];
