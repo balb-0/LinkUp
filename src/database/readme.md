@@ -13,10 +13,9 @@
 
 ## Banco de Dados: Estrutura e Scripts
 
----
-
-## 📋 Índice
+## Índice
 - [Visão Geral do Banco de Dados](#-visão-geral-do-banco-de-dados)
+- [Dicionário de Dados](#-dicionário-de-dados)
 - [Passo a Passo para Criar o Banco de Dados](#-passo-a-passo-para-criar-o-banco-de-dados)
 - [Script `01_create_database.sql`](#-script-01_create_databasesql)
   - [Tabela `Usuario`](#tabela-usuario)
@@ -28,7 +27,65 @@
 - [Script `02_initial_data.sql`](#-script-02_initial_datasql)
   - [Dados Inseridos](#-dados-inseridos)
 
----
+## Visão Geral do Banco de Dados
+O banco de dados do projeto LinkUp foi modelado para gerenciar informações de alunos, profissionais, atendimentos e tecnologias assistivas. Abaixo está a estrutura física implementada no script `01_create_database.sql`.
+
+<div align="center">
+  <sub>Figura 1 - Modelo Conceitual do Banco de Dados</sub><br>
+  <img src="../../documentos/img/modelo-conceitual.jpg" width="80%"><br>
+  <sup>Fonte: Material produzido pelos autores (2025)</sup>
+</div>
+
+## Dicionário de Dados
+O dicionário de dados descreve a estrutura, tipos, restrições e relacionamentos das tabelas do banco. 
+
+### **Tabela `Usuario`**
+| Campo        | Tipo          | Restrições               | Descrição                                | Relacionamentos |
+|--------------|---------------|--------------------------|------------------------------------------|-----------------|
+| `id`         | `INT`         | `PK, AUTO_INCREMENT`     | Identificador único do usuário.          | -               |
+| `nome`       | `VARCHAR(255)`| `NOT NULL`               | Nome completo do usuário.                | -               |
+| `email`      | `VARCHAR(255)`| `NOT NULL, UNIQUE`       | Email institucional (único por usuário). | -               |
+| `senha`      | `VARCHAR(255)`| `NOT NULL`               | Senha criptografada (hash).              | -               |
+| `cargo`      | `VARCHAR(255)`| `NOT NULL`               | Cargo (ex: `Gerente Administrativo`).    | -               |
+
+### **Tabela `Profissional`**
+| Campo        | Tipo          | Restrições               | Descrição                                | Relacionamentos |
+|--------------|---------------|--------------------------|------------------------------------------|-----------------|
+| `id`         | `INT`         | `PK, AUTO_INCREMENT`     | Identificador único do profissional.    | Atendimento (`1:N`) |
+| `nome`       | `VARCHAR(255)`| `NOT NULL`               | Nome do profissional.                   | -               |
+| `email`      | `VARCHAR(255)`| `NOT NULL, UNIQUE`       | Email institucional (único).            | -               |
+
+### **Tabela `Aluno`**
+| Campo                  | Tipo          | Restrições               | Descrição                                | Relacionamentos |
+|------------------------|---------------|--------------------------|------------------------------------------|-----------------|
+| `id`                   | `INT`         | `PK, AUTO_INCREMENT`     | Identificador único do aluno.           | Atendimento (`1:N`) |
+| `nome`                 | `VARCHAR(255)`| `NOT NULL`               | Nome completo do aluno.                 | -               |
+| `unidade`              | `VARCHAR(255)`| `NOT NULL`               | Unidade acadêmica (ex: `Unidade Leste`).| -               |
+| `curso`                | `VARCHAR(255)`| `NOT NULL`               | Curso matriculado.                      | -               |
+| `turno`                | `VARCHAR(255)`| `NOT NULL`               | Turno (ex: `Noturno`).                  | -               |
+| `necessidade_especial` | `VARCHAR(255)`| -                        | Necessidades especiais (opcional).      | -               |
+
+### **Tabela `Tecnologia_Assistiva`**
+| Campo        | Tipo          | Restrições               | Descrição                                | Relacionamentos |
+|--------------|---------------|--------------------------|------------------------------------------|-----------------|
+| `id`         | `INT`         | `PK, AUTO_INCREMENT`     | Identificador único da tecnologia.      | Atendimento (`1:N`) |
+| `nome`       | `VARCHAR(255)`| `NOT NULL`               | Nome da tecnologia (ex: `Leitor de Tela`). | -            |
+
+### **Tabela `Atendimento`**
+| Campo                      | Tipo          | Restrições               | Descrição                                | Relacionamentos |
+|----------------------------|---------------|--------------------------|------------------------------------------|-----------------|
+| `id`                       | `INT`         | `PK, AUTO_INCREMENT`     | Identificador único do atendimento.     | -               |
+| `aluno_id`                 | `INT`         | `FK (Aluno.id), NOT NULL`| Aluno atendido.                         | Aluno (`N:1`)   |
+| `data_atendimento`         | `DATETIME`    | `NOT NULL`               | Data/hora do atendimento.               | -               |
+| `tipo_atendimento`         | `VARCHAR(255)`| `NOT NULL`               | Tipo (ex: `Atendimento Pedagógico`).    | -               |
+| `profissional_id`          | `INT`         | `FK (Profissional.id), NOT NULL` | Profissional responsável.      | Profissional (`N:1`) |
+| `tecnologia_assistiva_id`  | `INT`         | `FK (Tecnologia_Assistiva.id)` | Tecnologia usada (opcional). | Tecnologia_Assistiva (`N:1`) |
+
+### **Legenda**:
+- **PK**: Chave primária.
+- **FK**: Chave estrangeira.
+- **N:1**: Relacionamento muitos-para-um.
+- **1:N**: Relacionamento um-para-muitos.
 
 ## Passo a Passo para Criar o Banco de Dados
 
@@ -55,20 +112,7 @@
    SELECT * FROM Usuario;
    ```
 
----
-
-## 🌐 Visão Geral do Banco de Dados
-O banco de dados do projeto LinkUp foi modelado para gerenciar informações de alunos, profissionais, atendimentos e tecnologias assistivas. Abaixo está a estrutura física implementada no script `01_create_database.sql`.
-
-<div align="center">
-  <sub>Figura 1 - Modelo Conceitual do Banco de Dados</sub><br>
-  <img src="../../documentos/img/modelo-conceitual.jpg" width="80%"><br>
-  <sup>Fonte: Material produzido pelos autores (2025)</sup>
-</div>
-
----
-
-## 📜 Script `01_create_database.sql`
+## Script `01_create_database.sql`
 Este script cria todas as tabelas, define chaves primárias, estrangeiras e restrições. Abaixo, a explicação detalhada de cada tabela:
 
 ### **Tabela `Usuario`**
@@ -118,9 +162,7 @@ Registra os atendimentos realizados entre alunos e profissionais.
 | `profissional_id`            | INT          | Profissional responsável          | `NOT NULL, FK (Profissional)` |
 | `tecnologia_assistiva_id`    | INT          | Tecnologia usada (opcional)       | `FK (Tecnologia_Assistiva)` |
 
----
-
-## 🔗 Relacionamentos
+## Relacionamentos
 - **Aluno → Atendimento**: Um aluno pode ter vários atendimentos (`1:N`).
 - **Profissional → Atendimento**: Um profissional pode realizar vários atendimentos (`1:N`).
 - **Atendimento → Tecnologia_Assistiva**: Um atendimento pode usar uma tecnologia assistiva (`N:1`).
@@ -131,9 +173,7 @@ Registra os atendimentos realizados entre alunos e profissionais.
   <sup>Fonte: Material produzido pelos autores (2025)</sup>
 </div>
 
----
-
-## 📥 Script `02_initial_data.sql`
+## Script `02_initial_data.sql`
 Este script insere dados iniciais nas tabelas do banco, permitindo testes imediatos e garantindo que o sistema funcione corretamente desde o primeiro uso. Os dados foram projetados para respeitar as restrições de chaves primárias e estrangeiras.
 
 ### **Dados Inseridos**
