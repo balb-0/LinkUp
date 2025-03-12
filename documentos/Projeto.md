@@ -1257,11 +1257,43 @@ _conteúdo_
 
 ## 9.2 Testes de RNFs
 
-_conteúdo_
+Os testes de requisitos não funcionais validam aspectos de **desempenho, acessibilidade, segurança, compatibilidade e confiabilidade** do sistema, garantindo que ele funcione corretamente além das suas funcionalidades básicas.
+
+Os testes planejados cobrem:
+- **Eficiência de desempenho**: Tempo de resposta do sistema sob diferentes cargas.
+- **Usabilidade e acessibilidade**: Uso adequado por pessoas com deficiência visual e operacionalidade eficiente.
+- **Segurança**: Proteção de dados, autenticação e níveis de acesso.
+- **Compatibilidade**: Funcionamento correto em múltiplos navegadores e integração com APIs externas.
+- **Confiabilidade**: Disponibilidade do sistema e sua capacidade de recuperação de falhas.
+
+Cada teste inclui:
+- **O requisito não funcional associado**
+- **Uma descrição detalhada do teste**
+- **As pré-condições necessárias**
+- **Os critérios de aceitação**
+- **Os critérios de falha**
 
 ## 9.2.1 Planejamento
 
-_conteúdo_
+&nbsp;&nbsp;&nbsp;&nbsp;A tabela a seguir apresenta os testes planejados para validar os **Requisitos Não Funcionais (RNFs)** do sistema.
+
+| Caso de Teste | RNF#   | Descrição do Teste | Pré-condição | Caso de Aceite | Caso de Recusa |
+|--------------|------|------------------|--------------|----------------|----------------|
+| **CT-001** | **RNF01** | Testar o tempo de resposta para consultas de dados. | O sistema está operando com carga normal e sob estresse. | Consultas são feitas em menos de 0,8 segundo. | Consultas excedem 0,8 segundo de tempo de resposta. |
+| **CT-002** | **RNF02** | Testar usabilidade com leitor de tela e acessibilidade. | O leitor de tela está ativado. | Usuário com deficiência consegue usar a aplicação sem dificuldades. | Usuário com deficiência não consegue utilizar a aplicação. |
+| **CT-003** | **RNF03** | Testar se o assessor encontra alunos e profissionais com, no máximo, 3 cliques. | Usuário assessor logado no sistema. | Usuário encontra alunos e profissionais com até 3 cliques. | Usuário precisa de mais de 3 cliques para encontrar alunos e profissionais. |
+| **CT-004** | **RNF04** | Testar níveis de acesso dos usuários para garantir segurança. | Perfis de usuários criados com permissões diferenciadas. | Cada tipo de login acessa apenas suas funcionalidades. | Um tipo de login acessa informações de outro perfil. |
+| **CT-005** | **RNF05** | Testar segurança da transmissão de dados contra interceptação. | O sistema está em funcionamento normal. | O invasor não consegue obter os dados brutos. | O invasor consegue acessar os dados brutos. |
+| **CT-006** | **RNF06** | Testar a modularidade e documentação do código ao adicionar uma nova funcionalidade. | O código está modularizado e documentado. | A funcionalidade é adicionada sem impactar outras partes do sistema. | A adição da funcionalidade gera erros nas demais funções. |
+| **CT-007** | **RNF07** | Testar funcionamento da aplicação nos navegadores Chrome, Firefox, Edge e Safari. | A aplicação está acessível nos navegadores testados. | A aplicação funciona integralmente em todos os navegadores. | A aplicação apresenta falhas em um ou mais navegadores. |
+| **CT-008** | **RNF08** | Monitorar a disponibilidade do sistema ao longo do tempo. | O sistema está em produção. | A aplicação mantém disponibilidade de 99,5% ou mais. | O sistema fica fora do ar por mais tempo que o permitido. |
+| **CT-009** | **RNF09** | Testar exibição de mensagens claras em caso de erro. | O sistema está operando normalmente. | O sistema exibe mensagens de erro claras e compreensíveis. | O sistema não exibe mensagens ou elas são confusas. |
+| **CT-010** | **RNF10** | Testar atualização simultânea do mesmo dado em dois dispositivos. | Dois dispositivos acessando a aplicação ao mesmo tempo. | O sistema valida corretamente os dados e mantém a integridade. | A aplicação permite atualizações incorretas ou inconsistentes. |
+| **CT-011** | **RNF11** | Testar a integração com a API do Centro Paula Souza. | O sistema está online e a API do Centro Paula Souza está disponível. | Os dados dos alunos são retornados corretamente e sem erros. | O sistema exibe uma mensagem de erro informando falha na integração. |
+| **CT-012** | **RNF12** | Testar o backup automático de dados. | O sistema está configurado para realizar backups periódicos. | O backup ocorre na frequência estabelecida e pode ser restaurado corretamente. | O sistema não realiza o backup ou os dados não podem ser restaurados. |
+| **CT-013** | **RNF13** | Testar os requisitos de acessibilidade (WCAG). | O sistema está implementado conforme as diretrizes WCAG. | Usuários com deficiência conseguem utilizar a aplicação sem barreiras. | O sistema apresenta dificuldades de navegação ou acessibilidade deficiente. |
+
+&nbsp;&nbsp;&nbsp;&nbsp;Os testes planejados garantem que o sistema atenda aos requisitos de **desempenho, usabilidade, segurança e confiabilidade**, assegurando sua **eficiência, acessibilidade e estabilidade**.
 
 ## 9.2.2 Resultados
 
@@ -1269,9 +1301,9 @@ _conteúdo_
 
 ## 9.3 Testes de Usabilidade
 
-&nbsp;&nbsp;&nbsp;&nbsp; Os testes de usabilidade têm como objetivo avaliar a experiência do usuário ao interagir com o sistema, garantindo que ele seja intuitivo, acessível e eficiente. Esses testes serão conduzidos com diferentes perfis de usuários, incluindo gestores administrativos, gestores de unidade e assessores, além de considerarem acessibilidade para pessoas com deficiência visual que utilizam leitores de tela.
+&nbsp;&nbsp;&nbsp;&nbsp; Os testes serão conduzidos com diferentes perfis de usuários, incluindo gestores administrativos, gestores de unidade e assessores, além de considerarem acessibilidade para pessoas com deficiência visual que utilizam leitores de tela.
 
-&nbsp;&nbsp;&nbsp;&nbsp; Os testes de usabilidade seguem o modelo de **teste de caixa preta** [(saiba mais)](https://www.checkpoint.com/pt/cyber-hub/cyber-security/what-is-penetration-testing/what-is-black-box-testing/) e são exclusivamente qualitativos, focando na interação dos usuários com o sistema e na identificação de dificuldades durante a execução de tarefas.
+&nbsp;&nbsp;&nbsp;&nbsp; Os testes de usabilidade seguem o modelo de **teste de caixa preta** e são exclusivamente qualitativos, focando na interação dos usuários com o sistema e na identificação de dificuldades durante a execução de tarefas.
 
 &nbsp;&nbsp;&nbsp;&nbsp; Os resultados permitirão identificar dificuldades e ajustar o sistema conforme as necessidades dos perfis testados. Os principais critérios avaliados são:
 
