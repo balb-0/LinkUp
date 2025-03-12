@@ -1245,11 +1245,33 @@ _conteúdo_
 
 ## 9.1 Testes Funcionais
 
-_conteúdo_
+ Os testes funcionais validam o comportamento esperado do sistema com base nos **Requisitos Funcionais (RFs)** estabelecidos. O objetivo desses testes é garantir que todas as funcionalidades atendam aos requisitos de negócio e projeto, verificando a correção das operações realizadas, o fluxo dos dados e a resposta do sistema em diferentes cenários.
 
-## 9.1.1 Planejamento
+Os testes foram planejados com casos positivos e negativos, cobrindo diferentes contextos de uso. Cada teste apresenta:
+- **O requisito funcional associado**
+- **Uma descrição detalhada do teste**
+- **As pré-condições necessárias**
+- **Os critérios de aceitação**
+- **Os critérios de falha**
 
-_conteúdo_
+Os resultados desses testes permitirão validar o funcionamento correto do sistema antes da sua entrega.
+
+### **9.1.1 Planejamento**
+
+A tabela a seguir apresenta os testes planejados para validar os **Requisitos Funcionais (RFs)** do sistema.
+
+| Caso de Teste | RF#   | Descrição do Teste | Pré-condição | Caso de Aceite | Caso de Recusa |
+|--------------|------|------------------|--------------|----------------|----------------|
+| **CT001** | **RF001** | Testar o cadastro de um novo profissional. | O sistema está online e o usuário tem permissão para cadastrar profissionais. | O profissional é cadastrado com sucesso e aparece na lista de profissionais. | O sistema exibe uma mensagem de erro ou nada acontece após tentar cadastrar. |
+| **CT002** | **RF002** | Testar a associação de um aluno a um profissional. | O aluno e o profissional já estão cadastrados no sistema. | A associação é criada com sucesso e aparece na lista de associações. | O sistema exibe uma mensagem de erro ou nada acontece após tentar associar. |
+| **CT003** | **RF003** | Testar a exibição do dashboard de BI. | O sistema possui dados de alunos, unidades e gestão. | O dashboard é exibido com gráficos e tabelas atualizados. | O dashboard não é exibido ou os dados estão incorretos. |
+| **CT004** | **RF004** | Testar o acompanhamento de um aluno com deficiência. | O aluno e o profissional já estão cadastrados e associados. | O histórico e o status do aluno são exibidos corretamente. | O sistema exibe uma mensagem de erro ou dados incorretos. |
+| **CT005** | **RF005** | Testar a autenticação de um usuário. | O usuário possui credenciais válidas. | O usuário é autenticado com sucesso e tem acesso às funcionalidades permitidas. | O sistema exibe uma mensagem de erro ou o acesso é negado. |
+| **CT006** | **RF006** | Testar a edição de perfil de um usuário. | O usuário está autenticado e possui permissão para editar o perfil. | As informações do perfil são atualizadas com sucesso. | O sistema exibe uma mensagem de erro ou as informações não são atualizadas. |
+| **CT007** | **RF007** | Testar a pesquisa de alunos e profissionais. | O sistema possui dados de alunos e profissionais cadastrados. | Os resultados da pesquisa são exibidos corretamente. | O sistema exibe uma mensagem de erro ou resultados incorretos. |
+| **CT008** | **RF008** | Testar a visualização do histórico de alterações. | O sistema possui registros de alterações. | O histórico de alterações é exibido corretamente. | O sistema exibe uma mensagem de erro ou o histórico não é exibido. |
+
+Cada caso de teste será executado considerando **cenários positivos e negativos**, garantindo que o sistema se comporte corretamente em diferentes condições.
 
 ## 9.1.2 Resultados
 
