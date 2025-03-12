@@ -1135,7 +1135,9 @@ _conteúdo_
 
 # 9. Planejamento e Execução de Testes
 
-_conteúdo_
+&nbsp;&nbsp;&nbsp;&nbsp; O planejamento e a execução de testes são essenciais para garantir a qualidade, confiabilidade e usabilidade do sistema. Para isso, serão realizados testes funcionais, não funcionais e de usabilidade, abrangendo desde a verificação das funcionalidades até a avaliação do desempenho, segurança e experiência do usuário. 
+
+&nbsp;&nbsp;&nbsp;&nbsp; O planejamento e a execução de testes garantem que o sistema atenda aos requisitos definidos e seja utilizável pelos diferentes perfis de usuários. Os testes foram organizados em categorias funcionais, não funcionais e de usabilidade, considerando a técnica do funil [(saiba mais)](https://www.nngroup.com/articles/the-funnel-technique-in-qualitative-user-research/).
 
 ## 9.1 Testes Funcionais
 
@@ -1163,11 +1165,76 @@ _conteúdo_
 
 ## 9.3 Testes de Usabilidade
 
-_conteúdo_
+&nbsp;&nbsp;&nbsp;&nbsp; Os testes de usabilidade têm como objetivo avaliar a experiência do usuário ao interagir com o sistema, garantindo que ele seja intuitivo, acessível e eficiente. Esses testes serão conduzidos com diferentes perfis de usuários, incluindo gestores administrativos, gestores de unidade e assessores, além de considerarem acessibilidade para pessoas com deficiência visual que utilizam leitores de tela.
+
+&nbsp;&nbsp;&nbsp;&nbsp; Os testes de usabilidade seguem o modelo de **teste de caixa preta** [(saiba mais)](https://www.checkpoint.com/pt/cyber-hub/cyber-security/what-is-penetration-testing/what-is-black-box-testing/) e são exclusivamente qualitativos, focando na interação dos usuários com o sistema e na identificação de dificuldades durante a execução de tarefas.
+
+&nbsp;&nbsp;&nbsp;&nbsp; Os resultados permitirão identificar dificuldades e ajustar o sistema conforme as necessidades dos perfis testados. Os principais critérios avaliados são:
+
+- **Eficácia**: Mede a taxa de sucesso na execução de uma tarefa. Um teste eficaz verifica se o usuário conseguiu concluir a tarefa sem erros ou interrupções.
+- **Eficiência**: Avalia o esforço necessário para completar uma tarefa, considerando tempo e recursos utilizados.
+- **Satisfação**: Reflete a percepção do usuário sobre a facilidade e conforto na execução da tarefa.
 
 ## 9.3.1 Planejamento
 
-_conteúdo_
+&nbsp;&nbsp;&nbsp;&nbsp; Os testes foram estruturados para representar situações reais de uso, considerando diferentes perfis de usuários e cenários aplicáveis.
+
+
+#### 9.3.1.1 Definir o Público-Alvo
+
+&nbsp;&nbsp;&nbsp;&nbsp; Os testes serão realizados com:
+
+- **Gestor Administrativo (GA):** Usuário responsável pelo gerenciamento geral do sistema.
+- **Gestor Unidade (GU):** Usuário que administra uma unidade específica e gerencia os atendimentos.
+- **Assessor:** Profissional responsável pelo acompanhamento e execução dos atendimentos.
+- **Usuários com deficiência visual:** Todos os testes serão conduzidos considerando acessibilidade via leitores de tela.
+
+#### 9.3.1.2 Roteiro de Testes por Tipo de Usuário
+
+&nbsp;&nbsp;&nbsp;&nbsp; Os testes foram classificados conforme os critérios de **eficácia, eficiência e satisfação**, descritos no planejamento.
+
+### **Roteiro de Testes para Gestor Administrativo (GA)**
+
+| Passo | Atividade | Critério Avaliado | Pergunta ao Usuário |
+|-------|-----------|-------------------|----------------------|
+| 1 | Acessar a Home e verificar os menus e atalhos. | Eficiência | Os menus estão organizados de forma intuitiva? |
+| 2 | Cadastrar um novo profissional. | Eficácia | O processo de cadastro foi concluído sem dificuldades? Agora cadastre um novo profissional. |
+| 3 | Filtrar profissionais por unidade e cargo. | Eficiência | Os filtros retornaram os resultados esperados? Agora filtre os profissionais da unidade XPTO. |
+| 4 | Consultar atendimentos registrados no sistema. | Eficácia | As informações do atendimento estão bem organizadas? Agora encontre o aluno XPTO. |
+| 5 | Testar uso com leitor de tela. | Satisfação | Você conseguiu navegar sem dificuldades usando o leitor de tela? |
+
+### **Roteiro de Testes para Gestor Unidade (GU)**
+
+| Passo | Atividade | Critério Avaliado | Pergunta ao Usuário |
+|-------|-----------|-------------------|----------------------|
+| 1 | Navegar entre os menus da unidade. | Eficiência | A interface é intuitiva? Agora navegue até a seção de relatórios. |
+| 2 | Cadastrar um novo aluno. | Eficácia | O cadastro do aluno foi direto? Agora cadastre um aluno chamado XPTO. |
+| 3 | Vincular um profissional a um atendimento. | Eficácia | A vinculação do profissional foi simples? Agora vincule o aluno XPTO a um profissional. |
+| 4 | Avaliar a usabilidade do Dashboard. | Eficiência | As informações do Dashboard foram fáceis de interpretar? |
+| 5 | Testar navegação com leitor de tela. | Satisfação | O sistema ofereceu uma boa experiência de acessibilidade? |
+
+### **Roteiro de Testes para Assessor**
+
+| Passo | Atividade | Critério Avaliado | Pergunta ao Usuário |
+|-------|-----------|-------------------|----------------------|
+| 1 | Filtrar atendimentos por aluno. | Eficiência | Foi fácil encontrar o atendimento desejado? Agora encontre o atendimento do aluno XPTO. |
+| 2 | Criar um novo atendimento e adicionar observações. | Eficácia | O sistema permitiu adicionar informações sem dificuldades? Agora registre um novo atendimento. |
+| 3 | Editar um atendimento existente. | Eficácia | O processo de edição foi intuitivo? Agora edite um atendimento existente. |
+| 4 | Preencher formulários na interface. | Eficiência | O preenchimento foi rápido e eficiente? |
+| 5 | Utilizar leitor de tela. | Satisfação | Houve alguma dificuldade ao usar o leitor de tela? |
+
+#### 9.3.1.3 Perguntas para Entrevista Pós-Teste
+
+Cada participante responderá perguntas estruturadas sobre a usabilidade do sistema:
+
+1. A interface foi intuitiva e de fácil navegação?
+2. Alguma funcionalidade apresentou dificuldades de uso?
+3. O sistema apresentou informações claras e compreensíveis?
+4. Para usuários com deficiência visual, houve barreiras de acessibilidade?
+5. O sistema é parecido com algum já utilizado por vocês no Centro Paula Souza?
+6. Dessas atividades que você realizou no teste, qual você acredita que realizaria com mais frequência na sua rotina de trabalho?
+7. O que poderia ser melhorado para tornar a experiência mais eficiente?
+
 
 ## 9.3.2 Resultados
 
