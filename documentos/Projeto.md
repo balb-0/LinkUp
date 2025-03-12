@@ -931,23 +931,127 @@ A Camada de Dados é responsável pelo armazenamento e recuperação de informa�
 
 # 6. Mapeamento Técnico de Infraestrutura e Implantação
 
-_conteúdo_
-
 ## 6.1 Diagrama de Implantação da UML
 
-_conteúdo_
+<div align="center">
+<sub>Figura x - Diagrama de Implantação</sub><br>
+<img src="img/diagrama_implantacao.png"><br>
+<sup>Fonte: Material produzido pelos autores (2025) </sup>
+</div>
+
+### 6.1.1 Infraestrutura
+
+#### 6.1.1.1 **Servidores e Recursos de Computação**
+- **Servidores EC2 (Servidor da Aplicação e Backend)**:
+  - **Tecnologia:** Instâncias EC2 da AWS separadas para hospedagem do servidor da aplicação/interface e servidor de backend.
+  - **Função:** O _Front-end_ e o _Back-end_ serão implementados nessas instâncias EC2, responsáveis pela execução das interações com o usuário e lógicas de negócio, respectivamente.
+  - **Escalabilidade:** Utilização do _Auto Scaling Groups_ para aumentar ou diminuir a capacidade de acordo com a demanda.
+  - **Logs File:** Armazenará os logs de alterações do banco de dados, comunicando-se diretamente com a API. Seu ciclo de vida é de 5mb. Para monitoramento e análise em tempo real, a AWS **CloudWatch** pode ser configurada para centralizar os logs de maneira eficiente, eliminando a necessidade de armazenamento local.
+  - **Rede Virtual Privada (VPC):** Os servidores EC2 e o banco de dados RDS serão implementados dentro de uma VPC. Isso garante que a comunicação entre as instâncias da aplicação, o banco de dados e outros recursos sejam feitos de forma segura e isolada, protegendo os dados e controlando o acesso por meio de regras de segurança.
+
+#### 6.1.1.2 **Topologia de Rede e Comunicação entre os Componentes**
+
+A **topologia de rede** e a **comunicação entre os componentes** seguem uma arquitetura cliente-servidor distribuída dentro de uma VPC isolada, garantindo segurança e eficiência na troca de dados.
+
+- **Cliente (Interface Web) → Servidor da Aplicação (EC2):**
+  - O **usuário** interage com a interface web hospedada em uma instância EC2. 
+  - A comunicação entre o **cliente** e o **servidor da aplicação** é feita via **HTTPS**, garantindo a criptografia dos dados em trânsito através do protocolo **TLS**.
+  
+- **Servidor da Aplicação → Backend (API Interna, EC2):**
+  - O **servidor da aplicação** se comunica com o **backend**, que também reside em uma instância EC2, utilizando **HTTPS** para proteger os dados.
+  
+- **Backend (API Interna) → Banco de Dados (RDS):**
+  - O **backend** se comunica com o banco de dados **RDS MySQL** via **TCP/IP** dentro da VPC. A comunicação pode ser criptografada utilizando **SSL/TLS** para garantir a segurança dos dados.
+
+- **API Interna → Gerenciador de Permissões (AWS Cognito):**
+  - O **backend** valida as permissões de acesso dos usuários através do **AWS Cognito**. A comunicação é realizada via **HTTPS** com o uso de tokens **JWT** (JSON Web Token) para garantir a autenticidade do usuário.
+
+- **API Interna → API Externa (Render):**
+  - O **backend** se comunica com a **API Externa** (Render) para integração com sistemas de terceiros via **HTTPS**.
+
+#### 6.1.1.3 **Banco de Dados**
+- **RDS (Banco de Dados MySQL)**:
+  - **Tecnologia:** AWS RDS com MySQL.
+  - **Função:** Armazenamento e gerenciamento de dados do sistema.
+  - **Escalabilidade:** Adição de réplicas de leitura, aumentando a capacidade de leitura de dados conforme necessário com o _Auto Scaling_.
+  - **Segurança:** O banco de dados está isolado dentro da VPC, o que garante uma camada adicional de segurança e controle de tráfego, protegendo as informações sensíveis.
+
+#### 6.1.1.4 **Gerenciamento de Permissões e Autenticação**
+- **AWS Cognito (Gerenciador de Permissões)**:
+  - **Tecnologia:** AWS Cognito para controle de autenticação de usuários e gerenciamento de permissões com JWT.
+  - **Função:** Autenticação via OAuth2, gerenciando o acesso dos usuários aos sistemas.
+  - **Segurança:** Implementação de segurança com JWT (_JSON Web Token_) para garantir que os usuários autenticados tenham acesso adequado.
+
+#### 6.1.1.5 **API Externa**
+- **Render (Express API)**:
+  - **Tecnologia:** Express API hospedado no Render.
+  - **Função:** Integrar a aplicação com sistemas externos via API.
+
 
 ## 6.2 Justificativa das Escolhas de Implantação
 
-_conteúdo_
+&nbsp;&nbsp;&nbsp;&nbsp;As escolhas de implantação foram todas baseadas nos requisitos não funcionais da aplicação, principalmente os que levam em conta segurança e performance.
+
+##### **RNF01 - Tempo de Resposta Máximo para Consultas**
+- **Justificativa**: A escolha de _AWS EC2_ para servidores de aplicação, tanto back-end quanto front-end, em conjunto com a escalabilidade horizontal, assegura que o sistema tenha capacidade de resposta rápida, distribuindo a carga de trabalho e mantendo tempos de resposta otimizados, abaixo de 0,8 segundo.
+
+##### **RNF04 - Controle de Acesso por Tipo de Usuário**
+- **Justificativa**: A integração com _AWS Cognito_ para autenticação e autorização com _JWT_ garante que cada tipo de usuário tenha acesso somente às funcionalidades autorizadas, respeitando os requisitos de segurança e controle de acesso.
+
+##### **RNF05 - Proteção de Dados Pessoais**
+- **Justificativa**: Utilizando protocolos criptografados, como _HTTPS_, e _AWS RDS_ para armazenamento, o sistema assegura que os dados de alunos e profissionais sejam protegidos, seguindo as normas de segurança da _LGPD_.
+
+##### **RNF06 - Manutenibilidade e Padrão de Modularidade**
+- **Justificativa**: Com a modularidade do código e a separação das partes em serviços diferentes de nuvem da AWS, fica fácil a sua manutenção e através do _Amazon IAM_ (_Identity and Access Management_) o acesso e manutenção na própria nuvem são facilitados e, ao mesmo tempo, controlados.
+
+##### **RNF08 - Disponibilidade Alinhada com as Necessidades Operacionais**
+- **Justificativa**: A infraestrutura na AWS com escalabilidade horizontal garante alta disponibilidade, atendendo às necessidades operacionais de 8:00 às 18:00, ou por mais tempo caso necessário, sem interrupções, utilizando Auto Scaling e Amazon CloudWatch para monitoramento.
+
+##### **RNF10 - Validação de Dados**
+- **Justificativa**: A validação de dados será feita tanto na interface do usuário quanto na API Interna, com a sua respectiva lógica de negócio, garantindo que somente dados válidos sejam armazenados no banco, assegurando integridade e a funcionalidade do sistema.
+
+##### **RNF11 - Integração com API do Centro Paula Souza**
+- **Justificativa**: A integração com a API do Centro Paula Souza, representada pela "Api Externa" no diagrama é essencial para o funcionamento do sistema, por isso, o diagrama foi projetado e pensado em utilizá-la.
+
+##### **RNF12 - Backups Automáticos**
+- **Justificativa**: Ao utilizar o _Amazon RDS_ para armazenamento dos dados, é possível configurar backups automáticos com retenção de até 35 dias, garantindo que o banco possa ser restaurado em caso de falha ou perda de dados.
+
 
 ## 6.3 Considerações sobre Desempenho e Segurança
 
-_conteúdo_
+&nbsp;&nbsp;&nbsp;&nbsp;As escolhas de tecnologias e infraestrutura foram realizadas com atenção especial aos requisito de segurança e desempnho do sistema.
+
+
+### 6.3.1 Desempenho
+&nbsp;&nbsp;&nbsp;&nbsp;A arquitetura foi projetado para garantir alta disponibilidade, escalabilidade e eficiência, de acordo com os requisitos do sistema. Abaixo estão considerações de desempenho:
+
+- **1 - Escalabilidade Horizontal (Auto-Scaling):** As instâncias EC2 e RDS utilizam o Auto-Scaling, o que garante que a infraestrutura seja capaz de se ajustar automatiamente à carga de trabalho. Além disso, as réplicas de leitura no RDS ajudam a distribuir a carga de consultas de leitura, o que aumenta a eficiência no acesso dos dados, permitindo que a aplicação manipule grandes volumes de tráfego sem prejudicar a performance.
+
+- **2 - Distribuição de Carga e Processamento:** O uso do AWS Cognito e da API Externa (API do CPS) permite uma divisão eficiente de carga entre os diferentes componentes do sistema. O Cognito lida com a autenticação e o gerenciamento de tokens, enquanto as demais requisições são divididas entre as APIs interna e externa.
+
+- **3 - Manutenção e Monitoramento:** A infraestrutura de logs e o uso de ferramentas de monitoramento da AWS como o CloudWatch permitem identificar gargalos no desempenho, ajudando a otimização contínua do sistema.
+
+### 6.3.2 Segurança
+
+&nbsp;&nbsp;&nbsp;&nbsp;A segurança da aplicação foi considerada em diferentes níveis para proteger os dados e mitigar riscos de ataques. Abaixo estão as implementações voltadas para a segurança:
+
+- **1 - Isolamento de Infraestrutura com VPC:** A aplicação está hospedada em uma VPC (_Virtual Private Cloud_), que proporciona um ambiente isolado para serviços críticos, protegendo-os contra acessos não autorizados da internet. Dentro da VPC foram implementadas duas sub-redes:
+  - **Sub-rede Pública:** Onde o servidor de aplicação da interface está hospedado, permitindo acesso dos usuários.
+  - **Sub-rede Privada:** Onde o servidor de _back-end_ e o banco de dados estão hospedados, garantindo que apenas serviços internos possam acessá-los.
+- **2 - Proteção das Comunicações:** Todas as comunicações utilizam protocolos de comunicação seguros:
+  - **HTTPS** entre o _front-end_ e o _back-end_, garantindo a criptografia dos dados transmitidos por TLS (_Transport Layer Security_).
+  - **Autenticação com JWT** para validar usuários e evitar acessos não autorizados.
+  - **Criptografia em trânsito** através de TLS nas conexões com o banco de dados para evitar interceptação de dados.
+  - **Criptografia em repouso** no banco de dados utilizando AWS KMS (_Key Managment Service_).
+- **3 - Controle de Acesso e Autenticação Segura:** A autenticação de usuários é gerenciada pelo AWS Cognito, utilizando OAuth2 para fornecer acesso seguro. Isso permite um gerenciamento eficiente de credenciais e tokens, implementação de autenticação multifator (MFA) e controle das permissões com base nos perfis de usuário. Além disso, o _back-end_ valida todos os tokens recebidos antes de processar qualquer requisição.
+- **4 - Proteção Contra Ataques** Para mitigar ameaças como ataques DDoS, SQL Injection e Cross-Site Scripting (XSS), podem ser adotadas as seguintes estratégias:
+  - **AWS WAF (_Web Application Firewall_):** para filtrar tráfego malicioso.
+  - **Rate Limiting e Throttling:** na API para evitar sobrecarga e/ou abuso de requisições.
+  - **Monitoramento contínuo com AWS GuardDuty:** para detectar acessos suspeitos.
+- **5 - Logs de Alterações e Backups:** Com todas as alterações registradas, é possível identificar caso haja alguma alteração maliciosa em algum arquivo no banco de dados e agir contra esse acesso, além de reverter os danos com os backups automáticos.
+
 
 # 7. Projeto Visual da Solução
-
-_conteúdo_
 
 ## 7.1 Desenvolvimento de Wireframes
 
