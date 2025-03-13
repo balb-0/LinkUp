@@ -4,6 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "cookie-parser": "^1.4.7",
+    "jsonwebtoken": "^9.0.2",
     "@types/cors": "^2.8.17",
     "compression": "^1.8.0",
     "cors": "^2.8.5",
@@ -21,6 +24,9 @@
     "lint": "eslint ."
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/cookie-parser": "^1.4.8",
+    "@types/jsonwebtoken": "^9.0.9",
     "@types/compression": "^1.7.5",
     "@types/express": "^5.0.0",
     "@types/helmet": "^0.0.48",

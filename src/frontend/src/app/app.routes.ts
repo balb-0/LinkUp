@@ -1,29 +1,18 @@
 import { Routes } from '@angular/router';
-import { HomepageComponent } from './pages/homepage/homepage.component';
-import { HistoryComponent } from './pages/history/history.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { ProfessionalsComponent } from './pages/professionals/professionals.component';
-import { StudentsComponent } from './pages/students/students.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 export const routes: Routes = [
   {
-    path: '',
-    component: HomepageComponent
+    path: 'login',
+    component: LoginComponent,
+  },
+  { path: '',
+    redirectTo: '/register',
+    pathMatch: 'full'
   },
   {
-    path: 'history',
-    component: HistoryComponent
+    path: 'register',
+    component: RegisterComponent,
   },
-  {
-    path: 'dashboard',
-    component: DashboardComponent
-  },
-  {
-    path: 'professionals',
-    component: ProfessionalsComponent
-  },
-  {
-    path: 'students',
-    component: StudentsComponent
-  }
 ];

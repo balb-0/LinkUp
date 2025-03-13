@@ -8,6 +8,10 @@ import path from 'path'
 
 // Aqui estão as importações das classes, funções e rotas criadas para o servidor
 import EnvManager from "./classes/EnvManager";
+import pool from "./utils/db";
+import path from "path";
+import authRoutes from "./routes/authRoutes";
+import pageRoutes from "./routes/pagesRoutes";
 import { testConnection } from "./utils/db";
 import profissionaisRouter from "./routes/profissionais";
 import { requestLogger } from "./middleware/logger";
@@ -17,65 +21,37 @@ import { cacheMiddleware } from "./middleware/cache";
 
 // Inicializando o app
 const app = express();
-// Configurando a porta e o ambiente de execução
 const port = EnvManager.getEnvOrThrow("PORT");
-const nodeEnv = EnvManager.getEnvOrThrow("NODE_ENV");
-
-// Configurando os middlewares que vamos usar
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
-app.use(compression());
-app.use(helmet());
 
-// Configurando o limite de requisições para evitar abusos
-const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutos
-  max: 100, // Máximo de 100 requisições por IP
-  standardHeaders: true,
-  legacyHeaders: false,
-  message: 'Muitas requisições deste IP, tente novamente após 15 minutos'
+pool
+  .getConnection()
+  .then((connection) => {
+    console.log("Conectado ao banco de dados!");
+  })
+  .catch((error) => {
+    console.error("Erro ao conectar ao banco de dados:", error);
+  });
+
+const frontendPath = path.join(
+  __dirname,
+  "../../frontend/dist/frontend/browser/"
+);
+app.use(express.static(frontendPath));
+
+app.use("/api", authRoutes);
+app.use("/", pageRoutes);
+
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(frontendPath, "index.csr.html"));
 });
 app.use(limiter);
 
-// Middleware para registrar logs das requisições
-app.use(requestLogger);
 
-// Testando a conexão com o banco de dados
-(async () => {
-  try {
-    await testConnection();
-    console.log('\x1b[32m%s\x1b[0m', '[BANCO DE DADOS] Conectado com sucesso!');
-  } catch (error) {
-    console.error('\x1b[31m%s\x1b[0m', `[BANCO DE DADOS] ${(error as Error).message}`);
-    // Se estivermos em produção e a conexão falhar, deve encerrar o app
-    if (nodeEnv === 'production') {
-      console.error('\x1b[31m%s\x1b[0m', '[SERVIDOR] Encerrando aplicação devido a falha na conexão com o banco de dados');
-      process.exit(1);
-    }
-  }
-})();
-
-// Middleware para checar a conexão com o banco antes de processar as requisições
-app.use((req, res, next) => {
-  // Não checar a conexão para a rota de health check, que só verifica se o servidor está ativo
-  if (req.path === '/health') {
-    return next();
-  }
-  // Checar se o banco de dados está disponível
-  testConnection()
-    .then(() => next())
-    .catch((error) => {
-      next(createError('Serviço temporariamente indisponível. Tente novamente mais tarde.', 503));
-    });
-});
-
-// Rota para verificar se o servidor está funcionando
-app.get('/health', healthCheck);
-
-// Rota principal da API
-app.get("/api", (req, res) => {
-  res.send("API de Atendimentos - Bem-vindo!");
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });
 
 // Rotas para a API de profissionais
