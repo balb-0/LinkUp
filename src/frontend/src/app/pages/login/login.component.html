@@ -1,0 +1,83 @@
+<!-- Header bar -->
+<header class="!w-full !h-[62px] !bg-[#7e0000]"></header>
+<div class="!bg-[#f6f4f4] !flex flex-row !justify-center !w-full !min-h-screen">
+    <div class="!bg-[#f6f4f4] !w-full !max-w-[1440px] !relative">
+      <main class="!flex !flex-row">
+        <!-- Left side with image -->
+        <div class="flex-1 flex justify-center items-center p-8">
+          <div class="!w-[437px] !h-[437px] !relative">
+            <img
+              class="!w-[437px] !h-[279px] !mt-[79px]"
+              alt="Centro Paula Souza Logo"
+              src="/../assets/cps_verm.svg"
+            />
+          </div>
+        </div>
+        <!-- Right side with login form -->
+        <div class="w-1/2 flex flex-col items-center">
+          <h1 class="mt-[200px] mb-[90px] !font-poppins font-bold text-[#333333] text-5xl text-center">
+            Login
+          </h1>
+          <div class="border-none shadow-none bg-transparent w-[462px]">
+            <div class="p-0 space-y-8">
+              <!-- Email field -->
+              <div class="space-y-2">
+                <label
+                  for="email"
+                  class="block !font-leagueSpartan font-semibold text-[#333333] text-2xl"
+                >
+                  E-mail
+                </label>
+                <input
+                  id="email"
+                  type="email"
+                  name="email"
+                  #emailInput
+                  class="h-[60px] bg-[#E2E2E2] rounded border-none w-full"
+                />
+              </div>
+              <!-- Password field -->
+              <div class="space-y-2">
+                <label
+                  for="password"
+                  class="block !font-leagueSpartan !font-semibold text-[#333333] text-2xl"
+                >
+                  Senha
+                </label>
+                <input
+                  id="password"
+                  type="password"
+                  name="password"
+                  #passwordInput
+                  class="h-[60px] bg-[#E2E2E2] rounded border-none w-full"
+                />
+              </div>
+              <!-- Links -->
+              <div class="flex justify-between">
+                <a
+                  href="/register"
+                  class="!font-leagueSpartan !font-semibold text-xl underline text-blue-600"
+                >
+                  Cadastre-se
+                </a>
+                <a
+                  href="/forgot-password"
+                  class="!font-leagueSpartan !font-semibold text-xl underline text-blue-600 text-right"
+                >
+                  Esqueceu a senha?
+                </a>
+              </div>
+              <!-- Confirm button -->
+              <div class="flex justify-center pt-6">
+                <app-button></app-button>
+              </div>
+            </div>
+          </div>
+          <!-- Logo at bottom -->
+          <div class="mt-[130px]">
+            <img src="/../assets/linkup_logo.svg" alt="Linkup Logo" class="w-[243px] h-[55px]" />
+          </div>
+        </div>
+      </main>
+    </div>
+</div>
