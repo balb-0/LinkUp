@@ -1,1 +1,5 @@
-<p>card-home works!</p>
+<mat-card (click)="navigate()"
+  class="w-[290px] h-[200px] flex items-center justify-center cursor-pointer !bg-vermelhoClaro !text-branco text-[40px] !font-extralight">
+  <img [src]="imageSrc" [alt]="altText" class="w-[121px] h-[121px]">
+  <p>{{ text }}</p>
+</mat-card>

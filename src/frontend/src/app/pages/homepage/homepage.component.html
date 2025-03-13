@@ -1,1 +1,39 @@
-<p>homepage works!</p>
+<div class="flex flex-col items-center justify-center pt-6 pb-6 p-[70px]">
+  <section class="flex flex-col items-start justify-center w-full pb-[70px]">
+    <h2 class="pb-6">Veja as últimas atualizações feitas</h2>
+    <app-card-home
+      imageSrc="assets/historico.svg"
+      altText="Botão para acessar a tela de Histórico"
+      text="Histórico"
+      link="/history"
+    >
+    </app-card-home>
+  </section>
+
+  <section class="flex flex-col items-start justify-center w-full">
+    <h2 class="pb-6">Principais Áreas</h2>
+    <div class="flex flex-row gap-[45px]">
+      <app-card-home
+        imageSrc="assets/dashboard.svg"
+        altText="Botão para acessar a tela de Dashboard"
+        text="Dashboard"
+        link="/dashboard"
+      >
+      </app-card-home>
+      <app-card-home
+        imageSrc="assets/profissionais.svg"
+        altText="Botão para acessar a tela de Profissionais"
+        text="Profissionais"
+        link="/professionals"
+      >
+      </app-card-home>
+      <app-card-home
+        imageSrc="assets/alunos.svg"
+        altText="Botão para acessar a tela de Alunos"
+        text="Alunos"
+        link="/students"
+    >
+    </app-card-home>
+    </div>
+  </section>
+</div>
