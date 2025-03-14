@@ -160,7 +160,50 @@
 
 ## 2.3 Sprint 3
 
-_conteúdo_
+### Análise da Sprint Review
+
+#### **Pontos Fortes**
+
+- Alta quantidade de tasks entregues e valor agregado.
+- Adiantamento de tasks do banco de dados na sprint anterior.
+- Boa resolução de conflitos.
+
+#### **Pontos Fracos**
+
+- Tempo reduzido de trabalho, gerando acúmulo de tasks.
+- Pouco detalhamento das atividades nas dailys.
+- Nem todos os membros estavam a par do que estava sendo desenvolvido.
+
+### Ações de Melhoria para os Pontos Fracos
+
+#### 1. Tempo reduzido de trabalho, gerando acúmulo de tasks
+
+##### Ações de melhoria:
+
+- Melhor distribuição das tasks para evitar sobrecarga no final da sprint.
+- Priorização mais clara das atividades essenciais.
+- Monitoramento constante do progresso e ajuste de metas conforme necessário.
+
+#### 2. Pouco detalhamento das atividades nas dailys.
+
+##### Ações de melhoria:
+
+- Reforçar a importância de explicar não apenas o que foi feito, mas também desafios e impactos no projeto.
+- Incentivar perguntas e feedbacks para melhorar a clareza das informações compartilhadas.
+
+#### 3. Nem todos os membros estavam a par do que estava sendo desenvolvido.
+
+##### Ações de melhoria:
+
+- Melhorar a documentação das tasks no kanban para que todos tenham visibilidade.
+- Definir reuniões curtas semanais para alinhamento geral do projeto.
+- Criar resumos semanais com atualizações-chave e compartilhar no Slack.
+
+### Ações realizadas após a Sprint 2
+
+&nbsp;&nbsp;&nbsp;&nbsp;Durante a Sprint 3, a equipe implementou algumas das ações de melhoria propostas anteriormente para otimizar o fluxo de trabalho e reduzir retrabalho. A revisão das tasks foi incorporada, permitindo um melhor acompanhamento do progresso e garantindo que as tarefas continuassem alinhadas com os requisitos. Além disso, houve um esforço maior para validar as tarefas, antes da execução, o que a visava evitar sobreposição de atividades, embora isso não tenha funcionado totalmente devido o pequeno espaço de tempo da sprint e algumas falhas de comunicação.
+
+&nbsp;&nbsp;&nbsp;&nbsp;Além disso, o alinhamento antes da execução das tasks ainda não foi totalmente eficaz, impactando a clareza na distribuição do trabalho. As dailys também tiveram uma evolução, tornando-se um pouco mais completas, mas ainda carecem de mais detalhamento sobre o que está sendo realmente desenvolvido, o que pode gerar falhas na comunicação e dificuldades na coordenação das atividades.
 
 ## 2.4 Sprint 4
 
