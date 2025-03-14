@@ -11,7 +11,7 @@ export class ProfissionalController {
    * @route GET /profissionais/ListarTodos
    */
   static listarTodos = asyncHandler(async (req: Request, res: Response) => {
-    const profissionais = ProfissionalRepository.listarTodos();
+    const profissionais = await ProfissionalRepository.listarTodos();
     return ResponseHandler.sucesso(res, profissionais, "Profissionais listados com sucesso");
   });
 
@@ -26,7 +26,7 @@ export class ProfissionalController {
       throw createError("ID do profissional não fornecido", 400);
     }
 
-    const profissional = ProfissionalRepository.buscarPorId(id);
+    const profissional = await ProfissionalRepository.buscarPorId(id);
     
     if (!profissional) {
       return ResponseHandler.naoEncontrado(res, "Profissional não encontrado");
@@ -42,20 +42,16 @@ export class ProfissionalController {
   static criar = asyncHandler(async (req: Request, res: Response) => {
     const dadosProfissional: IProfissional = req.body;
     
-    // Validação dos campos obrigatórios
-    if (!dadosProfissional.nome || !dadosProfissional.email || !dadosProfissional.ocupacao) {
-      throw createError("Dados incompletos. Nome, email e ocupação são obrigatórios", 400);
-    }
+    // A validação dos campos obrigatórios agora é feita pelo middleware de validação
+    // e a validação de email também
 
-    // Validação básica de email
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(dadosProfissional.email)) {
-      throw createError("Email inválido", 400);
+    try {
+      const novoProfissional = await ProfissionalRepository.criar(dadosProfissional);
+      return ResponseHandler.criado(res, novoProfissional, "Profissional criado com sucesso");
+    } catch (error) {
+      // O repositório já trata erros específicos como email duplicado
+      throw error;
     }
-    
-    const novoProfissional = ProfissionalRepository.criar(dadosProfissional);
-    
-    return ResponseHandler.criado(res, novoProfissional, "Profissional criado com sucesso");
   });
 
   /**
@@ -70,28 +66,22 @@ export class ProfissionalController {
       throw createError("ID do profissional não fornecido", 400);
     }
 
-    // Verificar se o profissional existe
-    const profissionalExistente = ProfissionalRepository.buscarPorId(id);
-    
-    if (!profissionalExistente) {
-      return ResponseHandler.naoEncontrado(res, "Profissional não encontrado");
-    }
-
-    // Validação de email se fornecido
-    if (dadosAtualizados.email) {
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(dadosAtualizados.email)) {
-        throw createError("Email inválido", 400);
+    try {
+      const profissionalAtualizado = await ProfissionalRepository.atualizar(id, dadosAtualizados);
+      
+      if (!profissionalAtualizado) {
+        return ResponseHandler.naoEncontrado(res, "Profissional não encontrado");
       }
+      
+      return ResponseHandler.sucesso(
+        res, 
+        profissionalAtualizado, 
+        "Profissional atualizado com sucesso"
+      );
+    } catch (error) {
+      // O repositório já trata erros específicos como email duplicado
+      throw error;
     }
-
-    const profissionalAtualizado = ProfissionalRepository.atualizar(id, dadosAtualizados);
-    
-    return ResponseHandler.sucesso(
-      res, 
-      profissionalAtualizado, 
-      "Profissional atualizado com sucesso"
-    );
   });
 
   /**
@@ -105,17 +95,10 @@ export class ProfissionalController {
       throw createError("ID do profissional não fornecido", 400);
     }
 
-    // Verificar se o profissional existe
-    const profissionalExistente = ProfissionalRepository.buscarPorId(id);
-    
-    if (!profissionalExistente) {
-      return ResponseHandler.naoEncontrado(res, "Profissional não encontrado");
-    }
-
-    const removido = ProfissionalRepository.remover(id);
+    const removido = await ProfissionalRepository.remover(id);
     
     if (!removido) {
-      throw createError("Erro ao remover profissional", 500);
+      return ResponseHandler.naoEncontrado(res, "Profissional não encontrado");
     }
 
     return ResponseHandler.sucesso(res, null, "Profissional removido com sucesso");

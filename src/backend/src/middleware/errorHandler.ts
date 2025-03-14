@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-
+import EnvManager from "../classes/EnvManager";
 /**
  * Interface para erros personalizados com código de status HTTP
  */
@@ -32,7 +32,7 @@ export const errorHandler = (
   next: NextFunction
 ): void => {
   const statusCode = err.statusCode || 500;
-  const isDev = process.env.NODE_ENV !== 'production';
+  const isDev = EnvManager.getEnvOrThrow("NODE_ENV") !== 'production';
   
   // Log do erro
   console.error('\x1b[31m%s\x1b[0m', `[ERRO] ${err.message}`);

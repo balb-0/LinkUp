@@ -1,4 +1,3 @@
-import { v4 as uuidv4 } from 'uuid';
 
 export interface IProfissional {
   id?: string;
@@ -27,50 +26,193 @@ export class Profissional implements IProfissional {
   }
 }
 
+import { query } from '../utils/db';
+import { createError } from '../middleware/errorHandler';
 
-//aqui temos um reposiroty de profissionais para gerenciar as operações de CRUD (isto é um teste para testar o cache e rate limit e as rotas)
-//ela so esta aqui para testar a logica da aplicação e vai ser removida futuramente 
+// Repositorio de profissionais funcionando com o banco de dados
 
 export class ProfissionalRepository {
-  private static profissionais: Profissional[] = [];
+  /**
+   * Cria um novo profissional no banco de dados
+   * @param profissional Dados do profissional a ser criado
+   * @returns Profissional criado
+   */
+  static async criar(profissional: IProfissional): Promise<Profissional> {
+    try {
+      const sql = `
+        INSERT INTO Profissional (nome, email, ocupacao, ativo)
+        VALUES (?, ?, ?, ?)
+      `;
+      
+      const params = [
+        profissional.nome,
+        profissional.email,
+        profissional.ocupacao,
+        profissional.ativo ?? true
+      ];
+      
+      const result: any = await query(sql, params);
+      
+      // Busca o profissional recém-criado para retornar com todos os dados
+      const novoProfissional = await this.buscarPorId(result.insertId.toString());
+      
+      if (!novoProfissional) {
+        throw createError('Erro ao criar profissional', 500);
+      }
+      
+      return novoProfissional;
+    } catch (error) {
+      if ((error as any).message?.includes('Duplicate entry') && (error as any).message?.includes('email')) {
+        throw createError('Já existe um profissional com este email', 400);
+      }
+      throw error;
+    }
+  }
 
-  static criar(profissional: IProfissional): Profissional {
-    const novoProfissional = new Profissional({
-      ...profissional,
-      id: uuidv4(),
-      dataCadastro: new Date()
+
+  /**
+   * Lista todos os profissionais ativos
+   * @returns Array de profissionais
+   */
+  static async listarTodos(): Promise<Profissional[]> {
+    const sql = `
+      SELECT id, nome, email, ocupacao, ativo, dataCadastro
+      FROM Profissional
+      WHERE ativo = true
+      ORDER BY nome
+    `;
+
+    const result: any[] = await query(sql);
+    
+    return result.map(row => new Profissional({
+      id: row.id.toString(),
+      nome: row.nome,
+      email: row.email,
+      ocupacao: row.ocupacao,
+      ativo: Boolean(row.ativo),
+      dataCadastro: new Date(row.dataCadastro)
+    }));
+  }
+
+  /**
+   * Busca um profissional pelo ID
+   * @param id ID do profissional
+   * @returns Profissional encontrado ou undefined
+   */
+  static async buscarPorId(id: string): Promise<Profissional | undefined> {
+    const sql = `
+      SELECT id, nome, email, ocupacao, ativo, dataCadastro
+      FROM Profissional
+      WHERE id = ?
+    `;
+    
+    const result: any[] = await query(sql, [id]);
+    
+    if (result.length === 0) {
+      return undefined;
+    }
+    
+    const row = result[0];
+    
+    return new Profissional({
+      id: row.id.toString(),
+      nome: row.nome,
+      email: row.email,
+      ocupacao: row.ocupacao,
+      ativo: Boolean(row.ativo),
+      dataCadastro: new Date(row.dataCadastro)
     });
-    
-    this.profissionais.push(novoProfissional);
-    return novoProfissional;
   }
 
-  static listarTodos(): Profissional[] {
-    return this.profissionais;
+  /**
+   * Atualiza um profissional existente
+   * @param id ID do profissional
+   * @param dados Dados a serem atualizados
+   * @returns Profissional atualizado ou null se não encontrado
+   */
+  static async atualizar(id: string, dados: Partial<IProfissional>): Promise<Profissional | null> {
+    try {
+      // Verifica se o profissional existe
+      const profissionalExistente = await this.buscarPorId(id);
+      
+      if (!profissionalExistente) {
+        return null;
+      }
+      
+      // Constrói a query de atualização dinamicamente
+      const campos: string[] = [];
+      const valores: any[] = [];
+      
+      if (dados.nome !== undefined) {
+        campos.push('nome = ?');
+        valores.push(dados.nome);
+      }
+      
+      if (dados.email !== undefined) {
+        campos.push('email = ?');
+        valores.push(dados.email);
+      }
+      
+      if (dados.ocupacao !== undefined) {
+        campos.push('ocupacao = ?');
+        valores.push(dados.ocupacao);
+      }
+      
+      if (dados.ativo !== undefined) {
+        campos.push('ativo = ?');
+        valores.push(dados.ativo);
+      }
+      
+      // Se não há campos para atualizar, retorna o profissional existente
+      if (campos.length === 0) {
+        return profissionalExistente;
+      }
+      
+      // Adiciona o ID ao final dos parâmetros
+      valores.push(id);
+      
+      const sql = `
+        UPDATE Profissional
+        SET ${campos.join(', ')}
+        WHERE id = ?
+      `;
+      
+      await query(sql, valores);
+      
+      // Busca o profissional atualizado
+      const profissionalAtualizado = await this.buscarPorId(id);
+      
+      return profissionalAtualizado || null;
+    } catch (error) {
+      if ((error as any).message?.includes('Duplicate entry') && (error as any).message?.includes('email')) {
+        throw createError('Já existe um profissional com este email', 400);
+      }
+      throw error;
+    }
   }
 
-  static buscarPorId(id: string): Profissional | undefined {
-    return this.profissionais.find(p => p.id === id);
-  }
-
-  static atualizar(id: string, dados: Partial<IProfissional>): Profissional | null {
-    const index = this.profissionais.findIndex(p => p.id === id);
+  /**
+   * Remove um profissional (exclusão lógica)
+   * @param id ID do profissional
+   * @returns true se removido com sucesso, false se não encontrado
+   */
+  static async remover(id: string): Promise<boolean> {
+    // Verifica se o profissional existe
+    const profissionalExistente = await this.buscarPorId(id);
     
-    if (index === -1) return null;
+    if (!profissionalExistente) {
+      return false;
+    }
     
-    const profissionalAtualizado = {
-      ...this.profissionais[index],
-      ...dados,
-      id
-    };
+    // Realiza exclusão lógica (marca como inativo)
+    const sql = `
+      UPDATE Profissional
+      SET ativo = false
+      WHERE id = ?
+    `;
     
-    this.profissionais[index] = new Profissional(profissionalAtualizado);
-    return this.profissionais[index];
-  }
-
-  static remover(id: string): boolean {
-    const tamanhoAnterior = this.profissionais.length;
-    this.profissionais = this.profissionais.filter(p => p.id !== id);
-    return tamanhoAnterior > this.profissionais.length;
+    await query(sql, [id]);
+    
+    return true;
   }
 }

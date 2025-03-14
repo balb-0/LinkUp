@@ -1,22 +1,19 @@
 import { Request, Response } from "express";
-import mysql from "mysql2/promise";
 import bcrypt from "bcryptjs";
-import dotenv from "dotenv";
 import pool from "../utils/db";
+import { asyncHandler } from "../utils/asyncHandler";
+import { createError } from "../middleware/errorHandler";
 
-dotenv.config();
-
-export const register = async (req: Request, res: Response): Promise<void> => {
+/**
+ * @route POST /api/auth/register
+ * @desc Registra um novo usuário
+ * @access Público
+ */
+export const register = asyncHandler(async (req: Request, res: Response): Promise<void> => {
   console.log("✅ Requisição recebida no backend!");
 
   try {
     const { nome, email, senha, cargo } = req.body;
-
-    // Validação básica
-    if (!nome || !email || !senha || !cargo) {
-      res.status(400).json({ message: "Todos os campos são obrigatórios" });
-      return;
-    }
 
     // Verifica se o email já está cadastrado
     const [existingUser]: any = await pool.query(
@@ -25,8 +22,7 @@ export const register = async (req: Request, res: Response): Promise<void> => {
     );
 
     if (existingUser.length > 0) {
-      res.status(400).json({ message: "Este email já está em uso" });
-      return;
+      throw createError("Este email já está em uso", 400);
     }
 
     // Criptografa a senha
@@ -44,6 +40,6 @@ export const register = async (req: Request, res: Response): Promise<void> => {
     });
   } catch (error) {
     console.error("Erro ao registrar usuário:", error);
-    res.status(500).json({ message: "Erro interno no servidor" });
+    throw createError("Erro interno no servidor", 500);
   }
-};
+});

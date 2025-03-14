@@ -5,6 +5,8 @@ import { clearCache } from "../middleware/cache";
 
 const router = Router();
 
+
+
 /**
  * @route GET /profissionais/ListarTodos
  * @desc Lista todos os profissionais cadastrados
