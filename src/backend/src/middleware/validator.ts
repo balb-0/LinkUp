@@ -87,3 +87,32 @@ export const commonValidations = {
   
   // Adicione mais validações comuns conforme necessário
 }; 
+
+/**
+ * Validação para registro de usuário
+ * Implementa a mesma lógica do validateRegister do auth.ts
+ */
+export const validateRegister = (req: Request, res: Response, next: NextFunction): void => {
+  console.log("🚀 Middleware validateRegister foi chamado!");
+
+  const { nome, email, senha, cargo } = req.body;
+
+  if (!nome || !email || !senha || !cargo) {
+    console.log("❌ Campos obrigatórios faltando");
+    throw createError("Todos os campos são obrigatórios", 400);
+  }
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    console.log("❌ Email inválido detectado");
+    throw createError("Email inválido", 400);
+  }
+
+  if (senha.length < 6) {
+    console.log("❌ Senha muito curta");
+    throw createError("A senha deve ter pelo menos 6 caracteres", 400);
+  }
+
+  console.log("✅ Validação concluída, chamando next()");
+  next();
+}; 
