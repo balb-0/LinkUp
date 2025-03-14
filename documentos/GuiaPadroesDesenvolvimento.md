@@ -29,9 +29,10 @@
 
 ## 1.1 Objetivo do Documento
 
-Este documento apresenta estabelecer padrões de codificação e práticas de desenvolvimento para garantir a qualidade e a consistência do código.
+Este documento estabelece um conjunto de práticas recomendadas que ajudarão a manter a consistência no desenvolvimento do projeto, alinhando-se com as melhores práticas da indústria e garantindo escalabilidade e reutilização do código.
 
-Nota: Explicar a importância de seguir padrões de desenvolvimento para facilitar a manutenção, melhorar a legibilidade e promover a colaboração.
+A adoção de padrões de codificação e padrões de projeto é fundamental para garantir um código limpo, organizado e de fácil manutenção. Seguir essas diretrizes melhora a legibilidade do código, tornando-o compreensível para toda a equipe de desenvolvimento e facilitando a colaboração entre os membros. Além disso, a padronização reduz a incidência de erros e torna o processo de revisão de código mais eficiente.
+
 
 # 2. Padrões de Codificação
 
@@ -46,10 +47,6 @@ Nota: Explicar a importância de seguir padrões de desenvolvimento para facilit
   - Exemplos:
     - ```class UserProfile { ... }``` 
     - ```interface PaymentGateway { ... }```  
-
-- Constantes: Utilize UPPER_CASE com underscores
-  - Exemplo:
-    - const MAX_USERS = 100; 
 
 ## 2.2 Formatação de Código
 
