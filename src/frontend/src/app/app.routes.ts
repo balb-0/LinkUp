@@ -9,6 +9,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { LoginComponent } from './pages/login/login.component';;
 
+
 export const routes: Routes = [
   {
     path: '',

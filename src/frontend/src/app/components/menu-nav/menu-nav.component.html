@@ -1,0 +1,68 @@
+<!-- navbar.component.html -->
+<nav class="relative flex h-20 w-full items-center bg-branco px-5">
+    <!-- Contêiner de três colunas -->
+    <div class="flex w-full items-center">
+      <!-- Coluna da esquerda com largura fixa -->
+      <div class="flex-shrink-0 w-[239px] hidden md:block">
+        <img src="/../assets/linkup_logo.svg" alt="Linkup Logo" class="h-[54px] w-[239px]">
+      </div>
+      
+      <!-- Coluna central com centralização -->
+      <div class="flex flex-1 justify-center">
+        <div class="!text-[24px] flex items-center h-14 rounded-[20px] px-5 bg-[#7E0000]">
+          <a 
+            routerLink="" 
+            routerLinkActive="active-link" 
+            [routerLinkActiveOptions]="{exact: true}"
+            class="rounded-2xl !font-leagueSpartan !font-bold rounded-[20px] px-5 py-2 mx-1 text-branco">
+            Home
+          </a>
+          <a 
+            routerLink="/students" 
+            routerLinkActive="active-link" 
+            class="rounded-2xl !font-leagueSpartan !font-bold rounded-[20px] px-5 py-2 mx-1 text-branco">
+            Alunos
+          </a>
+          <a 
+            routerLink="/professionals" 
+            routerLinkActive="active-link" 
+            class="rounded-2xl !font-leagueSpartan !font-bold rounded-[20px] px-5 py-2 mx-1 text-branco">
+            Profissionais
+          </a>
+          <a 
+            routerLink="/dashboard" 
+            routerLinkActive="active-link" 
+            class="rounded-2xl !font-leagueSpartan !font-bold rounded-[20px] px-5 py-2 mx-1 text-branco">
+            Dashboard
+          </a>
+          <a 
+            routerLink="/history" 
+            routerLinkActive="active-link" 
+            class="rounded-2xl !font-leagueSpartan !font-bold rounded-[20px] px-5 py-2 mx-1 text-branco">
+            Histórico
+          </a>
+        </div>
+      </div>
+      
+      <!-- Coluna da direita com largura fixa -->
+      <div class="flex-shrink-0 w-[239px] flex justify-end gap-4">
+        <!-- Notification Icon -->
+        <a routerLink="/notificacoes" class="flex h-[60px] w-[60px] items-center justify-center rounded-full">
+          <img src="/../assets/bell.svg" alt="Notificações" class="h-8 w-8">
+        </a>
+        
+        <!-- Profile Icon -->
+        <a routerLink="/perfil" class="flex h-[60px] w-[60px] items-center justify-center rounded-full">
+          <img src="/../assets/profileicon.svg" alt="Perfil" class="h-8 w-8">
+        </a>
+      </div>
+    </div>
+  </nav>
+    
+  <!-- Estilos para a classe active-link -->
+  <style>
+      .active-link {
+        background-color: white;
+        color: #7E0000; /* Cor vermelha escura que combina com bg-red-900 */
+      }
+  </style>
