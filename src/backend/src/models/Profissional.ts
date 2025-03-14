@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from 'uuid';
 
 export interface IProfissional {
   id?: string;
@@ -36,7 +37,7 @@ export class ProfissionalRepository {
   static criar(profissional: IProfissional): Profissional {
     const novoProfissional = new Profissional({
       ...profissional,
-      id: Math.random().toString(36).substring(2, 9),
+      id: uuidv4(),
       dataCadastro: new Date()
     });
     

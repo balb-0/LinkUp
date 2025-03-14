@@ -1231,7 +1231,58 @@ _conteúdo_
 
 ## 8.3 Testes Unitários e de Integração
 
-_conteúdo_
+### 8.3.1 Testes Unitários
+#### 8.3.1.1 Relatório de cobertura de testes
+
+Este documento apresenta o relatório de cobertura de testes gerado pelo **Jest**, detalhando a cobertura de código por diretório e arquivo.
+
+##### Resumo da Cobertura
+
+<div align="center">
+
+| Diretório/Arquivo         | % Stmts | % Branch | % Funcs | % Lines | Linhas não cobertas |
+|---------------------------|---------|----------|---------|---------|----------------------|
+| **Todos os arquivos**     | **98.83** | **90.47** | **100** | **100** | - |
+| **controllers/**          | **100**  | **100**   | **100** | **100** | - |
+| ├── `ProfissionalController.ts` | 100 | 100 | 100 | 100 | - |
+| **models/**               | **96.29** | **71.42** | **100** | **100** | - |
+| ├── `Profissional.ts`     | 96.29 | 71.42 | 100 | 100 | 26-59 |
+| **utils/**                | **100**  | **100**   | **100** | **100** | - |
+| ├── `asyncHandler.ts`     | 100 | 100 | 100 | 100 | - |
+
+<sup>Fonte: Relatório gerado automaticamente pelo Jest</sup>
+</div>
+
+#### Análise
+
+- **Controllers:** O diretório `controllers/` possui **100%** de cobertura em todos os critérios, indicando que todos os trechos de código foram testados.
+
+- **Models:** O diretório `models/` possui **96.29%** de cobertura de instruções e **71.42%** de cobertura de branches. O arquivo `Profissional.ts` apresenta algumas linhas não testadas no intervalo **26-59**. Essas linhas na verdade representam parte do repositório, que é uma simulação do banco de dados.
+- **Utils:** O diretório `utils/` também possui **100%** de cobertura, garantindo que todas as funções auxiliares foram devidamente testadas.
+
+#### 8.3.1.2 Conclusão e Próximos Passos
+
+- A cobertura geral é **excelente** (**98.83%** de instruções e **100%** de funções).
+- Manter a cobertura alta ao adicionar novas funcionalidades e refatorações.
+
+#### 8.3.1.3 Execução dos Testes
+
+A execução dos testes unitários utilizaram do Jest. O passo a passo para executar os testes é:
+
+1. Abra o terminal ou PowerShell
+2. Acesse a pasta /src/backend do repositório com o comando `cd <path_to_repo>/src/backend`
+3. Instale e atualize os pacotes com `npm install`
+4. Execute os testes através do comando `npm test`
+
+Todos os testes executados passaram e estão representados na imagem abaixo: 
+
+<div align="center">
+<sub>Figura X - Execução dos Testes no Terminal</sub><br>
+<img src="../documentos/img/passed_tests.png" width="80%"><br>
+<sup>Fonte: Material produzido pelos autores (2025)</sup>
+</div>
+
+
 
 ## 8.4 Documentações automáticas
 
