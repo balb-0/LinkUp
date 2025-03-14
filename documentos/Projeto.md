@@ -1215,11 +1215,33 @@ _conteúdo_
 
 ## 8.2 Desenvolvimento de Features
 
-**Nota:** Insira uma explicação de entregas em cada Sprint.
+&nbsp;&nbsp;&nbsp;&nbsp;Cada Sprint entrega um conjunto de funcionalidades incrementais e testadas, permitindo a evolução contínua do sistema. A Sprint 3 focou na implementação e integração de funcionalidades essenciais para a gestão de usuários e profissionais.
+
+---
 
 ## 8.2.1 Sprint 3
 
-_conteúdo_
+### Overview do Desenvolvimento
+
+&nbsp;&nbsp;&nbsp;&nbsp;Nesta Sprint, foram desenvolvidas e integradas funcionalidades fundamentais para o backend e frontend do sistema. O foco principal foi a criação de um fluxo básico de usuários e profissionais, garantindo a estruturação inicial do projeto.
+
+### Backend
+- Implementação do CRUD completo para Profissionais, permitindo criação, leitura, atualização e remoção de registros.
+- Integração do cadastro de usuários ao banco de dados, possibilitando a criação de contas e autenticação.
+- Conexão com um banco de dados hospedado na Aiven, um provedor gratuito de MySQL utilizado para testes. A AWS será considerada para o futuro ambiente de produção.
+
+### Frontend
+- Desenvolvimento das principais páginas e funcionalidades da interface, incluindo:
+  - Página inicial (Home)
+  - Página de login
+  - Cadastro de usuários
+  - Listagem e cadastro de profissionais
+- Integração do frontend com o backend para consumo das APIs de usuários e profissionais.
+
+### Próximos Passos
+- Melhorar a estrutura e a escalabilidade da aplicação visando a migração futura do banco de dados para a AWS.
+- Refinamento da interface do usuário para melhor experiência e usabilidade.
+- Implementação de testes para garantir a estabilidade das funcionalidades desenvolvidas.
 
 ## 8.2.2 Sprint 4
 
