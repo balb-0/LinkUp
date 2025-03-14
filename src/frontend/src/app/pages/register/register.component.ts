@@ -38,7 +38,7 @@ export class RegisterComponent {
     }
 
     this.http.post<{ message: string; redirect: string }>(
-      'http://localhost:3000/api/register',
+      'http://localhost:3000/api/auth/register',
       this.registerForm.value
     ).subscribe({
       next: (response) => {

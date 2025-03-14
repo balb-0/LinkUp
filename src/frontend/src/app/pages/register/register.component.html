@@ -60,13 +60,17 @@
                 Selecione um cargo.
               </div>
             </div>
-
             <div class="flex justify-center pt-6">
-              <button type="submit" class="bg-[#7e0000] text-white px-6 py-3 rounded-lg">
-                Registrar
+              <button type="submit" class="!w-[220px] sm:!w-[180px] md:!w-[200px] lg:!w-[220px]
+              !h-[60px] sm:!h-[50px] md:!h-[55px] lg:!h-[60px]
+              !bg-[#0E6053] hover:!bg-[#0E6053]/90
+              !rounded
+              !font-poppins !font-bold
+              !text-branco
+              !text-2xl sm:!text-xl md:!text-2xl">
+                Confirmar
               </button>
             </div>
-
             <p *ngIf="errorMessage" class="text-red-500 text-center mt-4">{{ errorMessage }}</p>
           </form>
         </div>
