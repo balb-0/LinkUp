@@ -1,0 +1,23 @@
+:host {
+    display: block;
+    height: 100vh; /* Faz o componente ocupar toda a altura da tela */
+    overflow-y: scroll; /* Permite rolagem caso o conteúdo seja maior que a tela */
+    scrollbar-width: none; /* Remove a barra de rolagem no Firefox */
+    -ms-overflow-style: none; /* Remove a barra de rolagem no IE e Edge */
+  }
+  
+  :host::-webkit-scrollbar {
+    display: none; /* Remove a barra de rolagem no Chrome, Safari e Opera */
+  }
+  
+  /* Caso queira aplicar a elementos específicos dentro do componente */
+  .login-container {
+    height: 100%;
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  
+  .login-container::-webkit-scrollbar {
+    display: none;
+}

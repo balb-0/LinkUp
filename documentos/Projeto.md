@@ -8,8 +8,8 @@
 </table>
 
 # Nome do Projeto: LinkUp
+# Nome do Projeto: LinkUp
 
-## Nome do Grupo: LinkUp
 
 ## Integrantes:
 
@@ -139,7 +139,6 @@ A imagem representa os objetivos da solução: facilitar o acompanhamento de alu
 ## 2.4.1 Persona 1 - Mariana Santos
 
 &nbsp;&nbsp;&nbsp;&nbsp;A seguir, apresenta-se a persona Mariana Santos, criada com base no workshop realizado com o parceiro.
-
 
 <div align="center">
 <sub>Figura x - Persona 1 - Mariana Santos</sub><br>
@@ -343,6 +342,7 @@ Tarefa: Gerar estatísticas dos atendimentos
 ### 6. Fim do Processo
 
 Evento Final: Encerramento do Atendimento
+
 - O atendimento é registrado no sistema e pode ser consultado futuramente.
 
 ## 2.6 Matriz de Risco do Projeto
@@ -537,7 +537,6 @@ Evento Final: Encerramento do Atendimento
 | RNF11     | O sistema deve garantir a integração com a API do Centro Paula Souza, permitindo consulta e obtenção de dados dos alunos.    | Compatibilidade (Interoperabilidade) | Moderada     |
 | RNF12     | O sistema deve realizar backups automáticos para evitar perda de dados.                                                     | Confiabilidade (Recuperação de falhas) | Alta         |
 | RNF13     | O sistema deve seguir as diretrizes WCAG para garantir acessibilidade a usuários com deficiência.                           | Usabilidade (Acessibilidade)        | Alta         |
-
 
 <div align="center">
 <sup>Material produzido pelos autores (2025)</sup>
@@ -921,23 +920,127 @@ A Camada de Dados é responsável pelo armazenamento e recuperação de informa�
 
 # 6. Mapeamento Técnico de Infraestrutura e Implantação
 
-_conteúdo_
-
 ## 6.1 Diagrama de Implantação da UML
 
-_conteúdo_
+<div align="center">
+<sub>Figura x - Diagrama de Implantação</sub><br>
+<img src="img/diagrama_implantacao.png"><br>
+<sup>Fonte: Material produzido pelos autores (2025) </sup>
+</div>
+
+### 6.1.1 Infraestrutura
+
+#### 6.1.1.1 **Servidores e Recursos de Computação**
+- **Servidores EC2 (Servidor da Aplicação e Backend)**:
+  - **Tecnologia:** Instâncias EC2 da AWS separadas para hospedagem do servidor da aplicação/interface e servidor de backend.
+  - **Função:** O _Front-end_ e o _Back-end_ serão implementados nessas instâncias EC2, responsáveis pela execução das interações com o usuário e lógicas de negócio, respectivamente.
+  - **Escalabilidade:** Utilização do _Auto Scaling Groups_ para aumentar ou diminuir a capacidade de acordo com a demanda.
+  - **Logs File:** Armazenará os logs de alterações do banco de dados, comunicando-se diretamente com a API. Seu ciclo de vida é de 5mb. Para monitoramento e análise em tempo real, a AWS **CloudWatch** pode ser configurada para centralizar os logs de maneira eficiente, eliminando a necessidade de armazenamento local.
+  - **Rede Virtual Privada (VPC):** Os servidores EC2 e o banco de dados RDS serão implementados dentro de uma VPC. Isso garante que a comunicação entre as instâncias da aplicação, o banco de dados e outros recursos sejam feitos de forma segura e isolada, protegendo os dados e controlando o acesso por meio de regras de segurança.
+
+#### 6.1.1.2 **Topologia de Rede e Comunicação entre os Componentes**
+
+A **topologia de rede** e a **comunicação entre os componentes** seguem uma arquitetura cliente-servidor distribuída dentro de uma VPC isolada, garantindo segurança e eficiência na troca de dados.
+
+- **Cliente (Interface Web) → Servidor da Aplicação (EC2):**
+  - O **usuário** interage com a interface web hospedada em uma instância EC2. 
+  - A comunicação entre o **cliente** e o **servidor da aplicação** é feita via **HTTPS**, garantindo a criptografia dos dados em trânsito através do protocolo **TLS**.
+  
+- **Servidor da Aplicação → Backend (API Interna, EC2):**
+  - O **servidor da aplicação** se comunica com o **backend**, que também reside em uma instância EC2, utilizando **HTTPS** para proteger os dados.
+  
+- **Backend (API Interna) → Banco de Dados (RDS):**
+  - O **backend** se comunica com o banco de dados **RDS MySQL** via **TCP/IP** dentro da VPC. A comunicação pode ser criptografada utilizando **SSL/TLS** para garantir a segurança dos dados.
+
+- **API Interna → Gerenciador de Permissões (AWS Cognito):**
+  - O **backend** valida as permissões de acesso dos usuários através do **AWS Cognito**. A comunicação é realizada via **HTTPS** com o uso de tokens **JWT** (JSON Web Token) para garantir a autenticidade do usuário.
+
+- **API Interna → API Externa (Render):**
+  - O **backend** se comunica com a **API Externa** (Render) para integração com sistemas de terceiros via **HTTPS**.
+
+#### 6.1.1.3 **Banco de Dados**
+- **RDS (Banco de Dados MySQL)**:
+  - **Tecnologia:** AWS RDS com MySQL.
+  - **Função:** Armazenamento e gerenciamento de dados do sistema.
+  - **Escalabilidade:** Adição de réplicas de leitura, aumentando a capacidade de leitura de dados conforme necessário com o _Auto Scaling_.
+  - **Segurança:** O banco de dados está isolado dentro da VPC, o que garante uma camada adicional de segurança e controle de tráfego, protegendo as informações sensíveis.
+
+#### 6.1.1.4 **Gerenciamento de Permissões e Autenticação**
+- **AWS Cognito (Gerenciador de Permissões)**:
+  - **Tecnologia:** AWS Cognito para controle de autenticação de usuários e gerenciamento de permissões com JWT.
+  - **Função:** Autenticação via OAuth2, gerenciando o acesso dos usuários aos sistemas.
+  - **Segurança:** Implementação de segurança com JWT (_JSON Web Token_) para garantir que os usuários autenticados tenham acesso adequado.
+
+#### 6.1.1.5 **API Externa**
+- **Render (Express API)**:
+  - **Tecnologia:** Express API hospedado no Render.
+  - **Função:** Integrar a aplicação com sistemas externos via API.
+
 
 ## 6.2 Justificativa das Escolhas de Implantação
 
-_conteúdo_
+&nbsp;&nbsp;&nbsp;&nbsp;As escolhas de implantação foram todas baseadas nos requisitos não funcionais da aplicação, principalmente os que levam em conta segurança e performance.
+
+##### **RNF01 - Tempo de Resposta Máximo para Consultas**
+- **Justificativa**: A escolha de _AWS EC2_ para servidores de aplicação, tanto back-end quanto front-end, em conjunto com a escalabilidade horizontal, assegura que o sistema tenha capacidade de resposta rápida, distribuindo a carga de trabalho e mantendo tempos de resposta otimizados, abaixo de 0,8 segundo.
+
+##### **RNF04 - Controle de Acesso por Tipo de Usuário**
+- **Justificativa**: A integração com _AWS Cognito_ para autenticação e autorização com _JWT_ garante que cada tipo de usuário tenha acesso somente às funcionalidades autorizadas, respeitando os requisitos de segurança e controle de acesso.
+
+##### **RNF05 - Proteção de Dados Pessoais**
+- **Justificativa**: Utilizando protocolos criptografados, como _HTTPS_, e _AWS RDS_ para armazenamento, o sistema assegura que os dados de alunos e profissionais sejam protegidos, seguindo as normas de segurança da _LGPD_.
+
+##### **RNF06 - Manutenibilidade e Padrão de Modularidade**
+- **Justificativa**: Com a modularidade do código e a separação das partes em serviços diferentes de nuvem da AWS, fica fácil a sua manutenção e através do _Amazon IAM_ (_Identity and Access Management_) o acesso e manutenção na própria nuvem são facilitados e, ao mesmo tempo, controlados.
+
+##### **RNF08 - Disponibilidade Alinhada com as Necessidades Operacionais**
+- **Justificativa**: A infraestrutura na AWS com escalabilidade horizontal garante alta disponibilidade, atendendo às necessidades operacionais de 8:00 às 18:00, ou por mais tempo caso necessário, sem interrupções, utilizando Auto Scaling e Amazon CloudWatch para monitoramento.
+
+##### **RNF10 - Validação de Dados**
+- **Justificativa**: A validação de dados será feita tanto na interface do usuário quanto na API Interna, com a sua respectiva lógica de negócio, garantindo que somente dados válidos sejam armazenados no banco, assegurando integridade e a funcionalidade do sistema.
+
+##### **RNF11 - Integração com API do Centro Paula Souza**
+- **Justificativa**: A integração com a API do Centro Paula Souza, representada pela "Api Externa" no diagrama é essencial para o funcionamento do sistema, por isso, o diagrama foi projetado e pensado em utilizá-la.
+
+##### **RNF12 - Backups Automáticos**
+- **Justificativa**: Ao utilizar o _Amazon RDS_ para armazenamento dos dados, é possível configurar backups automáticos com retenção de até 35 dias, garantindo que o banco possa ser restaurado em caso de falha ou perda de dados.
+
 
 ## 6.3 Considerações sobre Desempenho e Segurança
 
-_conteúdo_
+&nbsp;&nbsp;&nbsp;&nbsp;As escolhas de tecnologias e infraestrutura foram realizadas com atenção especial aos requisito de segurança e desempnho do sistema.
+
+
+### 6.3.1 Desempenho
+&nbsp;&nbsp;&nbsp;&nbsp;A arquitetura foi projetado para garantir alta disponibilidade, escalabilidade e eficiência, de acordo com os requisitos do sistema. Abaixo estão considerações de desempenho:
+
+- **1 - Escalabilidade Horizontal (Auto-Scaling):** As instâncias EC2 e RDS utilizam o Auto-Scaling, o que garante que a infraestrutura seja capaz de se ajustar automatiamente à carga de trabalho. Além disso, as réplicas de leitura no RDS ajudam a distribuir a carga de consultas de leitura, o que aumenta a eficiência no acesso dos dados, permitindo que a aplicação manipule grandes volumes de tráfego sem prejudicar a performance.
+
+- **2 - Distribuição de Carga e Processamento:** O uso do AWS Cognito e da API Externa (API do CPS) permite uma divisão eficiente de carga entre os diferentes componentes do sistema. O Cognito lida com a autenticação e o gerenciamento de tokens, enquanto as demais requisições são divididas entre as APIs interna e externa.
+
+- **3 - Manutenção e Monitoramento:** A infraestrutura de logs e o uso de ferramentas de monitoramento da AWS como o CloudWatch permitem identificar gargalos no desempenho, ajudando a otimização contínua do sistema.
+
+### 6.3.2 Segurança
+
+&nbsp;&nbsp;&nbsp;&nbsp;A segurança da aplicação foi considerada em diferentes níveis para proteger os dados e mitigar riscos de ataques. Abaixo estão as implementações voltadas para a segurança:
+
+- **1 - Isolamento de Infraestrutura com VPC:** A aplicação está hospedada em uma VPC (_Virtual Private Cloud_), que proporciona um ambiente isolado para serviços críticos, protegendo-os contra acessos não autorizados da internet. Dentro da VPC foram implementadas duas sub-redes:
+  - **Sub-rede Pública:** Onde o servidor de aplicação da interface está hospedado, permitindo acesso dos usuários.
+  - **Sub-rede Privada:** Onde o servidor de _back-end_ e o banco de dados estão hospedados, garantindo que apenas serviços internos possam acessá-los.
+- **2 - Proteção das Comunicações:** Todas as comunicações utilizam protocolos de comunicação seguros:
+  - **HTTPS** entre o _front-end_ e o _back-end_, garantindo a criptografia dos dados transmitidos por TLS (_Transport Layer Security_).
+  - **Autenticação com JWT** para validar usuários e evitar acessos não autorizados.
+  - **Criptografia em trânsito** através de TLS nas conexões com o banco de dados para evitar interceptação de dados.
+  - **Criptografia em repouso** no banco de dados utilizando AWS KMS (_Key Managment Service_).
+- **3 - Controle de Acesso e Autenticação Segura:** A autenticação de usuários é gerenciada pelo AWS Cognito, utilizando OAuth2 para fornecer acesso seguro. Isso permite um gerenciamento eficiente de credenciais e tokens, implementação de autenticação multifator (MFA) e controle das permissões com base nos perfis de usuário. Além disso, o _back-end_ valida todos os tokens recebidos antes de processar qualquer requisição.
+- **4 - Proteção Contra Ataques** Para mitigar ameaças como ataques DDoS, SQL Injection e Cross-Site Scripting (XSS), podem ser adotadas as seguintes estratégias:
+  - **AWS WAF (_Web Application Firewall_):** para filtrar tráfego malicioso.
+  - **Rate Limiting e Throttling:** na API para evitar sobrecarga e/ou abuso de requisições.
+  - **Monitoramento contínuo com AWS GuardDuty:** para detectar acessos suspeitos.
+- **5 - Logs de Alterações e Backups:** Com todas as alterações registradas, é possível identificar caso haja alguma alteração maliciosa em algum arquivo no banco de dados e agir contra esse acesso, além de reverter os danos com os backups automáticos.
+
 
 # 7. Projeto Visual da Solução
-
-_conteúdo_
 
 ## 7.1 Desenvolvimento de Wireframes
 
@@ -1101,10 +1204,37 @@ _conteúdo_
 
 ## 8.2 Desenvolvimento de Features
 
-**Nota:** Insira uma explicação de entregas em cada Sprint.
+&nbsp;&nbsp;&nbsp;&nbsp;Cada Sprint entrega um conjunto de funcionalidades incrementais e testadas, permitindo a evolução contínua do sistema. A Sprint 3 focou na implementação e integração de funcionalidades essenciais para a gestão de usuários e profissionais.
+
+<div align="center">
+<a href="https://drive.google.com/file/d/1ooYFw8dt1JtjlphX6Dx-DK80j-JlKJMt/view?usp=sharing">Assista ao vídeo de demonstração da Sprint 3</a>
+</div>
+
 
 ## 8.2.1 Sprint 3
 
+### Overview do Desenvolvimento
+
+&nbsp;&nbsp;&nbsp;&nbsp;Nesta Sprint, foram desenvolvidas e integradas funcionalidades fundamentais para o backend e frontend do sistema. O foco principal foi a criação de um fluxo básico de usuários e profissionais, garantindo a estruturação inicial do projeto.
+
+### Backend
+- Implementação do CRUD completo para Profissionais, permitindo criação, leitura, atualização e remoção de registros.
+- Integração do cadastro de usuários ao banco de dados, possibilitando a criação de contas e autenticação.
+- Conexão com um banco de dados hospedado na Aiven, um provedor gratuito de MySQL utilizado para testes. A AWS será considerada para o futuro ambiente de produção.
+
+### Frontend
+- Desenvolvimento das principais páginas e funcionalidades da interface, incluindo:
+  - Página inicial (Home)
+  - Página de login
+  - Cadastro de usuários
+  - Listagem e cadastro de profissionais
+- Integração do frontend com o backend para consumo das APIs de usuários e profissionais.
+
+### Próximos Passos
+- Melhorar a estrutura e a escalabilidade da aplicação visando a migração futura do banco de dados para a AWS.
+- Refinamento da interface do usuário para melhor experiência e usabilidade.
+- Implementação de testes para garantir a estabilidade das funcionalidades desenvolvidas.
+=======
 _conteúdo_
 
 ## 8.2.2 Sprint 4
@@ -1117,7 +1247,57 @@ _conteúdo_
 
 ## 8.3 Testes Unitários e de Integração
 
-_conteúdo_
+### 8.3.1 Testes Unitários
+#### 8.3.1.1 Relatório de cobertura de testes
+
+Este documento apresenta o relatório de cobertura de testes gerado pelo **Jest**, detalhando a cobertura de código por diretório e arquivo.
+
+##### Resumo da Cobertura
+
+<div align="center">
+
+| Diretório/Arquivo         | % Stmts | % Branch | % Funcs | % Lines | Linhas não cobertas |
+|---------------------------|---------|----------|---------|---------|----------------------|
+| **Todos os arquivos**     | **98.83** | **90.47** | **100** | **100** | - |
+| **controllers/**          | **100**  | **100**   | **100** | **100** | - |
+| ├── `ProfissionalController.ts` | 100 | 100 | 100 | 100 | - |
+| **models/**               | **96.29** | **71.42** | **100** | **100** | - |
+| ├── `Profissional.ts`     | 96.29 | 71.42 | 100 | 100 | 26-59 |
+| **utils/**                | **100**  | **100**   | **100** | **100** | - |
+| ├── `asyncHandler.ts`     | 100 | 100 | 100 | 100 | - |
+
+<sup>Fonte: Relatório gerado automaticamente pelo Jest</sup>
+</div>
+
+#### Análise
+
+- **Controllers:** O diretório `controllers/` possui **100%** de cobertura em todos os critérios, indicando que todos os trechos de código foram testados.
+
+- **Models:** O diretório `models/` possui **96.29%** de cobertura de instruções e **71.42%** de cobertura de branches. O arquivo `Profissional.ts` apresenta algumas linhas não testadas no intervalo **26-59**. Essas linhas na verdade representam parte do repositório, que é uma simulação do banco de dados.
+- **Utils:** O diretório `utils/` também possui **100%** de cobertura, garantindo que todas as funções auxiliares foram devidamente testadas.
+
+#### 8.3.1.2 Conclusão e Próximos Passos
+
+- A cobertura geral é **excelente** (**98.83%** de instruções e **100%** de funções).
+- Manter a cobertura alta ao adicionar novas funcionalidades e refatorações.
+
+#### 8.3.1.3 Execução dos Testes
+
+A execução dos testes unitários utilizaram do Jest. O passo a passo para executar os testes é:
+
+1. Abra o terminal ou PowerShell
+2. Acesse a pasta /src/backend do repositório com o comando `cd <path_to_repo>/src/backend`
+3. Instale e atualize os pacotes com `npm install`
+4. Execute os testes através do comando `npm test`
+
+Todos os testes executados passaram e estão representados na imagem abaixo: 
+
+<div align="center">
+<sub>Figura X - Execução dos Testes no Terminal</sub><br>
+<img src="../documentos/img/passed_tests.png" width="80%"><br>
+<sup>Fonte: Material produzido pelos autores (2025)</sup>
+</div>
+
 
 ## 8.4 Documentações automáticas
 
@@ -1125,15 +1305,39 @@ _conteúdo_
 
 # 9. Planejamento e Execução de Testes
 
-_conteúdo_
+&nbsp;&nbsp;&nbsp;&nbsp; O planejamento e a execução de testes são essenciais para garantir a qualidade, confiabilidade e usabilidade do sistema. Para isso, serão realizados testes funcionais, não funcionais e de usabilidade, abrangendo desde a verificação das funcionalidades até a avaliação do desempenho, segurança e experiência do usuário. 
+
+&nbsp;&nbsp;&nbsp;&nbsp; O planejamento e a execução de testes garantem que o sistema atenda aos requisitos definidos e seja utilizável pelos diferentes perfis de usuários. Os testes foram organizados em categorias funcionais, não funcionais e de usabilidade, considerando a técnica do funil [(saiba mais)](https://www.nngroup.com/articles/the-funnel-technique-in-qualitative-user-research/).
 
 ## 9.1 Testes Funcionais
 
-_conteúdo_
+ Os testes funcionais validam o comportamento esperado do sistema com base nos **Requisitos Funcionais (RFs)** estabelecidos. O objetivo desses testes é garantir que todas as funcionalidades atendam aos requisitos de negócio e projeto, verificando a correção das operações realizadas, o fluxo dos dados e a resposta do sistema em diferentes cenários.
 
-## 9.1.1 Planejamento
+Os testes foram planejados com casos positivos e negativos, cobrindo diferentes contextos de uso. Cada teste apresenta:
+- **O requisito funcional associado**
+- **Uma descrição detalhada do teste**
+- **As pré-condições necessárias**
+- **Os critérios de aceitação**
+- **Os critérios de falha**
 
-_conteúdo_
+Os resultados desses testes permitirão validar o funcionamento correto do sistema antes da sua entrega.
+
+### **9.1.1 Planejamento**
+
+A tabela a seguir apresenta os testes planejados para validar os **Requisitos Funcionais (RFs)** do sistema.
+
+| Caso de Teste | RF#   | Descrição do Teste | Pré-condição | Caso de Aceite | Caso de Recusa |
+|--------------|------|------------------|--------------|----------------|----------------|
+| **CT001** | **RF001** | Testar o cadastro de um novo profissional. | O sistema está online e o usuário tem permissão para cadastrar profissionais. | O profissional é cadastrado com sucesso e aparece na lista de profissionais. | O sistema exibe uma mensagem de erro ou nada acontece após tentar cadastrar. |
+| **CT002** | **RF002** | Testar a associação de um aluno a um profissional. | O aluno e o profissional já estão cadastrados no sistema. | A associação é criada com sucesso e aparece na lista de associações. | O sistema exibe uma mensagem de erro ou nada acontece após tentar associar. |
+| **CT003** | **RF003** | Testar a exibição do dashboard de BI. | O sistema possui dados de alunos, unidades e gestão. | O dashboard é exibido com gráficos e tabelas atualizados. | O dashboard não é exibido ou os dados estão incorretos. |
+| **CT004** | **RF004** | Testar o acompanhamento de um aluno com deficiência. | O aluno e o profissional já estão cadastrados e associados. | O histórico e o status do aluno são exibidos corretamente. | O sistema exibe uma mensagem de erro ou dados incorretos. |
+| **CT005** | **RF005** | Testar a autenticação de um usuário. | O usuário possui credenciais válidas. | O usuário é autenticado com sucesso e tem acesso às funcionalidades permitidas. | O sistema exibe uma mensagem de erro ou o acesso é negado. |
+| **CT006** | **RF006** | Testar a edição de perfil de um usuário. | O usuário está autenticado e possui permissão para editar o perfil. | As informações do perfil são atualizadas com sucesso. | O sistema exibe uma mensagem de erro ou as informações não são atualizadas. |
+| **CT007** | **RF007** | Testar a pesquisa de alunos e profissionais. | O sistema possui dados de alunos e profissionais cadastrados. | Os resultados da pesquisa são exibidos corretamente. | O sistema exibe uma mensagem de erro ou resultados incorretos. |
+| **CT008** | **RF008** | Testar a visualização do histórico de alterações. | O sistema possui registros de alterações. | O histórico de alterações é exibido corretamente. | O sistema exibe uma mensagem de erro ou o histórico não é exibido. |
+
+Cada caso de teste será executado considerando **cenários positivos e negativos**, garantindo que o sistema se comporte corretamente em diferentes condições.
 
 ## 9.1.2 Resultados
 
@@ -1141,11 +1345,43 @@ _conteúdo_
 
 ## 9.2 Testes de RNFs
 
-_conteúdo_
+Os testes de requisitos não funcionais validam aspectos de **desempenho, acessibilidade, segurança, compatibilidade e confiabilidade** do sistema, garantindo que ele funcione corretamente além das suas funcionalidades básicas.
+
+Os testes planejados cobrem:
+- **Eficiência de desempenho**: Tempo de resposta do sistema sob diferentes cargas.
+- **Usabilidade e acessibilidade**: Uso adequado por pessoas com deficiência visual e operacionalidade eficiente.
+- **Segurança**: Proteção de dados, autenticação e níveis de acesso.
+- **Compatibilidade**: Funcionamento correto em múltiplos navegadores e integração com APIs externas.
+- **Confiabilidade**: Disponibilidade do sistema e sua capacidade de recuperação de falhas.
+
+Cada teste inclui:
+- **O requisito não funcional associado**
+- **Uma descrição detalhada do teste**
+- **As pré-condições necessárias**
+- **Os critérios de aceitação**
+- **Os critérios de falha**
 
 ## 9.2.1 Planejamento
 
-_conteúdo_
+&nbsp;&nbsp;&nbsp;&nbsp;A tabela a seguir apresenta os testes planejados para validar os **Requisitos Não Funcionais (RNFs)** do sistema.
+
+| Caso de Teste | RNF#   | Descrição do Teste | Pré-condição | Caso de Aceite | Caso de Recusa |
+|--------------|------|------------------|--------------|----------------|----------------|
+| **CT-001** | **RNF01** | Testar o tempo de resposta para consultas de dados. | O sistema está operando com carga normal e sob estresse. | Consultas são feitas em menos de 0,8 segundo. | Consultas excedem 0,8 segundo de tempo de resposta. |
+| **CT-002** | **RNF02** | Testar usabilidade com leitor de tela e acessibilidade. | O leitor de tela está ativado. | Usuário com deficiência consegue usar a aplicação sem dificuldades. | Usuário com deficiência não consegue utilizar a aplicação. |
+| **CT-003** | **RNF03** | Testar se o assessor encontra alunos e profissionais com, no máximo, 3 cliques. | Usuário assessor logado no sistema. | Usuário encontra alunos e profissionais com até 3 cliques. | Usuário precisa de mais de 3 cliques para encontrar alunos e profissionais. |
+| **CT-004** | **RNF04** | Testar níveis de acesso dos usuários para garantir segurança. | Perfis de usuários criados com permissões diferenciadas. | Cada tipo de login acessa apenas suas funcionalidades. | Um tipo de login acessa informações de outro perfil. |
+| **CT-005** | **RNF05** | Testar segurança da transmissão de dados contra interceptação. | O sistema está em funcionamento normal. | O invasor não consegue obter os dados brutos. | O invasor consegue acessar os dados brutos. |
+| **CT-006** | **RNF06** | Testar a modularidade e documentação do código ao adicionar uma nova funcionalidade. | O código está modularizado e documentado. | A funcionalidade é adicionada sem impactar outras partes do sistema. | A adição da funcionalidade gera erros nas demais funções. |
+| **CT-007** | **RNF07** | Testar funcionamento da aplicação nos navegadores Chrome, Firefox, Edge e Safari. | A aplicação está acessível nos navegadores testados. | A aplicação funciona integralmente em todos os navegadores. | A aplicação apresenta falhas em um ou mais navegadores. |
+| **CT-008** | **RNF08** | Monitorar a disponibilidade do sistema ao longo do tempo. | O sistema está em produção. | A aplicação mantém disponibilidade de 99,5% ou mais. | O sistema fica fora do ar por mais tempo que o permitido. |
+| **CT-009** | **RNF09** | Testar exibição de mensagens claras em caso de erro. | O sistema está operando normalmente. | O sistema exibe mensagens de erro claras e compreensíveis. | O sistema não exibe mensagens ou elas são confusas. |
+| **CT-010** | **RNF10** | Testar atualização simultânea do mesmo dado em dois dispositivos. | Dois dispositivos acessando a aplicação ao mesmo tempo. | O sistema valida corretamente os dados e mantém a integridade. | A aplicação permite atualizações incorretas ou inconsistentes. |
+| **CT-011** | **RNF11** | Testar a integração com a API do Centro Paula Souza. | O sistema está online e a API do Centro Paula Souza está disponível. | Os dados dos alunos são retornados corretamente e sem erros. | O sistema exibe uma mensagem de erro informando falha na integração. |
+| **CT-012** | **RNF12** | Testar o backup automático de dados. | O sistema está configurado para realizar backups periódicos. | O backup ocorre na frequência estabelecida e pode ser restaurado corretamente. | O sistema não realiza o backup ou os dados não podem ser restaurados. |
+| **CT-013** | **RNF13** | Testar os requisitos de acessibilidade (WCAG). | O sistema está implementado conforme as diretrizes WCAG. | Usuários com deficiência conseguem utilizar a aplicação sem barreiras. | O sistema apresenta dificuldades de navegação ou acessibilidade deficiente. |
+
+&nbsp;&nbsp;&nbsp;&nbsp;Os testes planejados garantem que o sistema atenda aos requisitos de **desempenho, usabilidade, segurança e confiabilidade**, assegurando sua **eficiência, acessibilidade e estabilidade**.
 
 ## 9.2.2 Resultados
 
@@ -1153,11 +1389,76 @@ _conteúdo_
 
 ## 9.3 Testes de Usabilidade
 
-_conteúdo_
+&nbsp;&nbsp;&nbsp;&nbsp; Os testes serão conduzidos com diferentes perfis de usuários, incluindo gestores administrativos, gestores de unidade e assessores, além de considerarem acessibilidade para pessoas com deficiência visual que utilizam leitores de tela.
+
+&nbsp;&nbsp;&nbsp;&nbsp; Os testes de usabilidade seguem o modelo de **teste de caixa preta** e são exclusivamente qualitativos, focando na interação dos usuários com o sistema e na identificação de dificuldades durante a execução de tarefas.
+
+&nbsp;&nbsp;&nbsp;&nbsp; Os resultados permitirão identificar dificuldades e ajustar o sistema conforme as necessidades dos perfis testados. Os principais critérios avaliados são:
+
+- **Eficácia**: Mede a taxa de sucesso na execução de uma tarefa. Um teste eficaz verifica se o usuário conseguiu concluir a tarefa sem erros ou interrupções.
+- **Eficiência**: Avalia o esforço necessário para completar uma tarefa, considerando tempo e recursos utilizados.
+- **Satisfação**: Reflete a percepção do usuário sobre a facilidade e conforto na execução da tarefa.
 
 ## 9.3.1 Planejamento
 
-_conteúdo_
+&nbsp;&nbsp;&nbsp;&nbsp; Os testes foram estruturados para representar situações reais de uso, considerando diferentes perfis de usuários e cenários aplicáveis.
+
+
+#### 9.3.1.1 Definir o Público-Alvo
+
+&nbsp;&nbsp;&nbsp;&nbsp; Os testes serão realizados com:
+
+- **Gestor Administrativo (GA):** Usuário responsável pelo gerenciamento geral do sistema.
+- **Gestor Unidade (GU):** Usuário que administra uma unidade específica e gerencia os atendimentos.
+- **Assessor:** Profissional responsável pelo acompanhamento e execução dos atendimentos.
+- **Usuários com deficiência visual:** Todos os testes serão conduzidos considerando acessibilidade via leitores de tela.
+
+#### 9.3.1.2 Roteiro de Testes por Tipo de Usuário
+
+&nbsp;&nbsp;&nbsp;&nbsp; Os testes foram classificados conforme os critérios de **eficácia, eficiência e satisfação**, descritos no planejamento.
+
+### **Roteiro de Testes para Gestor Administrativo (GA)**
+
+| Passo | Atividade | Critério Avaliado | Pergunta ao Usuário |
+|-------|-----------|-------------------|----------------------|
+| 1 | Acessar a Home e verificar os menus e atalhos. | Eficiência | Os menus estão organizados de forma intuitiva? |
+| 2 | Cadastrar um novo profissional. | Eficácia | O processo de cadastro foi concluído sem dificuldades? Agora cadastre um novo profissional. |
+| 3 | Filtrar profissionais por unidade e cargo. | Eficiência | Os filtros retornaram os resultados esperados? Agora filtre os profissionais da unidade XPTO. |
+| 4 | Consultar atendimentos registrados no sistema. | Eficácia | As informações do atendimento estão bem organizadas? Agora encontre o aluno XPTO. |
+| 5 | Testar uso com leitor de tela. | Satisfação | Você conseguiu navegar sem dificuldades usando o leitor de tela? |
+
+### **Roteiro de Testes para Gestor Unidade (GU)**
+
+| Passo | Atividade | Critério Avaliado | Pergunta ao Usuário |
+|-------|-----------|-------------------|----------------------|
+| 1 | Navegar entre os menus da unidade. | Eficiência | A interface é intuitiva? Agora navegue até a seção de relatórios. |
+| 2 | Cadastrar um novo aluno. | Eficácia | O cadastro do aluno foi direto? Agora cadastre um aluno chamado XPTO. |
+| 3 | Vincular um profissional a um atendimento. | Eficácia | A vinculação do profissional foi simples? Agora vincule o aluno XPTO a um profissional. |
+| 4 | Avaliar a usabilidade do Dashboard. | Eficiência | As informações do Dashboard foram fáceis de interpretar? |
+| 5 | Testar navegação com leitor de tela. | Satisfação | O sistema ofereceu uma boa experiência de acessibilidade? |
+
+### **Roteiro de Testes para Assessor**
+
+| Passo | Atividade | Critério Avaliado | Pergunta ao Usuário |
+|-------|-----------|-------------------|----------------------|
+| 1 | Filtrar atendimentos por aluno. | Eficiência | Foi fácil encontrar o atendimento desejado? Agora encontre o atendimento do aluno XPTO. |
+| 2 | Criar um novo atendimento e adicionar observações. | Eficácia | O sistema permitiu adicionar informações sem dificuldades? Agora registre um novo atendimento. |
+| 3 | Editar um atendimento existente. | Eficácia | O processo de edição foi intuitivo? Agora edite um atendimento existente. |
+| 4 | Preencher formulários na interface. | Eficiência | O preenchimento foi rápido e eficiente? |
+| 5 | Utilizar leitor de tela. | Satisfação | Houve alguma dificuldade ao usar o leitor de tela? |
+
+#### 9.3.1.3 Perguntas para Entrevista Pós-Teste
+
+Cada participante responderá perguntas estruturadas sobre a usabilidade do sistema:
+
+1. A interface foi intuitiva e de fácil navegação?
+2. Alguma funcionalidade apresentou dificuldades de uso?
+3. O sistema apresentou informações claras e compreensíveis?
+4. Para usuários com deficiência visual, houve barreiras de acessibilidade?
+5. O sistema é parecido com algum já utilizado por vocês no Centro Paula Souza?
+6. Dessas atividades que você realizou no teste, qual você acredita que realizaria com mais frequência na sua rotina de trabalho?
+7. O que poderia ser melhorado para tornar a experiência mais eficiente?
+
 
 ## 9.3.2 Resultados
 

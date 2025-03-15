@@ -11,6 +11,7 @@
 
 ## Nome do Grupo: LinkUp
 
+
 ## Integrantes:
 
 - <a href="https://www.linkedin.com/in/arthur-bretas/">Arthur Bretas Oliveira</a>
@@ -45,54 +46,11 @@
 &nbsp;&nbsp;&nbsp;&nbsp;Este documento tem como objetivo registrar a evolução do trabalho realizado pelo grupo LinkUp, ao longo do desenvolvimento do projeto. Por meio do destaque dos pontos fortes e fracos ao longo das sprints, além de ações de melhorias a serem realizadas para melhor desenvolvimento do grupo.
 
 
-# 2. Backlog do Projeto
+&nbsp;&nbsp;&nbsp;&nbsp;Este documento tem como objetivo registrar a evolução do trabalho realizado pelo grupo LinkUp, ao longo do desenvolvimento do projeto. Por meio do destaque dos pontos fortes e fracos ao longo das sprints, além de ações de melhorias a serem realizadas para melhor desenvolvimento do grupo.
 
-## 2.2 Análise de desempenho
+# 2. Avaliação das Sprints
 
-## 2.2.1 Sprint 1
-
-### Análise da Sprint Review
-#### Pontos Fortes
-- Boa colaboração entre os membros da equipe
-- Comunicação eficiente em reuniões
-- Capacidade de adaptação a mudanças e novas demandas
-- Resolução rápida de bugs e impedimentos técnicos
-- Documentação de algumas tasks bem detalhada
-- Entrega dentro do prazo da sprint
-#### Pontos Fracos
-- Tempo exagerado em colunas não produtivas (ex: "Aguardando Review" por muito tempo)
-- Pouca utilização de Definição de Pronto e Feito
-- Pouca utilização do Slack para alinhamento rápido
-- Dificuldade em estimar corretamente o tempo necessário para cada task
-- Quebrar as tasks em tamanhos menores para evitar extrapolar o tempo de um dev.
-
-### Ações de Melhoria para os Pontos Fracos
-
-#### 1. Tempo exagerado em colunas não produtivas ("Aguardando Review" por muito tempo)
-##### Ações de melhoria:
-- Definir um SLA para revisões: Estabelecer um prazo máximo (ex: 24h) para que as PRs sejam revisadas.
-- Dailys: Utilizar as Dailys para lembrar os membros do grupo a revisar uma task ou então a puxar uma task.
-
-#### 2. Pouca utilização de Definição de Pronto e Feito
-##### Ações de melhoria:
-- Definir claramente o DoD (Definition of Done) e DoR (Definition of Ready): Definir DoD e DoR das tasks de documentação e código.
-- Incorporar nas dailies: Sempre reforçar o DoD/DoR durante as reuniões diárias para garantir alinhamento.
-
-#### 3. Pouca utilização do Slack para alinhamento rápido
-#### Ação de melhoria:
-- Padronizar o Slack como canal de comunicação principal.
-
-#### 4. Dificuldade em estimar corretamente o tempo necessário para cada task
-##### Ações de melhoria:
-- Revisão de estimativas anteriores: Analisar retrospectivamente as estimativas feitas e identificar padrões de erro.
-- Planning Poker: Utilizar técnicas de estimativa colaborativa para tornar os valores mais realistas.
-- Divisão por complexidade: Criar categorias de estimativas com base em critérios objetivos (ex: fácil = 30m, médio = 1h, difícil = 2h).
-
-#### 5. Quebrar as tasks em tamanhos menores para evitar extrapolar o tempo de um dev
-##### Ações de melhoria:
-- Seguir a regra do "se não pode ser feita em um dia, quebre mais": Garantir que nenhuma task seja grande demais para ser concluída em uma dev.
-- Checklist dentro das tasks: Criar subtarefas dentro de cada tarefa para ajudar na divisão.
-- Revisão antes de iniciar: Antes de começar qualquer tarefa grande, a equipe revisa para avaliar se pode ser melhor dividida.
+## 2.1 Sprint 1
 
 ### Análise da Sprint Review
 
@@ -203,7 +161,50 @@
 
 ## 2.3 Sprint 3
 
-_conteúdo_
+### Análise da Sprint Review
+
+#### **Pontos Fortes**
+
+- Alta quantidade de tasks entregues e valor agregado.
+- Adiantamento de tasks do banco de dados na sprint anterior.
+- Boa resolução de conflitos.
+
+#### **Pontos Fracos**
+
+- Tempo reduzido de trabalho, gerando acúmulo de tasks.
+- Pouco detalhamento das atividades nas dailys.
+- Nem todos os membros estavam a par do que estava sendo desenvolvido.
+
+### Ações de Melhoria para os Pontos Fracos
+
+#### 1. Tempo reduzido de trabalho, gerando acúmulo de tasks
+
+##### Ações de melhoria:
+
+- Melhor distribuição das tasks para evitar sobrecarga no final da sprint.
+- Priorização mais clara das atividades essenciais.
+- Monitoramento constante do progresso e ajuste de metas conforme necessário.
+
+#### 2. Pouco detalhamento das atividades nas dailys.
+
+##### Ações de melhoria:
+
+- Reforçar a importância de explicar não apenas o que foi feito, mas também desafios e impactos no projeto.
+- Incentivar perguntas e feedbacks para melhorar a clareza das informações compartilhadas.
+
+#### 3. Nem todos os membros estavam a par do que estava sendo desenvolvido.
+
+##### Ações de melhoria:
+
+- Melhorar a documentação das tasks no kanban para que todos tenham visibilidade.
+- Definir reuniões curtas semanais para alinhamento geral do projeto.
+- Criar resumos semanais com atualizações-chave e compartilhar no Slack.
+
+### Ações realizadas após a Sprint 2
+
+&nbsp;&nbsp;&nbsp;&nbsp;Durante a Sprint 3, a equipe implementou algumas das ações de melhoria propostas anteriormente para otimizar o fluxo de trabalho e reduzir retrabalho. A revisão das tasks foi incorporada, permitindo um melhor acompanhamento do progresso e garantindo que as tarefas continuassem alinhadas com os requisitos. Além disso, houve um esforço maior para validar as tarefas, antes da execução, o que a visava evitar sobreposição de atividades, embora isso não tenha funcionado totalmente devido o pequeno espaço de tempo da sprint e algumas falhas de comunicação.
+
+&nbsp;&nbsp;&nbsp;&nbsp;Além disso, o alinhamento antes da execução das tasks ainda não foi totalmente eficaz, impactando a clareza na distribuição do trabalho. As dailys também tiveram uma evolução, tornando-se um pouco mais completas, mas ainda carecem de mais detalhamento sobre o que está sendo realmente desenvolvido, o que pode gerar falhas na comunicação e dificuldades na coordenação das atividades.
 
 ## 2.4 Sprint 4
 

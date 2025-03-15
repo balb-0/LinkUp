@@ -1,0 +1,31 @@
+import { mergeApplicationConfig, ApplicationConfig } from '@angular/core';
+import { provideServerRendering } from '@angular/platform-server';
+import { provideServerRouting } from '@angular/ssr';
+import { appConfig } from './app.config';
+import { serverRoutes } from './app.routes.server';
+import { AuthService } from '@auth0/auth0-angular';
+import { of } from 'rxjs';
+
+
+class MockAuthService {
+  // Usando Observable real com of() do rxjs
+  isAuthenticated$ = of(false);
+  user$ = of(null);
+  
+  loginWithRedirect() {}
+  logout() {}
+  handleRedirectCallback() { return Promise.resolve({ appState: null }); }
+}
+
+const serverConfig: ApplicationConfig = {
+  providers: [
+    provideServerRendering(),
+    provideServerRouting(serverRoutes),
+    
+    { provide: AuthService, useClass: MockAuthService }
+  ]
+};
+
+// Cria uma nova configuração mesclando a configuração do app com a configuração do servidor
+// A configuração do servidor substituirá qualquer provedor conflitante da configuração do app
+export const config = mergeApplicationConfig(appConfig, serverConfig);

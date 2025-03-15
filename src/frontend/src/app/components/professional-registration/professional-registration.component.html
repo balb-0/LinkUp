@@ -1,0 +1,40 @@
+<form [formGroup]="profissionalForm" (ngSubmit)="cadastrarProfissional()">
+  <fieldset class="flex justify-center items-center flex-col gap-[10px]">
+    <legend class="text-center text-[25px] font-bold mb-[20px]">Cadastrar Profissional</legend>
+
+    <div>
+      <label class="mb-4 block font-medium" for="nome">Nome Completo</label>
+      <input id="nome" type="text" formControlName="nome"
+        class="w-[460px] h-[60px] p-2 rounded-md mb-4 bg-branco"
+        [ngClass]="{'border border-red-500': campoInvalido('nome')}">
+      @if (campoInvalido('nome')) {
+        <p class="text-red-500 text-sm mt-1">Nome é obrigatório</p>
+      }
+    </div>
+
+    <div>
+      <label class="mb-4 block font-medium" for="email">E-mail</label>
+      <input id="email" type="email" formControlName="email"
+        class="w-[460px] h-[60px] p-2 rounded-md mb-4 bg-branco"
+        [ngClass]="{'border border-red-500': campoInvalido('email')}">
+      @if (campoInvalido('email')) {
+        <p class="text-red-500 text-sm mt-1">E-mail válido é obrigatório</p>
+      }
+    </div>
+
+    <div>
+      <label class="mb-4 block font-medium" for="ocupacao">Ocupação</label>
+      <input id="ocupacao" type="text" formControlName="ocupacao"
+        class="w-[460px] h-[60px] p-2 rounded-md mb-6 bg-branco"
+        [ngClass]="{'border border-red-500': campoInvalido('ocupacao')}">
+      @if (campoInvalido('ocupacao')) {
+        <p class="text-red-500 text-sm mt-1">Ocupação é obrigatória</p>
+      }
+    </div>
+
+    <button type="submit" class="font-poppins w-[220px] h-[50px] text-[24px] bg-verde text-white py-2 rounded-md">
+      {{ isSubmitting ? 'Enviando...' : 'Cadastrar' }}
+    </button>
+
+  </fieldset>
+</form>
