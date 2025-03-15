@@ -1217,7 +1217,10 @@ _conteúdo_
 
 &nbsp;&nbsp;&nbsp;&nbsp;Cada Sprint entrega um conjunto de funcionalidades incrementais e testadas, permitindo a evolução contínua do sistema. A Sprint 3 focou na implementação e integração de funcionalidades essenciais para a gestão de usuários e profissionais.
 
----
+<div align="center">
+<a href="https://drive.google.com/file/d/1ooYFw8dt1JtjlphX6Dx-DK80j-JlKJMt/view?usp=sharing">Assista ao vídeo de demonstração da Sprint 3</a>
+</div>
+
 
 ## 8.2.1 Sprint 3
 

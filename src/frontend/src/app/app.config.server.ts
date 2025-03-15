@@ -4,26 +4,13 @@ import { provideServerRouting } from '@angular/ssr';
 import { appConfig } from './app.config';
 import { serverRoutes } from './app.routes.server';
 import { AuthService } from '@auth0/auth0-angular';
+import { of } from 'rxjs';
 
 
 class MockAuthService {
-  isAuthenticated$ = {
-    pipe: () => ({
-      subscribe: (callback: any) => {
-        if (callback) callback(false);
-        return { unsubscribe: () => {} };
-      }
-    })
-  };
-  
-  user$ = {
-    pipe: () => ({
-      subscribe: (callback: any) => {
-        if (callback) callback(null);
-        return { unsubscribe: () => {} };
-      }
-    })
-  };
+  // Usando Observable real com of() do rxjs
+  isAuthenticated$ = of(false);
+  user$ = of(null);
   
   loginWithRedirect() {}
   logout() {}
