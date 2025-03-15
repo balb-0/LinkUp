@@ -20,38 +20,9 @@
           </h1>
           <div class="border-none shadow-none bg-transparent w-[462px]">
             <div class="p-0 space-y-8">
-              <!-- Email field -->
-              <div class="space-y-2">
-                <label
-                  for="email"
-                  class="block !font-leagueSpartan font-semibold text-[#333333] text-2xl"
-                >
-                  E-mail
-                </label>
-                <input
-                  id="email"
-                  type="email"
-                  name="email"
-                  #emailInput
-                  class="h-[60px] bg-[#E2E2E2] rounded border-none w-full"
-                />
-              </div>
-              <!-- Password field -->
-              <div class="space-y-2">
-                <label
-                  for="password"
-                  class="block !font-leagueSpartan !font-semibold text-[#333333] text-2xl"
-                >
-                  Senha
-                </label>
-                <input
-                  id="password"
-                  type="password"
-                  name="password"
-                  #passwordInput
-                  class="h-[60px] bg-[#E2E2E2] rounded border-none w-full"
-                />
-              </div>
+              <!-- Auth0 Login Button -->
+              <app-auth-button></app-auth-button>
+              
               <!-- Links -->
               <div class="flex justify-between">
                 <a
@@ -67,18 +38,6 @@
                   Esqueceu a senha?
                 </a>
               </div>
-              <!-- Confirm button -->
-              <div class="flex justify-center pt-6">
-                <button type="submit" class="!w-[220px] sm:!w-[180px] md:!w-[200px] lg:!w-[220px]
-                  !h-[60px] sm:!h-[50px] md:!h-[55px] lg:!h-[60px]
-                  !bg-[#0E6053] hover:!bg-[#0E6053]/90
-                  !rounded
-                  !font-poppins !font-bold
-                  !text-branco
-                  !text-2xl sm:!text-xl md:!text-2xl">
-                    Confirmar
-                  </button>
-                </div>
             </div>
           </div>
           <!-- Logo at bottom -->

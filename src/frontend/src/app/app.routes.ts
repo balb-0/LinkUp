@@ -7,29 +7,35 @@ import { ProfessionalsComponent } from './pages/professionals/professionals.comp
 import { StudentsComponent } from './pages/students/students.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
-import { LoginComponent } from './pages/login/login.component';;
+import { LoginComponent } from './pages/login/login.component';
+import { authGuard } from './guards/auth.guard';
 
 
 export const routes: Routes = [
   {
     path: '',
-    component: HomepageComponent
+    component: HomepageComponent,
+    canActivate: [authGuard]
   },
   {
     path: 'history',
-    component: HistoryComponent
+    component: HistoryComponent,
+    canActivate: [authGuard]
   },
   {
     path: 'dashboard',
-    component: DashboardComponent
+    component: DashboardComponent,
+    canActivate: [authGuard]
   },
   {
     path: 'professionals',
-    component: ProfessionalsComponent
+    component: ProfessionalsComponent,
+    canActivate: [authGuard]
   },
   {
     path: 'students',
-    component: StudentsComponent
+    component: StudentsComponent,
+    canActivate: [authGuard]
   },
   {
     path: 'login',

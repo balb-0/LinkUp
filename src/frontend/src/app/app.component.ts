@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { Router, NavigationEnd, RouterModule } from '@angular/router';
 import { filter, map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { AuthService } from '@auth0/auth0-angular';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +19,7 @@ import { Observable } from 'rxjs';
 export class AppComponent {
   shouldShowNav$: Observable<boolean>;
   
-  constructor(private router: Router) {
+  constructor(private router: Router, public auth: AuthService) {
     // Essa observable emitirá 'true' se a rota atual NÃO for login ou register
     this.shouldShowNav$ = this.router.events.pipe(
       filter((event): event is NavigationEnd => event instanceof NavigationEnd),

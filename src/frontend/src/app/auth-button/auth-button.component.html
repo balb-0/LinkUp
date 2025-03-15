@@ -1,0 +1,15 @@
+<ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
+  <button 
+    (click)="auth.logout({ logoutParams: { returnTo: document.location.origin } })"
+    class="w-full h-[60px] bg-[#7e0000] text-white rounded-md font-leagueSpartan font-semibold text-xl">
+    Sair
+  </button>
+</ng-container>
+
+<ng-template #loggedOut>
+  <button 
+    (click)="auth.loginWithRedirect()"
+    class="w-full h-[60px] bg-[#7e0000] text-white rounded-md font-leagueSpartan font-semibold text-xl">
+    Entrar
+  </button>
+</ng-template>
