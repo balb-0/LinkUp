@@ -1,3 +1,4 @@
+-- Inserção de Usuários
 INSERT INTO Usuario (nome, email, senha, cargo) VALUES
 ('Ana Souza', 'ana.souza@email.com', 'senha123', 'Gerente Administrativo'),
 ('Carlos Lima', 'carlos.lima@email.com', 'senha456', 'Gerente Administrativo'),
@@ -5,13 +6,15 @@ INSERT INTO Usuario (nome, email, senha, cargo) VALUES
 ('Ricardo Mendes', 'ricardo.mendes@email.com', 'senha321', 'Gerente de Unidade'),
 ('Fernanda Rocha', 'fernanda.rocha@email.com', 'senha654', 'Gerente de Unidade');
 
-INSERT INTO Profissional (nome, email) VALUES
-('Dr. João Martins', 'joao.martins@email.com'),
-('Dra. Paula Silva', 'paula.silva@email.com'),
-('Dr. Lucas Santos', 'lucas.santos@email.com'),
-('Dra. Beatriz Costa', 'beatriz.costa@email.com'),
-('Dr. Eduardo Freitas', 'eduardo.freitas@email.com');
+-- Inserção de Profissionais com ocupação
+INSERT INTO Profissional (nome, email, ocupacao) VALUES
+('Dr. João Martins', 'joao.martins@email.com', 'Psicólogo'),
+('Dra. Paula Silva', 'paula.silva@email.com', 'Pedagoga'),
+('Dr. Lucas Santos', 'lucas.santos@email.com', 'Médico'),
+('Dra. Beatriz Costa', 'beatriz.costa@email.com', 'Fisioterapeuta'),
+('Dr. Eduardo Freitas', 'eduardo.freitas@email.com', 'Instrutor de Inclusão');
 
+-- Inserção de Alunos
 INSERT INTO Aluno (nome, unidade, curso, turno, necessidade_especial) VALUES
 ('Lucas Pereira', 'Unidade Central', 'Engenharia', 'Matutino', 'Nenhuma'),
 ('Juliana Ribeiro', 'Unidade Leste', 'Ciência da Computação', 'Noturno', 'Deficiência visual'),
@@ -19,6 +22,7 @@ INSERT INTO Aluno (nome, unidade, curso, turno, necessidade_especial) VALUES
 ('Tatiane Oliveira', 'Unidade Sul', 'Medicina', 'Integral', 'Deficiência auditiva'),
 ('André Mendes', 'Unidade Oeste', 'Arquitetura', 'Matutino', 'Nenhuma');
 
+-- Inserção de Tecnologias Assistivas
 INSERT INTO Tecnologia_Assistiva (nome) VALUES
 ('Leitor de Tela'),
 ('Teclado Adaptado'),
@@ -26,6 +30,7 @@ INSERT INTO Tecnologia_Assistiva (nome) VALUES
 ('Software de Comando por Voz'),
 ('Lupa Eletrônica');
 
+-- Inserção de Atendimentos
 INSERT INTO Atendimento (aluno_id, data_atendimento, tipo_atendimento, profissional_id, tecnologia_assistiva_id) VALUES
 (1, '2024-02-01 10:00:00', 'Consulta Psicológica', 1, 2),
 (2, '2024-02-05 14:30:00', 'Atendimento Pedagógico', 2, 1),
