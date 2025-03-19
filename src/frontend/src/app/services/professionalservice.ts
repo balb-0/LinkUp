@@ -36,4 +36,9 @@ export class ProfissionalService {
   remover(id: string): Observable<any> {
     return this.http.delete(`${this.apiUrl}/Remover/${id}`);
   }
+
+  // Limpar cache
+  limparCache(): Observable<any> {
+    return this.http.post(`${this.apiUrl}/limpar-cache`, {});
+  }
 }

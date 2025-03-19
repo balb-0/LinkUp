@@ -6,6 +6,8 @@ import { ProfissionalService } from '../../services/professionalservice';
 import { Profissional } from '../../models/professional';
 import { TableColumn, TableComponent } from '../../components/table/table.component';
 import { ProfessionalRegistrationComponent } from '../../components/professional-registration/professional-registration.component';
+import { ProfessionalStateService } from '../../services/professional-state.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-professionals',
@@ -14,7 +16,7 @@ import { ProfessionalRegistrationComponent } from '../../components/professional
   templateUrl: './professionals.component.html',
   styleUrls: ['./professionals.component.css']
 })
-export class ProfessionalsComponent implements OnInit {
+export class ProfessionalsComponent implements OnInit, OnDestroy {
   tableData: any[] = [];
   tableColumns: TableColumn[] = [
     { key: 'nome', header: 'Nome' },
@@ -24,14 +26,34 @@ export class ProfessionalsComponent implements OnInit {
   profissionais: Profissional[] = [];
   loading = false;
   error = '';
+  private subscription: Subscription | null = null;
 
-  constructor(private profissionalService: ProfissionalService, private ngZone: NgZone) {
+  constructor(
+    private profissionalService: ProfissionalService,
+    private professionalState: ProfessionalStateService,
+    private ngZone: NgZone
+  ) {
     console.log('Constructor do componente chamado');
   }
 
   ngOnInit(): void {
     console.log('ngOnInit chamado');
     this.carregarProfissionais();
+    
+    // Inscreve-se nas mudanças do estado
+    this.subscription = this.professionalState.profissionais$.subscribe(profissionais => {
+      this.profissionais = profissionais;
+      this.tableData = this.profissionais.map(profissional => ({
+        nome: profissional.nome,
+        email: profissional.email || 'Não informado'
+      }));
+    });
+  }
+
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
   carregarProfissionais(): void {
@@ -41,11 +63,8 @@ export class ProfessionalsComponent implements OnInit {
       .subscribe({
         next: (response) => {
           console.log('Resposta recebida:', response);
-          this.profissionais = response.dados || [];
-          this.tableData = this.profissionais.map(profissional => ({
-            nome: profissional.nome,
-            email: profissional.email || 'Não informado'
-          }));
+          const profissionais = response.dados || [];
+          this.professionalState.setProfissionais(profissionais);
           this.loading = false;
         },
         error: (err) => {

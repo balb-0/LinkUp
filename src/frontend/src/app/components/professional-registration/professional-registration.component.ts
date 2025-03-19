@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { ProfissionalService } from '../../services/professionalservice';
 import { Profissional } from '../../models/professional';
 import { Router } from '@angular/router';
+import { ProfessionalStateService } from '../../services/professional-state.service';
 
 @Component({
   selector: 'app-professional-registration',
@@ -16,10 +17,12 @@ import { Router } from '@angular/router';
 export class ProfessionalRegistrationComponent implements OnInit {
   profissionalForm!: FormGroup;
   isSubmitting = false;
+  errorMessage: string | null = null;
 
   constructor(
     private fb: FormBuilder,
     private profissionalService: ProfissionalService,
+    private professionalState: ProfessionalStateService,
     private router: Router
   ) {}
 
@@ -44,6 +47,7 @@ export class ProfessionalRegistrationComponent implements OnInit {
     }
 
     this.isSubmitting = true;
+    this.errorMessage = null;
 
     const profissional: Profissional = {
       nome: this.profissionalForm.get('nome')?.value,
@@ -59,10 +63,23 @@ export class ProfessionalRegistrationComponent implements OnInit {
         // Limpar formulário após sucesso
         this.profissionalForm.reset();
         this.isSubmitting = false;
-
+        
+        // Adiciona o novo profissional ao estado
+        this.professionalState.addProfissional(response.dados);
+        
+        // Limpar o cache
+        this.profissionalService.limparCache().subscribe({
+          next: () => {
+            console.log('Cache limpo com sucesso');
+          },
+          error: (error) => {
+            console.error('Erro ao limpar cache:', error);
+          }
+        });
       },
       error: (erro: any) => {
         console.error('Erro ao cadastrar profissional', erro);
+        this.errorMessage = erro.error?.message || 'Erro ao cadastrar profissional';
         this.isSubmitting = false;
       }
     });
