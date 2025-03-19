@@ -1316,7 +1316,6 @@ Todos os testes executados passaram e estão representados na imagem abaixo:
 <sup>Fonte: Material produzido pelos autores (2025)</sup>
 </div>
 
-
 ## 8.4 Documentações automáticas
 
 _conteúdo_
