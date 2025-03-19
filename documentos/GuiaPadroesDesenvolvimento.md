@@ -134,7 +134,8 @@ O projeto segue uma **arquitetura de Três Camadas**, garantindo separação de 
 A organização do projeto segue a divisão das camadas conforme descrito acima.
 
 ```
-/Users/vitorbalbo/Documents/inteli/2025-1A-T13-ES05-G06/
+
+/2025-1A-T13-ES05-G06/
 ├── documentos                 # Documentação do projeto
 ├── src                        # Código-fonte principal
 │   ├── backend                # Camada de Negócios

@@ -7,11 +7,10 @@
   </tr>
 </table>
 
-# Nome do Projeto: LinkUp
-# Nome do Projeto: LinkUp
+## Nome do Projeto: LinkUp
+## Nome do Grupo: LinkUp
 
-## Nome do Grupo: LinkUp
-## Nome do Grupo: LinkUp
+
 
 ## Integrantes:
 
@@ -44,6 +43,7 @@
 # 1. Introdução
 
 ## 1.1 Objetivo do Documento
+&nbsp;&nbsp;&nbsp;&nbsp;Este documento tem como objetivo registrar a evolução do trabalho realizado pelo grupo LinkUp, ao longo do desenvolvimento do projeto. Por meio do destaque dos pontos fortes e fracos ao longo das sprints, além de ações de melhorias a serem realizadas para melhor desenvolvimento do grupo.
 
 &nbsp;&nbsp;&nbsp;&nbsp;Este documento tem como objetivo registrar a evolução do trabalho realizado pelo grupo LinkUp, ao longo do desenvolvimento do projeto. Por meio do destaque dos pontos fortes e fracos ao longo das sprints, além de ações de melhorias a serem realizadas para melhor desenvolvimento do grupo.
 

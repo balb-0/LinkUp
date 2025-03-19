@@ -10,18 +10,8 @@
 # Nome do Projeto: LinkUp
 # Nome do Projeto: LinkUp
 
-## Nome do Grupo: LinkUp
-## Nome do Grupo: LinkUp
-
 ## Integrantes:
 
-- <a href="https://www.linkedin.com/in/arthur-bretas/">Arthur Bretas Oliveira</a>
-- <a href="https://www.linkedin.com/in/felipe-zillo-72b367247/">Felipe Gutierres Zillo</a>
-- <a href="https://www.linkedin.com/in/kauarodrigues/">Kauã Rodrigues dos Santos</a>
-- <a href="https://www.linkedin.com/in/lucca-henrique-pereira/">Lucca Henrique Pereira</a>
-- <a href="https://www.linkedin.com/in/milena-castro-vieira/">Milena Aparecida Vieira Castro</a>
-- <a href="https://www.linkedin.com/in/rodrigo-lee/">Rodrigo Hu Tchie Lee</a>
-- <a href="https://www.linkedin.com/in/vitor-balbo/">Vitor Margarido Balbo</a>
 - <a href="https://www.linkedin.com/in/arthur-bretas/">Arthur Bretas Oliveira</a>
 - <a href="https://www.linkedin.com/in/felipe-zillo-72b367247/">Felipe Gutierres Zillo</a>
 - <a href="https://www.linkedin.com/in/kauarodrigues/">Kauã Rodrigues dos Santos</a>
@@ -228,7 +218,6 @@ A imagem representa os objetivos da solução: facilitar o acompanhamento de alu
 <sup>Fonte: Material produzido pelos autores (2025) </sup>
 </div>
 
-
 &nbsp;&nbsp;&nbsp;&nbsp; Segue abaixo a User Story da Mariana com a função de registrar um profissional ao banco de dados.
 
 <div align="center">
@@ -395,7 +384,6 @@ Evento Final: Encerramento do Atendimento
 | 06  | Modulaização do Código             | Torna o código de fácil manutenção e escalável.                                                            | Alto                  | 90%                        | Desenvolver com boas práticas, como a separação do código em funções e objetos.          |
 
 <sup>Fonte: Material produzido pelo grupo LinkUp (2025)</sup>
-
 </div>
 
 ## 2.7 Ideação
@@ -1207,11 +1195,32 @@ Abaixo estão imagens de algumas seções dos componentes do guia.
 
 # 8. Desenvolvimento do Projeto
 
-_conteúdo_
+&nbsp;&nbsp;&nbsp;&nbsp;Nesta seção, estão listadasas principais entregas previstas para cada etapa de desenvolvimento do projeto. O objetivo é dar uma visão da arquitetura de codificação, a estrutura de diretórios adotada e o progresso alcançado em cada sprint. O desenvolvimento é conduzido de forma iterativa e incremental, o que signigica que às vezes, as entregas reais não coincidem completamente com o previsto.
 
 ## 8.1 Arquitetura de Codificação e Estrutura de Diretórios
 
-_conteúdo_
+O projeto segue uma **arquitetura de Três Camadas**, garantindo separação de responsabilidades e organização do código. As três camadas são:
+
+1. **Camada de Apresentação (Frontend)** – Responsável pela interface do usuário.
+2. **Camada de Negócios (Lógica de Aplicação)** – Contém as regras de negócio e a lógica central do sistema.
+3. **Camada de Dados (Persistência e Comunicação com o Banco)** – Responsável pelo armazenamento e recuperação dos dados.
+
+---
+
+### **Estrutura de Diretórios**
+
+A organização do projeto segue a divisão das camadas conforme descrito acima.
+
+```
+/inteli/2025-1A-T13-ES05-G06/
+├── documentos                 # Documentação do projeto
+├── src                        # Código-fonte principal
+│   ├── backend                # Camada de Negócios
+│   ├── frontend               # Camada de Apresentação (Frontend)
+│   ├── database               # Diretório do Banco de Dados
+```
+
+---
 
 ## 8.2 Desenvolvimento de Features
 
@@ -1306,7 +1315,6 @@ Todos os testes executados passaram e estão representados na imagem abaixo:
 <img src="../documentos/img/passed_tests.png" width="80%"><br>
 <sup>Fonte: Material produzido pelos autores (2025)</sup>
 </div>
-
 
 
 ## 8.4 Documentações automáticas
