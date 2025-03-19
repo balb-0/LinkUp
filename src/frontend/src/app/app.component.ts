@@ -7,11 +7,12 @@ import { Router, NavigationEnd, RouterModule } from '@angular/router';
 import { filter, map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { AuthService } from '@auth0/auth0-angular';
+import { ProfileHeaderComponent } from './components/profile-header/profile-header.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, MenuNavComponent, CommonModule, RouterModule],
+  imports: [RouterOutlet, MenuNavComponent, CommonModule, RouterModule, ProfileHeaderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
