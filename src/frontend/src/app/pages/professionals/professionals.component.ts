@@ -24,6 +24,8 @@ export class ProfessionalsComponent implements OnInit, OnDestroy {
   ];
 
   profissionais: Profissional[] = [];
+  filteredProfissionais: Profissional[] = [];
+  searchTerm: string = '';
   loading = false;
   error = '';
   private subscription: Subscription | null = null;
@@ -43,10 +45,7 @@ export class ProfessionalsComponent implements OnInit, OnDestroy {
     // Inscreve-se nas mudanças do estado
     this.subscription = this.professionalState.profissionais$.subscribe(profissionais => {
       this.profissionais = profissionais;
-      this.tableData = this.profissionais.map(profissional => ({
-        nome: profissional.nome,
-        email: profissional.email || 'Não informado'
-      }));
+      this.applyFilter();
     });
   }
 
@@ -76,5 +75,32 @@ export class ProfessionalsComponent implements OnInit, OnDestroy {
           console.log('Requisição completada');
         }
       });
+  }
+
+  handleSearch(term: string): void {
+    this.searchTerm = term;
+    this.applyFilter();
+  }
+
+  applyFilter(): void {
+    if (!this.searchTerm || this.searchTerm.trim() === '') {
+      this.filteredProfissionais = [...this.profissionais];
+    } else {
+      const searchTermLower = this.searchTerm.toLowerCase();
+      this.filteredProfissionais = this.profissionais.filter(prof => 
+        prof.nome.toLowerCase().includes(searchTermLower) || 
+        prof.email.toLowerCase().includes(searchTermLower) ||
+        prof.ocupacao.toLowerCase().includes(searchTermLower)
+      );
+    }
+
+    this.updateTableData();
+  }
+
+  updateTableData(): void {
+    this.tableData = this.filteredProfissionais.map(profissional => ({
+      nome: profissional.nome,
+      email: profissional.email || 'Não informado'
+    }));
   }
 }

@@ -1,5 +1,5 @@
 // search.component.ts
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -13,8 +13,18 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class SearchBarComponent {
   searchText = '';
+  @Output() search = new EventEmitter<string>();
 
   clearSearch(): void {
     this.searchText = '';
+    this.search.emit('');
+  }
+
+  onSearch(): void {
+    this.search.emit(this.searchText);
+  }
+
+  onInputChange(): void {
+    this.search.emit(this.searchText);
   }
 }
