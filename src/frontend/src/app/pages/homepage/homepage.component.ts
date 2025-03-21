@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { CardHomeComponent } from '../../components/card-home/card-home.component';
+import { MatDialog } from '@angular/material/dialog';
+import { PopupComponent } from '../../components/popup/popup.component';
 
 @Component({
   selector: 'app-homepage',
@@ -7,6 +9,13 @@ import { CardHomeComponent } from '../../components/card-home/card-home.componen
   templateUrl: './homepage.component.html',
   styleUrl: './homepage.component.css'
 })
+
+
 export class HomepageComponent {
 
+  constructor(public dialog: MatDialog) {}
+
+  openPopup() {
+    this.dialog.open(PopupComponent);
+  }
 }
