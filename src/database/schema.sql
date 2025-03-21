@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS Usuario (
   nome VARCHAR(255) NOT NULL,                     -- Nome do usuário
   email VARCHAR(255) NOT NULL UNIQUE,             -- Email do usuário
   senha VARCHAR(255) NOT NULL,                    -- Senha do usuário
-  cargo VARCHAR(255) NOT NULL                     -- Cargo ou função do usuário no sistema
+  cargo ENUM('Gerente Administrativo', 'Gerente de Unidade', 'Acessor', 'Outro') NOT NULL                     -- Cargo ou função do usuário no sistema
 );
 
 -- Criação da tabela de profissionais
@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS Aluno (
   nome VARCHAR(255) NOT NULL,                     -- Nome do aluno
   unidade VARCHAR(255) NOT NULL,                  -- Unidade onde o aluno estuda
   curso VARCHAR(255) NOT NULL,                    -- Curso do aluno
-  turno VARCHAR(255) NOT NULL,                    -- Turno
+  turno ENUM('Matutino', 'Vespertino', 'Noturno', 'Integral') NOT NULL, -- Turno de estudo
   necessidade_especial VARCHAR(255)               -- Necessidade especial (se existir)
 );
 
@@ -31,7 +31,6 @@ CREATE TABLE IF NOT EXISTS Aluno (
 CREATE TABLE IF NOT EXISTS Tecnologia_Assistiva (
   id INT AUTO_INCREMENT PRIMARY KEY,              -- Identificador único e chave primária
   nome VARCHAR(255) UNIQUE NOT NULL                -- Nome da tecnologia assistiva
-
 );
 
 -- Tabela de atendimentos realizados
