@@ -4,10 +4,7 @@ INSERT INTO Usuario (nome, email, senha, cargo) VALUES
 ('Carlos Lima', 'carlos.lima@email.com', 'senha456', 'Gerente Administrativo'),
 ('Mariana Alves', 'mariana.alves@email.com', 'senha789', 'Gerente de Unidade'),
 ('Ricardo Mendes', 'ricardo.mendes@email.com', 'senha321', 'Gerente de Unidade'),
-('Fernanda Rocha', 'fernanda.rocha@email.com', 'senha654', 'Gerente de Unidade'),
-('Patrícia Souza', 'patricia.souza@email.com', 'senha987', 'Secretária'),
-('Roberto Nunes', 'roberto.nunes@email.com', 'senha654', 'Coordenador Pedagógico'),
-('Cláudia Martins', 'claudia.martins@email.com', 'senha321', 'Assistente Administrativo');
+('Fernanda Rocha', 'fernanda.rocha@email.com', 'senha654', 'Gerente de Unidade');
 
 -- Inserção de Profissionais com ocupação
 INSERT INTO Profissional (nome, email, ocupacao) VALUES
@@ -15,10 +12,7 @@ INSERT INTO Profissional (nome, email, ocupacao) VALUES
 ('Dra. Paula Silva', 'paula.silva@email.com', 'Pedagoga'),
 ('Dr. Lucas Santos', 'lucas.santos@email.com', 'Médico'),
 ('Dra. Beatriz Costa', 'beatriz.costa@email.com', 'Fisioterapeuta'),
-('Dr. Eduardo Freitas', 'eduardo.freitas@email.com', 'Instrutor de Inclusão'),
-('Dra. Helena Prado', 'helena.prado@email.com', 'Psicopedagoga'),
-('Dr. Rafael Silva', 'rafael.silva@email.com', 'Terapeuta Ocupacional'),
-('Dra. Camila Andrade', 'camila.andrade@email.com', 'Psicóloga');
+('Dr. Eduardo Freitas', 'eduardo.freitas@email.com', 'Instrutor de Inclusão');
 
 -- Inserção de Alunos
 INSERT INTO Aluno (nome, unidade, curso, turno, necessidade_especial) VALUES

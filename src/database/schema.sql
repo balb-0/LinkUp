@@ -30,7 +30,8 @@ CREATE TABLE IF NOT EXISTS Aluno (
 -- Tabela que armazena as tecnologias assistivas
 CREATE TABLE IF NOT EXISTS Tecnologia_Assistiva (
   id INT AUTO_INCREMENT PRIMARY KEY,              -- Identificador único e chave primária
-  nome VARCHAR(255) NOT NULL                      -- Nome da tecnologia assistiva
+  nome VARCHAR(255) UNIQUE NOT NULL                -- Nome da tecnologia assistiva
+
 );
 
 -- Tabela de atendimentos realizados
