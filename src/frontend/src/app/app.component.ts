@@ -8,11 +8,12 @@ import { filter, map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { AuthService } from '@auth0/auth0-angular';
 import { ProfileHeaderComponent } from './components/profile-header/profile-header.component';
+import { TabServiceTechnologyComponent } from './components/tab-service-technology/tab-service-technology.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, MenuNavComponent, CommonModule, RouterModule, ProfileHeaderComponent],
+  imports: [RouterOutlet, MenuNavComponent, CommonModule, RouterModule, ProfileHeaderComponent, TabServiceTechnologyComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
