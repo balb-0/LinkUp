@@ -17,6 +17,10 @@ export class ProfissionalService {
     return this.http.get(`${this.apiUrl}/ListarTodos`);
   }
 
+  listarComPaginacao(pagina: number = 0, tamanhoPagina: number = 10): Observable<any> {
+    return this.http.get(`${this.apiUrl}/ListarPaginado?pagina=${pagina}&tamanhoPagina=${tamanhoPagina}`);
+  }
+
   // Buscar profissional por ID
   buscarPorId(id: string): Observable<any> {
     return this.http.get(`${this.apiUrl}/BuscarPorId/${id}`);

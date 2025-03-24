@@ -12,7 +12,7 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-professionals',
   standalone: true,
-  imports: [SearchBarComponent, TableComponent, ProfessionalRegistrationComponent, CommonModule, RouterLink],
+  imports: [SearchBarComponent, TableComponent, ProfessionalRegistrationComponent, CommonModule],
   templateUrl: './professionals.component.html',
   styleUrls: ['./professionals.component.css']
 })
@@ -30,6 +30,10 @@ export class ProfessionalsComponent implements OnInit, OnDestroy {
   error = '';
   private subscription: Subscription | null = null;
 
+  paginaAtual = 0;
+  tamanhoPagina = 6;
+  totalRegistros = 0;
+
   constructor(
     private profissionalService: ProfissionalService,
     private professionalState: ProfessionalStateService,
@@ -38,15 +42,18 @@ export class ProfessionalsComponent implements OnInit, OnDestroy {
     console.log('Constructor do componente chamado');
   }
 
+
   ngOnInit(): void {
     console.log('ngOnInit chamado');
     this.carregarProfissionais();
+
     
     // Inscreve-se nas mudanças do estado
     this.subscription = this.professionalState.profissionais$.subscribe(profissionais => {
       this.profissionais = profissionais;
       this.applyFilter();
     });
+
   }
 
   ngOnDestroy(): void {
@@ -56,27 +63,63 @@ export class ProfessionalsComponent implements OnInit, OnDestroy {
   }
 
   carregarProfissionais(): void {
-    console.log('Iniciando carregamento de profissionais');
+    console.log(`Carregando profissionais - Página: ${this.paginaAtual}, Tamanho: ${this.tamanhoPagina}`);
     this.loading = true;
-    this.profissionalService.listarTodos()
+
+    this.profissionalService.listarComPaginacao(this.paginaAtual, this.tamanhoPagina)
       .subscribe({
         next: (response) => {
-          console.log('Resposta recebida:', response);
-          const profissionais = response.dados || [];
-          this.professionalState.setProfissionais(profissionais);
+          console.log('Resposta paginada recebida:', response);
+
+          if (response && response.dados) {
+            const { profissionais, total } = response.dados;
+
+            this.profissionais = profissionais || [];
+            this.totalRegistros = total || 0;
+
+            this.tableData = this.profissionais.map(profissional => ({
+              nome: profissional.nome,
+              email: profissional.email || 'Não informado'
+            }));
+          } else {
+            console.error('Formato de resposta inesperado:', response);
+            this.error = 'Erro: formato de resposta inválido';
+          }
+
           this.loading = false;
         },
         error: (err) => {
-          console.error('Erro na requisição:', err);
+          console.error('Erro na requisição paginada:', err);
           this.error = 'Erro ao carregar profissionais: ' + (err.message || err);
           this.loading = false;
         },
         complete: () => {
-          console.log('Requisição completada');
+          console.log('Requisição paginada completada');
         }
       });
   }
 
+
+  mudarPagina(pagina: number): void {
+    if (pagina !== this.paginaAtual && pagina >= 0) {
+      this.paginaAtual = pagina;
+      this.carregarProfissionais();
+    }
+  }
+
+  mudarTamanhoPagina(tamanho: number): void {
+    if (tamanho !== this.tamanhoPagina && tamanho > 0) {
+      this.tamanhoPagina = tamanho;
+      this.paginaAtual = 0; // Volta para a primeira página
+      this.carregarProfissionais();
+    }
+  }
+
+  onPageEvent(event: {page: number, pageSize: number}): void {
+    this.paginaAtual = event.page;
+    this.tamanhoPagina = event.pageSize;
+    this.carregarProfissionais();
+=======
   handleSearch(term: string): void {
     this.searchTerm = term;
     this.applyFilter();

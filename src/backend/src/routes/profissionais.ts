@@ -38,6 +38,13 @@ router.post("/limpar-cache", (req, res) => {
 router.get("/ListarTodos", ProfissionalController.listarTodos);
 
 /**
+ * @route GET /profissionais/ListarPaginado
+ * @desc Lista profissionais cadastrados com paginação
+ * @access Público
+ */
+router.get("/ListarPaginado", ProfissionalController.listarPaginado);
+
+/**
  * @route GET /profissionais/BuscarPorId/:id
  * @desc Busca um profissional pelo ID
  * @access Público

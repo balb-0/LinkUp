@@ -95,6 +95,50 @@ export class ProfissionalRepository {
   }
 
   /**
+ * Lista os profissionais com paginacao
+ * @param pagina Número da página (começa em 0)
+ * @param tamanhoPagina Quantidade de itens por página
+ * @returns Objeto contendo array de profissionais e total de registros
+ */
+static async listarComPaginacao(pagina: number = 0, tamanhoPagina: number = 10): Promise<{profissionais: Profissional[], total: number}> {
+  const paginaNum = Math.max(0, Number(pagina));
+  const tamanhoPaginaNum = Math.max(1, Number(tamanhoPagina));
+  const offset = paginaNum * tamanhoPaginaNum;
+  
+  const sqlProfissionais = `
+    SELECT id, nome, email, ocupacao, ativo, dataCadastro
+    FROM Profissional
+    WHERE ativo = true
+    ORDER BY nome
+    LIMIT ${tamanhoPaginaNum} OFFSET ${offset}
+  `;
+
+  const sqlTotal = `
+    SELECT COUNT(*) as total
+    FROM Profissional
+    WHERE ativo = true
+  `;
+
+  const resultProfissionais: any[] = await query(sqlProfissionais);
+  const resultTotal: any = await query(sqlTotal);
+  
+  const profissionais = resultProfissionais.map(row => new Profissional({
+    id: row.id.toString(),
+    nome: row.nome,
+    email: row.email,
+    ocupacao: row.ocupacao,
+    ativo: Boolean(row.ativo),
+    dataCadastro: new Date(row.dataCadastro)
+  }));
+  
+  // Retorna os profissionais e o total
+  return {
+    profissionais,
+    total: resultTotal[0].total
+  };
+}
+
+  /**
    * Busca um profissional pelo ID
    * @param id ID do profissional
    * @returns Profissional encontrado ou undefined

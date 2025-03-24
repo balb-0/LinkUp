@@ -4,5 +4,5 @@ export interface Profissional {
   email: string;
   ocupacao: string;
   ativo?: boolean;
-  dataCadastro?: Date | string;
+  dataCadastro?: Date | undefined;
 }

@@ -1,3 +1,4 @@
+<!-- table.component.html -->
 <div class="w-full max-w-screen-xl mx-auto">
   <div class="flex bg-gray-100 text-gray-800 font-bold py-3 px-6 rounded-t-lg">
     <ng-container *ngFor="let column of columns; let isFirst = first; let isLast = last">
@@ -16,7 +17,7 @@
     </ng-container>
   </div>
 
-  <div *ngFor="let item of data; let i = index"
+  <div *ngFor="let item of paginatedData; let i = index"
        class="flex items-center border border-gray-200 rounded-md mb-2 py-4 px-6 hover:bg-gray-50 transition-colors">
     <ng-container *ngFor="let column of columns; let isFirst = first; let isLast = last">
       <div [ngClass]="{
@@ -34,7 +35,16 @@
     </ng-container>
   </div>
 
-  <div *ngIf="data.length === 0" class="text-center py-6 text-gray-500">
+  <div *ngIf="paginatedData.length === 0" class="text-center py-6 text-gray-500">
     Nenhum dado encontrado.
   </div>
+
+  <!-- Paginador -->
+  <mat-paginator
+  [length]="serverPagination ? totalItems : data.length"
+  [pageSize]="pageSize"
+  (page)="onPageChange($event)"
+  aria-label="Selecione a página"
+  class="!font-poppins border !bg-cinza border-gray-200 rounded-md">
+  </mat-paginator>
 </div>
