@@ -7,12 +7,25 @@ import { Router, NavigationEnd, RouterModule } from '@angular/router';
 import { filter, map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { AuthService } from '@auth0/auth0-angular';
+import { ProfileHeaderComponent } from './components/profile-header/profile-header.component';
+
+import { DropDownComponent } from './components/drop-down/drop-down.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { TabServiceTechnologyComponent } from './components/tab-service-technology/tab-service-technology.component';
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, MenuNavComponent, CommonModule, RouterModule],
+  imports: [
+    RouterOutlet, 
+    MenuNavComponent, 
+    CommonModule, 
+    RouterModule, 
+    ProfileHeaderComponent,
+    DropDownComponent,
+    ReactiveFormsModule, 
+    TabServiceTechnologyComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -30,5 +43,11 @@ export class AppComponent {
         return !(currentRoute.includes('/login') || currentRoute.includes('/register'));
       })
     );
+  }
+  
+  // Método para lidar com a mudança no dropdown
+  onLanguageChange(value: any): void {
+    console.log('Idioma selecionado:', value);
+    // Implementar lógica para mudar o idioma
   }
 }
