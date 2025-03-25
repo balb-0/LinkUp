@@ -7,20 +7,19 @@ import { Router, NavigationEnd, RouterModule } from '@angular/router';
 import { filter, map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { AuthService } from '@auth0/auth0-angular';
-import { ProfileHeaderComponent } from './components/profile-header/profile-header.component';
-import { TabServiceTechnologyComponent } from './components/tab-service-technology/tab-service-technology.component';
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, MenuNavComponent, CommonModule, RouterModule, ProfileHeaderComponent, TabServiceTechnologyComponent],
+  imports: [RouterOutlet, MenuNavComponent, CommonModule, RouterModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 
 export class AppComponent {
   shouldShowNav$: Observable<boolean>;
-  
+
   constructor(private router: Router, public auth: AuthService) {
     // Essa observable emitirá 'true' se a rota atual NÃO for login ou register
     this.shouldShowNav$ = this.router.events.pipe(

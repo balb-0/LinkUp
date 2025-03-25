@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ButtonComponent } from '../../components/button/button.component';
 import { AuthService } from '@auth0/auth0-angular';
 import { Router } from '@angular/router';
 import { AuthButtonComponent } from '../../auth-button/auth-button.component';
@@ -7,7 +6,7 @@ import { AuthButtonComponent } from '../../auth-button/auth-button.component';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ButtonComponent, AuthButtonComponent],
+  imports: [AuthButtonComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })

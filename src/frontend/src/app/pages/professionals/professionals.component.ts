@@ -42,18 +42,15 @@ export class ProfessionalsComponent implements OnInit, OnDestroy {
     console.log('Constructor do componente chamado');
   }
 
-
   ngOnInit(): void {
     console.log('ngOnInit chamado');
     this.carregarProfissionais();
 
-    
     // Inscreve-se nas mudanças do estado
     this.subscription = this.professionalState.profissionais$.subscribe(profissionais => {
       this.profissionais = profissionais;
       this.applyFilter();
     });
-
   }
 
   ngOnDestroy(): void {
@@ -99,7 +96,6 @@ export class ProfessionalsComponent implements OnInit, OnDestroy {
       });
   }
 
-
   mudarPagina(pagina: number): void {
     if (pagina !== this.paginaAtual && pagina >= 0) {
       this.paginaAtual = pagina;
@@ -119,7 +115,8 @@ export class ProfessionalsComponent implements OnInit, OnDestroy {
     this.paginaAtual = event.page;
     this.tamanhoPagina = event.pageSize;
     this.carregarProfissionais();
-=======
+  }
+
   handleSearch(term: string): void {
     this.searchTerm = term;
     this.applyFilter();
@@ -130,8 +127,8 @@ export class ProfessionalsComponent implements OnInit, OnDestroy {
       this.filteredProfissionais = [...this.profissionais];
     } else {
       const searchTermLower = this.searchTerm.toLowerCase();
-      this.filteredProfissionais = this.profissionais.filter(prof => 
-        prof.nome.toLowerCase().includes(searchTermLower) || 
+      this.filteredProfissionais = this.profissionais.filter(prof =>
+        prof.nome.toLowerCase().includes(searchTermLower) ||
         prof.email.toLowerCase().includes(searchTermLower) ||
         prof.ocupacao.toLowerCase().includes(searchTermLower)
       );

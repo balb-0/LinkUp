@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ButtonComponent } from '../button/button.component';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ProfissionalService } from '../../services/professionalservice';
 import { Profissional } from '../../models/professional';
@@ -10,7 +9,7 @@ import { ProfessionalStateService } from '../../services/professional-state.serv
 @Component({
   selector: 'app-professional-registration',
   standalone: true,
-  imports: [ButtonComponent, ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './professional-registration.component.html',
   styleUrl: './professional-registration.component.css'
 })
@@ -63,10 +62,10 @@ export class ProfessionalRegistrationComponent implements OnInit {
         // Limpar formulário após sucesso
         this.profissionalForm.reset();
         this.isSubmitting = false;
-        
+
         // Adiciona o novo profissional ao estado
         this.professionalState.addProfissional(response.dados);
-        
+
         // Limpar o cache
         this.profissionalService.limparCache().subscribe({
           next: () => {
