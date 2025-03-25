@@ -114,3 +114,4 @@ htmlcov/
 *~
 *.bak
 *.swp
+.cursor
