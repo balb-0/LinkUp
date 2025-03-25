@@ -1,0 +1,48 @@
+/* Customizar a classe 'custom-snackbar' para herdar os estilos de sucesso e erro */
+.custom-snackbar {
+    background-color: transparent !important;
+    box-shadow: none !important;
+    padding: 10px 20px;
+    border-radius: 8px !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Estilo para o Snackbar de sucesso */
+.custom-snackbar.snackbar-success {
+    background-color: #4CAF50;
+    /* Verde */
+    color: white;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para o Snackbar de erro */
+.custom-snackbar.snackbar-error {
+    background-color: #F44336;
+    /* Vermelho */
+    color: white;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Botão de fechar */
+.snackbar-close {
+    cursor: pointer;
+    padding: 5px;
+    font-size: 18px;
+}
+
+/* Animação para o Snackbar */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

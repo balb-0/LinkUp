@@ -5,6 +5,8 @@ import { ProfissionalService } from '../../services/professionalservice';
 import { Profissional } from '../../models/professional';
 import { Router } from '@angular/router';
 import { ProfessionalStateService } from '../../services/professional-state.service';
+import { SnackBarService } from '../../services/snack-bar.service';
+
 
 @Component({
   selector: 'app-professional-registration',
@@ -22,7 +24,8 @@ export class ProfessionalRegistrationComponent implements OnInit {
     private fb: FormBuilder,
     private profissionalService: ProfissionalService,
     private professionalState: ProfessionalStateService,
-    private router: Router
+    private router: Router,
+    private snackBarService: SnackBarService
   ) {}
 
   ngOnInit(): void {
@@ -60,6 +63,7 @@ export class ProfessionalRegistrationComponent implements OnInit {
       next: (response: any) => {
         console.log('Profissional cadastrado com sucesso', response);
         // Limpar formulário após sucesso
+        this.snackBarService.showMessage('Profissional cadastrado com sucesso!', false, 'custom-snackbar');
         this.profissionalForm.reset();
         this.isSubmitting = false;
 
