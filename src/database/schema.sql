@@ -30,20 +30,28 @@ CREATE TABLE IF NOT EXISTS Aluno (
 -- Tabela que armazena as tecnologias assistivas
 CREATE TABLE IF NOT EXISTS Tecnologia_Assistiva (
   id INT AUTO_INCREMENT PRIMARY KEY,              -- Identificador único e chave primária
-  nome VARCHAR(255) UNIQUE NOT NULL                -- Nome da tecnologia assistiva
+  nome VARCHAR(255) UNIQUE NOT NULL               -- Nome da tecnologia assistiva
+);
+
+-- Tabela de relacionamento entre Aluno e Tecnologia Assistiva
+CREATE TABLE IF NOT EXISTS Aluno_Tecnologia_Assistiva (
+  id INT AUTO_INCREMENT PRIMARY KEY,              -- Identificador único e chave primária
+  aluno_id INT NOT NULL,                          -- Chave estrangeira do aluno
+  tecnologia_assistiva_id INT NOT NULL,           -- Chave estrangeira da tecnologia assistiva
+
+  FOREIGN KEY (aluno_id) REFERENCES Aluno(id) ON DELETE CASCADE,                           -- Se o aluno for deletado, apaga a relação
+  FOREIGN KEY (tecnologia_assistiva_id) REFERENCES Tecnologia_Assistiva(id) ON DELETE CASCADE, -- Se a tecnologia for deletada, apaga a relação
+  UNIQUE(aluno_id, tecnologia_assistiva_id)        -- Garante que não cadastre a mesma tecnologia pro aluno mais de uma vez
 );
 
 -- Tabela de atendimentos realizados
 CREATE TABLE IF NOT EXISTS Atendimento (
   id INT AUTO_INCREMENT PRIMARY KEY,              -- Identificador único e chave primária
-  aluno_id INT NOT NULL,                          -- Aluno que foi atendido (FK)
+  aluno_id INT NOT NULL,                          -- Chave estrangeira do aluno atendido
   data_atendimento DATETIME NOT NULL,             -- Data e hora do atendimento
-  tipo_atendimento VARCHAR(255) NOT NULL,         -- Tipo do atendimento
-  profissional_id INT NOT NULL,                   -- Profissional responsável pelo atendimento (FK)
-  tecnologia_assistiva_id INT,                    -- Tecnologia assistiva utilizada no atendimento (opcional, FK)
+  tipo_atendimento VARCHAR(255) NOT NULL,         -- Tipo do atendimento realizado
+  profissional_id INT NOT NULL,                   -- Chave estrangeira do profissional responsável
 
-  -- Definição das chaves estrangeiras
-  FOREIGN KEY (aluno_id) REFERENCES Aluno(id) ON DELETE CASCADE,                        -- Se o aluno for deletado, apaga os atendimentos dele
-  FOREIGN KEY (profissional_id) REFERENCES Profissional(id) ON DELETE CASCADE,          -- Se o profissional for deletado, apaga os atendimentos
-  FOREIGN KEY (tecnologia_assistiva_id) REFERENCES Tecnologia_Assistiva(id) ON DELETE SET NULL -- Se a tecnologia for deletada, só anula no atendimento
+  FOREIGN KEY (aluno_id) REFERENCES Aluno(id) ON DELETE CASCADE,                        -- Se o aluno for deletado, apaga o atendimento
+  FOREIGN KEY (profissional_id) REFERENCES Profissional(id) ON DELETE CASCADE           -- Se o profissional for deletado, apaga o atendimento
 );
