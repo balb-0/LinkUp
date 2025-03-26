@@ -1257,7 +1257,23 @@ A organização do projeto segue a divisão das camadas conforme descrito acima.
 
 ## 8.2.2 Sprint 4
 
-_conteúdo_
+### Overview do Desenvolvimento
+
+&nbsp;&nbsp;&nbsp;&nbsp;Nesta Sprint, o foco principal foi a ampliação das funcionalidades do sistema, incluindo a criação de novos fluxos de dados entre alunos e profissionais, além da implementação de páginas específicas no frontend para visualização e gerenciamento dessas informações.
+
+### Backend
+- Implementação da **API de Alunos**, permitindo a consulta, atualização e link entre profissionais e alunos.
+- Desenvolvimento da funcionalidade de **vincular alunos a profissionais**, possibilitando registrar atendimentos e relacionar ambos no banco de dados.
+- Criação de um **histórico de informações**, armazenando detalhes relevantes sobre os atendimentos realizados.
+
+### Frontend
+- Desenvolvimento da **página de perfil do aluno**, permitindo visualizar informações detalhadas do aluno e seu histórico.
+- Criação da **página de perfil do profissional**, possibilitando acessar informações do profissional e seus alunos vinculados.
+- Implementação da **listagem de alunos**, exibindo todos os alunos cadastrados e permitindo interações básicas.
+
+### Próximos Passos
+- Iniciar a implementação das telas de edição de informações de alunos e profissionais.
+- Integrar o histórico de atendimentos com as demais funcionalidades do sistema para consultas dinâmicas.
 
 ## 8.2.3 Sprint 5
 
