@@ -2,32 +2,39 @@
 <div class="w-full bg-[#D9D9D9] w-[1090px] h-[302px] rounded">
     <div class="pt-5">
       <h1 class="text-2xl !text-leagueSpartan pl-[23px] text-[#333333] pb-4">{{ titulo }}</h1>
-      
+
       <!-- Linha divisória entre título e botões -->
       <div class="border-[2px] border-[#333333] mb-[2px]"></div>
-      
-      <div class="flex pl-[24px] pt-[17px]">
-        <button 
-          [ngClass]="{'bg-[#7E0000] !text-[#F6F4F4]': abaSelecionada === 'atendimentos', 'bg-[#B9B9B9] !text-[#333333]': abaSelecionada !== 'atendimentos'}"
-          class="!text-leagueSpartan !font-semibold !w-[154px] !h-[34px] rounded"
-          (click)="selecionarAba('atendimentos')">
-          {{ textoAtendimentos }}
-        </button>
-        <button 
-          [ngClass]="{'bg-[#7E0000] !text-[#F6F4F4]': abaSelecionada === 'historico', 'bg-[#B9B9B9] !text-[#333333]': abaSelecionada !== 'historico'}"
-          class="!text-leagueSpartan !font-semibold !w-[154px] !h-[34px] ml-[15px] rounded"
-          (click)="selecionarAba('historico')">
-          {{ textoHistorico }}
-        </button>
+
+      <div class="flex justify-between items-center pl-[24px] pt-[17px]">
+        <div class="flex">
+          <button
+            [ngClass]="{'bg-[#7E0000] !text-[#F6F4F4]': abaSelecionada === 'atendimentos', 'bg-[#B9B9B9] !text-[#333333]': abaSelecionada !== 'atendimentos'}"
+            class="!text-leagueSpartan !font-semibold !w-[154px] !h-[34px] rounded"
+            (click)="selecionarAba('atendimentos')">
+            {{ textoAtendimentos }}
+          </button>
+          <button
+            [ngClass]="{'bg-[#7E0000] !text-[#F6F4F4]': abaSelecionada === 'historico', 'bg-[#B9B9B9] !text-[#333333]': abaSelecionada !== 'historico'}"
+            class="!text-leagueSpartan !font-semibold !w-[154px] !h-[34px] ml-[15px] rounded"
+            (click)="selecionarAba('historico')">
+            {{ textoHistorico }}
+          </button>
+        </div>
+
+        <app-add-button
+          class="mr-[24px]"
+          text="Teste do botão"
+        ></app-add-button>
       </div>
-      
+
       <!-- Conteúdo das abas -->
       <div class="mt-4">
         <!-- Conteúdo da aba Atendimentos -->
         <div *ngIf="abaSelecionada === 'atendimentos'">
           <ng-content select="[conteudoAtendimentos]"></ng-content>
         </div>
-        
+
         <!-- Conteúdo da aba Histórico -->
         <div *ngIf="abaSelecionada === 'historico'">
           <ng-content select="[conteudoHistorico]"></ng-content>
