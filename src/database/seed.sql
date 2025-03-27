@@ -46,18 +46,18 @@ INSERT INTO Aluno_Tecnologia_Assistiva (aluno_id, tecnologia_assistiva_id) VALUE
 (9, 1); -- Bianca usa Leitor de Tela
 
 -- Inserção de Atendimentos
-INSERT INTO Atendimento (aluno_id, data_atendimento, tipo_atendimento, profissional_id, tecnologia_assistiva_id) VALUES
-(1, '2024-02-01 10:00:00', 'Consulta Psicológica', 1, 2),
-(2, '2024-02-05 14:30:00', 'Atendimento Pedagógico', 2, 1),
-(3, '2024-02-10 09:15:00', 'Consulta Médica', 3, NULL),
-(4, '2024-02-15 16:00:00', 'Avaliação Física', 4, 3),
-(5, '2024-02-20 11:45:00', 'Treinamento de Inclusão', 5, 4),
-(6, '2024-03-01 09:00:00', 'Sessão Psicopedagógica', 1, NULL),
-(7, '2024-03-02 10:30:00', 'Consulta Terapêutica', 2, 6),
-(8, '2024-03-03 11:00:00', 'Avaliação Psicológica', 3, NULL),
-(9, '2024-03-04 15:00:00', 'Atendimento Médico', 3, 8),
-(10, '2024-03-05 13:30:00', 'Acompanhamento Escolar', 2, 1),
-(7, '2024-03-06 14:00:00', 'Sessão Terapia Ocupacional', 4, 7),
-(8, '2024-03-07 09:45:00', 'Atendimento Psicológico', 1, NULL),
-(9, '2024-03-08 08:30:00', 'Treinamento Inclusivo', 5, 5),
-(10, '2024-03-09 10:15:00', 'Consulta Médica', 3, NULL);
+INSERT INTO Atendimento (aluno_id, data_atendimento, tipo_atendimento, profissional_id) VALUES
+(1, '2024-02-01 10:00:00', 'Consulta Psicológica', 1),
+(2, '2024-02-05 14:30:00', 'Atendimento Pedagógico', 2),
+(3, '2024-02-10 09:15:00', 'Consulta Médica', 3),
+(4, '2024-02-15 16:00:00', 'Avaliação Física', 4),
+(5, '2024-02-20 11:45:00', 'Treinamento de Inclusão', 5),
+(6, '2024-03-01 09:00:00', 'Sessão Psicopedagógica', 1),
+(7, '2024-03-02 10:30:00', 'Consulta Terapêutica', 2),
+(8, '2024-03-03 11:00:00', 'Avaliação Psicológica', 3),
+(9, '2024-03-04 15:00:00', 'Atendimento Médico', 3),
+(10, '2024-03-05 13:30:00', 'Acompanhamento Escolar', 2),
+(7, '2024-03-06 14:00:00', 'Sessão Terapia Ocupacional', 4),
+(8, '2024-03-07 09:45:00', 'Atendimento Psicológico', 1),
+(9, '2024-03-08 08:30:00', 'Treinamento Inclusivo', 5),
+(10, '2024-03-09 10:15:00', 'Consulta Médica', 3);
