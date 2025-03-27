@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 import { CardHomeComponent } from '../../components/card-home/card-home.component';
 import { MatDialog } from '@angular/material/dialog';
 import { PopupComponent } from '../../components/popup/popup.component';
+import { PopupProfissionaisComponent } from '../../components/popup-profissionais/popup-profissionais.component';
 import { ServiceTechnologyCardComponent } from '../../components/service-technology-card/service-technology-card.component';
+
 
 @Component({
   selector: 'app-homepage',
@@ -16,7 +18,11 @@ export class HomepageComponent {
 
   constructor(public dialog: MatDialog) {}
 
-  openPopup() {
-    this.dialog.open(PopupComponent);
+  abrirPopupProfissionais() {
+    const dialogRef = this.dialog.open(PopupProfissionaisComponent); // Verifique se está chamando o componente correto
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Popup Profissionais fechado');
+    });
   }
 }

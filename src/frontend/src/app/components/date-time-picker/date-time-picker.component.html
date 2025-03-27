@@ -1,19 +1,13 @@
-<mat-form-field>
-    <mat-label>Meeting date</mat-label>
-    <input matInput [matDatepicker]="datepicker" [(ngModel)]="value">
-    <mat-datepicker #datepicker/>
-    <mat-datepicker-toggle [for]="datepicker" matSuffix/>
+<div class="date-time-picker">
+  <mat-form-field appearance="fill" class="date-field">
+    <mat-label>Data</mat-label>
+    <input matInput [matDatepicker]="picker" [(ngModel)]="value" placeholder="__/__/____">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
-  
-  <mat-form-field>
-    <mat-label>Meeting time</mat-label>
-    <input matInput
-      [matTimepicker]="timepicker"
-      [(ngModel)]="value"
-      [ngModelOptions]="{updateOn: 'blur'}">
-    <mat-timepicker #timepicker/>
-    <mat-timepicker-toggle [for]="timepicker" matSuffix/>
+
+  <mat-form-field appearance="fill" class="time-field">
+    <mat-label>Hora</mat-label>
+    <input matInput placeholder="HH:MM" [(ngModel)]="timeValue" type="time">
   </mat-form-field>
-  
-  <p>Value: {{value}}</p>
-  
+</div>

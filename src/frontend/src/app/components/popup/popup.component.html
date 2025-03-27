@@ -1,5 +1,5 @@
 <div class="popup-backdrop" (click)="closeDialog()">
-    <div class="popup-content">
+    <div class="popup-content" (click)="$event.stopPropagation()">
         <div class="popup-header"></div> <!-- Cabeçalho vazio -->
         <div class="dialog-actions">
             <button mat-button (click)="navigateToPage()">Ir para Outra Página</button>
