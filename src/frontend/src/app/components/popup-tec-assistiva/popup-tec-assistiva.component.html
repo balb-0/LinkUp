@@ -1,0 +1,35 @@
+<div class="popup-backdrop" (click)="closeDialog()">
+  <div class="popup-content" (click)="$event.stopPropagation()">
+    <div class="popup-header">
+      <button class="close-button" (click)="closeDialog()">
+        &times;
+      </button>
+    </div>
+
+    <div class="popup-body">
+      <h2>Selecione a(s) tecnologia(s)</h2>
+
+      <!-- Select Simulado (pode ser mat-select se preferir) -->
+      <app-drop-down class="popup-select"></app-drop-down>
+
+      <!-- Campos simulados -->
+      <div class="popup-inputs">
+        <input type="text" placeholder="" />
+        <input type="text" placeholder="" />
+        <input type="text" placeholder="" />
+      </div>
+
+      <!-- Calendário fake -->
+      <div class="popup-date">
+        <span class="calendar-icon">📅</span>
+        <input type="text" placeholder="__/__/__" />
+      </div>
+
+      <!-- Botão de confirmar -->
+      <div class="confirm-button-container">
+        <button class="confirm-button" (click)="confirm()">Confirmar</button>
+      </div>
+      <!-- <app-date-time-picker></app-date-time-picker> -->
+    </div>
+  </div>
+</div>
