@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { CardHomeComponent } from '../../components/card-home/card-home.component';
 import { MatDialog } from '@angular/material/dialog';
 import { PopupComponent } from '../../components/popup/popup.component';
+import { ServiceTechnologyCardComponent } from '../../components/service-technology-card/service-technology-card.component';
 
 @Component({
   selector: 'app-homepage',
-  imports: [CardHomeComponent],
+  imports: [CardHomeComponent, ServiceTechnologyCardComponent],
   templateUrl: './homepage.component.html',
   styleUrl: './homepage.component.css'
 })
