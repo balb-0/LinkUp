@@ -45,7 +45,13 @@ export class TableComponent implements OnInit, OnChanges {
   @Input() totalItems: number = 0;
   @Input() serverPagination: boolean = false;
 
-  @Output() pageChange = new EventEmitter<{page: number, pageSize: number}>();
+  @Output() pageChange = new EventEmitter<{ page: number, pageSize: number }>();
+
+  @Output() rowClick = new EventEmitter<any>();
+
+  onRowClick(item: any): void {
+    this.rowClick.emit(item);
+  }
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -72,7 +78,7 @@ export class TableComponent implements OnInit, OnChanges {
     this.pageSize = event.pageSize;
 
     if (this.serverPagination) {
-      this.pageChange.emit({page: this.currentPage, pageSize: this.pageSize});
+      this.pageChange.emit({ page: this.currentPage, pageSize: this.pageSize });
     } else {
       this.updatePaginatedData();
     }

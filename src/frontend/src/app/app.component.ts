@@ -18,14 +18,11 @@ import { TabServiceTechnologyComponent } from './components/tab-service-technolo
   selector: 'app-root',
   standalone: true,
   imports: [
-    RouterOutlet, 
-    MenuNavComponent, 
-    CommonModule, 
-    RouterModule, 
-    ProfileHeaderComponent,
-    DropDownComponent,
-    ReactiveFormsModule, 
-    TabServiceTechnologyComponent],
+    RouterOutlet,
+    MenuNavComponent,
+    CommonModule,
+    RouterModule,
+    ReactiveFormsModule,],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -44,7 +41,7 @@ export class AppComponent {
       })
     );
   }
-  
+
   // Método para lidar com a mudança no dropdown
   onLanguageChange(value: any): void {
     console.log('Idioma selecionado:', value);

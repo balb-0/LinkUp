@@ -16,7 +16,7 @@ export interface TableSection {
 
 /**
  * Componente de tabela de informações reutilizável
- * 
+ *
  * Uso:
  * 1. Importe o componente: import { InformationTableComponent, TableSection } from 'path/to/information-table.component';
  * 2. Adicione aos imports: imports: [CommonModule, InformationTableComponent]
@@ -32,23 +32,4 @@ export interface TableSection {
 })
 export class InformationTableComponent {
   @Input() sections: TableSection[] = [];
-
-  // Exemplo de dados para demonstração
-  static getExampleData(): TableSection[] {
-    return [
-      {
-        title: 'Informações Acadêmicas',
-        columns: ['Nome do curso', 'Turno', 'Unidade'],
-        rows: [
-          ['Engenharia de Software', 'Matutino', 'Campus Norte'],
-          ['Ciência da Computação', 'Noturno', 'Campus Sul']
-        ]
-      },
-      {
-        title: 'Deficiência(s)',
-        columns: ['Tipo', 'Grau', 'Observações'],
-        rows: []  // Array vazio para campos vazios
-      }
-    ];
-  }
 }

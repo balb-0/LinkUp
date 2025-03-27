@@ -13,6 +13,8 @@ export class TabServiceTechnologyComponent {
   @Input() titulo: string = 'Atendimentos Profissionais';
   @Input() textoAtendimentos: string = 'Atendimentos';
   @Input() textoHistorico: string = 'Histórico';
+  @Input() botaoAdicionar: boolean = false;
+  @Input() textoBotaoAdicionar: string = 'Adicionar';
 
   abaSelecionada: 'atendimentos' | 'historico' = 'atendimentos';
 

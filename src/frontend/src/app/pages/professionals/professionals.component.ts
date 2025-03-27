@@ -1,7 +1,7 @@
 import { SearchBarComponent } from './../../components/search-bar/search-bar.component';
 import { Component, NgZone, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ProfissionalService } from '../../services/professionalservice';
 import { Profissional } from '../../models/professional';
 import { TableColumn, TableComponent } from '../../components/table/table.component';
@@ -37,7 +37,8 @@ export class ProfessionalsComponent implements OnInit, OnDestroy {
   constructor(
     private profissionalService: ProfissionalService,
     private professionalState: ProfessionalStateService,
-    private ngZone: NgZone
+    private ngZone: NgZone,
+    private router: Router
   ) {
     console.log('Constructor do componente chamado');
   }
@@ -142,5 +143,15 @@ export class ProfessionalsComponent implements OnInit, OnDestroy {
       nome: profissional.nome,
       email: profissional.email || 'Não informado'
     }));
+  }
+
+  navegarParaPerfil(profissional: any): void {
+    const profissionalCompleto = this.profissionais.find(p =>
+      p.nome === profissional.nome && p.email === profissional.email
+    );
+
+    if (profissionalCompleto) {
+      this.router.navigate(['/professional', profissionalCompleto.id]);
+    }
   }
 }

@@ -1,0 +1,27 @@
+<div *ngIf="profissional" class="flex flex-col container mx-auto p-6">
+  <app-profile-header
+  [headerTitle]="'Perfil do Profissional'"
+  ></app-profile-header>
+    <h1 class="mt-4 mb-0.5 text-[32px]">{{ profissional.nome }}</h1>
+    <app-status-badge
+      [ativo]="profissional.ativo ?? true"
+    ></app-status-badge>
+    <app-information-table
+    [sections]="contatoSections"
+    >
+    </app-information-table>
+    <app-tab-service-technology
+    [botaoAdicionar]="false"
+    [titulo]="'Atendimentos'"
+    [textoAtendimentos]="'Ativos'"
+    [textoHistorico]="'Anteriores'">
+
+    <div conteudoAtendimentos>
+      <p>Atendimentos ativos</p>
+    </div>
+
+    <div conteudoHistorico>
+      <p>Atendimentos passados</p>
+    </div>
+</app-tab-service-technology>
+</div>

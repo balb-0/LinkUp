@@ -5,7 +5,6 @@ export interface IAtendimento {
     dataAtendimento: Date;
     tipoAtendimento: string;
     profissionalId: string;
-    tecnologiaAssistivaId: string;
 }
 
 export class Atendimento implements IAtendimento {
@@ -14,7 +13,6 @@ export class Atendimento implements IAtendimento {
     dataAtendimento: Date;
     tipoAtendimento: string;
     profissionalId: string;
-    tecnologiaAssistivaId: string;
 
     constructor(atendimento: IAtendimento) {
         this.id =  atendimento.id;
@@ -22,7 +20,6 @@ export class Atendimento implements IAtendimento {
         this.dataAtendimento = atendimento.dataAtendimento;
         this.tipoAtendimento = atendimento.tipoAtendimento;
         this.profissionalId = atendimento.profissionalId;
-        this.tecnologiaAssistivaId = atendimento.tecnologiaAssistivaId;
     }
 }
 
@@ -41,8 +38,8 @@ export class AtendimentoRepository {
     static async criar(atendimento: IAtendimento): Promise<Atendimento> {
         try {
             const sql = `
-                INSERT INTO Atendimento (aluno_id, data_atendimento, tipo_atendimento, profissional_id, tecnologia_assistiva_id)
-                VALUES (?, ?, ?, ?, ?)
+                INSERT INTO Atendimento (aluno_id, data_atendimento, tipo_atendimento, profissional_id)
+                VALUES (?, ?, ?, ?)
             `;
     
         
@@ -51,7 +48,6 @@ export class AtendimentoRepository {
                 atendimento.dataAtendimento,
                 atendimento.tipoAtendimento,
                 atendimento.profissionalId,
-                atendimento.tecnologiaAssistivaId || null
             ];
         
             const result: any = await query(sql, params);
@@ -78,7 +74,7 @@ export class AtendimentoRepository {
    */
   static async listarTodos(): Promise<Atendimento[]> {
     const sql = `
-      SELECT id, aluno_id, data_atendimento, tipo_atendimento, profissional_id, tecnologia_assistiva_id
+      SELECT id, aluno_id, data_atendimento, tipo_atendimento, profissional_id
       FROM Atendimento
       ORDER BY data_atendimento DESC
     `;
@@ -91,7 +87,6 @@ export class AtendimentoRepository {
       dataAtendimento: new Date(row.data_atendimento),
       tipoAtendimento: row.tipo_atendimento,
       profissionalId: row.profissional_id.toString(),
-      tecnologiaAssistivaId: row.tecnologia_assistiva_id?.toString()
     }));
   }
 
@@ -102,7 +97,7 @@ export class AtendimentoRepository {
    */
   static async buscarPorId(id: string): Promise<Atendimento | undefined> {
     const sql = `
-      SELECT id, aluno_id, data_atendimento, tipo_atendimento, profissional_id, tecnologia_assistiva_id
+      SELECT id, aluno_id, data_atendimento, tipo_atendimento, profissional_id
       FROM Atendimento
       WHERE id = ?
     `;
@@ -121,7 +116,6 @@ export class AtendimentoRepository {
       dataAtendimento: new Date(row.data_atendimento),
       tipoAtendimento: row.tipo_atendimento,
       profissionalId: row.profissional_id.toString(),
-      tecnologiaAssistivaId: row.tecnologia_assistiva_id?.toString()
     });
   }
 
@@ -156,10 +150,6 @@ export class AtendimentoRepository {
       if (dados.profissionalId !== undefined) {
         campos.push('profissional_id = ?');
         valores.push(dados.profissionalId);
-      }
-      if (dados.tecnologiaAssistivaId !== undefined) {
-        campos.push('tecnologia_assistiva_id = ?');
-        valores.push(dados.tecnologiaAssistivaId);
       }
       
       if (campos.length === 0) {

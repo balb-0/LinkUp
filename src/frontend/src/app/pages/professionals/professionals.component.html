@@ -13,7 +13,8 @@
       [columns]="tableColumns"
       [totalItems]="totalRegistros"
       [serverPagination]="true"
-      (pageChange)="onPageEvent($event)">
+      (pageChange)="onPageEvent($event)"
+      (rowClick)="navegarParaPerfil($event)">
     </app-table>
     </article>
   </section>

@@ -14,19 +14,6 @@ INSERT INTO Profissional (nome, email, ocupacao) VALUES
 ('Dra. Beatriz Costa', 'beatriz.costa@email.com', 'Fisioterapeuta'),
 ('Dr. Eduardo Freitas', 'eduardo.freitas@email.com', 'Instrutor de Inclusão');
 
--- Inserção de Alunos
-INSERT INTO Aluno (nome, unidade, curso, turno, necessidade_especial) VALUES
-('Lucas Pereira', 'Unidade Central', 'Engenharia', 'Matutino', 'Nenhuma'),
-('Juliana Ribeiro', 'Unidade Leste', 'Ciência da Computação', 'Noturno', 'Deficiência visual'),
-('Bruno Fernandes', 'Unidade Norte', 'Administração', 'Vespertino', 'Nenhuma'),
-('Tatiane Oliveira', 'Unidade Sul', 'Medicina', 'Integral', 'Deficiência auditiva'),
-('André Mendes', 'Unidade Oeste', 'Arquitetura', 'Matutino', 'Nenhuma'),
-('Paulo Henrique', 'Unidade Central', 'Direito', 'Noturno', 'Nenhuma'),
-('Larissa Gomes', 'Unidade Leste', 'Design Gráfico', 'Vespertino', 'Deficiência motora'),
-('Diego Ferreira', 'Unidade Norte', 'Sistemas de Informação', 'Matutino', 'Nenhuma'),
-('Bianca Santos', 'Unidade Sul', 'Enfermagem', 'Integral', 'Deficiência visual'),
-('Thiago Silva', 'Unidade Oeste', 'Educação Física', 'Matutino', 'Nenhuma');
-
 -- Inserção de Tecnologias Assistivas
 INSERT INTO Tecnologia_Assistiva (nome) VALUES
 ('Leitor de Tela'),
@@ -38,15 +25,17 @@ INSERT INTO Tecnologia_Assistiva (nome) VALUES
 ('Prancha de Comunicação'),
 ('Software de Leitura de Texto');
 
--- Inserção de Aluno_Tecnologia_Assistiva (exemplo de vinculação)
-INSERT INTO Aluno_Tecnologia_Assistiva (aluno_id, tecnologia_assistiva_id) VALUES
-(2, 1), -- Juliana Ribeiro usa Leitor de Tela
-(4, 3), -- Tatiane usa Aparelho Auditivo
-(7, 5), -- Larissa usa Lupa Eletrônica
-(9, 1); -- Bianca usa Leitor de Tela
+-- Inserção de Aluno_Tecnologia_Assistiva (usando ids de alunos da API externa)
+-- Observação: Substitua os IDs pelos IDs reais da sua API externa
+INSERT INTO Aluno_Tecnologia_Assistiva (id_aluno, tecnologia_assistiva_id) VALUES
+(2, 1), -- Aluno com ID 2 usa Leitor de Tela
+(4, 3), -- Aluno com ID 4 usa Aparelho Auditivo
+(7, 5), -- Aluno com ID 7 usa Lupa Eletrônica
+(9, 1); -- Aluno com ID 9 usa Leitor de Tela
 
 -- Inserção de Atendimentos
-INSERT INTO Atendimento (aluno_id, data_atendimento, tipo_atendimento, profissional_id) VALUES
+-- Observação: Substitua os IDs pelos IDs reais de alunos da sua API externa
+INSERT INTO Atendimento (id_aluno, data_atendimento, tipo_atendimento, profissional_id) VALUES
 (1, '2024-02-01 10:00:00', 'Consulta Psicológica', 1),
 (2, '2024-02-05 14:30:00', 'Atendimento Pedagógico', 2),
 (3, '2024-02-10 09:15:00', 'Consulta Médica', 3),
@@ -61,3 +50,4 @@ INSERT INTO Atendimento (aluno_id, data_atendimento, tipo_atendimento, profissio
 (8, '2024-03-07 09:45:00', 'Atendimento Psicológico', 1),
 (9, '2024-03-08 08:30:00', 'Treinamento Inclusivo', 5),
 (10, '2024-03-09 10:15:00', 'Consulta Médica', 3);
+
