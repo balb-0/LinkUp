@@ -1,5 +1,5 @@
 <!-- Main content -->
-<main class="px-16 pt-24">
+<main class="px-16 pt-24 ">
   <!-- Title -->
   <h1 class="text-[40px] font-semibold font-leagueSpartan text-black text-center mb-12">
     Alunos
@@ -8,26 +8,31 @@
   <!-- Search controls -->
   <div class="flex justify-center gap-6 mb-16">
     <!-- Select Dropdown -->
-    <app-drop-down #dropdownRef
+    <app-drop-down 
+      [width]="223"
+      [height]="40"
+      [options]="opcoesDropdown" 
+      (itemSelected)="onItemSelected($event)"
+      placeholder="Selecione uma instituição"
       [items]="opcoesDropdown"
-      [placeholder]="'Selecione uma opção'"
-      [selectedItem]="minhaVariavelSelecionada"
-      [width]="'223'"
-      [height]="'40'"
-      (itemSelected)="onItemSelected($event)">
+      [selectedItem]="minhaVariavelSelecionada">
     </app-drop-down>
     <!-- Search Input -->
-    <app-search-bar class="!w-[755px]"></app-search-bar>
+    <app-search-bar 
+    class="!w-[755px]"
+    (search)="handleSearch($event)"></app-search-bar>
     <!-- Search Button -->
   </div>
 
   <!-- Table -->
-  <div class="w-full">
-    <div class="grid grid-cols-2">
-      <div class="text-center font-leagueSpartan font-bold text-black text-[32px] py-2">Nome</div>
-      <div class="text-center font-leagueSpartan font-bold text-black text-[32px] py-2">Unidade</div>
-    </div>
-    <app-table></app-table>
+  <div *ngIf="!loading && !error && minhaVariavelSelecionada">
+    <app-table
+      [columns]="colunasDaTabela"
+      [data]="estudantesFiltrados"
+      [serverPagination]="false"
+      [totalItems]="totalRegistros"
+      (pageChange)="onPageEvent($event)">
+    </app-table>
   </div>
 
   <!-- Pagination -->

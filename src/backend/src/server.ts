@@ -9,6 +9,7 @@ import EnvManager from "./classes/EnvManager";
 import { testConnection } from "./utils/db";
 import profissionaisRouter from "./routes/profissionais";
 import authRoutes from "./routes/authRoutes";
+import alunosRouter from "./routes/alunosRoutes";
 import pagesRoutes from "./routes/pagesRoutes";
 import atendimentoRouter from "./routes/atendimentoRoutes";
 import { requestLogger } from "./middleware/logger";
@@ -84,8 +85,13 @@ app.use("/api/auth", authRoutes);
 // Rotas para a API de profissionais
 app.use("/api/profissionais", cacheMiddleware(300000), profissionaisRouter);
 
+
+// Rotas para API da sala
+app.use("/api/sala", cacheMiddleware(300000), alunosRouter);	
+
 //Rptas para API de atendimentos
 app.use("/api/atendimentos", cacheMiddleware(300000), atendimentoRouter);
+
 
 // Rotas para as páginas
 app.use("/", pagesRoutes);

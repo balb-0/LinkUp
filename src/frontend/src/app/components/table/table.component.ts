@@ -19,7 +19,7 @@ export class CustomMatPaginatorIntl extends MatPaginatorIntl {
     }
 
     const amountPages = Math.ceil(length / pageSize);
-    return `${page + 1} – ${amountPages} de ${length}`;
+    return `${page + 1} de ${amountPages}`;
   };
 }
 
