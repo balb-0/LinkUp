@@ -18,7 +18,7 @@ export class CustomMatPaginatorIntl extends MatPaginatorIntl {
     }
 
     const amountPages = Math.ceil(length / pageSize);
-    return `${page + 1} de ${amountPages}`;
+    return `${page + 1} – ${amountPages} de ${length}`;
   };
 }
 
@@ -45,13 +45,7 @@ export class TableComponent implements OnInit, OnChanges {
   @Input() serverPagination: boolean = false;
   @Input() pageSize: number = 6;
 
-  @Output() pageChange = new EventEmitter<{ page: number, pageSize: number }>();
-
-  @Output() rowClick = new EventEmitter<any>();
-
-  onRowClick(item: any): void {
-    this.rowClick.emit(item);
-  }
+  @Output() pageChange = new EventEmitter<{page: number, pageSize: number}>();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 

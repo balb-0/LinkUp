@@ -18,8 +18,7 @@
   </div>
 
   <div *ngFor="let item of paginatedData; let i = index"
-       class="flex items-center border border-gray-200 rounded-md mb-2 py-4 px-6 hover:bg-gray-50 transition-colors cursor-pointer"
-       (click)="onRowClick(item)">
+       class="flex items-center border border-gray-200 rounded-md mb-2 py-4 px-6 hover:bg-gray-50 transition-colors">
     <ng-container *ngFor="let column of columns; let isFirst = first; let isLast = last">
       <div [ngClass]="{
         'w-1/2': columns.length === 2,
