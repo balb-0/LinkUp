@@ -1,5 +1,4 @@
-// table.component.ts
-import { Component, Input, OnInit, ViewChild, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChanges, Output, EventEmitter, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatPaginatorModule, MatPaginator, PageEvent, MatPaginatorIntl } from '@angular/material/paginator';
 import { Subject } from 'rxjs';
@@ -44,6 +43,7 @@ export class TableComponent implements OnInit, OnChanges {
 
   @Input() totalItems: number = 0;
   @Input() serverPagination: boolean = false;
+  @Input() pageSize: number = 6;
 
   @Output() pageChange = new EventEmitter<{ page: number, pageSize: number }>();
 
@@ -56,7 +56,6 @@ export class TableComponent implements OnInit, OnChanges {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   paginatedData: any[] = [];
-  pageSize = 6;
   currentPage = 0;
 
   ngOnInit(): void {
@@ -64,7 +63,8 @@ export class TableComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['data']) {
+    // Se 'data' ou 'pageSize' mudar, atualize a paginação
+    if (changes['data'] || changes['pageSize']) {
       this.updatePaginatedData();
 
       if (this.paginator && this.currentPage === 0) {

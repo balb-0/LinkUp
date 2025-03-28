@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialogRef } from '@angular/material/dialog';
 import { SearchBarComponent } from '../search-bar/search-bar.component';
@@ -9,7 +9,8 @@ import { TableComponent } from '../table/table.component';
 import { TableColumn } from '../table/table.component';
 import { ButtonComponent } from '../button/button.component';
 import { MatIconModule } from '@angular/material/icon';
-
+import { ProfissionalService } from '../../services/professionalservice';
+import { Profissional } from '../../models/professional';
 
 
 @Component({
@@ -26,29 +27,76 @@ import { MatIconModule } from '@angular/material/icon';
     MatIconModule
   ]
 })
-export class PopupProfissionaisComponent {
+export class PopupProfissionaisComponent implements OnInit {
   constructor(
     private router: Router,
-    private dialogRef: MatDialogRef<PopupProfissionaisComponent>
+    private dialogRef: MatDialogRef<PopupProfissionaisComponent>,
+    private profissionalService: ProfissionalService
   ) {}
 
   searchText: string = '';
 
-  tableData = [
-    { nome: 'José dos Santos', contato: 'Quisque non sodales' },
-    { nome: 'Maria da Silva', contato: 'Lorem ipsum dolor' },
-    { nome: 'Carlos Almeida', contato: 'Sed hendrerit massa' },
-  ];
-
+  // Dados da tabela
+  tableData: any[] = [];
   tableColumns: TableColumn[] = [
     { key: 'nome', header: 'Nome' },
     { key: 'contato', header: 'Contato' }
   ];
 
-  onSearch(searchTerm: string) {
-    this.searchText = searchTerm;
-    console.log('Texto da pesquisa:', this.searchText);
+  // Armazena os profissionais carregados
+  profissionais: Profissional[] = [];
+
+  ngOnInit(): void {
+    this.carregarProfissionais();
   }
+
+  carregarProfissionais(): void {
+    // Exemplo: carregando os primeiros 50 profissionais (ajuste os parâmetros conforme necessário)
+    this.profissionalService.listarComPaginacao(0, 50)
+      .subscribe({
+        next: (response) => {
+          if (response && response.dados) {
+            const { profissionais } = response.dados;
+            this.profissionais = profissionais || [];
+            this.tableData = this.profissionais.map(prof => ({
+              nome: prof.nome,
+              contato: prof.email || 'Não informado'
+            }));
+          } else {
+            console.error('Formato de resposta inesperado:', response);
+          }
+        },
+        error: (err) => {
+          console.error('Erro ao carregar profissionais:', err);
+        }
+      });
+  }
+
+  onSearch(searchTerm: string) {
+  this.searchText = searchTerm.trim().toLowerCase();
+
+  // Se não houver texto de busca, retorna todos
+  if (!this.searchText) {
+    this.tableData = this.profissionais.map(prof => ({
+      nome: prof.nome,
+      contato: prof.email || 'Não informado'
+    }));
+    return;
+  }
+
+  // Caso contrário, filtra a lista de profissionais
+  const filtered = this.profissionais.filter(prof =>
+    prof.nome.toLowerCase().includes(this.searchText)
+    // Se quiser buscar também por e-mail, inclua outra condição:
+    // || prof.email.toLowerCase().includes(this.searchText)
+  );
+
+  // Atualiza tableData com os itens filtrados
+  this.tableData = filtered.map(prof => ({
+    nome: prof.nome,
+    contato: prof.email || 'Não informado'
+  }));
+}
 
   closeDialog() {
     this.dialogRef.close();
