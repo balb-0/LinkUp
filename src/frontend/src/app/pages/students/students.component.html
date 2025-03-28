@@ -8,14 +8,8 @@
   <!-- Search controls -->
   <div class="flex justify-center gap-6 mb-[16px]">
     <!-- Select Dropdown -->
-    <app-drop-down
-      [width]="223"
-      [height]="40"
-      [options]="opcoesDropdown"
-      (itemSelected)="onItemSelected($event)"
-      placeholder="Selecione uma instituição"
-      [items]="opcoesDropdown"
-      [selectedItem]="minhaVariavelSelecionada">
+    <app-drop-down [width]="'223px'" [height]="'40px'" [options]="opcoesDropdown" (itemSelected)="onItemSelected($event)"
+      placeholder="Selecione uma instituição" [items]="opcoesDropdown" [selectedItem]="minhaVariavelSelecionada">
     </app-drop-down>
     <!-- Search Input -->
     <app-search-bar
