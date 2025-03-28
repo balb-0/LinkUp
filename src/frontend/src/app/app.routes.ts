@@ -10,6 +10,7 @@ import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password
 import { LoginComponent } from './pages/login/login.component';
 import { authGuard } from './guards/auth.guard';
 import { ProfessionalProfileComponent } from './pages/professional-profile/professional-profile.component';
+import { StudentProfileComponent } from './pages/student-profile/student-profile.component';
 
 
 export const routes: Routes = [
@@ -41,6 +42,11 @@ export const routes: Routes = [
   {
     path: 'students',
     component: StudentsComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'student/:id',
+    component: StudentProfileComponent,
     canActivate: [authGuard]
   },
   {

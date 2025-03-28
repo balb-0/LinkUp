@@ -1,24 +1,24 @@
 <!-- Main content -->
-<main class="px-16 pt-24 ">
+<main class="px-[16px] pt-[24px]">
   <!-- Title -->
   <h1 class="text-[40px] font-semibold font-leagueSpartan text-black text-center mb-12">
     Alunos
   </h1>
 
   <!-- Search controls -->
-  <div class="flex justify-center gap-6 mb-16">
+  <div class="flex justify-center gap-6 mb-[16px]">
     <!-- Select Dropdown -->
-    <app-drop-down 
+    <app-drop-down
       [width]="223"
       [height]="40"
-      [options]="opcoesDropdown" 
+      [options]="opcoesDropdown"
       (itemSelected)="onItemSelected($event)"
       placeholder="Selecione uma instituição"
       [items]="opcoesDropdown"
       [selectedItem]="minhaVariavelSelecionada">
     </app-drop-down>
     <!-- Search Input -->
-    <app-search-bar 
+    <app-search-bar
     class="!w-[755px]"
     (search)="handleSearch($event)"></app-search-bar>
     <!-- Search Button -->
@@ -31,7 +31,8 @@
       [data]="estudantesFiltrados"
       [serverPagination]="false"
       [totalItems]="totalRegistros"
-      (pageChange)="onPageEvent($event)">
+      (pageChange)="onPageEvent($event)"
+      (rowClick)="navegarParaPerfil($event)">
     </app-table>
   </div>
 

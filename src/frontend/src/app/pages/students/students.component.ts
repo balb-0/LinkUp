@@ -1,6 +1,6 @@
 import { Component, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import axios from 'axios';
@@ -56,6 +56,8 @@ export class StudentsComponent implements OnInit {
 
   loading: boolean = false;
   error: string = '';
+
+  constructor(private router: Router) {}
 
   async ngOnInit() {
     await this.buscarInstituicoes();
@@ -133,4 +135,15 @@ export class StudentsComponent implements OnInit {
     this.error = message;
     console.error(message, erro);
   }
+
+  navegarParaPerfil(estudante: any): void {
+    const estudanteCompleto = this.allEstudantes.find(e =>
+      e.nome === estudante.name && e.unidade === estudante.unidade
+    );
+
+    if (estudanteCompleto) {
+      this.router.navigate(['/student', estudanteCompleto.id]);
+    }
+  }
+
 }

@@ -1,5 +1,3 @@
-import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
 import { ServiceTechnologyCardComponent } from './../../components/service-technology-card/service-technology-card.component';
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
@@ -12,12 +10,12 @@ import { AlunoService } from '../../services/aluno.service';
 import { ProfileHeaderComponent } from '../../components/profile-header/profile-header.component';
 import { InformationTableComponent, TableSection } from '../../components/information-table/information-table.component';
 import { TabServiceTechnologyComponent } from "../../components/tab-service-technology/tab-service-technology.component";
-import { StatusBadgeComponent } from '../../components/status-badge/status-badge.component';
 import { forkJoin } from 'rxjs';
+import { StatusBadgeComponent } from '../../components/status-badge/status-badge.component';
 
 @Component({
   selector: 'app-professional-profile',
-  imports: [CommonModule, ProfileHeaderComponent, InformationTableComponent, TabServiceTechnologyComponent, StatusBadgeComponent, ServiceTechnologyCardComponent],
+  imports: [CommonModule, ProfileHeaderComponent, InformationTableComponent, TabServiceTechnologyComponent, ServiceTechnologyCardComponent, StatusBadgeComponent],
   templateUrl: './professional-profile.component.html',
   styleUrl: './professional-profile.component.css'
 })
