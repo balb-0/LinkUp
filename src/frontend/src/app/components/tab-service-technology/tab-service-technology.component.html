@@ -30,12 +30,12 @@
   <!-- Conteúdo das abas -->
   <div>
     <!-- Conteúdo da aba Atendimentos -->
-    <div *ngIf="abaSelecionada === 'atendimentos'" class="px-3 py-2 text-preto">
+    <div *ngIf="abaSelecionada === 'atendimentos'" class="py-2 text-preto">
       <ng-content select="[conteudoAtendimentos]"></ng-content>
     </div>
 
     <!-- Conteúdo da aba Histórico -->
-    <div *ngIf="abaSelecionada === 'historico'" class="px-3 py-2 text-preto">
+    <div *ngIf="abaSelecionada === 'historico'" class="py-2 text-preto">
       <ng-content select="[conteudoHistorico]"></ng-content>
     </div>
   </div>

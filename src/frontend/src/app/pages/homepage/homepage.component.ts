@@ -4,7 +4,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { PopupComponent } from '../../components/popup/popup.component';
 import { PopupProfissionaisComponent } from '../../components/popup-profissionais/popup-profissionais.component';
 
-
 @Component({
   selector: 'app-homepage',
   imports: [CardHomeComponent],
