@@ -10,11 +10,11 @@ import { CommonModule } from '@angular/common';
 })
 export class DropDownComponent {
   @Input() items: string[] = [];
-  @Input() placeholder: string = 'Select an option';
+  @Input() placeholder: string = 'Selecione uma opção';
   @Input() selectedItem: string = '';
-  @Input() width: number = 223;
-  @Input() height: number = 40;
-  
+  @Input() width: string = '223';
+  @Input() height: string = '40';
+
   @Output() itemSelected = new EventEmitter<string>();
 
   isOpen = false;
@@ -47,9 +47,4 @@ export class DropDownComponent {
       }
     }
   }
-  limitTextByWidth(text: string, width: number): string {
-    const averageCharWidth = 11; // valor médio, pode ajustar conforme o font-size e font-family
-    const maxChars = Math.floor(width / averageCharWidth);
-    return text.length > maxChars ? text.slice(0, maxChars - 3) + '...' : text;
-  }  
 }

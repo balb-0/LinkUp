@@ -1,36 +1,34 @@
 <!-- drop-down.component.html -->
 <div class="dropdown-container" [style.width.px]="width">
-    <div 
-      [style.width.px]="width" 
-      [style.height.px]="height" 
-      class="relative bg-[#E2E2E2] rounded flex px-3 items-center justify-between cursor-pointer" 
+    <div
+      [style.width.px]="width"
+      [style.height.px]="height"
+      class="relative bg-[#E2E2E2] rounded flex px-3 items-center justify-between cursor-pointer"
       (click)="toggleDropdown($event)">
-      <span class="text-truncate">
-        {{ limitTextByWidth(selectedItem || placeholder, width) }}
-      </span>
-      <svg 
+      <span class="text-truncate">{{ selectedItem || placeholder }}</span>
+      <svg
         [ngClass]="{'transform rotate-180': isOpen}"
         class="transition-transform duration-200 ml-2"
-        width="12" 
-        height="8" 
-        viewBox="0 0 12 8" 
-        fill="none" 
+        width="12"
+        height="8"
+        viewBox="0 0 12 8"
+        fill="none"
         xmlns="src/frontend/public/assets/drop-down-arrow.svg">
         <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </div>
-    
-    <div *ngIf="isOpen" 
-         [style.width.px]="width" 
+
+    <div *ngIf="isOpen"
+         [style.width.px]="width"
          class="absolute mt-1 z-50 bg-white rounded shadow-lg overflow-hidden border border-gray-200">
       <ul class="py-1 max-h-48 overflow-y-auto">
-        <li *ngFor="let item of items" 
-            class="px-3 py-2 hover:bg-gray-100 cursor-pointer" 
+        <li *ngFor="let item of items"
+            class="px-3 py-2 hover:bg-gray-100 cursor-pointer"
             (click)="selectItem(item, $event)">
           {{ item }}
         </li>
         <li *ngIf="items.length === 0" class="px-3 py-2 text-gray-500 italic">
-          No option available
+          Sem opções disponíveis
         </li>
       </ul>
     </div>
