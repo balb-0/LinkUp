@@ -63,7 +63,7 @@ export class StudentsComponent implements OnInit {
 
   async buscarInstituicoes() {
     try {
-      const response = await axios.get<Instituicao[]>('http://localhost:3000/api/sala/institutions');
+      const response = await axios.get<Instituicao[]>('http://localhost:3000/api/alunos/institutions');
       this.instituicoes = response.data;
       this.opcoesDropdown = this.instituicoes.map(inst => inst.name);
     } catch (erro) {
@@ -80,7 +80,7 @@ export class StudentsComponent implements OnInit {
 
     try {
       const response = await axios.get(
-        `http://localhost:3000/api/sala/institutions/${instituicaoSelecionada.id}/students`
+        `http://localhost:3000/api/alunos/institutions/${instituicaoSelecionada.id}/students`
       );
 
       if (Array.isArray(response.data)) {
