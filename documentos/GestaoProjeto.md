@@ -207,7 +207,73 @@
 
 ## 2.4 Sprint 4
 
-_conteúdo_
+### Análise da Sprint Review
+
+#### **Pontos Fortes**
+
+- Grande parte das entregas condizentes com o planejamento.
+- Melhora na gestão do kanban.
+- Engajamento do grupo nas atividades coletivas.
+
+#### **Pontos Fracos**
+
+- Sobrecarga geral de desenvolvimento.
+- Má gestão de tempo, resultou em resolução de problemas de última hora.
+- Lead time ruim, pouco foco em revisão de tasks.
+- Distribuição desigual nas tasks.
+
+### Ações de Melhoria para os Pontos Fracos
+
+#### 1. Sobrecarga geral de desenvolvimento
+
+##### Ações de melhoria:
+
+- Planejar com mais precisão a capacidade da equipe: considerar o tempo disponível real de cada membro.
+- Equilibrar tarefas entre os membros: acompanhar durante a sprint se alguém está sobrecarregado.
+- Incluir buffers no planejamento: reservar uma margem para imprevistos.
+
+#### 2. Má gestão de tempo, resultou em resolução de problemas de última hora
+
+##### Ações de melhoria:
+
+- Estabelecer checkpoints internos: reuniões rápidas no meio da sprint para avaliar o andamento.
+- Reforçar a priorização no kanban: focar nas tasks mais críticas antes de puxar novas.
+- Estimativas mais conservadoras: prever tempo adicional para testes e ajustes.
+
+#### 3. Lead time ruim, pouco foco em revisão de tasks
+
+##### Ações de melhoria:
+
+- Designar revisores fixos por ciclo: garantir que sempre haja alguém responsável por revisar dentro do SLA.
+- Alertas no Slack para PRs paradas: usar notificações automáticas para lembrar o time.
+- Revisão em pares: incentivar que quem revisa, revise junto com quem desenvolveu para agilizar e melhorar a qualidade.
+
+#### 4. Distribuição desigual nas tasks
+
+##### Ações de melhoria:
+
+- Planejamento mais colaborativo: garantir que todos participem da divisão das tasks.
+- Visualização da carga no board: usar etiquetas ou métricas para visualizar distribuição por membro.
+- Rodízio de tarefas: distribuir tasks por tipo (código, documentação, testes) para manter equilíbrio.
+
+### Análise de Riscos
+
+- **Sobrecarga contínua pode afetar a motivação e a qualidade das entregas.**  
+  *Solução proposta:* monitorar a carga semanalmente e ajustar metas com antecedência.
+
+- **Revisões mal feitas ou atrasadas podem gerar bugs e retrabalho.**  
+  *Solução proposta:* reforçar o papel do revisor e garantir visibilidade das PRs no Slack/kanban.
+
+- **Comunicação falha pode causar desalinhamento e duplicação de esforço.**  
+  *Solução proposta:* promover reuniões de alinhamento rápidas e uso ativo do Slack.
+
+### Ações realizadas após a Sprint 3
+
+&nbsp;&nbsp;&nbsp;&nbsp;Nesta sprint, focamos em melhorar a gestão do kanban, com mais atenção ao fluxo das tarefas e à visibilidade das atividades. O engajamento coletivo também foi um diferencial, com maior colaboração nas atividades em grupo.  
+
+&nbsp;&nbsp;&nbsp;&nbsp;Aconteceu uma sobrecarga geral de desenvolvimento durante a sprint, resultado de uma má gestão de tempo e distribuição desigual de tarefas. Muitos problemas foram resolvidos nos últimos dias, afetando a qualidade do processo. Também foi perceptível um lead time elevado, com pouco foco em revisões, o que será trabalhado com mais afinco na sprint 5.
+
+&nbsp;&nbsp;&nbsp;&nbsp;Com base no feedback da Sprint 3, incluímos nessa análise uma seção dedicada aos **riscos**, pra tentar antecipar problemas recorrentes e buscar ações práticas de resolução.
 
 ## 2.5 Sprint 5
 
