@@ -68,14 +68,20 @@
   - [8.4 Documentações automáticas](#84-documentações-automáticas)
 - [9. Planejamento e Execução de Testes](#9-planejamento-e-execução-de-testes)
   - [9.1 Testes Funcionais](#91-testes-funcionais)
-    - [9.1.1 Planejamento](#911-planejamento)
-    - [9.1.2 Resultados](#912-resultados)
+    - [9.1.1 Estratégia de Testes](#911-estratégia-de-testes)
+    - [9.1.2 Planejamento Detalhado](#912-planejamento-detalhado)
+    - [9.1.3 Matriz de Rastreabilidade](#913-matriz-de-rastreabilidade)
+    - [9.1.4 Critérios de Aceitação](#914-critérios-de-aceitação)
   - [9.2 Testes de RNFs](#92-testes-de-rnfs)
-    - [9.2.1 Planejamento](#921-planejamento)
-    - [9.2.2 Resultados](#922-resultados)
+    - [9.2.1 Estratégia de Testes](#921-estratégia-de-testes)
+    - [9.2.2 Planejamento Detalhado](#922-planejamento-detalhado)
+    - [9.2.3 Métricas e Monitoramento](#923-métricas-e-monitoramento)
   - [9.3 Testes de Usabilidade](#93-testes-de-usabilidade)
-    - [9.3.1 Planejamento](#931-planejamento)
-    - [9.3.2 Resultados](#932-resultados)
+    - [9.3.1 Metodologia](#931-metodologia)
+    - [9.3.2 Perfis de Usuários e Cenários](#932-perfis-de-usuários-e-cenários)
+    - [9.3.3 Roteiro de Testes](#933-roteiro-de-testes)
+    - [9.3.4 Análise e Documentação](#934-análise-e-documentação)
+    - [9.3.5 Critérios de Sucesso](#935-critérios-de-sucesso)
 - [10. Procedimentos de Implantação](#10-procedimentos-de-implantação)
   - [10.1 Implantação e Configuração do Banco de Dados](#101-implantação-e-configuração-do-banco-de-dados)
   - [10.2 Implantação do Protótipo para uso por equipe de desenvolvimento](#102-implantação-do-protótipo-para-uso-por-equipe-de-desenvolvimento)
@@ -484,12 +490,11 @@ Evento Final: Encerramento do Atendimento
 |---------|----------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | RF001   | Cadastro de Profissionais             | **What**: O usuário deve ser capaz de criar, ler, atualizar e deletar profissionais na base de dados. <br> **Why**: Para manter um registro atualizado dos profissionais que auxiliam os alunos. <br> **Who**: Mariana Santos, Cleber Oliveira (Assessores de Inclusão) e Maria Rita (Gestora Administrativa), somente atualização: Valdemar Souza (Gestor de Unidade). <br> **Where**: Na aplicação web. <br> **When**: Sempre que um novo profissional for contratado ou houver mudanças. <br> **How**: Através de um formulário na interface do usuário. <br> **How Much**: Sem custo adicional para o usuário. |
 | RF002   | Associação de Alunos a Profissionais  | **What**: O usuário deve ser capaz de associar um aluno a um profissional responsável. <br> **Why**: Para garantir que cada aluno com deficiência tenha um profissional responsável. <br> **Who**: Mariana Santos e Cleber Oliveira (Assessores de Inclusão). <br> **Where**: Na aplicação web. <br> **When**: Após o cadastro do aluno e do profissional. <br> **How**: Através de uma interface que permita selecionar um aluno e um profissional. <br> **How Much**: Sem custo adicional para o usuário. |
-| RF003   | Dashboard de Business Intelligence    | **What**: O sistema deve exibir estatísticas gerais e específicas sobre alunos, unidades e gestão através de gráficos e tabelas interativas. <br> **Why**: Para auxiliar gerentes na tomada de decisões. <br> **Who**: Maria Rita (Gerente Administrativa) e Valdemar Souza (Gestor de Unidade). <br> **Where**: Na aplicação web. <br> **When**: Sempre que necessário, com atualizações em tempo real. <br> **How**: Através de gráficos e tabelas interativas. <br> **How Much**: Sem custo adicional para o usuário. |
+| RF003   | Dashboard    | **What**: O sistema deve exibir estatísticas gerais e específicas sobre alunos, unidades e gestão através de gráficos e tabelas interativas. <br> **Why**: Para auxiliar gerentes na tomada de decisões. <br> **Who**: Maria Rita (Gerente Administrativa) e Valdemar Souza (Gestor de Unidade). <br> **Where**: Na aplicação web. <br> **When**: Sempre que necessário, com atualizações em tempo real. <br> **How**: Através de gráficos e tabelas interativas. <br> **How Much**: Sem custo adicional para o usuário. |
 | RF004   | Acompanhamento de Alunos com Deficiência | **What**: O sistema deve permitir que os usuários acompanhem e auxiliem alunos com deficiência através de um histórico detalhado. <br> **Why**: Para garantir que os alunos recebam o suporte necessário. <br> **Who**: Todos os usuários. <br> **Where**: Na aplicação web. <br> **When**: Durante todo o período de acompanhamento do aluno. <br> **How**: Através de uma interface que exiba o histórico e o status do aluno. <br> **How Much**: Sem custo adicional para o usuário. |
 | RF005   | Autenticação e Autorização de Usuários | **What**: O sistema deve permitir que usuários se autentiquem e tenham acesso controlado às funcionalidades de acordo com seu nível de permissão. <br> **Why**: Para garantir a segurança e privacidade dos dados. <br> **Who**: Todos os usuários. <br> **Where**: Na aplicação web. <br> **When**: No login e durante o uso da aplicação. <br> **How**: Através de um sistema de login com senha e níveis de permissão. <br> **How Much**: Sem custo adicional para o usuário. |
-| RF006   | Gerenciamento de Perfis de Usuários   | **What**: O usuário deve ser capaz de editar informações de seu perfil, como nome, e-mail e senha. <br> **Why**: Para garantir que os dados dos usuários estejam atualizados. <br> **Who**: Todos os usuários. <br> **Where**: Na aplicação web. <br> **When**: Sempre que um usuário precisar atualizar informações. <br> **How**: Através de uma interface de edição de perfil. <br> **How Much**: Sem custo adicional para o usuário. |
-| RF007   | Pesquisa e Filtros Avançados          | **What**: O usuário deve ser capaz de pesquisar e filtrar alunos e profissionais cadastrados. <br> **Why**: Para facilitar a localização de informações específicas. <br> **Who**: Todos os usuários. <br> **Where**: Na aplicação web. <br> **When**: Sempre que o usuário precisar buscar informações. <br> **How**: Através de campos de pesquisa e filtros dinâmicos. <br> **How Much**: Sem custo adicional para o usuário. |
-| RF008   | Histórico de Alterações               | **What**: O sistema deve manter um registro detalhado das alterações feitas, incluindo cadastros e associações. <br> **Why**: Para auditoria e rastreabilidade. <br> **Who**: Administradores do sistema. <br> **Where**: Na aplicação web. <br> **When**: Sempre que uma alteração for feita. <br> **How**: Através de um log de atividades. <br> **How Much**: Sem custo adicional para o usuário. |
+| RF006   | Pesquisa e Filtros Avançados          | **What**: O usuário deve ser capaz de pesquisar e filtrar alunos e profissionais cadastrados. <br> **Why**: Para facilitar a localização de informações específicas. <br> **Who**: Todos os usuários. <br> **Where**: Na aplicação web. <br> **When**: Sempre que o usuário precisar buscar informações. <br> **How**: Através de campos de pesquisa e filtros dinâmicos. <br> **How Much**: Sem custo adicional para o usuário. |
+| RF007   | Histórico de Alterações               | **What**: O sistema deve manter um registro detalhado das alterações feitas, incluindo cadastros e associações. <br> **Why**: Para auditoria e rastreabilidade. <br> **Who**: Administradores do sistema. <br> **Where**: Na aplicação web. <br> **When**: Sempre que uma alteração for feita. <br> **How**: Através de um log de atividades. <br> **How Much**: Sem custo adicional para o usuário. |
 
 <sup>Fonte: Material produzido pelos autores (2025) </sup>
 
@@ -504,14 +509,13 @@ Evento Final: Encerramento do Atendimento
 |--------------|------|--------------------------------------------------|-----------------------------------------------------------------------------|-------------------------------------------------------------------------------|----------------------------------------------------------------------------|
 | CT001        | RF001 | Testar o cadastro de um novo profissional.      | O sistema está online e o usuário tem permissão para cadastrar profissionais. | O profissional é cadastrado com sucesso e aparece na lista de profissionais.  | O sistema exibe uma mensagem de erro ou nada acontece após tentar cadastrar. |
 | CT002        | RF002 | Testar a associação de um aluno a um profissional. | O aluno e o profissional já estão cadastrados no sistema.                     | A associação é criada com sucesso e aparece na lista de associações.         | O sistema exibe uma mensagem de erro ou nada acontece após tentar associar.  |
-| CT003        | RF003 | Testar a exibição do dashboard de BI.            | O sistema possui dados de alunos, unidades e gestão.                          | O dashboard é exibido com gráficos e tabelas atualizados.                     | O dashboard não é exibido ou os dados estão incorretos.                      |
+| CT003        | RF003 | Testar a exibição do dashboard            | O sistema possui dados de alunos, unidades e gestão.                          | O dashboard é exibido com gráficos e tabelas atualizados.                     | O dashboard não é exibido ou os dados estão incorretos.                      |
 | CT004        | RF004 | Testar o acompanhamento de um aluno com deficiência. | O aluno e o profissional já estão cadastrados e associados.                   | O histórico e o status do aluno são exibidos corretamente.                    | O sistema exibe uma mensagem de erro ou dados incorretos.                    |
 | CT005        | RF005 | Testar a autenticação de um usuário.             | O usuário possui credenciais válidas.                                         | O usuário é autenticado com sucesso e tem acesso às funcionalidades permitidas. | O sistema exibe uma mensagem de erro ou o acesso é negado.                   |
-| CT006        | RF006 | Testar a edição de perfil de um usuário.         | O usuário está autenticado e possui permissão para editar o perfil.           | As informações do perfil são atualizadas com sucesso.                         | O sistema exibe uma mensagem de erro ou as informações não são atualizadas.  |
-| CT007        | RF007 | Testar a pesquisa de alunos e profissionais.     | O sistema possui dados de alunos e profissionais cadastrados.                 | Os resultados da pesquisa são exibidos corretamente.                          | O sistema exibe uma mensagem de erro ou resultados incorretos.               |
-| CT008        | RF008 | Testar a visualização do histórico de alterações. | O sistema possui registros de alterações.                                     | O histórico de alterações é exibido corretamente.                             | O sistema exibe uma mensagem de erro ou o histórico não é exibido.           |
+| CT006        | RF006 | Testar a pesquisa de alunos e profissionais.     | O sistema possui dados de alunos e profissionais cadastrados.                 | Os resultados da pesquisa são exibidos corretamente.                          | O sistema exibe uma mensagem de erro ou resultados incorretos.               |
+| CT007        | RF007 | Testar a visualização do histórico de alterações. | O sistema possui registros de alterações.                                     | O histórico de alterações é exibido corretamente.                             | O sistema exibe uma mensagem de erro ou o histórico não é exibido.           |
 
-<sup>Fonte: Material produzido pelos autores (2025) </sup>
+<sup>Fonte: Material produzido pelos autores (2025)</sup>
 
 </div>
 
@@ -641,7 +645,7 @@ Os requisitos não funcionais RNF07, referente a modularidade do código, e RNF0
 
 - Um **ALUNO** é a pessoa que será registrada no sistema com informações essenciais de identificação e de contexto acadêmico.  
 - Um **PROFISSIONAL** é responsável por realizar os atendimentos aos Alunos. Isso pode incluir professores especialistas, psicólogos ou outros membros de uma equipe multiprofissional.  
-- Cada **ATENDIMENTO** é um registro histórico que descreve quando ocorreu, qual foi o tipo de atendimento (por exemplo, “Reunião Pedagógica”, “Suporte Psicológico”), qual Profissional realizou e, se necessário, qual tecnologia assistiva foi utilizada.
+- Cada **ATENDIMENTO** é um registro histórico que descreve quando ocorreu, qual foi o tipo de atendimento (por exemplo, "Reunião Pedagógica", "Suporte Psicológico"), qual Profissional realizou e, se necessário, qual tecnologia assistiva foi utilizada.
 - **TECNOLOGIA ASSISTIVA** é uma tecnologia que pode ser utilizada durante os atendimentos, como leitores de tela, lupas digitais ou outros dispositivos.
 
 ## 4.2 Modelo Lógico de Dados
@@ -1346,156 +1350,576 @@ _conteúdo_
 
  Os testes funcionais validam o comportamento esperado do sistema com base nos **Requisitos Funcionais (RFs)** estabelecidos. O objetivo desses testes é garantir que todas as funcionalidades atendam aos requisitos de negócio e projeto, verificando a correção das operações realizadas, o fluxo dos dados e a resposta do sistema em diferentes cenários.
 
-Os testes foram planejados com casos positivos e negativos, cobrindo diferentes contextos de uso. Cada teste apresenta:
-- **O requisito funcional associado**
-- **Uma descrição detalhada do teste**
-- **As pré-condições necessárias**
-- **Os critérios de aceitação**
-- **Os critérios de falha**
+### 9.1.1 Estratégia de Testes
 
-Os resultados desses testes permitirão validar o funcionamento correto do sistema antes da sua entrega.
+Nossa estratégia de testes funcionais abrange três categorias principais:
 
-### **9.1.1 Planejamento**
+1. **Testes Positivos**: Validam o comportamento esperado do sistema com entradas válidas.
+2. **Testes Negativos**: Verificam como o sistema lida com entradas inválidas ou situações de erro.
+3. **Testes de Borda**: Exploram os limites dos dados e situações extremas.
 
-A tabela a seguir apresenta os testes planejados para validar os **Requisitos Funcionais (RFs)** do sistema.
+Para cada funcionalidade, consideramos:
+- Diferentes tipos de entrada (texto, números, datas)
+- Limites de tamanho e formato dos dados
+- Combinações de dados válidos e inválidos
+- Fluxos alternativos e de exceção
 
-| Caso de Teste | RF#   | Descrição do Teste | Pré-condição | Caso de Aceite | Caso de Recusa |
-|--------------|------|------------------|--------------|----------------|----------------|
-| **CT001** | **RF001** | Testar o cadastro de um novo profissional. | O sistema está online e o usuário tem permissão para cadastrar profissionais. | O profissional é cadastrado com sucesso e aparece na lista de profissionais. | O sistema exibe uma mensagem de erro ou nada acontece após tentar cadastrar. |
-| **CT002** | **RF002** | Testar a associação de um aluno a um profissional. | O aluno e o profissional já estão cadastrados no sistema. | A associação é criada com sucesso e aparece na lista de associações. | O sistema exibe uma mensagem de erro ou nada acontece após tentar associar. |
-| **CT003** | **RF003** | Testar a exibição do dashboard de BI. | O sistema possui dados de alunos, unidades e gestão. | O dashboard é exibido com gráficos e tabelas atualizados. | O dashboard não é exibido ou os dados estão incorretos. |
-| **CT004** | **RF004** | Testar o acompanhamento de um aluno com deficiência. | O aluno e o profissional já estão cadastrados e associados. | O histórico e o status do aluno são exibidos corretamente. | O sistema exibe uma mensagem de erro ou dados incorretos. |
-| **CT005** | **RF005** | Testar a autenticação de um usuário. | O usuário possui credenciais válidas. | O usuário é autenticado com sucesso e tem acesso às funcionalidades permitidas. | O sistema exibe uma mensagem de erro ou o acesso é negado. |
-| **CT006** | **RF006** | Testar a edição de perfil de um usuário. | O usuário está autenticado e possui permissão para editar o perfil. | As informações do perfil são atualizadas com sucesso. | O sistema exibe uma mensagem de erro ou as informações não são atualizadas. |
-| **CT007** | **RF007** | Testar a pesquisa de alunos e profissionais. | O sistema possui dados de alunos e profissionais cadastrados. | Os resultados da pesquisa são exibidos corretamente. | O sistema exibe uma mensagem de erro ou resultados incorretos. |
-| **CT008** | **RF008** | Testar a visualização do histórico de alterações. | O sistema possui registros de alterações. | O histórico de alterações é exibido corretamente. | O sistema exibe uma mensagem de erro ou o histórico não é exibido. |
+### 9.1.2 Planejamento Detalhado
 
-Cada caso de teste será executado considerando **cenários positivos e negativos**, garantindo que o sistema se comporte corretamente em diferentes condições.
+#### CT001 - Cadastro de Profissional (RF001)
 
-## 9.1.2 Resultados
+**Cenários Positivos:**
+1. Cadastro com todos os campos preenchidos corretamente
+   - Entrada: Nome completo, email válido, unidade existente
+   - Resultado Esperado: Profissional cadastrado com sucesso
 
-_conteúdo_
+**Cenários Negativos:**
+1. Cadastro com email inválido
+   - Entrada: Email sem @ ou domínio
+   - Resultado Esperado: Mensagem de erro específica sobre formato de email
+
+**Testes de Borda:**
+1. Nome com caracteres especiais
+   - Entrada: Nome com acentos, ç, hífen
+   - Resultado Esperado: Aceitar caracteres especiais válidos
+
+2. Tamanho máximo dos campos
+   - Entrada: Nome com 100 caracteres (limite máximo)
+   - Resultado Esperado: Aceitar se dentro do limite, rejeitar se exceder
+
+#### CT002 - Associação Aluno-Profissional (RF002)
+
+**Cenários Positivos:**
+1. Associação simples
+   - Entrada: Aluno e profissional válidos
+   - Resultado Esperado: Associação criada com sucesso
+
+2. Associação múltipla
+   - Entrada: Um aluno com múltiplos profissionais
+   - Resultado Esperado: Todas as associações criadas corretamente
+
+**Cenários Negativos:**
+1. Associação duplicada
+   - Entrada: Tentar associar mesmo par aluno-profissional
+   - Resultado Esperado: Mensagem de erro sobre duplicidade
+
+2. Associação com profissional inativo
+   - Entrada: Profissional com status inativo
+   - Resultado Esperado: Mensagem de erro sobre status do profissional
+
+**Testes de Borda:**
+1. Limite de associações
+   - Entrada: Tentar exceder limite máximo de profissionais por aluno
+   - Resultado Esperado: Mensagem de erro sobre limite excedido
+
+#### CT003 - Dashboard (RF003)
+
+**Cenários Positivos:**
+1. Visualização com dados completos
+   - Entrada: Período com dados disponíveis
+   - Resultado Esperado: Gráficos e métricas exibidos corretamente
+
+**Cenários Negativos:**
+1. Período sem dados
+   - Entrada: Período sem registros
+   - Resultado Esperado: Mensagem informativa sobre ausência de dados
+
+**Testes de Borda:**
+1. Grande volume de dados
+   - Entrada: Período com mais de 10.000 registros
+   - Resultado Esperado: Dashboard carregado sem degradação de performance
+
+2. Filtros combinados
+   - Entrada: Múltiplos filtros simultâneos
+   - Resultado Esperado: Dados filtrados corretamente mantendo performance
+
+#### CT004 - Acompanhamento de Alunos com Deficiência (RF004)
+
+**Cenários Positivos:**
+1. Visualização do histórico completo do aluno.
+   - Entrada: Selecionar um aluno com histórico de acompanhamento
+   - Resultado Esperado: Exibição correta de todas as entradas do histórico.
+
+2. Atualização do status do aluno.
+   - Entrada: Alterar o status do aluno e adicionar um comentário.
+   - Resultado Esperado: Status e comentário atualizados no histórico do aluno.
+
+**Cenários Negativos:**
+1. Tentativa de visualizar histórico de aluno sem registro.
+   - Entrada: Selecionar um aluno sem histórico de atendimentos ou tecnologias.
+   - Resultado Esperado: Mensagem indicando a ausência de registros.
+
+**Testes de Borda:**
+1. Histórico com grande volume de entradas.
+   - Entrada: Aluno com mais de 100 entradas no histórico.
+   - Resultado Esperado: Carregamento do histórico sem erros.
+
+#### CT005 - Autenticação e Autorização de Usuários (RF005)
+
+**Cenários Positivos:**
+1. Login com credenciais válidas.
+   - Entrada: Login realizado pelo Auth0 com usuário e senha corretos.
+   - Resultado Esperado: Acesso concedido às funcionalidades permitidas.
+
+2. Acesso a funcionalidades conforme o nível de permissão.
+   - Entrada: Usuários com diferentes níveis de permissão tentando acessar várias funcionalidades.
+   - Resultado Esperado: Acesso permitido ou negado de acordo com o nível de permissão.
+
+**Cenários Negativos:**
+1. Login com senha incorreta.
+   - Entrada: Usuário correto, senha incorreta.
+   - Resultado Esperado: Mensagem de erro de senha inválida.
+
+2. Tentativa de acesso a funcionalidades não permitidas.
+   - Entrada: Usuário tentando acessar uma funcionalidade para a qual não tem permissão.
+   - Resultado Esperado: Mensagem de acesso negado.
+
+**Testes de Borda:**
+1. Múltiplas tentativas de login com senha incorreta.
+   - Entrada: Mais de 5 tentativas de login com senha errada.
+   - Resultado Esperado: Bloqueio temporário da conta.
+
+#### CT006 - Pesquisa e Filtros Avançados (RF006)
+
+**Cenários Positivos:**
+1. Pesquisa por nome completo.
+   - Entrada: Nome completo de um aluno ou profissional.
+   - Resultado Esperado: Exibição do registro correspondente.
+
+**Cenários Negativos:**
+1. Pesquisa sem resultados.
+   - Entrada: Termo de pesquisa que não corresponde a nenhum registro.
+   - Resultado Esperado: Mensagem indicando nenhum resultado encontrado.
+
+**Testes de Borda:**
+1. Pesquisa com caracteres especiais.
+   - Entrada: Termo de pesquisa com acentos e outros caracteres especiais.
+   - Resultado Esperado: Resultados correspondentes, se existirem.
+
+#### CT007 - Histórico de Alterações (RF007)
+
+**Cenários Positivos:**
+1. Visualização do histórico completo.
+   - Entrada: Acessar o histórico de alterações.
+   - Resultado Esperado: Exibição de todas as alterações registradas.
+
+2. Filtro por tipo de alteração.
+   - Entrada: Filtrar o histórico por cadastro ou associação.
+   - Resultado Esperado: Exibição apenas das alterações do tipo selecionado.
+
+**Cenários Negativos:**
+1. Histórico vazio.
+   - Entrada: Acessar o histórico quando não há alterações registradas.
+   - Resultado Esperado: Mensagem indicando histórico vazio.
+
+2. Filtros com valores inválidos.
+   - Entrada: Filtrar por um tipo de alteração inexistente.
+   - Resultado Esperado: Mensagem de erro ou nenhum resultado.
+
+**Testes de Borda:**
+1. Histórico com grande volume de registros.
+   - Entrada: Histórico com mais de 1000 registros.
+   - Resultado Esperado: Carregamento do histórico sem erros.
+
+### 9.1.3 Matriz de Rastreabilidade
+
+Para garantir a cobertura completa dos requisitos, mantemos uma matriz relacionando cada caso de teste aos requisitos funcionais:
+
+| Caso de Teste | RF001 | RF002 | RF003 | RF004 | RF005 | RF006 | RF007 | RF008 |
+|---------------|-------|-------|-------|-------|-------|-------|-------|-------|
+| CT001         |   X   |       |       |       |       |       |       |       |
+| CT002         |       |   X   |       |       |       |       |       |       |
+| CT003         |       |       |   X   |       |       |       |       |       |
+[...]
+
+### 9.1.4 Critérios de Aceitação
+
+Para cada teste, definimos critérios específicos de aceitação:
+
+1. **Performance**
+   - Tempo de resposta dentro do limite de 0,8 segundos
+   - Sem degradação com volume de dados
+
+2. **Validação de Dados**
+   - Todos os campos obrigatórios verificados
+   - Formatos e tipos de dados validados
+   - Regras de negócio aplicadas corretamente
+
+3. **Tratamento de Erros**
+   - Mensagens claras e específicas
+   - Estado do sistema mantido em caso de erro
+   - Logs adequados gerados
+
+
 
 ## 9.2 Testes de RNFs
 
-Os testes de requisitos não funcionais validam aspectos de **desempenho, acessibilidade, segurança, compatibilidade e confiabilidade** do sistema, garantindo que ele funcione corretamente além das suas funcionalidades básicas.
+Os testes de requisitos não funcionais validam aspectos de **desempenho, acessibilidade, segurança, compatibilidade e confiabilidade** do sistema. Diferente dos testes funcionais que verificam "o que" o sistema faz, os testes de RNFs verificam "como" o sistema realiza suas funções.
 
-Os testes planejados cobrem:
-- **Eficiência de desempenho**: Tempo de resposta do sistema sob diferentes cargas.
-- **Usabilidade e acessibilidade**: Uso adequado por pessoas com deficiência visual e operacionalidade eficiente.
-- **Segurança**: Proteção de dados, autenticação e níveis de acesso.
-- **Compatibilidade**: Funcionamento correto em múltiplos navegadores e integração com APIs externas.
-- **Confiabilidade**: Disponibilidade do sistema e sua capacidade de recuperação de falhas.
+### 9.2.1 Estratégia de Testes
 
-Cada teste inclui:
-- **O requisito não funcional associado**
-- **Uma descrição detalhada do teste**
-- **As pré-condições necessárias**
-- **Os critérios de aceitação**
-- **Os critérios de falha**
+Nossa abordagem para testes de RNFs é estruturada em cinco pilares principais:
 
-## 9.2.1 Planejamento
+1. **Testes de Performance**
+   - Tempo de resposta
+   - Capacidade de carga
+   - Escalabilidade
+   - Uso de recursos
 
-&nbsp;&nbsp;&nbsp;&nbsp;A tabela a seguir apresenta os testes planejados para validar os **Requisitos Não Funcionais (RNFs)** do sistema.
+2. **Testes de Segurança**
+   - Autenticação
+   - Autorização
+   - Proteção de dados
+   - Resistência a ataques
 
-| Caso de Teste | RNF#   | Descrição do Teste | Pré-condição | Caso de Aceite | Caso de Recusa |
-|--------------|------|------------------|--------------|----------------|----------------|
-| **CT-001** | **RNF01** | Testar o tempo de resposta para consultas de dados. | O sistema está operando com carga normal e sob estresse. | Consultas são feitas em menos de 0,8 segundo. | Consultas excedem 0,8 segundo de tempo de resposta. |
-| **CT-002** | **RNF02** | Testar usabilidade com leitor de tela e acessibilidade. | O leitor de tela está ativado. | Usuário com deficiência consegue usar a aplicação sem dificuldades. | Usuário com deficiência não consegue utilizar a aplicação. |
-| **CT-003** | **RNF03** | Testar se o assessor encontra alunos e profissionais com, no máximo, 3 cliques. | Usuário assessor logado no sistema. | Usuário encontra alunos e profissionais com até 3 cliques. | Usuário precisa de mais de 3 cliques para encontrar alunos e profissionais. |
-| **CT-004** | **RNF04** | Testar níveis de acesso dos usuários para garantir segurança. | Perfis de usuários criados com permissões diferenciadas. | Cada tipo de login acessa apenas suas funcionalidades. | Um tipo de login acessa informações de outro perfil. |
-| **CT-005** | **RNF05** | Testar segurança da transmissão de dados contra interceptação. | O sistema está em funcionamento normal. | O invasor não consegue obter os dados brutos. | O invasor consegue acessar os dados brutos. |
-| **CT-006** | **RNF06** | Testar a modularidade e documentação do código ao adicionar uma nova funcionalidade. | O código está modularizado e documentado. | A funcionalidade é adicionada sem impactar outras partes do sistema. | A adição da funcionalidade gera erros nas demais funções. |
-| **CT-007** | **RNF07** | Testar funcionamento da aplicação nos navegadores Chrome, Firefox, Edge e Safari. | A aplicação está acessível nos navegadores testados. | A aplicação funciona integralmente em todos os navegadores. | A aplicação apresenta falhas em um ou mais navegadores. |
-| **CT-008** | **RNF08** | Monitorar a disponibilidade do sistema ao longo do tempo. | O sistema está em produção. | A aplicação mantém disponibilidade de 99,5% ou mais. | O sistema fica fora do ar por mais tempo que o permitido. |
-| **CT-009** | **RNF09** | Testar exibição de mensagens claras em caso de erro. | O sistema está operando normalmente. | O sistema exibe mensagens de erro claras e compreensíveis. | O sistema não exibe mensagens ou elas são confusas. |
-| **CT-010** | **RNF10** | Testar atualização simultânea do mesmo dado em dois dispositivos. | Dois dispositivos acessando a aplicação ao mesmo tempo. | O sistema valida corretamente os dados e mantém a integridade. | A aplicação permite atualizações incorretas ou inconsistentes. |
-| **CT-011** | **RNF11** | Testar a integração com a API do Centro Paula Souza. | O sistema está online e a API do Centro Paula Souza está disponível. | Os dados dos alunos são retornados corretamente e sem erros. | O sistema exibe uma mensagem de erro informando falha na integração. |
-| **CT-012** | **RNF12** | Testar o backup automático de dados. | O sistema está configurado para realizar backups periódicos. | O backup ocorre na frequência estabelecida e pode ser restaurado corretamente. | O sistema não realiza o backup ou os dados não podem ser restaurados. |
-| **CT-013** | **RNF13** | Testar os requisitos de acessibilidade (WCAG). | O sistema está implementado conforme as diretrizes WCAG. | Usuários com deficiência conseguem utilizar a aplicação sem barreiras. | O sistema apresenta dificuldades de navegação ou acessibilidade deficiente. |
+3. **Testes de Usabilidade e Acessibilidade**
+   - Conformidade com WCAG
+   - Compatibilidade com leitores de tela
+   - Eficiência de navegação
 
-&nbsp;&nbsp;&nbsp;&nbsp;Os testes planejados garantem que o sistema atenda aos requisitos de **desempenho, usabilidade, segurança e confiabilidade**, assegurando sua **eficiência, acessibilidade e estabilidade**.
+4. **Testes de Compatibilidade**
+   - Múltiplos navegadores
+   - Diferentes resoluções
+   - Integração com APIs
 
-## 9.2.2 Resultados
+5. **Testes de Confiabilidade**
+   - Disponibilidade
+   - Recuperação de falhas
+   - Backup e restauração
 
-_conteúdo_
+### 9.2.2 Planejamento Detalhado
+
+#### CT-001 - Tempo de Resposta (RNF01)
+
+**Cenários de Teste:**
+
+1. **Carga Normal**
+   - Condição: 50 usuários simultâneos
+   - Métrica: Tempo de resposta para cada operação
+   - Critério: ≤ 0,8 segundos para 95% das requisições
+
+2. **Pico de Carga**
+   - Condição: 200 usuários simultâneos
+   - Métrica: Tempo de resposta médio
+   - Critério: ≤ 2 segundos para 90% das requisições
+
+3. **Teste de Estresse**
+   - Condição: Aumento gradual até 500 usuários
+   - Métrica: Ponto de degradação do sistema
+   - Critério: Identificar limite de usuários mantendo resposta ≤ 3 segundos
+
+**Ferramentas:**
+- Apache JMeter para testes de carga
+- New Relic para monitoramento
+- AWS CloudWatch para métricas
+
+#### CT-002 - Acessibilidade (RNF02)
+
+**Cenários de Teste:**
+
+1. **Navegação por Teclado**
+   - Condição: Navegação completa sem mouse
+   - Métrica: Completude de tarefas
+   - Critério: 100% das funcionalidades acessíveis
+
+2. **Compatibilidade com Leitores de Tela**
+   - Condição: Teste com NVDA e JAWS
+   - Métrica: Legibilidade do conteúdo
+   - Critério: Todos os elementos corretamente identificados
+
+3. **Contraste e Legibilidade**
+   - Condição: Verificação WCAG 2.1
+   - Métrica: Nível de contraste
+   - Critério: Mínimo 4.5:1 para texto normal
+
+**Ferramentas:**
+- WAVE para análise de acessibilidade
+- Lighthouse para auditorias
+- Axe DevTools para testes automatizados
+
+#### CT-003 - Eficiência de Navegação (RNF03)
+
+**Cenários de Teste:**
+
+1. **Contagem de Cliques**
+   - Condição: Navegação para tarefas principais
+   - Métrica: Número de cliques
+   - Critério: Máximo 3 cliques para ações frequentes
+
+2. **Tempo de Conclusão**
+   - Condição: Tarefas comuns do usuário
+   - Métrica: Tempo para completar
+   - Critério: ≤ 30 segundos por tarefa principal
+
+**Ferramentas:**
+- Hotjar para análise de comportamento
+- Google Analytics para métricas de navegação
+
+#### CT-004 - Segurança (RNF04)
+
+**Cenários de Teste:**
+
+1. **Controle de Acesso**
+   - Condição: Tentativas de acesso não autorizado
+   - Métrica: Taxa de bloqueio
+   - Critério: 100% das tentativas inválidas bloqueadas
+
+2. **Proteção contra Injeção SQL**
+   - Condição: Tentativas de injeção em campos
+   - Métrica: Taxa de prevenção
+   - Critério: 100% das tentativas detectadas e bloqueadas
+
+3. **Força de Senha**
+   - Condição: Criação de novas senhas
+   - Métrica: Complexidade mínima
+   - Critério: 8 caracteres, maiúsculas, minúsculas, números
+
+**Ferramentas:**
+- OWASP ZAP para testes de segurança
+- SonarQube para análise de código
+- AWS WAF para proteção
+
+[Continua com detalhamento similar para os demais casos de teste...]
+
+### 9.2.3 Métricas e Monitoramento
+
+Para cada categoria de teste, estabelecemos métricas específicas:
+
+1. **Performance**
+   - Tempo médio de resposta
+   - Taxa de erro
+   - Utilização de recursos
+   - Tempo de carregamento de página
+
+2. **Segurança**
+   - Número de vulnerabilidades detectadas
+   - Tempo médio de detecção
+   - Taxa de falsos positivos
+   - Cobertura de patches
+
+3. **Usabilidade**
+   - Taxa de sucesso em tarefas
+   - Tempo médio por tarefa
+   - Taxa de erro do usuário
+   - Satisfação do usuário
+
+### 9.2.4 Ambiente de Testes
+
+Os testes são executados em três ambientes distintos:
+
+1. **Desenvolvimento**
+   - Testes unitários e integração
+   - Verificações de código
+   - Testes de componentes
+
+2. **Homologação**
+   - Testes de carga
+   - Testes de segurança
+   - Validação de usuário
+
+3. **Produção**
+   - Monitoramento contínuo
+   - Análise de logs
+   - Métricas de desempenho
+
+
 
 ## 9.3 Testes de Usabilidade
 
-&nbsp;&nbsp;&nbsp;&nbsp; Os testes serão conduzidos com diferentes perfis de usuários, incluindo gestores administrativos, gestores de unidade e assessores, além de considerarem acessibilidade para pessoas com deficiência visual que utilizam leitores de tela.
+Os testes de usabilidade são fundamentais para garantir que o sistema seja intuitivo, eficiente e acessível para todos os usuários. Nossa abordagem é centrada no usuário e considera especialmente as necessidades de acessibilidade, dado o contexto do projeto.
 
-&nbsp;&nbsp;&nbsp;&nbsp; Os testes de usabilidade seguem o modelo de **teste de caixa preta** e são exclusivamente qualitativos, focando na interação dos usuários com o sistema e na identificação de dificuldades durante a execução de tarefas.
+### 9.3.1 Metodologia
 
-&nbsp;&nbsp;&nbsp;&nbsp; Os resultados permitirão identificar dificuldades e ajustar o sistema conforme as necessidades dos perfis testados. Os principais critérios avaliados são:
+#### Abordagem
+- **Testes Moderados**: Sessões individuais com observação direta
+- **Pensamento em Voz Alta**: Usuários verbalizam seus pensamentos durante os testes
+- **Gravação de Sessão**: Captura de tela e áudio para análise posterior
+- **Métricas Quantitativas e Qualitativas**: Combinação de dados objetivos e feedback subjetivo
 
-- **Eficácia**: Mede a taxa de sucesso na execução de uma tarefa. Um teste eficaz verifica se o usuário conseguiu concluir a tarefa sem erros ou interrupções.
-- **Eficiência**: Avalia o esforço necessário para completar uma tarefa, considerando tempo e recursos utilizados.
-- **Satisfação**: Reflete a percepção do usuário sobre a facilidade e conforto na execução da tarefa.
+#### Métricas Principais
+1. **Eficácia**
+   - Taxa de conclusão de tarefas
+   - Número de erros cometidos
+   - Precisão na execução
 
-## 9.3.1 Planejamento
+2. **Eficiência**
+   - Tempo para completar tarefas
+   - Número de cliques/passos
+   - Desvios do caminho ideal
 
-&nbsp;&nbsp;&nbsp;&nbsp; Os testes foram estruturados para representar situações reais de uso, considerando diferentes perfis de usuários e cenários aplicáveis.
+3. **Satisfação**
+   - Facilidade de uso percebida
+   - Clareza da interface
+   - Conforto com a navegação
+
+### 9.3.2 Perfis de Usuários e Cenários
+
+#### Gestor Administrativo (GA)
+**Perfil:**
+- Experiência avançada com sistemas
+- Foco em análise de dados e relatórios
+- Necessidade de visão sistêmica
+
+**Cenários Detalhados:**
+
+1. **Análise de Dashboard**
+   - **Objetivo**: Avaliar dados estatísticos dos atendimentos
+   - **Tarefas**:
+     1. Acessar o dashboard principal
+     2. Filtrar dados por período específico
+     3. Exportar relatório personalizado
+   - **Métricas Específicas**:
+     - Tempo para localizar informações específicas
+     - Precisão na interpretação dos dados
+     - Facilidade de customização de relatórios
+
+2. **Gestão de Usuários**
+   - **Objetivo**: Gerenciar permissões e acessos
+   - **Tarefas**:
+     1. Criar novo perfil de acesso
+     2. Modificar permissões existentes
+     3. Auditar logs de acesso
+   - **Critérios de Sucesso**:
+     - Conclusão sem erros de segurança
+     - Tempo máximo de 5 minutos por tarefa
+     - Confirmação adequada das alterações
+
+#### Gestor de Unidade (GU)
+**Perfil:**
+- Conhecimento intermediário de sistemas
+- Foco em gestão local
+- Necessidade de acompanhamento próximo
+
+**Cenários Detalhados:**
+
+1. **Gestão de Atendimentos**
+   - **Objetivo**: Monitorar atendimentos da unidade
+   - **Tarefas**:
+     1. Visualizar lista de atendimentos ativos
+     2. Filtrar por profissional específico
+     3. Gerar relatório de acompanhamento
+   - **Métricas Específicas**:
+     - Facilidade de localização de informações
+     - Clareza dos status de atendimento
+     - Eficiência na geração de relatórios
+
+2. **Acompanhamento de Alunos**
+   - **Objetivo**: Verificar progresso dos alunos
+   - **Tarefas**:
+     1. Buscar aluno específico
+     2. Revisar histórico de atendimentos
+     3. Adicionar observações ao registro
+   - **Critérios de Sucesso**:
+     - Máximo 3 cliques para localizar aluno
+     - Visualização clara do histórico
+     - Feedback imediato das atualizações
+
+#### Assessor
+**Perfil:**
+- Foco em atendimento direto
+- Possível necessidade de acessibilidade
+- Uso frequente do sistema
+
+**Cenários Detalhados:**
+
+1. **Registro de Atendimento**
+   - **Objetivo**: Documentar novo atendimento
+   - **Tarefas**:
+     1. Iniciar novo registro
+     2. Preencher informações detalhadas
+     3. Anexar documentos relevantes
+   - **Métricas Específicas**:
+     - Tempo total de registro
+     - Clareza do processo
+     - Facilidade de anexar documentos
+
+2. **Uso com Leitor de Tela**
+   - **Objetivo**: Validar acessibilidade
+   - **Tarefas**:
+     1. Navegar entre seções principais
+     2. Localizar informações específicas
+     3. Preencher formulários
+   - **Critérios de Sucesso**:
+     - Navegação completa sem mouse
+     - Descrições claras dos elementos
+     - Feedback adequado por áudio
+
+### 9.3.3 Roteiro de Testes
+
+#### Preparação
+1. **Ambiente de Teste**
+   - Computador com configuração padrão
+   - Navegadores principais instalados
+   - Ferramentas de acessibilidade configuradas
+
+2. **Documentação**
+   - Roteiro detalhado por perfil
+   - Formulários de observação
+   - Termos de consentimento
+
+#### Execução
+1. **Introdução (5-10 min)**
+   - Apresentação dos objetivos
+   - Explicação da metodologia
+   - Assinatura de termos
+
+2. **Tarefas Principais (30-45 min)**
+   - Execução dos cenários
+   - Observação e registro
+   - Coleta de feedback
+
+3. **Entrevista Pós-teste (15-20 min)**
+   - Discussão das dificuldades
+   - Sugestões de melhoria
+   - Avaliação geral
+
+### 9.3.4 Análise e Documentação
+
+#### Coleta de Dados
+- Registros de tempo por tarefa
+- Anotações de observação
+- Gravações das sessões
+- Feedback dos usuários
+
+#### Métricas de Avaliação
+1. **Quantitativas**
+   - Taxa de sucesso por tarefa
+   - Tempo médio de conclusão
+   - Número de erros
+   - Taxa de uso de ajuda
+
+2. **Qualitativas**
+   - Satisfação do usuário
+   - Pontos de frustração
+   - Sugestões de melhoria
+   - Observações gerais
+
+#### Relatório Final
+- Sumário executivo
+- Análise detalhada por perfil
+- Recomendações de melhoria
+- Priorização de ajustes
+
+### 9.3.5 Critérios de Sucesso
+
+Para considerar os testes bem-sucedidos, estabelecemos os seguintes critérios:
+
+1. **Eficácia**
+   - 90% de taxa de conclusão das tarefas
+   - Máximo de 2 erros por tarefa
+   - Zero erros críticos de acessibilidade
+
+2. **Eficiência**
+   - Tempo máximo de 30 segundos para tarefas frequentes
+   - Máximo 3 cliques para ações principais
+   - Navegação completa por teclado possível
+
+3. **Satisfação**
+   - Avaliação mínima de 4/5 em satisfação
+   - Feedback positivo em acessibilidade
+   - Baixa taxa de frustração reportada
 
 
-#### 9.3.1.1 Definir o Público-Alvo
-
-&nbsp;&nbsp;&nbsp;&nbsp; Os testes serão realizados com:
-
-- **Gestor Administrativo (GA):** Usuário responsável pelo gerenciamento geral do sistema.
-- **Gestor Unidade (GU):** Usuário que administra uma unidade específica e gerencia os atendimentos.
-- **Assessor:** Profissional responsável pelo acompanhamento e execução dos atendimentos.
-- **Usuários com deficiência visual:** Todos os testes serão conduzidos considerando acessibilidade via leitores de tela.
-
-#### 9.3.1.2 Roteiro de Testes por Tipo de Usuário
-
-&nbsp;&nbsp;&nbsp;&nbsp; Os testes foram classificados conforme os critérios de **eficácia, eficiência e satisfação**, descritos no planejamento.
-
-### **Roteiro de Testes para Gestor Administrativo (GA)**
-
-| Passo | Atividade | Critério Avaliado | Pergunta ao Usuário |
-|-------|-----------|-------------------|----------------------|
-| 1 | Acessar a Home e verificar os menus e atalhos. | Eficiência | Os menus estão organizados de forma intuitiva? |
-| 2 | Cadastrar um novo profissional. | Eficácia | O processo de cadastro foi concluído sem dificuldades? Agora cadastre um novo profissional. |
-| 3 | Filtrar profissionais por unidade e cargo. | Eficiência | Os filtros retornaram os resultados esperados? Agora filtre os profissionais da unidade XPTO. |
-| 4 | Consultar atendimentos registrados no sistema. | Eficácia | As informações do atendimento estão bem organizadas? Agora encontre o aluno XPTO. |
-| 5 | Testar uso com leitor de tela. | Satisfação | Você conseguiu navegar sem dificuldades usando o leitor de tela? |
-
-### **Roteiro de Testes para Gestor Unidade (GU)**
-
-| Passo | Atividade | Critério Avaliado | Pergunta ao Usuário |
-|-------|-----------|-------------------|----------------------|
-| 1 | Navegar entre os menus da unidade. | Eficiência | A interface é intuitiva? Agora navegue até a seção de relatórios. |
-| 2 | Cadastrar um novo aluno. | Eficácia | O cadastro do aluno foi direto? Agora cadastre um aluno chamado XPTO. |
-| 3 | Vincular um profissional a um atendimento. | Eficácia | A vinculação do profissional foi simples? Agora vincule o aluno XPTO a um profissional. |
-| 4 | Avaliar a usabilidade do Dashboard. | Eficiência | As informações do Dashboard foram fáceis de interpretar? |
-| 5 | Testar navegação com leitor de tela. | Satisfação | O sistema ofereceu uma boa experiência de acessibilidade? |
-
-### **Roteiro de Testes para Assessor**
-
-| Passo | Atividade | Critério Avaliado | Pergunta ao Usuário |
-|-------|-----------|-------------------|----------------------|
-| 1 | Filtrar atendimentos por aluno. | Eficiência | Foi fácil encontrar o atendimento desejado? Agora encontre o atendimento do aluno XPTO. |
-| 2 | Criar um novo atendimento e adicionar observações. | Eficácia | O sistema permitiu adicionar informações sem dificuldades? Agora registre um novo atendimento. |
-| 3 | Editar um atendimento existente. | Eficácia | O processo de edição foi intuitivo? Agora edite um atendimento existente. |
-| 4 | Preencher formulários na interface. | Eficiência | O preenchimento foi rápido e eficiente? |
-| 5 | Utilizar leitor de tela. | Satisfação | Houve alguma dificuldade ao usar o leitor de tela? |
-
-#### 9.3.1.3 Perguntas para Entrevista Pós-Teste
-
-Cada participante responderá perguntas estruturadas sobre a usabilidade do sistema:
-
-1. A interface foi intuitiva e de fácil navegação?
-2. Alguma funcionalidade apresentou dificuldades de uso?
-3. O sistema apresentou informações claras e compreensíveis?
-4. Para usuários com deficiência visual, houve barreiras de acessibilidade?
-5. O sistema é parecido com algum já utilizado por vocês no Centro Paula Souza?
-6. Dessas atividades que você realizou no teste, qual você acredita que realizaria com mais frequência na sua rotina de trabalho?
-7. O que poderia ser melhorado para tornar a experiência mais eficiente?
-
-
-## 9.3.2 Resultados
-
-_conteúdo_
 
 # 10. Procedimentos de Implantação
 
