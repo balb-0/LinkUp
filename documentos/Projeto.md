@@ -84,6 +84,7 @@
     - [9.3.3 Roteiro de Testes](#933-roteiro-de-testes)
     - [9.3.4 Análise e Documentação](#934-análise-e-documentação)
     - [9.3.5 Critérios de Sucesso](#935-critérios-de-sucesso)
+    - [9.3.6 Relatório de Testes de Usabilidade](#936-relatório-de-testes-de-usabilidade)
 - [10. Procedimentos de Implantação](#10-procedimentos-de-implantação)
   - [10.1 Implantação e Configuração do Banco de Dados](#101-implantação-e-configuração-do-banco-de-dados)
   - [10.2 Implantação do Protótipo para uso por equipe de desenvolvimento](#102-implantação-do-protótipo-para-uso-por-equipe-de-desenvolvimento)
@@ -1859,15 +1860,14 @@ Os testes de usabilidade são fundamentais para garantir que o sistema seja intu
 **Cenários Detalhados:**
 
 1. **Gestão de Atendimentos**
-   - **Objetivo**: Monitorar atendimentos da unidade
+   - **Objetivo**: Monitorar atendimentos dos alunos da sua unidade
    - **Tarefas**:
-     1. Visualizar lista de atendimentos ativos
-     2. Filtrar por profissional específico
-     3. Gerar relatório de acompanhamento
+     1. Visualizar lista de alunos
+     2. Acessar perfil de um aluno
+     3. Visualizar os atendimentos ativos
    - **Métricas Específicas**:
      - Facilidade de localização de informações
      - Clareza dos status de atendimento
-     - Eficiência na geração de relatórios
 
 2. **Acompanhamento de Alunos**
    - **Objetivo**: Verificar progresso dos alunos
@@ -1888,18 +1888,38 @@ Os testes de usabilidade são fundamentais para garantir que o sistema seja intu
 
 **Cenários Detalhados:**
 
-1. **Registro de Atendimento**
-   - **Objetivo**: Documentar novo atendimento
+1. **Registro de Profissional**
+   - **Objetivo**: Registrar um novo profissional
    - **Tarefas**:
-     1. Iniciar novo registro
-     2. Preencher informações detalhadas
-     3. Anexar documentos relevantes
+     1. Acessar a tela de profissionais
+     2. Preencher informações necessárias
+     3. Confirmar o cadastro
    - **Métricas Específicas**:
      - Tempo total de registro
      - Clareza do processo
-     - Facilidade de anexar documentos
 
-2. **Uso com Leitor de Tela**
+2. **Registro de Atendimento ou tecnologia assistiva**
+   - **Objetivo**: Documentar novo atendimento ou tecnologia assistiva
+   - **Tarefas**:
+     1. Iniciar novo registro de atendimento ou tecnologia assistiva
+     2. Preencher informações necessárias
+     3. Confirmar o cadastro
+   - **Métricas Específicas**:
+     - Tempo total de registro
+     - Clareza do processo
+
+3. **Edição de Atendimento**
+   - **Objetivo**: Editar um atendimento
+   - **Tarefas**:
+     1. Acessar o perfil de um aluno
+     2. Visualizar os atendimentos ativos e apertar para editar um deles
+     3. Alterar as informações necessárias
+     4. Confirmar o cadastro
+   - **Métricas Específicas**:
+     - Tempo total de edição
+     - Clareza do processo
+
+4. **Uso com Leitor de Tela**
    - **Objetivo**: Validar acessibilidade
    - **Tarefas**:
      1. Navegar entre seções principais
@@ -1919,18 +1939,17 @@ Os testes de usabilidade são fundamentais para garantir que o sistema seja intu
    - Ferramentas de acessibilidade configuradas
 
 2. **Documentação**
+   - Contextualização do projeto
    - Roteiro detalhado por perfil
    - Formulários de observação
-   - Termos de consentimento
 
 #### Execução
 1. **Introdução (5-10 min)**
    - Apresentação dos objetivos
    - Explicação da metodologia
-   - Assinatura de termos
 
 2. **Tarefas Principais (30-45 min)**
-   - Execução dos cenários
+   - Execução dos cenários (Descrever para o usuário quais são os seus objetivos na plataforma)
    - Observação e registro
    - Coleta de feedback
 
@@ -1944,7 +1963,6 @@ Os testes de usabilidade são fundamentais para garantir que o sistema seja intu
 #### Coleta de Dados
 - Registros de tempo por tarefa
 - Anotações de observação
-- Gravações das sessões
 - Feedback dos usuários
 
 #### Métricas de Avaliação
@@ -1961,7 +1979,6 @@ Os testes de usabilidade são fundamentais para garantir que o sistema seja intu
    - Observações gerais
 
 #### Relatório Final
-- Sumário executivo
 - Análise detalhada por perfil
 - Recomendações de melhoria
 - Priorização de ajustes
@@ -1986,6 +2003,115 @@ Para considerar os testes bem-sucedidos, estabelecemos os seguintes critérios:
    - Baixa taxa de frustração reportada
 
 
+### 9.3.6 Relatório de Testes de Usabilidade
+
+Data da execução: 27/03/2025 - 28/03/2025
+
+&nbsp;&nbsp;&nbsp;&nbsp;Para esta sprint, como a nossa aplicação não encontra-se totalmente finalizada e funcional foram escolhidos alguns cenários possíveis de ser executados, sendo eles:
+
+Gestor de Unidade (GU):
+1. Gestão de Atendimentos
+2. Acompanhamento de Alunos
+
+Assessor de Inclusão:
+3. Registro de Profissional
+
+&nbsp;&nbsp;&nbsp;&nbsp;Ainda vale ressaltar que os participantes dos testes não são realmente funcionários do Centro Paula Souza, podendo divergir um pouco nas habilidades mapeadas no planejamento dos testes.
+
+Participantes:
+- Maisa Vieira - Fluência Tecnológica Média (Cenários 1 e 2 - GU)
+- Isabelle Dantas - Fluência Tecnológica Alta (Cenários 1 e 2 - GU)
+- João Oliveira - Fluência Tecnológica Alta (Cenário 3 - Assessor)
+- Gabriela Silva - Fluência Tecnológica Média (Cenário 3 - Assessor)
+
+## Resultados Detalhados
+
+## **Cenário 1 - Gestão de Atendimentos**
+
+**Tarefas:**
+   - Visualizar lista de alunos
+   - Acessar perfil de um aluno
+   - Visualizar os atendimentos ativos
+
+**Observações:**
+   - Ambas as usuárias acessaram a tela de listagem de alunos sem dificuldade.
+   - Houve dificuldade inicial em entender a necessidade de selecionar uma opção no dropdown para exibir a lista de alunos.
+   - Maisa demorou para perceber que era possível clicar na linha para acessar o perfil do aluno.
+   - Após acessar o perfil, ambas visualizaram os atendimentos ativos facilmente.
+
+**Métricas:**
+   - Tempo para localizar informações específicas: Moderado.
+   - Clareza dos status de atendimento: Alta.
+
+**Pontos de Melhoria**
+   - Melhorar a indicação visual de que a lista de alunos depende da seleção de uma unidade no dropdown.
+   - Tornar o clique na linha do aluno mais intuitivo.
+
+
+## **Cenário 2 - Acompanhamento de Alunos**
+
+**Tarefas:**
+   - Buscar aluno específico
+   - Acessar o perfil desse aluno
+   - Revisar histórico de atendimentos
+   - Adicionar observações ao registro (Essa última tarefa não foi realizada, pois o nosso sistema não tem essa funcionalidade implementada ainda)
+
+**Observações:**
+   - A busca de alunos foi eficiente, após a compreensão da necessidade de selecionar a unidade (aprendizado do cenário anterior).
+   - O acesso ao perfil do aluno foi considerado fácil por já ter sido executado antes também.
+   - Isabelle teve dificuldade em identificar a aba "Anteriores" como o histórico de atendimentos.
+   - Ambas as participantes não tiveram dificuldade de pesquisar o nome do aluno na barra de pesquisa.
+
+**Métricas:**
+   - Número médio de cliques para localizar o aluno: 2.
+   - Facilidade de localização de informações: Alta (após a superação da barreira inicial).
+   - Visualização clara do histórico: Moderada (devido à nomenclatura da aba).
+   - Feedback imediato das atualizações: Alta.
+
+**Pontos de Melhoria**
+   - Considerar a alteração da nomenclatura da aba "Anteriores" para algo mais intuitivo, como "Histórico de Atendimentos".
+
+## **Cenário 3 - Registro de Profissional**
+
+**Tarefas:**
+   - Acessar a tela de profissionais
+   - Preencher informações necessárias
+   - Confirmar o cadastro
+
+**Observações:**
+   - Ambos os usuários acessaram a tela de profissionais sem dificuldades.
+   - João Oliveira sugeriu que a homepage pode ser dispensável devido à intuitividade da barra de navegação.
+   - A seção de cadastro de profissional foi facilmente localizada.
+   - O preenchimento das informações (nome, e-mail, ocupação) foi concluído sem problemas.
+   - Gabriela expressou confusão sobre a confirmação do cadastro, devido à falta de feedback visual.
+
+**Métricas:**
+   - Tempo médio total de registro: 3,5 minutos.
+   - Clareza do processo: Alta (com ressalva na confirmação).
+
+**Pontos de Melhoria**
+   - Avaliar a necessidade da homepage, considerando a sugestão de João Oliveira.
+   - Implementar feedback visual claro após a confirmação do cadastro, como uma mensagem de sucesso ou uma atualização na lista de profissionais.
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;Os testes de usabilidade realizados na Sprint 4, embora limitados pela versão ainda não finalizada da aplicação e pela participação de usuários não diretamente ligados ao Centro Paula Souza, forneceram insights valiosos sobre a experiência do usuário.
+
+**Principais Descobertas:**
+   - Intuitividade Geral: A aplicação demonstrou uma boa usabilidade geral, com os usuários conseguindo completar as tarefas propostas com relativa facilidade.
+   - Pontos de Confusão: Foram identificados pontos de confusão em relação à clareza de algumas indicações visuais e à nomenclatura de algumas seções, como a aba "Anteriores".
+   - Necessidade de Feedback Visual: A falta de feedback visual em algumas ações, como a confirmação do cadastro de um profissional, gerou confusão e frustração nos usuários.
+   - Sugestão de Melhoria na Navegação: A sugestão de dispensar a homepage, feita por um dos usuários, indica uma possível oportunidade de simplificar a navegação da aplicação.
+
+**Recomendações:**
+   - Priorizar a melhoria da clareza das indicações visuais, especialmente em relação ao dropdown de seleção de unidade na lista de alunos.
+   - Revisar a nomenclatura das seções da aplicação, buscando termos mais intuitivos e claros para os usuários.
+   - Implementar feedback visual claro após a realização de ações importantes, como cadastros e edições.
+   - Avaliar a necessidade da homepage, considerando a sugestão de simplificar a navegação.
+   - É muito importante adicionar um feedback visual para o usuário quando ele realizar alguma ação.
+
+**Próximos Passos:**
+   - Implementar as melhorias identificadas nos testes.
+   - Realizar novos testes de usabilidade com a aplicação completa, incluindo usuários com diferentes perfis e necessidades de 
 
 # 10. Procedimentos de Implantação
 
