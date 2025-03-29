@@ -10,11 +10,14 @@ import { testConnection } from "./utils/db";
 import profissionaisRouter from "./routes/profissionais";
 import authRoutes from "./routes/authRoutes";
 import pagesRoutes from "./routes/pagesRoutes";
+import atendimentoRouter from "./routes/atendimentoRoutes";
+import alunosRouter from "./routes/alunosRoutes";
 import { requestLogger } from "./middleware/logger";
 import { cacheMiddleware } from "./middleware/cache";
 import { createError, errorHandler } from "./middleware/errorHandler";
 import { healthCheck } from "./middleware/healthCheck";
 import limiter from "./middleware/limiter";
+import tecnologiaRoutes from './routes/tecnologias';
 
 // Inicializando o app
 const app = express();
@@ -80,9 +83,17 @@ app.get("/api", (req, res) => {
 // Rotas para autenticação
 app.use("/api/auth", authRoutes);
 
+// Rotas para a API de alunos
+app.use("/api/alunos", cacheMiddleware(300000), alunosRouter);
+
 // Rotas para a API de profissionais
 app.use("/api/profissionais", cacheMiddleware(300000), profissionaisRouter);
 
+
+//Rptas para API de atendimentos
+app.use("/api/atendimentos", cacheMiddleware(300000), atendimentoRouter);
+
+app.use('/api', tecnologiaRoutes); 
 // Rotas para as páginas
 app.use("/", pagesRoutes);
 

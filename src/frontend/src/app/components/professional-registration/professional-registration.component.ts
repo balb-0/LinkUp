@@ -1,26 +1,31 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ButtonComponent } from '../button/button.component';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ProfissionalService } from '../../services/professionalservice';
 import { Profissional } from '../../models/professional';
 import { Router } from '@angular/router';
+import { ProfessionalStateService } from '../../services/professional-state.service';
+import { SnackBarService } from '../../services/snack-bar.service';
+
 
 @Component({
   selector: 'app-professional-registration',
   standalone: true,
-  imports: [ButtonComponent, ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './professional-registration.component.html',
   styleUrl: './professional-registration.component.css'
 })
 export class ProfessionalRegistrationComponent implements OnInit {
   profissionalForm!: FormGroup;
   isSubmitting = false;
+  errorMessage: string | null = null;
 
   constructor(
     private fb: FormBuilder,
     private profissionalService: ProfissionalService,
-    private router: Router
+    private professionalState: ProfessionalStateService,
+    private router: Router,
+    private snackBarService: SnackBarService
   ) {}
 
   ngOnInit(): void {
@@ -44,6 +49,7 @@ export class ProfessionalRegistrationComponent implements OnInit {
     }
 
     this.isSubmitting = true;
+    this.errorMessage = null;
 
     const profissional: Profissional = {
       nome: this.profissionalForm.get('nome')?.value,
@@ -57,12 +63,39 @@ export class ProfessionalRegistrationComponent implements OnInit {
       next: (response: any) => {
         console.log('Profissional cadastrado com sucesso', response);
         // Limpar formulário após sucesso
+        this.snackBarService.showMessage('Profissional cadastrado com sucesso!', false, 'custom-snackbar');
         this.profissionalForm.reset();
         this.isSubmitting = false;
 
+        // Limpar o cache primeiro, depois redirecionar para garantir atualização completa
+        this.profissionalService.limparCache().subscribe({
+          next: () => {
+            console.log('Cache limpo com sucesso');
+            
+            // Redirecionar para a própria tela para forçar recarregamento completo 
+            // Isso garante que a página será renderizada do zero
+            // Indicamos um timestamp como query param para evitar cache do navegador
+            this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+              this.router.navigate(['/professionals'], { 
+                queryParams: { refresh: new Date().getTime() } 
+              });
+            });
+          },
+          error: (error) => {
+            console.error('Erro ao limpar cache:', error);
+            
+            // Mesmo se falhar o limpamento de cache, ainda forçamos navegação
+            this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+              this.router.navigate(['/professionals'], { 
+                queryParams: { refresh: new Date().getTime() } 
+              });
+            });
+          }
+        });
       },
       error: (erro: any) => {
         console.error('Erro ao cadastrar profissional', erro);
+        this.errorMessage = erro.error?.message || 'Erro ao cadastrar profissional';
         this.isSubmitting = false;
       }
     });

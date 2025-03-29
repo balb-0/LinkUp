@@ -1,0 +1,14 @@
+
+.mat-mdc-paginator-container {
+  justify-content: center !important;
+}
+
+
+::ng-deep .mat-mdc-paginator-page-size {
+  display: none !important;
+}
+
+
+::ng-deep .mat-mdc-paginator-range-actions {
+  margin-left: 0 !important;
+}

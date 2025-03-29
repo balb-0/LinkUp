@@ -1,0 +1,10 @@
+<div class="flex items-center mb-4">
+  <div
+    [ngClass]="{
+      'bg-verde': ativo === true,
+      'bg-vermelhoInstitucional': ativo === false
+    }"
+    class="w-4 h-4 rounded-full mr-2"
+  ></div>
+  <span class="text-[20px]">{{ ativo ? 'Ativo' : 'Inativo' }}</span>
+</div>

@@ -1,0 +1,24 @@
+<div class="popup-backdrop" (click)="closeDialog()">
+    <div class="popup-content" (click)="$event.stopPropagation()">
+
+        <div class="popup-header">
+            <button class="close-button" (click)="closeDialog()">
+                <mat-icon style="font-size: 30px;">close</mat-icon>
+            </button>
+        </div>
+
+        <div class="dialog-actions">
+            <!-- Barra de busca -->
+            <app-search-bar (search)="onSearch($event)"></app-search-bar>
+            <!-- Tabela com os profissionais -->
+            <app-table [data]="tableData" [columns]="tableColumns" [pageSize]="3"></app-table>
+
+            <!-- Date-time picker + Botão Confirmar -->
+            <div class="date-time-picker-container">
+                <app-date-time-picker></app-date-time-picker>
+                <app-button></app-button>
+            </div>
+        </div>
+
+    </div>
+</div>

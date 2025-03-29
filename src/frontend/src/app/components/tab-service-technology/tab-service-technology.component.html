@@ -1,0 +1,42 @@
+<!-- atendimentos-profissionais.component.html -->
+<div class="w-full border border-cinzaEscuro rounded-lg bg-cinza p-5">
+  <h1 class="text-xl font-bold text-preto mb-2">{{ titulo }}</h1>
+
+  <!-- Linha divisória entre título e botões -->
+  <hr class="border-t-2 border-preto w-full mb-4">
+
+  <div class="flex justify-between items-center mb-3">
+    <div class="flex">
+      <button
+        [ngClass]="{'bg-[#7E0000] text-[#F6F4F4]': abaSelecionada === 'atendimentos', 'bg-[#B9B9B9] text-[#333333]': abaSelecionada !== 'atendimentos'}"
+        class="font-medium w-[154px] h-[34px] rounded mr-[15px]"
+        (click)="selecionarAba('atendimentos')">
+        {{ textoAtendimentos }}
+      </button>
+      <button
+        [ngClass]="{'bg-[#7E0000] text-[#F6F4F4]': abaSelecionada === 'historico', 'bg-[#B9B9B9] text-[#333333]': abaSelecionada !== 'historico'}"
+        class="font-medium w-[154px] h-[34px] rounded"
+        (click)="selecionarAba('historico')">
+        {{ textoHistorico }}
+      </button>
+    </div>
+
+    <app-add-button
+      *ngIf="botaoAdicionar"
+      [text]="textoBotaoAdicionar"
+    ></app-add-button>
+  </div>
+
+  <!-- Conteúdo das abas -->
+  <div>
+    <!-- Conteúdo da aba Atendimentos -->
+    <div *ngIf="abaSelecionada === 'atendimentos'" class="py-2 text-preto">
+      <ng-content select="[conteudoAtendimentos]"></ng-content>
+    </div>
+
+    <!-- Conteúdo da aba Histórico -->
+    <div *ngIf="abaSelecionada === 'historico'" class="py-2 text-preto">
+      <ng-content select="[conteudoHistorico]"></ng-content>
+    </div>
+  </div>
+</div>

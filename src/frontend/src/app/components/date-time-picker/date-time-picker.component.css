@@ -1,0 +1,16 @@
+.date-time-picker {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+}
+
+mat-form-field {
+  width: auto;
+  min-width: 150px;
+}
+
+.date-field input,
+.time-field input {
+  text-align: center;
+}

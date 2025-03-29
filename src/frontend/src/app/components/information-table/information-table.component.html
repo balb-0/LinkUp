@@ -1,0 +1,41 @@
+<!-- 
+  InformationTable Component
+  
+  Componente reutilizável para exibir informações em formato de tabela.
+  - Recebe um array de 'sections', cada uma com título, colunas e linhas de dados
+  - Suporta seções com dados ou campos vazios para entrada
+-->
+
+<div class="w-full">
+  <div *ngFor="let section of sections" class="mb-8">
+    <div class="border border-cinzaEscuro rounded-lg bg-cinza p-5">
+      <h2 class="text-xl font-bold text-preto mb-2">{{ section.title }}</h2>
+      <hr class="border-t-2 border-preto w-full mb-4">
+      
+      <!-- Header row -->
+      <div class="flex mb-3">
+        <div *ngFor="let column of section.columns" class="flex-1 px-1">
+          <div class="text-preto font-medium">{{ column }}</div>
+        </div>
+      </div>
+      
+      <!-- Data rows -->
+      <div *ngIf="section.rows.length > 0">
+        <div *ngFor="let row of section.rows" class="flex mb-3">
+          <div *ngFor="let cell of row" class="flex-1 px-1">
+            <div class="bg-branco border border-cinzaEscuro rounded-md px-3 py-2 text-preto shadow-sm">{{ cell }}</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Empty rows for user input if needed -->
+      <div *ngIf="section.rows.length === 0">
+        <div class="flex mb-3">
+          <div *ngFor="let column of section.columns" class="flex-1 px-1">
+            <div class="bg-branco border border-cinzaEscuro rounded-md px-3 py-2 h-10 shadow-sm"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

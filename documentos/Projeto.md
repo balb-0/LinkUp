@@ -10,6 +10,7 @@
 # Nome do Projeto: LinkUp
 # Nome do Projeto: LinkUp
 
+## Nome do Grupo: LinkUp
 
 ## Integrantes:
 
@@ -69,14 +70,23 @@
   - [8.4 Documentações automáticas](#84-documentações-automáticas)
 - [9. Planejamento e Execução de Testes](#9-planejamento-e-execução-de-testes)
   - [9.1 Testes Funcionais](#91-testes-funcionais)
-    - [9.1.1 Planejamento](#911-planejamento)
-    - [9.1.2 Resultados](#912-resultados)
+    - [9.1.1 Estratégia de Testes](#911-estratégia-de-testes)
+    - [9.1.2 Planejamento Detalhado](#912-planejamento-detalhado)
+    - [9.1.3 Matriz de Rastreabilidade](#913-matriz-de-rastreabilidade)
+    - [9.1.4 Critérios de Aceitação](#914-critérios-de-aceitação)
+    - [9.1.5 Execução de Testes de Requisitos Funcionais](#915-execução-de-testes-de-requisitos-funcionais)
   - [9.2 Testes de RNFs](#92-testes-de-rnfs)
-    - [9.2.1 Planejamento](#921-planejamento)
-    - [9.2.2 Resultados](#922-resultados)
+    - [9.2.1 Estratégia de Testes](#921-estratégia-de-testes)
+    - [9.2.2 Planejamento Detalhado](#922-planejamento-detalhado)
+    - [9.2.3 Métricas e Monitoramento](#923-métricas-e-monitoramento)
+    - [9.2.5 Execução de Testes de Requisitos Não Funcionais](#924-execução-de-testes-de-requisitos-não-funcionais)
   - [9.3 Testes de Usabilidade](#93-testes-de-usabilidade)
-    - [9.3.1 Planejamento](#931-planejamento)
-    - [9.3.2 Resultados](#932-resultados)
+    - [9.3.1 Metodologia](#931-metodologia)
+    - [9.3.2 Perfis de Usuários e Cenários](#932-perfis-de-usuários-e-cenários)
+    - [9.3.3 Roteiro de Testes](#933-roteiro-de-testes)
+    - [9.3.4 Análise e Documentação](#934-análise-e-documentação)
+    - [9.3.5 Critérios de Sucesso](#935-critérios-de-sucesso)
+    - [9.3.6 Relatório de Testes de Usabilidade](#936-relatório-de-testes-de-usabilidade)
 - [10. Procedimentos de Implantação](#10-procedimentos-de-implantação)
   - [10.1 Implantação e Configuração do Banco de Dados](#101-implantação-e-configuração-do-banco-de-dados)
   - [10.2 Implantação do Protótipo para uso por equipe de desenvolvimento](#102-implantação-do-protótipo-para-uso-por-equipe-de-desenvolvimento)
@@ -485,12 +495,11 @@ Evento Final: Encerramento do Atendimento
 |---------|----------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | RF001   | Cadastro de Profissionais             | **What**: O usuário deve ser capaz de criar, ler, atualizar e deletar profissionais na base de dados. <br> **Why**: Para manter um registro atualizado dos profissionais que auxiliam os alunos. <br> **Who**: Mariana Santos, Cleber Oliveira (Assessores de Inclusão) e Maria Rita (Gestora Administrativa), somente atualização: Valdemar Souza (Gestor de Unidade). <br> **Where**: Na aplicação web. <br> **When**: Sempre que um novo profissional for contratado ou houver mudanças. <br> **How**: Através de um formulário na interface do usuário. <br> **How Much**: Sem custo adicional para o usuário. |
 | RF002   | Associação de Alunos a Profissionais  | **What**: O usuário deve ser capaz de associar um aluno a um profissional responsável. <br> **Why**: Para garantir que cada aluno com deficiência tenha um profissional responsável. <br> **Who**: Mariana Santos e Cleber Oliveira (Assessores de Inclusão). <br> **Where**: Na aplicação web. <br> **When**: Após o cadastro do aluno e do profissional. <br> **How**: Através de uma interface que permita selecionar um aluno e um profissional. <br> **How Much**: Sem custo adicional para o usuário. |
-| RF003   | Dashboard de Business Intelligence    | **What**: O sistema deve exibir estatísticas gerais e específicas sobre alunos, unidades e gestão através de gráficos e tabelas interativas. <br> **Why**: Para auxiliar gerentes na tomada de decisões. <br> **Who**: Maria Rita (Gerente Administrativa) e Valdemar Souza (Gestor de Unidade). <br> **Where**: Na aplicação web. <br> **When**: Sempre que necessário, com atualizações em tempo real. <br> **How**: Através de gráficos e tabelas interativas. <br> **How Much**: Sem custo adicional para o usuário. |
+| RF003   | Dashboard    | **What**: O sistema deve exibir estatísticas gerais e específicas sobre alunos, unidades e gestão através de gráficos e tabelas interativas. <br> **Why**: Para auxiliar gerentes na tomada de decisões. <br> **Who**: Maria Rita (Gerente Administrativa) e Valdemar Souza (Gestor de Unidade). <br> **Where**: Na aplicação web. <br> **When**: Sempre que necessário, com atualizações em tempo real. <br> **How**: Através de gráficos e tabelas interativas. <br> **How Much**: Sem custo adicional para o usuário. |
 | RF004   | Acompanhamento de Alunos com Deficiência | **What**: O sistema deve permitir que os usuários acompanhem e auxiliem alunos com deficiência através de um histórico detalhado. <br> **Why**: Para garantir que os alunos recebam o suporte necessário. <br> **Who**: Todos os usuários. <br> **Where**: Na aplicação web. <br> **When**: Durante todo o período de acompanhamento do aluno. <br> **How**: Através de uma interface que exiba o histórico e o status do aluno. <br> **How Much**: Sem custo adicional para o usuário. |
 | RF005   | Autenticação e Autorização de Usuários | **What**: O sistema deve permitir que usuários se autentiquem e tenham acesso controlado às funcionalidades de acordo com seu nível de permissão. <br> **Why**: Para garantir a segurança e privacidade dos dados. <br> **Who**: Todos os usuários. <br> **Where**: Na aplicação web. <br> **When**: No login e durante o uso da aplicação. <br> **How**: Através de um sistema de login com senha e níveis de permissão. <br> **How Much**: Sem custo adicional para o usuário. |
-| RF006   | Gerenciamento de Perfis de Usuários   | **What**: O usuário deve ser capaz de editar informações de seu perfil, como nome, e-mail e senha. <br> **Why**: Para garantir que os dados dos usuários estejam atualizados. <br> **Who**: Todos os usuários. <br> **Where**: Na aplicação web. <br> **When**: Sempre que um usuário precisar atualizar informações. <br> **How**: Através de uma interface de edição de perfil. <br> **How Much**: Sem custo adicional para o usuário. |
-| RF007   | Pesquisa e Filtros Avançados          | **What**: O usuário deve ser capaz de pesquisar e filtrar alunos e profissionais cadastrados. <br> **Why**: Para facilitar a localização de informações específicas. <br> **Who**: Todos os usuários. <br> **Where**: Na aplicação web. <br> **When**: Sempre que o usuário precisar buscar informações. <br> **How**: Através de campos de pesquisa e filtros dinâmicos. <br> **How Much**: Sem custo adicional para o usuário. |
-| RF008   | Histórico de Alterações               | **What**: O sistema deve manter um registro detalhado das alterações feitas, incluindo cadastros e associações. <br> **Why**: Para auditoria e rastreabilidade. <br> **Who**: Administradores do sistema. <br> **Where**: Na aplicação web. <br> **When**: Sempre que uma alteração for feita. <br> **How**: Através de um log de atividades. <br> **How Much**: Sem custo adicional para o usuário. |
+| RF006   | Pesquisa e Filtros Avançados          | **What**: O usuário deve ser capaz de pesquisar e filtrar alunos e profissionais cadastrados. <br> **Why**: Para facilitar a localização de informações específicas. <br> **Who**: Todos os usuários. <br> **Where**: Na aplicação web. <br> **When**: Sempre que o usuário precisar buscar informações. <br> **How**: Através de campos de pesquisa e filtros dinâmicos. <br> **How Much**: Sem custo adicional para o usuário. |
+| RF007   | Histórico de Alterações               | **What**: O sistema deve manter um registro detalhado das alterações feitas, incluindo cadastros e associações. <br> **Why**: Para auditoria e rastreabilidade. <br> **Who**: Administradores do sistema. <br> **Where**: Na aplicação web. <br> **When**: Sempre que uma alteração for feita. <br> **How**: Através de um log de atividades. <br> **How Much**: Sem custo adicional para o usuário. |
 
 <sup>Fonte: Material produzido pelos autores (2025) </sup>
 
@@ -505,14 +514,13 @@ Evento Final: Encerramento do Atendimento
 |--------------|------|--------------------------------------------------|-----------------------------------------------------------------------------|-------------------------------------------------------------------------------|----------------------------------------------------------------------------|
 | CT001        | RF001 | Testar o cadastro de um novo profissional.      | O sistema está online e o usuário tem permissão para cadastrar profissionais. | O profissional é cadastrado com sucesso e aparece na lista de profissionais.  | O sistema exibe uma mensagem de erro ou nada acontece após tentar cadastrar. |
 | CT002        | RF002 | Testar a associação de um aluno a um profissional. | O aluno e o profissional já estão cadastrados no sistema.                     | A associação é criada com sucesso e aparece na lista de associações.         | O sistema exibe uma mensagem de erro ou nada acontece após tentar associar.  |
-| CT003        | RF003 | Testar a exibição do dashboard de BI.            | O sistema possui dados de alunos, unidades e gestão.                          | O dashboard é exibido com gráficos e tabelas atualizados.                     | O dashboard não é exibido ou os dados estão incorretos.                      |
+| CT003        | RF003 | Testar a exibição do dashboard            | O sistema possui dados de alunos, unidades e gestão.                          | O dashboard é exibido com gráficos e tabelas atualizados.                     | O dashboard não é exibido ou os dados estão incorretos.                      |
 | CT004        | RF004 | Testar o acompanhamento de um aluno com deficiência. | O aluno e o profissional já estão cadastrados e associados.                   | O histórico e o status do aluno são exibidos corretamente.                    | O sistema exibe uma mensagem de erro ou dados incorretos.                    |
 | CT005        | RF005 | Testar a autenticação de um usuário.             | O usuário possui credenciais válidas.                                         | O usuário é autenticado com sucesso e tem acesso às funcionalidades permitidas. | O sistema exibe uma mensagem de erro ou o acesso é negado.                   |
-| CT006        | RF006 | Testar a edição de perfil de um usuário.         | O usuário está autenticado e possui permissão para editar o perfil.           | As informações do perfil são atualizadas com sucesso.                         | O sistema exibe uma mensagem de erro ou as informações não são atualizadas.  |
-| CT007        | RF007 | Testar a pesquisa de alunos e profissionais.     | O sistema possui dados de alunos e profissionais cadastrados.                 | Os resultados da pesquisa são exibidos corretamente.                          | O sistema exibe uma mensagem de erro ou resultados incorretos.               |
-| CT008        | RF008 | Testar a visualização do histórico de alterações. | O sistema possui registros de alterações.                                     | O histórico de alterações é exibido corretamente.                             | O sistema exibe uma mensagem de erro ou o histórico não é exibido.           |
+| CT006        | RF006 | Testar a pesquisa de alunos e profissionais.     | O sistema possui dados de alunos e profissionais cadastrados.                 | Os resultados da pesquisa são exibidos corretamente.                          | O sistema exibe uma mensagem de erro ou resultados incorretos.               |
+| CT007        | RF007 | Testar a visualização do histórico de alterações. | O sistema possui registros de alterações.                                     | O histórico de alterações é exibido corretamente.                             | O sistema exibe uma mensagem de erro ou o histórico não é exibido.           |
 
-<sup>Fonte: Material produzido pelos autores (2025) </sup>
+<sup>Fonte: Material produzido pelos autores (2025)</sup>
 
 </div>
 
@@ -642,26 +650,27 @@ Os requisitos não funcionais RNF07, referente a modularidade do código, e RNF0
 
 - Um **ALUNO** é a pessoa que será registrada no sistema com informações essenciais de identificação e de contexto acadêmico.  
 - Um **PROFISSIONAL** é responsável por realizar os atendimentos aos Alunos. Isso pode incluir professores especialistas, psicólogos ou outros membros de uma equipe multiprofissional.  
-- Cada **ATENDIMENTO** é um registro histórico que descreve quando ocorreu, qual foi o tipo de atendimento (por exemplo, “Reunião Pedagógica”, “Suporte Psicológico”), qual Profissional realizou e, se necessário, qual tecnologia assistiva foi utilizada.
+- Cada **ATENDIMENTO** é um registro histórico que descreve quando ocorreu, qual foi o tipo de atendimento (por exemplo, "Reunião Pedagógica", "Suporte Psicológico"), qual Profissional realizou e, se necessário, qual tecnologia assistiva foi utilizada.
 - **TECNOLOGIA ASSISTIVA** é uma tecnologia que pode ser utilizada durante os atendimentos, como leitores de tela, lupas digitais ou outros dispositivos.
 
 ## 4.2 Modelo Lógico de Dados
 
-O banco de dados deste projeto foi estruturado para armazenar informações sobre alunos, profissionais, atendimentos e tecnologias assistivas. A estrutura permite registrar os atendimentos realizados entre um aluno e um profissional, visualizar e acompanhar informações.
+O banco de dados deste projeto foi estruturado para armazenar informações sobre profissionais, atendimentos e tecnologias assistivas. A estrutura permite registrar os atendimentos realizados entre um aluno e um profissional, visualizar e acompanhar informações.
+
+Torna-se importante destacar que, a tabela `Aluno` foi removida do banco de dados atual, pois as informações dos alunos agora são obtidas através de uma API externa produzida pela sala. Como todos os dados necessários dos alunos são acessados diretamente dessa API, a tabela local estava sendo inutilizada, resultando em duplicação desnecessária de informações. Por isso, as tabelas `Atendimento` e `Aluno_Tecnologia_Assistiva` agora armazenam apenas o ID do aluno para referência na API externa. Porém a utilização da tabela `Aluno` para o armazenamento de outras informações adicionais ainda está sendo discutida no grupo.
 
 ## 4.2.1. Modelo Lógico
 O modelo lógico do banco de dados é composto pelas seguintes entidades:
 
 - **Usuário**: Representa os usuários do sistema, que podem ter diferentes cargos.
-- **Aluno**: Contém apenas o id sobre o aluno que recebe atendimento, uma vez que outras informações sensíveis serão acessadas pela API conjunta da turma.
 - **Profissional**: Contém informações sobre os profissionais que realizam atendimentos.
 - **Atendimento**: Registra o atendimento entre um aluno e um profissional, incluindo a data e o tipo de atendimento.
 
 ## 4.2.2. Relacionamentos
 
-- **Aluno e Atendimento**: Um aluno pode ter vários atendimentos. Cada atendimento está vinculado a um único aluno.
-- **Profissional e Atendimento**: Um profissional pode realizar vários atendimentos. Cada atendimento está vinculado a um único profissional.
-- **Atendimento e Tecnologia Assistiva**: Caso uma tecnologia assistiva seja utilizada, ela é referenciada dentro do atendimento.
+- **API Externa (Alunos) → Atendimento**: Um aluno (identificado pelo ID externo) pode ter vários atendimentos.
+- **Profissional → Atendimento**: Um profissional pode realizar vários atendimentos (1).
+- **API Externa (Alunos) → Aluno_Tecnologia_Assistiva → Tecnologia_Assistiva**: Relacionamento muitos-para-muitos entre Alunos (da API externa) e Tecnologia Assistiva.
 
 ## 4.2.3. Horário do Atendimento
 O modelo do banco de dados garante que alunos e profissionais possam realizar atendimentos de forma estruturada, sem necessidade de uma tabela intermediária para agendamentos. O campo **data_atendimento** dentro da tabela **Atendimento** define diretamente o horário do atendimento, assegurando que aluno e profissional estejam juntos nesse período.
@@ -683,18 +692,19 @@ Isso significa que:
 Cada tabela possui um identificador único (chave primária) para garantir a integridade dos registros no banco de dados:
 
 - **Usuário**: `id`
-- **Aluno**: `id`
 - **Profissional**: `id`
 - **Atendimento**: `id`
 - **Tecnologia Assistiva**: `id`
+- **Aluno_Tecnologia_Assistiva**: `id`
 
 ## 4.2.5. Chaves estrangeiras
 
 As chaves estrangeiras estabelecem os relacionamentos entre as tabelas, garantindo a integridade de refeência entre as tabela por meio dos dados:
 
 - **Atendimento**:
-  - `aluno_id` → Referência para `Aluno(id)`
   - `profissional_id` → Referência para `Profissional(id)`
+
+- **Aluno_Tecnologia_Assistiva**:
   - `tecnologia_assistiva_id` → Referência para `Tecnologia Assistiva(id)`
 
 ## 4.2.6. Estrutura das Tabelas
@@ -707,11 +717,6 @@ As chaves estrangeiras estabelecem os relacionamentos entre as tabelas, garantin
 | email  | VARCHAR  | Email do usuário  |
 | senha  | VARCHAR  | Senha criptografada |
 | cargo  | VARCHAR  | Cargo do usuário no sistema |
-
-### **Aluno**
-| Campo  | Tipo  | Descrição  |
-|--------|------|--------------|
-| id  | INT (PK) | Identificador único do aluno |
 
 ### **Profissional**
 | Campo  | Tipo  | Descrição  |
@@ -727,17 +732,23 @@ As chaves estrangeiras estabelecem os relacionamentos entre as tabelas, garantin
 | Campo  | Tipo  | Descrição  |
 |--------|------|--------------|
 | id  | INT (PK) | Identificador único do atendimento |
-| aluno_id  | INT (FK) | Referência ao aluno atendido |
+| aluno_id  | INT | Referência ao ID do aluno da API externa |
 | profissional_id  | INT (FK) | Referência ao profissional responsável |
 | data_atendimento  | DATETIME | Horário do atendimento |
 | tipo_atendimento  | VARCHAR  | Tipo de atendimento realizado |
-| tecnologia_assistiva | VARCHAR | Tecnologia assistiva usada |
 
 ### **Tecnologia Assistiva**
 | Campo  | Tipo  | Descrição  |
 |--------|------|--------------|
 | id  | INT (PK) | Identificador único da tecnologia assistiva |
 | nome  | INT (FK) | Nome da tecnologia assistiva |
+
+### **Aluno_Tecnologia_Assistiva**
+| Campo  | Tipo  | Descrição  |
+|--------|------|--------------|
+| id  | INT (PK) | Identificador único da tecnologia assistiva |
+| aluno_id  | INT | Referência ao ID do aluno da API externa |
+| tecnologia_assistiva_id| INT (FK) | Referência à tecnologia assistiva |
 
 ## 4.3 Modelo Físico de Dados
 
@@ -1196,11 +1207,32 @@ Abaixo estão imagens de algumas seções dos componentes do guia.
 
 # 8. Desenvolvimento do Projeto
 
-_conteúdo_
+&nbsp;&nbsp;&nbsp;&nbsp;Nesta seção, estão listadasas principais entregas previstas para cada etapa de desenvolvimento do projeto. O objetivo é dar uma visão da arquitetura de codificação, a estrutura de diretórios adotada e o progresso alcançado em cada sprint. O desenvolvimento é conduzido de forma iterativa e incremental, o que signigica que às vezes, as entregas reais não coincidem completamente com o previsto.
 
 ## 8.1 Arquitetura de Codificação e Estrutura de Diretórios
 
-_conteúdo_
+O projeto segue uma **arquitetura de Três Camadas**, garantindo separação de responsabilidades e organização do código. As três camadas são:
+
+1. **Camada de Apresentação (Frontend)** – Responsável pela interface do usuário.
+2. **Camada de Negócios (Lógica de Aplicação)** – Contém as regras de negócio e a lógica central do sistema.
+3. **Camada de Dados (Persistência e Comunicação com o Banco)** – Responsável pelo armazenamento e recuperação dos dados.
+
+---
+
+### **Estrutura de Diretórios**
+
+A organização do projeto segue a divisão das camadas conforme descrito acima.
+
+```
+/inteli/2025-1A-T13-ES05-G06/
+├── documentos                 # Documentação do projeto
+├── src                        # Código-fonte principal
+│   ├── backend                # Camada de Negócios
+│   ├── frontend               # Camada de Apresentação (Frontend)
+│   ├── database               # Diretório do Banco de Dados
+```
+
+---
 
 ## 8.2 Desenvolvimento de Features
 
@@ -1239,7 +1271,23 @@ _conteúdo_
 
 ## 8.2.2 Sprint 4
 
-_conteúdo_
+### Overview do Desenvolvimento
+
+&nbsp;&nbsp;&nbsp;&nbsp;Nesta Sprint, o foco principal foi a ampliação das funcionalidades do sistema, incluindo a criação de novos fluxos de dados entre alunos e profissionais, além da implementação de páginas específicas no frontend para visualização e gerenciamento dessas informações.
+
+### Backend
+- Implementação da **API de Alunos**, permitindo a consulta, atualização e link entre profissionais e alunos.
+- Desenvolvimento da funcionalidade de **vincular alunos a profissionais**, possibilitando registrar atendimentos e relacionar ambos no banco de dados.
+- Criação de um **histórico de informações**, armazenando detalhes relevantes sobre os atendimentos realizados.
+
+### Frontend
+- Desenvolvimento da **página de perfil do aluno**, permitindo visualizar informações detalhadas do aluno e seu histórico.
+- Criação da **página de perfil do profissional**, possibilitando acessar informações do profissional e seus alunos vinculados.
+- Implementação da **listagem de alunos**, exibindo todos os alunos cadastrados e permitindo interações básicas.
+
+### Próximos Passos
+- Iniciar a implementação das telas de edição de informações de alunos e profissionais.
+- Integrar o histórico de atendimentos com as demais funcionalidades do sistema para consultas dinâmicas.
 
 ## 8.2.3 Sprint 5
 
@@ -1247,57 +1295,7 @@ _conteúdo_
 
 ## 8.3 Testes Unitários e de Integração
 
-### 8.3.1 Testes Unitários
-#### 8.3.1.1 Relatório de cobertura de testes
-
-Este documento apresenta o relatório de cobertura de testes gerado pelo **Jest**, detalhando a cobertura de código por diretório e arquivo.
-
-##### Resumo da Cobertura
-
-<div align="center">
-
-| Diretório/Arquivo         | % Stmts | % Branch | % Funcs | % Lines | Linhas não cobertas |
-|---------------------------|---------|----------|---------|---------|----------------------|
-| **Todos os arquivos**     | **98.83** | **90.47** | **100** | **100** | - |
-| **controllers/**          | **100**  | **100**   | **100** | **100** | - |
-| ├── `ProfissionalController.ts` | 100 | 100 | 100 | 100 | - |
-| **models/**               | **96.29** | **71.42** | **100** | **100** | - |
-| ├── `Profissional.ts`     | 96.29 | 71.42 | 100 | 100 | 26-59 |
-| **utils/**                | **100**  | **100**   | **100** | **100** | - |
-| ├── `asyncHandler.ts`     | 100 | 100 | 100 | 100 | - |
-
-<sup>Fonte: Relatório gerado automaticamente pelo Jest</sup>
-</div>
-
-#### Análise
-
-- **Controllers:** O diretório `controllers/` possui **100%** de cobertura em todos os critérios, indicando que todos os trechos de código foram testados.
-
-- **Models:** O diretório `models/` possui **96.29%** de cobertura de instruções e **71.42%** de cobertura de branches. O arquivo `Profissional.ts` apresenta algumas linhas não testadas no intervalo **26-59**. Essas linhas na verdade representam parte do repositório, que é uma simulação do banco de dados.
-- **Utils:** O diretório `utils/` também possui **100%** de cobertura, garantindo que todas as funções auxiliares foram devidamente testadas.
-
-#### 8.3.1.2 Conclusão e Próximos Passos
-
-- A cobertura geral é **excelente** (**98.83%** de instruções e **100%** de funções).
-- Manter a cobertura alta ao adicionar novas funcionalidades e refatorações.
-
-#### 8.3.1.3 Execução dos Testes
-
-A execução dos testes unitários utilizaram do Jest. O passo a passo para executar os testes é:
-
-1. Abra o terminal ou PowerShell
-2. Acesse a pasta /src/backend do repositório com o comando `cd <path_to_repo>/src/backend`
-3. Instale e atualize os pacotes com `npm install`
-4. Execute os testes através do comando `npm test`
-
-Todos os testes executados passaram e estão representados na imagem abaixo: 
-
-<div align="center">
-<sub>Figura X - Execução dos Testes no Terminal</sub><br>
-<img src="../documentos/img/passed_tests.png" width="80%"><br>
-<sup>Fonte: Material produzido pelos autores (2025)</sup>
-</div>
-
+_conteúdo_
 
 ## 8.4 Documentações automáticas
 
@@ -1311,33 +1309,11 @@ _conteúdo_
 
 ## 9.1 Testes Funcionais
 
- Os testes funcionais validam o comportamento esperado do sistema com base nos **Requisitos Funcionais (RFs)** estabelecidos. O objetivo desses testes é garantir que todas as funcionalidades atendam aos requisitos de negócio e projeto, verificando a correção das operações realizadas, o fluxo dos dados e a resposta do sistema em diferentes cenários.
+_conteúdo_
 
-Os testes foram planejados com casos positivos e negativos, cobrindo diferentes contextos de uso. Cada teste apresenta:
-- **O requisito funcional associado**
-- **Uma descrição detalhada do teste**
-- **As pré-condições necessárias**
-- **Os critérios de aceitação**
-- **Os critérios de falha**
+## 9.1.1 Planejamento
 
-Os resultados desses testes permitirão validar o funcionamento correto do sistema antes da sua entrega.
-
-### **9.1.1 Planejamento**
-
-A tabela a seguir apresenta os testes planejados para validar os **Requisitos Funcionais (RFs)** do sistema.
-
-| Caso de Teste | RF#   | Descrição do Teste | Pré-condição | Caso de Aceite | Caso de Recusa |
-|--------------|------|------------------|--------------|----------------|----------------|
-| **CT001** | **RF001** | Testar o cadastro de um novo profissional. | O sistema está online e o usuário tem permissão para cadastrar profissionais. | O profissional é cadastrado com sucesso e aparece na lista de profissionais. | O sistema exibe uma mensagem de erro ou nada acontece após tentar cadastrar. |
-| **CT002** | **RF002** | Testar a associação de um aluno a um profissional. | O aluno e o profissional já estão cadastrados no sistema. | A associação é criada com sucesso e aparece na lista de associações. | O sistema exibe uma mensagem de erro ou nada acontece após tentar associar. |
-| **CT003** | **RF003** | Testar a exibição do dashboard de BI. | O sistema possui dados de alunos, unidades e gestão. | O dashboard é exibido com gráficos e tabelas atualizados. | O dashboard não é exibido ou os dados estão incorretos. |
-| **CT004** | **RF004** | Testar o acompanhamento de um aluno com deficiência. | O aluno e o profissional já estão cadastrados e associados. | O histórico e o status do aluno são exibidos corretamente. | O sistema exibe uma mensagem de erro ou dados incorretos. |
-| **CT005** | **RF005** | Testar a autenticação de um usuário. | O usuário possui credenciais válidas. | O usuário é autenticado com sucesso e tem acesso às funcionalidades permitidas. | O sistema exibe uma mensagem de erro ou o acesso é negado. |
-| **CT006** | **RF006** | Testar a edição de perfil de um usuário. | O usuário está autenticado e possui permissão para editar o perfil. | As informações do perfil são atualizadas com sucesso. | O sistema exibe uma mensagem de erro ou as informações não são atualizadas. |
-| **CT007** | **RF007** | Testar a pesquisa de alunos e profissionais. | O sistema possui dados de alunos e profissionais cadastrados. | Os resultados da pesquisa são exibidos corretamente. | O sistema exibe uma mensagem de erro ou resultados incorretos. |
-| **CT008** | **RF008** | Testar a visualização do histórico de alterações. | O sistema possui registros de alterações. | O histórico de alterações é exibido corretamente. | O sistema exibe uma mensagem de erro ou o histórico não é exibido. |
-
-Cada caso de teste será executado considerando **cenários positivos e negativos**, garantindo que o sistema se comporte corretamente em diferentes condições.
+_conteúdo_
 
 ## 9.1.2 Resultados
 
@@ -1345,43 +1321,11 @@ _conteúdo_
 
 ## 9.2 Testes de RNFs
 
-Os testes de requisitos não funcionais validam aspectos de **desempenho, acessibilidade, segurança, compatibilidade e confiabilidade** do sistema, garantindo que ele funcione corretamente além das suas funcionalidades básicas.
-
-Os testes planejados cobrem:
-- **Eficiência de desempenho**: Tempo de resposta do sistema sob diferentes cargas.
-- **Usabilidade e acessibilidade**: Uso adequado por pessoas com deficiência visual e operacionalidade eficiente.
-- **Segurança**: Proteção de dados, autenticação e níveis de acesso.
-- **Compatibilidade**: Funcionamento correto em múltiplos navegadores e integração com APIs externas.
-- **Confiabilidade**: Disponibilidade do sistema e sua capacidade de recuperação de falhas.
-
-Cada teste inclui:
-- **O requisito não funcional associado**
-- **Uma descrição detalhada do teste**
-- **As pré-condições necessárias**
-- **Os critérios de aceitação**
-- **Os critérios de falha**
+_conteúdo_
 
 ## 9.2.1 Planejamento
 
-&nbsp;&nbsp;&nbsp;&nbsp;A tabela a seguir apresenta os testes planejados para validar os **Requisitos Não Funcionais (RNFs)** do sistema.
-
-| Caso de Teste | RNF#   | Descrição do Teste | Pré-condição | Caso de Aceite | Caso de Recusa |
-|--------------|------|------------------|--------------|----------------|----------------|
-| **CT-001** | **RNF01** | Testar o tempo de resposta para consultas de dados. | O sistema está operando com carga normal e sob estresse. | Consultas são feitas em menos de 0,8 segundo. | Consultas excedem 0,8 segundo de tempo de resposta. |
-| **CT-002** | **RNF02** | Testar usabilidade com leitor de tela e acessibilidade. | O leitor de tela está ativado. | Usuário com deficiência consegue usar a aplicação sem dificuldades. | Usuário com deficiência não consegue utilizar a aplicação. |
-| **CT-003** | **RNF03** | Testar se o assessor encontra alunos e profissionais com, no máximo, 3 cliques. | Usuário assessor logado no sistema. | Usuário encontra alunos e profissionais com até 3 cliques. | Usuário precisa de mais de 3 cliques para encontrar alunos e profissionais. |
-| **CT-004** | **RNF04** | Testar níveis de acesso dos usuários para garantir segurança. | Perfis de usuários criados com permissões diferenciadas. | Cada tipo de login acessa apenas suas funcionalidades. | Um tipo de login acessa informações de outro perfil. |
-| **CT-005** | **RNF05** | Testar segurança da transmissão de dados contra interceptação. | O sistema está em funcionamento normal. | O invasor não consegue obter os dados brutos. | O invasor consegue acessar os dados brutos. |
-| **CT-006** | **RNF06** | Testar a modularidade e documentação do código ao adicionar uma nova funcionalidade. | O código está modularizado e documentado. | A funcionalidade é adicionada sem impactar outras partes do sistema. | A adição da funcionalidade gera erros nas demais funções. |
-| **CT-007** | **RNF07** | Testar funcionamento da aplicação nos navegadores Chrome, Firefox, Edge e Safari. | A aplicação está acessível nos navegadores testados. | A aplicação funciona integralmente em todos os navegadores. | A aplicação apresenta falhas em um ou mais navegadores. |
-| **CT-008** | **RNF08** | Monitorar a disponibilidade do sistema ao longo do tempo. | O sistema está em produção. | A aplicação mantém disponibilidade de 99,5% ou mais. | O sistema fica fora do ar por mais tempo que o permitido. |
-| **CT-009** | **RNF09** | Testar exibição de mensagens claras em caso de erro. | O sistema está operando normalmente. | O sistema exibe mensagens de erro claras e compreensíveis. | O sistema não exibe mensagens ou elas são confusas. |
-| **CT-010** | **RNF10** | Testar atualização simultânea do mesmo dado em dois dispositivos. | Dois dispositivos acessando a aplicação ao mesmo tempo. | O sistema valida corretamente os dados e mantém a integridade. | A aplicação permite atualizações incorretas ou inconsistentes. |
-| **CT-011** | **RNF11** | Testar a integração com a API do Centro Paula Souza. | O sistema está online e a API do Centro Paula Souza está disponível. | Os dados dos alunos são retornados corretamente e sem erros. | O sistema exibe uma mensagem de erro informando falha na integração. |
-| **CT-012** | **RNF12** | Testar o backup automático de dados. | O sistema está configurado para realizar backups periódicos. | O backup ocorre na frequência estabelecida e pode ser restaurado corretamente. | O sistema não realiza o backup ou os dados não podem ser restaurados. |
-| **CT-013** | **RNF13** | Testar os requisitos de acessibilidade (WCAG). | O sistema está implementado conforme as diretrizes WCAG. | Usuários com deficiência conseguem utilizar a aplicação sem barreiras. | O sistema apresenta dificuldades de navegação ou acessibilidade deficiente. |
-
-&nbsp;&nbsp;&nbsp;&nbsp;Os testes planejados garantem que o sistema atenda aos requisitos de **desempenho, usabilidade, segurança e confiabilidade**, assegurando sua **eficiência, acessibilidade e estabilidade**.
+_conteúdo_
 
 ## 9.2.2 Resultados
 
@@ -1389,76 +1333,11 @@ _conteúdo_
 
 ## 9.3 Testes de Usabilidade
 
-&nbsp;&nbsp;&nbsp;&nbsp; Os testes serão conduzidos com diferentes perfis de usuários, incluindo gestores administrativos, gestores de unidade e assessores, além de considerarem acessibilidade para pessoas com deficiência visual que utilizam leitores de tela.
-
-&nbsp;&nbsp;&nbsp;&nbsp; Os testes de usabilidade seguem o modelo de **teste de caixa preta** e são exclusivamente qualitativos, focando na interação dos usuários com o sistema e na identificação de dificuldades durante a execução de tarefas.
-
-&nbsp;&nbsp;&nbsp;&nbsp; Os resultados permitirão identificar dificuldades e ajustar o sistema conforme as necessidades dos perfis testados. Os principais critérios avaliados são:
-
-- **Eficácia**: Mede a taxa de sucesso na execução de uma tarefa. Um teste eficaz verifica se o usuário conseguiu concluir a tarefa sem erros ou interrupções.
-- **Eficiência**: Avalia o esforço necessário para completar uma tarefa, considerando tempo e recursos utilizados.
-- **Satisfação**: Reflete a percepção do usuário sobre a facilidade e conforto na execução da tarefa.
+_conteúdo_
 
 ## 9.3.1 Planejamento
 
-&nbsp;&nbsp;&nbsp;&nbsp; Os testes foram estruturados para representar situações reais de uso, considerando diferentes perfis de usuários e cenários aplicáveis.
-
-
-#### 9.3.1.1 Definir o Público-Alvo
-
-&nbsp;&nbsp;&nbsp;&nbsp; Os testes serão realizados com:
-
-- **Gestor Administrativo (GA):** Usuário responsável pelo gerenciamento geral do sistema.
-- **Gestor Unidade (GU):** Usuário que administra uma unidade específica e gerencia os atendimentos.
-- **Assessor:** Profissional responsável pelo acompanhamento e execução dos atendimentos.
-- **Usuários com deficiência visual:** Todos os testes serão conduzidos considerando acessibilidade via leitores de tela.
-
-#### 9.3.1.2 Roteiro de Testes por Tipo de Usuário
-
-&nbsp;&nbsp;&nbsp;&nbsp; Os testes foram classificados conforme os critérios de **eficácia, eficiência e satisfação**, descritos no planejamento.
-
-### **Roteiro de Testes para Gestor Administrativo (GA)**
-
-| Passo | Atividade | Critério Avaliado | Pergunta ao Usuário |
-|-------|-----------|-------------------|----------------------|
-| 1 | Acessar a Home e verificar os menus e atalhos. | Eficiência | Os menus estão organizados de forma intuitiva? |
-| 2 | Cadastrar um novo profissional. | Eficácia | O processo de cadastro foi concluído sem dificuldades? Agora cadastre um novo profissional. |
-| 3 | Filtrar profissionais por unidade e cargo. | Eficiência | Os filtros retornaram os resultados esperados? Agora filtre os profissionais da unidade XPTO. |
-| 4 | Consultar atendimentos registrados no sistema. | Eficácia | As informações do atendimento estão bem organizadas? Agora encontre o aluno XPTO. |
-| 5 | Testar uso com leitor de tela. | Satisfação | Você conseguiu navegar sem dificuldades usando o leitor de tela? |
-
-### **Roteiro de Testes para Gestor Unidade (GU)**
-
-| Passo | Atividade | Critério Avaliado | Pergunta ao Usuário |
-|-------|-----------|-------------------|----------------------|
-| 1 | Navegar entre os menus da unidade. | Eficiência | A interface é intuitiva? Agora navegue até a seção de relatórios. |
-| 2 | Cadastrar um novo aluno. | Eficácia | O cadastro do aluno foi direto? Agora cadastre um aluno chamado XPTO. |
-| 3 | Vincular um profissional a um atendimento. | Eficácia | A vinculação do profissional foi simples? Agora vincule o aluno XPTO a um profissional. |
-| 4 | Avaliar a usabilidade do Dashboard. | Eficiência | As informações do Dashboard foram fáceis de interpretar? |
-| 5 | Testar navegação com leitor de tela. | Satisfação | O sistema ofereceu uma boa experiência de acessibilidade? |
-
-### **Roteiro de Testes para Assessor**
-
-| Passo | Atividade | Critério Avaliado | Pergunta ao Usuário |
-|-------|-----------|-------------------|----------------------|
-| 1 | Filtrar atendimentos por aluno. | Eficiência | Foi fácil encontrar o atendimento desejado? Agora encontre o atendimento do aluno XPTO. |
-| 2 | Criar um novo atendimento e adicionar observações. | Eficácia | O sistema permitiu adicionar informações sem dificuldades? Agora registre um novo atendimento. |
-| 3 | Editar um atendimento existente. | Eficácia | O processo de edição foi intuitivo? Agora edite um atendimento existente. |
-| 4 | Preencher formulários na interface. | Eficiência | O preenchimento foi rápido e eficiente? |
-| 5 | Utilizar leitor de tela. | Satisfação | Houve alguma dificuldade ao usar o leitor de tela? |
-
-#### 9.3.1.3 Perguntas para Entrevista Pós-Teste
-
-Cada participante responderá perguntas estruturadas sobre a usabilidade do sistema:
-
-1. A interface foi intuitiva e de fácil navegação?
-2. Alguma funcionalidade apresentou dificuldades de uso?
-3. O sistema apresentou informações claras e compreensíveis?
-4. Para usuários com deficiência visual, houve barreiras de acessibilidade?
-5. O sistema é parecido com algum já utilizado por vocês no Centro Paula Souza?
-6. Dessas atividades que você realizou no teste, qual você acredita que realizaria com mais frequência na sua rotina de trabalho?
-7. O que poderia ser melhorado para tornar a experiência mais eficiente?
-
+_conteúdo_
 
 ## 9.3.2 Resultados
 

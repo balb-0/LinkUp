@@ -5,7 +5,30 @@ import { clearCache } from "../middleware/cache";
 
 const router = Router();
 
-
+/**
+ * @route POST /profissionais/limpar-cache
+ * @desc Limpa o cache dos profissionais
+ * @access Público
+ */
+router.post("/limpar-cache", (req, res) => {
+  try {
+    // Limpa o cache da lista de profissionais
+    clearCache('/profissionais/ListarTodos');
+    
+    // Retorna sucesso
+    res.status(200).json({ 
+      success: true,
+      message: 'Cache limpo com sucesso' 
+    });
+  } catch (error) {
+    console.error('Erro ao limpar cache:', error);
+    res.status(500).json({ 
+      success: false,
+      message: 'Erro ao limpar cache',
+      error: error instanceof Error ? error.message : 'Erro desconhecido'
+    });
+  }
+});
 
 /**
  * @route GET /profissionais/ListarTodos
@@ -13,6 +36,13 @@ const router = Router();
  * @access Público
  */
 router.get("/ListarTodos", ProfissionalController.listarTodos);
+
+/**
+ * @route GET /profissionais/ListarPaginado
+ * @desc Lista profissionais cadastrados com paginação
+ * @access Público
+ */
+router.get("/ListarPaginado", ProfissionalController.listarPaginado);
 
 /**
  * @route GET /profissionais/BuscarPorId/:id

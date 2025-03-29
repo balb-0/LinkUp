@@ -121,104 +121,71 @@ _Sugestão de leitura: https://refactoring.guru/_
 
 ## 3.2 Arquitetura de Software
 
-O projeto segue uma **arquitetura de Três Camadas**, garantindo separação de responsabilidades e organização do código. As três camadas são:
-
-1. **Camada de Apresentação (Frontend)** – Responsável pela interface do usuário.
-2. **Camada de Negócios (Lógica de Aplicação)** – Contém as regras de negócio e a lógica central do sistema.
-3. **Camada de Dados (Persistência e Comunicação com o Banco)** – Responsável pelo armazenamento e recuperação dos dados.
-
----
-
-### **Estrutura de Diretórios**
-
-A organização do projeto segue a divisão das camadas conforme descrito acima.
-
-```
-/Users/vitorbalbo/Documents/inteli/2025-1A-T13-ES05-G06/
-├── documentos                 # Documentação do projeto
-├── src                        # Código-fonte principal
-│   ├── backend                # Camada de Negócios
-│   │   ├── src
-│   │   │   ├── classes        
-│   │   │   ├── controllers    # Controllers que lidam com requisições HTTP
-│   │   │   ├── middleware     # Middlewares para autenticação, logs, etc.
-│   │   │   ├── models         # Modelos que representam entidades do banco de dados
-│   │   │   ├── routes         # Definição de rotas e endpoints da API
-│   │   │   ├── types          
-│   │   │   ├── utils          # Funções utilitárias
-│   │   ├── tests              # Testes do backend
-│   │   ├── database           # Configuração do banco de dados e migrations
-│   ├── frontend               # Camada de Apresentação (Frontend)
-│   │   ├── dist               # Build do frontend para produção
-│   ├── public                 # Arquivos públicos da aplicação
-│   │   ├── assets             # Recursos estáticos acessíveis publicamente
-│   ├── src                    # Estrutura principal da aplicação
-│   │   ├── app                # Camada de Apresentação no frontend
-│   │   │   ├── components     # Componentes reutilizáveis do frontend
-│   │   │   ├── models         # Modelos usados no frontend
-│   │   │   ├── pages          # Páginas da aplicação
-│   │   ├── services           # Serviços para comunicação com a API
-│   │   ├── environments       # Configurações de ambiente
-```
-
----
-
-### **Descrição das Camadas**
-
-#### **1. Camada de Apresentação (Frontend)**
-- Localizada em `/frontend` e `/src/app`.
-- Utiliza **Angular** para gerenciar a interface do usuário.
-- Contém:
-  - **Componentes (`/src/app/components`)** – Botões, formulários, menus, etc.
-  - **Páginas (`/src/app/pages`)** – Telas completas, como login, dashboard e cadastro.
-  - **Serviços (`/src/services`)** – Comunicação com a API.
-
----
-
-#### **2. Camada de Negócios (Backend)**
-- Localizada em `/backend/src`.
-- Utiliza **Node.js com Express** para gerenciar as regras de negócio.
-- Contém:
-  - **Controllers (`/backend/src/controllers`)** – Lógica de requisição e resposta.
-  - **Middlewares (`/backend/src/middleware`)** – Interceptadores para autenticação, logs, etc.
-  - **Rotas (`/backend/src/routes`)** – Definição dos endpoints da API.
-  - **Utilitários (`/backend/src/utils`)** – Funções auxiliares usadas no backend.
-
----
-
-#### **3. Camada de Dados (Persistência)**
-- Localizada em `/backend/database`.
-- Responsável pelo acesso ao banco de dados MySQL.
-- Contém:
-  - **Modelos (`/backend/src/models`)** – Definição das tabelas e relações.
-  - **Banco de Dados (`/backend/database`)** – Migrations e configuração do banco.
-  - **Ambientes (`/src/environments`)** – Configurações para diferentes ambientes.
-
-#### **4. Banco de dados**
-- Localizada em `/database`.
-- Responsável pela criação do banco de dados.
-- Contém:
-  - **Banco de Dados (`/database`)** – Configuração do banco.
-
----
+- Utilize a Arquitetura de Três Camadas: Separe a lógica de negócios (Camada de Negócios), a interface do usuário (Camada de Apresentção) e o acesso aos dados (Camada de Dados).
+  - Exemplo: Em uma aplicação Angular, utilize serviços para lógica de negócios, componentes para a interface e controladores para gerenciar a interação.
 
 # 4. Práticas de Desenvolvimento
 
 ## 4.1 Testes Automatizados
 
-- Testes Unitários: Utilize Jest para criar testes unitários
-  - Exemplo:
-    ```
+### Testes Unitários
+
+Utilize **Jest** para criar testes unitários e garantir que cada função ou módulo do seu código se comporta conforme esperado.
+
+- **Exemplo:**
+    ```typescripts
     test('adiciona 1 + 2 para igualar 3', () => {
       expect(1 + 2).toBe(3);
     });
     ```
 
-- Testes de Integração: Como sugestão, utilizar o Cypress para testes de integração.
-  - Exemplo: Testar a interação entre componentes de frontend e backend.
+### Testes de Integração
 
-- Testes end-to-end: Como sugestão, utilizar o Cypress para testes end-to-end. 
-  - Exemplo: Testar um RF de ponta a ponta.
+Embora o Jest possa ser utilizado para testes de integração, é sugerido usar **Cypress** para testes de integração, pois ele oferece uma integração completa com frontend e backend.
+
+- **Exemplo:**
+    Testar a interação entre componentes do frontend (como botões, formulários, etc.) e o backend (API, banco de dados).
+    ```typescript
+    describe('Testando integração entre frontend e backend', () => {
+      it('deve enviar dados do formulário e receber resposta', () => {
+        cy.visit('/form');
+        cy.get('input[name="username"]').type('testuser');
+        cy.get('form').submit();
+        cy.contains('Sucesso').should('be.visible');
+      });
+    });
+    ```
+
+### Testes End-to-End
+
+Para testes de ponta a ponta, é sugerido o uso do **Cypress**, que oferece uma maneira fácil de testar a aplicação como um todo, desde a interface até o backend.
+
+- **Exemplo:**
+    Testar um **requisito funcional** (RF) de ponta a ponta, simulando o comportamento real do usuário na aplicação.
+    ```typescript
+    describe('Testando fluxo completo de login', () => {
+      it('deve realizar login com sucesso e redirecionar para o painel', () => {
+        cy.visit('/login');
+        cy.get('input[name="username"]').type('testuser');
+        cy.get('input[name="password"]').type('password123');
+        cy.get('button[type="submit"]').click();
+        cy.url().should('include', '/dashboard');
+        cy.contains('Bem-vindo, testuser').should('be.visible');
+      });
+    });
+    ```
+
+### 4.1.2 Organização e Estrutura de Testes
+
+### Organização de Arquivos
+
+- **Arquivos de Teste Unitário:** Organize os testes unitários no mesmo diretório que os arquivos de código, usando o mesmo nome do arquivo, mas com a extensão `.test.js` ou `.spec.js`.
+    - Exemplo:
+      - Arquivo de código: `src/controllers/UserController.js`
+      - Arquivo de teste: `src/controllers/UserController.test.js`
+
+- **Arquivos de Teste de Integração e End-to-End:** Armazene esses testes em uma pasta separada, como `
+
 
 ## 4.2 Controle de Qualidade
 

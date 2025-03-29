@@ -15,6 +15,27 @@ export class ProfissionalController {
     return ResponseHandler.sucesso(res, profissionais, "Profissionais listados com sucesso");
   });
 
+/**
+ * Lista todos os profissionais
+ * @route GET /profissionais/ListarPaginado
+ */
+static listarPaginado = asyncHandler(async (req: Request, res: Response) => {
+  try {
+    // Extrair apenas os parâmetros relevantes, ignorando outros como _t
+    const pagina = Math.max(0, parseInt(req.query.pagina as string) || 0);
+    const tamanhoPagina = Math.max(1, parseInt(req.query.tamanhoPagina as string) || 10);
+    
+    console.log('Parâmetros da consulta:', { pagina, tamanhoPagina });
+    
+    const profissionais = await ProfissionalRepository.listarComPaginacao(pagina, tamanhoPagina);
+    
+    return ResponseHandler.sucesso(res, profissionais, "Profissionais listados com sucesso");
+  } catch (error) {
+    console.error('Erro ao listar profissionais:', error);
+    throw error;
+  }
+});
+  
   /**
    * Busca um profissional pelo ID
    * @route GET /profissionais/BuscarPorId/:id

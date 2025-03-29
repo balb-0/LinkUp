@@ -1,0 +1,58 @@
+@if (profissional) {
+  <div class="flex flex-col container mx-auto p-6">
+    <app-profile-header
+      [headerTitle]="'Perfil do Profissional'"
+    ></app-profile-header>
+
+    <h1 class="mt-4 mb-0.5 text-[32px]">{{ profissional.nome }}</h1>
+
+    <app-status-badge
+      [ativo]="profissional.ativo ?? true"
+    ></app-status-badge>
+
+    <app-information-table
+      [sections]="contatoSections"
+    >
+    </app-information-table>
+
+    <app-tab-service-technology
+      [botaoAdicionar]="false"
+      [titulo]="'Atendimentos'"
+      [textoAtendimentos]="'Ativos'"
+      [textoHistorico]="'Anteriores'"
+    >
+      <div conteudoAtendimentos class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        @if (atendimentosAtivos.length === 0) {
+          <div class="text-center text-gray-500 mt-4">
+            Não há atendimentos ativos.
+          </div>
+        }
+        @for (atendimento of atendimentosAtivos; track atendimento.id) {
+          <div class="mt-2 flex flex-row">
+            <app-service-technology-card
+              [name]="atendimento.alunoNome || 'Carregando...'"
+              [title]="atendimento.tipoAtendimento"
+              [dateTime]="atendimento.dataAtendimento.toString()"
+            ></app-service-technology-card>
+          </div>
+        }
+      </div>
+      <div conteudoHistorico class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        @if (atendimentosHistorico.length === 0) {
+          <div class="col-span-full text-center text-gray-500 mt-4">
+            Não há atendimentos anteriores.
+          </div>
+        }
+        @for (atendimento of atendimentosHistorico; track atendimento.id) {
+          <div>
+            <app-service-technology-card
+              [name]="atendimento.alunoNome || 'Carregando...'"
+              [title]="atendimento.tipoAtendimento"
+              [dateTime]="atendimento.dataAtendimento.toString()"
+            ></app-service-technology-card>
+          </div>
+        }
+      </div>
+    </app-tab-service-technology>
+  </div>
+}
