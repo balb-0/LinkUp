@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import bcrypt from "bcryptjs";
-import { findUserByEmail, createUser, User } from "../models/userModel";
+import { findUserByEmail, createUser, User } from "../models/UserModel";
 import { asyncHandler } from "../utils/asyncHandler";
 import { createError } from "../middleware/errorHandler";
 

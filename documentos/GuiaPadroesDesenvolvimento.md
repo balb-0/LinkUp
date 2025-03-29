@@ -206,19 +206,64 @@ A organização do projeto segue a divisão das camadas conforme descrito acima.
 
 ## 4.1 Testes Automatizados
 
-- Testes Unitários: Utilize Jest para criar testes unitários
-  - Exemplo:
-    ```
+### Testes Unitários
+
+Utilize **Jest** para criar testes unitários e garantir que cada função ou módulo do seu código se comporta conforme esperado.
+
+- **Exemplo:**
+    ```typescripts
     test('adiciona 1 + 2 para igualar 3', () => {
       expect(1 + 2).toBe(3);
     });
     ```
 
-- Testes de Integração: Como sugestão, utilizar o Cypress para testes de integração.
-  - Exemplo: Testar a interação entre componentes de frontend e backend.
+### Testes de Integração
 
-- Testes end-to-end: Como sugestão, utilizar o Cypress para testes end-to-end. 
-  - Exemplo: Testar um RF de ponta a ponta.
+Embora o Jest possa ser utilizado para testes de integração, é sugerido usar **Cypress** para testes de integração, pois ele oferece uma integração completa com frontend e backend.
+
+- **Exemplo:**
+    Testar a interação entre componentes do frontend (como botões, formulários, etc.) e o backend (API, banco de dados).
+    ```typescript
+    describe('Testando integração entre frontend e backend', () => {
+      it('deve enviar dados do formulário e receber resposta', () => {
+        cy.visit('/form');
+        cy.get('input[name="username"]').type('testuser');
+        cy.get('form').submit();
+        cy.contains('Sucesso').should('be.visible');
+      });
+    });
+    ```
+
+### Testes End-to-End
+
+Para testes de ponta a ponta, é sugerido o uso do **Cypress**, que oferece uma maneira fácil de testar a aplicação como um todo, desde a interface até o backend.
+
+- **Exemplo:**
+    Testar um **requisito funcional** (RF) de ponta a ponta, simulando o comportamento real do usuário na aplicação.
+    ```typescript
+    describe('Testando fluxo completo de login', () => {
+      it('deve realizar login com sucesso e redirecionar para o painel', () => {
+        cy.visit('/login');
+        cy.get('input[name="username"]').type('testuser');
+        cy.get('input[name="password"]').type('password123');
+        cy.get('button[type="submit"]').click();
+        cy.url().should('include', '/dashboard');
+        cy.contains('Bem-vindo, testuser').should('be.visible');
+      });
+    });
+    ```
+
+### 4.1.2 Organização e Estrutura de Testes
+
+### Organização de Arquivos
+
+- **Arquivos de Teste Unitário:** Organize os testes unitários no mesmo diretório que os arquivos de código, usando o mesmo nome do arquivo, mas com a extensão `.test.js` ou `.spec.js`.
+    - Exemplo:
+      - Arquivo de código: `src/controllers/UserController.js`
+      - Arquivo de teste: `src/controllers/UserController.test.js`
+
+- **Arquivos de Teste de Integração e End-to-End:** Armazene esses testes em uma pasta separada, como `
+
 
 ## 4.2 Controle de Qualidade
 

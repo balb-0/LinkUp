@@ -79,8 +79,12 @@ export class AtendimentoRepository {
       ORDER BY data_atendimento DESC
     `;
 
-    const result: any[] = await query(sql);
+    const result: any[] | null = await query(sql);
     
+    if (!result || result.length === 0) {
+        return [];  // Retorna um array vazio para evitar `map` em `null`
+    }
+
     return result.map(row => new Atendimento({
       id: row.id.toString(),
       alunoId: row.aluno_id.toString(),
@@ -88,7 +92,8 @@ export class AtendimentoRepository {
       tipoAtendimento: row.tipo_atendimento,
       profissionalId: row.profissional_id.toString(),
     }));
-  }
+}
+
 
   /**
    * Busca um atendimento pelo ID
@@ -102,13 +107,17 @@ export class AtendimentoRepository {
       WHERE id = ?
     `;
     
-    const result: any[] = await query(sql, [id]);
-    
-    if (result.length === 0) {
+    const result: any[] | null = await query(sql, [id]);
+
+    if (!result || result.length === 0) {  // Evita erro de `length` em `null`
       return undefined;
     }
-    
+
     const row = result[0];
+
+    if (!row || !row.id) {  // Garante que os valores existem antes de acessar
+        return undefined;
+    }
     
     return new Atendimento({
       id: row.id.toString(),
@@ -117,7 +126,7 @@ export class AtendimentoRepository {
       tipoAtendimento: row.tipo_atendimento,
       profissionalId: row.profissional_id.toString(),
     });
-  }
+}
 
   /**
    * Atualiza um atendimento existente
