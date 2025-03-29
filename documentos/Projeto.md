@@ -650,21 +650,22 @@ Os requisitos não funcionais RNF07, referente a modularidade do código, e RNF0
 
 ## 4.2 Modelo Lógico de Dados
 
-O banco de dados deste projeto foi estruturado para armazenar informações sobre alunos, profissionais, atendimentos e tecnologias assistivas. A estrutura permite registrar os atendimentos realizados entre um aluno e um profissional, visualizar e acompanhar informações.
+O banco de dados deste projeto foi estruturado para armazenar informações sobre profissionais, atendimentos e tecnologias assistivas. A estrutura permite registrar os atendimentos realizados entre um aluno e um profissional, visualizar e acompanhar informações.
+
+Torna-se importante destacar que, a tabela `Aluno` foi removida do banco de dados atual, pois as informações dos alunos agora são obtidas através de uma API externa produzida pela sala. Como todos os dados necessários dos alunos são acessados diretamente dessa API, a tabela local estava sendo inutilizada, resultando em duplicação desnecessária de informações. Por isso, as tabelas `Atendimento` e `Aluno_Tecnologia_Assistiva` agora armazenam apenas o ID do aluno para referência na API externa. Porém a utilização da tabela `Aluno` para o armazenamento de outras informações adicionais ainda está sendo discutida no grupo.
 
 ## 4.2.1. Modelo Lógico
 O modelo lógico do banco de dados é composto pelas seguintes entidades:
 
 - **Usuário**: Representa os usuários do sistema, que podem ter diferentes cargos.
-- **Aluno**: Contém apenas o id sobre o aluno que recebe atendimento, uma vez que outras informações sensíveis serão acessadas pela API conjunta da turma.
 - **Profissional**: Contém informações sobre os profissionais que realizam atendimentos.
 - **Atendimento**: Registra o atendimento entre um aluno e um profissional, incluindo a data e o tipo de atendimento.
 
 ## 4.2.2. Relacionamentos
 
-- **Aluno e Atendimento**: Um aluno pode ter vários atendimentos. Cada atendimento está vinculado a um único aluno.
-- **Profissional e Atendimento**: Um profissional pode realizar vários atendimentos. Cada atendimento está vinculado a um único profissional.
-- **Atendimento e Tecnologia Assistiva**: Caso uma tecnologia assistiva seja utilizada, ela é referenciada dentro do atendimento.
+- **API Externa (Alunos) → Atendimento**: Um aluno (identificado pelo ID externo) pode ter vários atendimentos.
+- **Profissional → Atendimento**: Um profissional pode realizar vários atendimentos (1).
+- **API Externa (Alunos) → Aluno_Tecnologia_Assistiva → Tecnologia_Assistiva**: Relacionamento muitos-para-muitos entre Alunos (da API externa) e Tecnologia Assistiva.
 
 ## 4.2.3. Horário do Atendimento
 O modelo do banco de dados garante que alunos e profissionais possam realizar atendimentos de forma estruturada, sem necessidade de uma tabela intermediária para agendamentos. O campo **data_atendimento** dentro da tabela **Atendimento** define diretamente o horário do atendimento, assegurando que aluno e profissional estejam juntos nesse período.
@@ -686,18 +687,19 @@ Isso significa que:
 Cada tabela possui um identificador único (chave primária) para garantir a integridade dos registros no banco de dados:
 
 - **Usuário**: `id`
-- **Aluno**: `id`
 - **Profissional**: `id`
 - **Atendimento**: `id`
 - **Tecnologia Assistiva**: `id`
+- **Aluno_Tecnologia_Assistiva**: `id`
 
 ## 4.2.5. Chaves estrangeiras
 
 As chaves estrangeiras estabelecem os relacionamentos entre as tabelas, garantindo a integridade de refeência entre as tabela por meio dos dados:
 
 - **Atendimento**:
-  - `aluno_id` → Referência para `Aluno(id)`
   - `profissional_id` → Referência para `Profissional(id)`
+
+- **Aluno_Tecnologia_Assistiva**:
   - `tecnologia_assistiva_id` → Referência para `Tecnologia Assistiva(id)`
 
 ## 4.2.6. Estrutura das Tabelas
@@ -710,11 +712,6 @@ As chaves estrangeiras estabelecem os relacionamentos entre as tabelas, garantin
 | email  | VARCHAR  | Email do usuário  |
 | senha  | VARCHAR  | Senha criptografada |
 | cargo  | VARCHAR  | Cargo do usuário no sistema |
-
-### **Aluno**
-| Campo  | Tipo  | Descrição  |
-|--------|------|--------------|
-| id  | INT (PK) | Identificador único do aluno |
 
 ### **Profissional**
 | Campo  | Tipo  | Descrição  |
@@ -730,17 +727,23 @@ As chaves estrangeiras estabelecem os relacionamentos entre as tabelas, garantin
 | Campo  | Tipo  | Descrição  |
 |--------|------|--------------|
 | id  | INT (PK) | Identificador único do atendimento |
-| aluno_id  | INT (FK) | Referência ao aluno atendido |
+| aluno_id  | INT | Referência ao ID do aluno da API externa |
 | profissional_id  | INT (FK) | Referência ao profissional responsável |
 | data_atendimento  | DATETIME | Horário do atendimento |
 | tipo_atendimento  | VARCHAR  | Tipo de atendimento realizado |
-| tecnologia_assistiva | VARCHAR | Tecnologia assistiva usada |
 
 ### **Tecnologia Assistiva**
 | Campo  | Tipo  | Descrição  |
 |--------|------|--------------|
 | id  | INT (PK) | Identificador único da tecnologia assistiva |
 | nome  | INT (FK) | Nome da tecnologia assistiva |
+
+### **Aluno_Tecnologia_Assistiva**
+| Campo  | Tipo  | Descrição  |
+|--------|------|--------------|
+| id  | INT (PK) | Identificador único da tecnologia assistiva |
+| aluno_id  | INT | Referência ao ID do aluno da API externa |
+| tecnologia_assistiva_id| INT (FK) | Referência à tecnologia assistiva |
 
 ## 4.3 Modelo Físico de Dados
 

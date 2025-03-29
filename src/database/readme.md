@@ -24,12 +24,12 @@
   - [Tabela `Tecnologia_Assistiva`](#tabela-tecnologia_assistiva)
   - [Tabela `Atendimento`](#tabela-atendimento)
 - [Relacionamentos](#-relacionamentos)
-- [Script `seed.sql`](#-script-seedsql)
+- [Script `create_database.sql`](#-script-seedsql)
   - [Dados Inseridos](#-dados-inseridos)
 - [Dependências](#dependências)
 
 ## Visão Geral do Banco de Dados
-O banco de dados do projeto LinkUp foi modelado para gerenciar informações de alunos, profissionais, atendimentos e tecnologias assistivas. Abaixo está a estrutura física implementada no script `schema.sql`.
+O banco de dados do projeto LinkUp foi modelado para gerenciar informações de alunos, profissionais, atendimentos e tecnologias assistivas. Abaixo está a estrutura física implementada no script `create_database.sql`.
 
 <div align="center">
   <sub>Figura 1 - Modelo Conceitual do Banco de Dados</sub><br>
@@ -59,16 +59,6 @@ O dicionário de dados descreve a estrutura, tipos, restrições e relacionament
 | `ativo`        | `BOOLEAN`     | `NOT NULL`               | Status de atividade.                    | -                         |
 | `dataCadastro` | `DATETIME`    | `NOT NULL`               | Data de cadastro do profissional.       | -                         |
 
-### **Tabela `Aluno`**
-| Campo                  | Tipo          | Restrições               | Descrição                                | Relacionamentos              |
-|------------------------|---------------|--------------------------|------------------------------------------|------------------------------|
-| `id`                   | `INT`         | `PK, AUTO_INCREMENT`     | Identificador único do aluno.            | Atendimento (`1:N`)          |
-| `nome`                 | `VARCHAR(255)`| `NOT NULL`               | Nome completo do aluno.                  | -                            |
-| `unidade`              | `VARCHAR(255)`| `NOT NULL`               | Unidade acadêmica (ex: `Unidade Leste`). | -                            |
-| `curso`                | `VARCHAR(255)`| `NOT NULL`               | Curso matriculado.                       | -                            |
-| `turno`                | `VARCHAR(255)`| `NOT NULL`               | Turno (ex: `Noturno`).                   | -                            |
-| `necessidade_especial` | `VARCHAR(255)`| -                        | Necessidades especiais (opcional).       | -                            |
-
 ### **Tabela `Tecnologia_Assistiva`**
 | Campo    | Tipo          | Restrições               | Descrição                                       | Relacionamentos                     |
 |---------|---------------|--------------------------|-------------------------------------------------|-------------------------------------|
@@ -79,14 +69,14 @@ O dicionário de dados descreve a estrutura, tipos, restrições e relacionament
 | Campo                    | Tipo      | Restrições                           | Descrição                                             | Relacionamentos                             |
 |--------------------------|----------|--------------------------------------|-------------------------------------------------------|---------------------------------------------|
 | `id`                     | `INT`    | `PK, AUTO_INCREMENT`                 | Identificador único da relação.                       | -                                           |
-| `aluno_id`               | `INT`    | `FK (Aluno.id), NOT NULL`            | Referência ao aluno.                                  | Aluno (`N:1`)                               |
+| `aluno_id`               | `INT`    | `NOT NULL`            | ID do aluno da API externa.                                 |   -                            |
 | `tecnologia_assistiva_id`| `INT`    | `FK (Tecnologia_Assistiva.id), NOT NULL` | Referência à tecnologia assistiva.              | Tecnologia_Assistiva (`N:1`)              |
 
 ### **Tabela `Atendimento`**
 | Campo             | Tipo          | Restrições                     | Descrição                                | Relacionamentos           |
 |-------------------|---------------|--------------------------------|------------------------------------------|---------------------------|
 | `id`              | `INT`         | `PK, AUTO_INCREMENT`           | Identificador único do atendimento.      | -                         |
-| `aluno_id`        | `INT`         | `FK (Aluno.id), NOT NULL`      | Aluno atendido.                         | Aluno (`N:1`)             |
+| `aluno_id`        | `INT`         | `NOT NULL`      | ID do aluno da API externa.                        |             |
 | `data_atendimento`| `DATETIME`    | `NOT NULL`                     | Data/hora do atendimento.               | -                         |
 | `tipo_atendimento`| `VARCHAR(255)`| `NOT NULL`                     | Tipo do atendimento (ex: pedagógico).   | -                         |
 | `profissional_id` | `INT`         | `FK (Profissional.id), NOT NULL`| Profissional responsável.               | Profissional (`N:1`)      |
@@ -96,6 +86,9 @@ O dicionário de dados descreve a estrutura, tipos, restrições e relacionament
 - **FK**: Chave estrangeira.
 - **N:1**: Relacionamento muitos-para-um.
 - **1:N**: Relacionamento um-para-muitos.
+
+### **Observação**:
+A tabela `Aluno` foi removida do banco de dados atual pois as informações dos alunos agora são obtidas através de uma API externa produzida pela sala. Como todos os dados necessários dos alunos são acessados diretamente dessa API, a tabela local estava sendo inutilizada, resultando em duplicação desnecessária de informações. Por isso, as tabelas `Atendimento` e `Aluno_Tecnologia_Assistiva` agora armazenam apenas o ID do aluno para referência na API externa. Porém a utilização da tabela `Aluno` para o armazenamento de outras informações adicionais ainda está sendo discutida no grupo.
 
 ## Passo a Passo para Criar o Banco de Dados
 
@@ -109,20 +102,20 @@ O dicionário de dados descreve a estrutura, tipos, restrições e relacionament
    ```sql
    USE linkup;
    ```
-5. **Execute o script `schema.sql`** para criar as tabelas:
+5. **Execute o script `create_database.sql`** para criar as tabelas:
    ```sql
-   SOURCE caminho/para/schema.sql;
+   SOURCE caminho/para/create_database.sql;
    ```
-6. **Execute o script `seed.sql`** para inserir dados iniciais:
+6. **Execute o script `initial_data.sql`** para inserir dados iniciais:
    ```sql
-   SOURCE caminho/para/seed.sql;
+   SOURCE caminho/para/initial_data.sql;
    ```
 7. **Verifique se os dados foram inseridos corretamente**:
    ```sql
    SELECT * FROM Usuario;
    ```
 
-## Script `schema.sql`
+## Script `create_database.sql`
 
 Este script cria todas as tabelas, define chaves primárias, estrangeiras e restrições. Abaixo, a explicação detalhada de cada tabela:
 
@@ -145,16 +138,6 @@ Este script cria todas as tabelas, define chaves primárias, estrangeiras e rest
 | `ativo`        | BOOLEAN      | Status de atividade                | NOT NULL                 |
 | `dataCadastro` | DATETIME     | Data de cadastro do profissional   | NOT NULL                 |
 
-### **Tabela `Aluno`**
-| Campo                  | Tipo         | Descrição                          | Restrições               |
-|------------------------|--------------|------------------------------------|--------------------------|
-| `id`                   | INT          | Identificador único               | AUTO_INCREMENT, PK       |
-| `nome`                 | VARCHAR(255) | Nome do aluno                      | NOT NULL                 |
-| `unidade`              | VARCHAR(255) | Unidade acadêmica                 | NOT NULL                 |
-| `curso`                | VARCHAR(255) | Curso do aluno                     | NOT NULL                 |
-| `turno`                | VARCHAR(255) | Turno (matutino, vespertino)      | NOT NULL                 |
-| `necessidade_especial` | VARCHAR(255) | Necessidades especiais do aluno   | (opcional)               |
-
 ### **Tabela `Tecnologia_Assistiva`**
 | Campo   | Tipo         | Descrição                          | Restrições               |
 |-------- |------------- |------------------------------------|--------------------------|
@@ -165,23 +148,22 @@ Este script cria todas as tabelas, define chaves primárias, estrangeiras e rest
 | Campo                    | Tipo         | Descrição                          | Restrições               |
 |--------------------------|--------------|------------------------------------|--------------------------|
 | `id`                     | INT          | Identificador único da relação    | AUTO_INCREMENT, PK       |
-| `aluno_id`               | INT          | Referência ao aluno               | FK (Aluno.id), NOT NULL  |
+| `aluno_id`               | INT          | ID do aluno da API externa.               | NOT NULL  |
 | `tecnologia_assistiva_id`| INT          | Referência à tecnologia assistiva | FK (Tecnologia_Assistiva.id), NOT NULL |
 
 ### **Tabela `Atendimento`**
 | Campo                 | Tipo         | Descrição                          | Restrições               |
 |-----------------------|--------------|------------------------------------|--------------------------|
 | `id`                  | INT          | Identificador único               | AUTO_INCREMENT, PK       |
-| `aluno_id`            | INT          | Aluno atendido                    | FK (Aluno.id), NOT NULL  |
+| `aluno_id`            | INT          | ID do aluno da API externa.                    | NOT NULL  |
 | `data_atendimento`    | DATETIME     | Data/hora do atendimento          | NOT NULL                 |
 | `tipo_atendimento`    | VARCHAR(255) | Tipo (ex: psicológico, pedagógico)| NOT NULL                 |
 | `profissional_id`     | INT          | Profissional responsável          | FK (Profissional.id), NOT NULL |
 
 ## Relacionamentos
-
-- **Aluno → Atendimento**: Um aluno pode ter vários atendimentos (1:N).
-- **Profissional → Atendimento**: Um profissional pode realizar vários atendimentos (1:N).
-- **Aluno → Aluno_Tecnologia_Assistiva → Tecnologia_Assistiva**: Relacionamento muitos-para-muitos entre Aluno e Tecnologia Assistiva.
+- **API Externa (Alunos) → Atendimento**: Um aluno (identificado pelo ID externo) pode ter vários atendimentos.
+- **Profissional → Atendimento**: Um profissional pode realizar vários atendimentos (1).
+- **API Externa (Alunos) → Aluno_Tecnologia_Assistiva → Tecnologia_Assistiva**: Relacionamento muitos-para-muitos entre Alunos (da API externa) e Tecnologia Assistiva.
 
 
 <div align="center">
@@ -190,7 +172,7 @@ Este script cria todas as tabelas, define chaves primárias, estrangeiras e rest
   <sup>Fonte: Material produzido pelos autores (2025)</sup>
 </div>
 
-## Script `seed.sql`
+## Script `initial_data.sql`
 
 Este script insere dados iniciais nas tabelas do banco, permitindo testes imediatos e garantindo que o sistema funcione corretamente desde o primeiro uso. Os dados foram projetados para respeitar as restrições de chaves primárias e estrangeiras.
 
@@ -214,15 +196,6 @@ Este script insere dados iniciais nas tabelas do banco, permitindo testes imedia
   ('Dr. João Martins', 'joao.martins@email.com', 'Psicólogo');
   ```
 
-#### **Tabela `Aluno`**
-- **Campos**: `nome`, `unidade`, `curso`, `turno`, `necessidade_especial`.
-- **Dados**:  
-  10 alunos cadastrados com diferentes necessidades.
-- **Exemplo**:  
-  ```sql
-  ('Juliana Ribeiro', 'Unidade Leste', 'Ciência da Computação', 'Noturno', 'Deficiência visual');
-  ```
-
 #### **Tabela `Tecnologia_Assistiva`**
 - **Campos**: `nome`.
 - **Dados**:  
@@ -236,7 +209,7 @@ Este script insere dados iniciais nas tabelas do banco, permitindo testes imedia
 - **Campos**: `aluno_id`, `tecnologia_assistiva_id`.
 - **Exemplo**:  
   ```sql
-  (2, 1); -- Aluno 2 utiliza tecnologia 1
+  (2749, 1); -- Aluno com ID 2749 usa Leitor de Tela
   ```
 
 #### **Tabela `Atendimento`**
@@ -248,7 +221,7 @@ Este script insere dados iniciais nas tabelas do banco, permitindo testes imedia
   - Datas no formato `YYYY-MM-DD HH:MM:SS`.
 - **Exemplo**:  
   ```sql
-  (2, '2024-02-05 14:30:00', 'Atendimento Pedagógico', 2, 1);
+  (2749, '2024-02-01 10:00:00', 'Consulta Psicológica', 1);
   ```
 
 ## Dependências
