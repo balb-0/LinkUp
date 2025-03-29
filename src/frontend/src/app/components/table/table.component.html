@@ -42,10 +42,11 @@
 
   <!-- Paginador -->
   <mat-paginator
-  [length]="serverPagination ? totalItems : data.length"
-  [pageSize]="pageSize"
-  (page)="onPageChange($event)"
-  aria-label="Selecione a página"
-  class="!font-poppins border !bg-cinza border-gray-200 rounded-md">
+    [length]="serverPagination ? totalItems : data.length"
+    [pageSize]="pageSize"
+    [hidePageSize]="true"
+    (page)="onPageChange($event)"
+    aria-label="Selecione a página"
+    class="!font-poppins border !bg-cinza border-gray-200 rounded-md">
   </mat-paginator>
 </div>

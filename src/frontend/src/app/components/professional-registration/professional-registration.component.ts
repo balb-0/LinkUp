@@ -67,16 +67,29 @@ export class ProfessionalRegistrationComponent implements OnInit {
         this.profissionalForm.reset();
         this.isSubmitting = false;
 
-        // Adiciona o novo profissional ao estado
-        this.professionalState.addProfissional(response.dados);
-
-        // Limpar o cache
+        // Limpar o cache primeiro, depois redirecionar para garantir atualização completa
         this.profissionalService.limparCache().subscribe({
           next: () => {
             console.log('Cache limpo com sucesso');
+            
+            // Redirecionar para a própria tela para forçar recarregamento completo 
+            // Isso garante que a página será renderizada do zero
+            // Indicamos um timestamp como query param para evitar cache do navegador
+            this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+              this.router.navigate(['/professionals'], { 
+                queryParams: { refresh: new Date().getTime() } 
+              });
+            });
           },
           error: (error) => {
             console.error('Erro ao limpar cache:', error);
+            
+            // Mesmo se falhar o limpamento de cache, ainda forçamos navegação
+            this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+              this.router.navigate(['/professionals'], { 
+                queryParams: { refresh: new Date().getTime() } 
+              });
+            });
           }
         });
       },

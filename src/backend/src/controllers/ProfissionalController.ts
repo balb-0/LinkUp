@@ -21,6 +21,7 @@ export class ProfissionalController {
  */
 static listarPaginado = asyncHandler(async (req: Request, res: Response) => {
   try {
+    // Extrair apenas os parâmetros relevantes, ignorando outros como _t
     const pagina = Math.max(0, parseInt(req.query.pagina as string) || 0);
     const tamanhoPagina = Math.max(1, parseInt(req.query.tamanhoPagina as string) || 10);
     

@@ -1,4 +1,3 @@
-import axios from 'axios';
 import EnvManager from '../classes/EnvManager';
 
 class AlunoService {
@@ -8,12 +7,12 @@ class AlunoService {
     // Helper method to make GET requests
     private async fetchData(url: string) {
         try {
-            const response = await axios.get(url, {
+            const response = await fetch(url, {
                 headers: {
                     Authorization: `Bearer ${this.API_TOKEN}`,
                 },
             });
-            return response.data;
+            return response.json();
         } catch (error) {
             const err = error as Error;
             console.error('Erro ao buscar dados:', err.message);

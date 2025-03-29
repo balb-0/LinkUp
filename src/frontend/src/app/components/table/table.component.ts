@@ -4,7 +4,7 @@ import { MatPaginatorModule, MatPaginator, PageEvent, MatPaginatorIntl } from '@
 import { Subject } from 'rxjs';
 
 export class CustomMatPaginatorIntl extends MatPaginatorIntl {
-  override itemsPerPageLabel = 'Itens por página:';
+  override itemsPerPageLabel = '';
   override nextPageLabel = 'Próxima página';
   override previousPageLabel = 'Página anterior';
   override firstPageLabel = 'Primeira página';
@@ -13,12 +13,8 @@ export class CustomMatPaginatorIntl extends MatPaginatorIntl {
   override changes = new Subject<void>();
 
   override getRangeLabel = (page: number, pageSize: number, length: number): string => {
-    if (length === 0) {
-      return 'Página 1 de 1';
-    }
-
     const amountPages = Math.ceil(length / pageSize);
-    return `${page + 1} – ${amountPages} de ${length}`;
+    return `${page + 1} – ${amountPages}`;
   };
 }
 
