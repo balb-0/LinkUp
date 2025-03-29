@@ -29,6 +29,7 @@ import { TabServiceTechnologyComponent } from './components/tab-service-technolo
 
 export class AppComponent {
   shouldShowNav$: Observable<boolean>;
+
   constructor(private router: Router, public auth: AuthService) {
     // Essa observable emitirá 'true' se a rota atual NÃO for login ou register
     this.shouldShowNav$ = this.router.events.pipe(

@@ -10,8 +10,6 @@
 # Nome do Projeto: LinkUp
 # Nome do Projeto: LinkUp
 
-## Nome do Grupo: LinkUp
-
 ## Integrantes:
 
 - <a href="https://www.linkedin.com/in/arthur-bretas/">Arthur Bretas Oliveira</a>
@@ -1266,8 +1264,6 @@ A organização do projeto segue a divisão das camadas conforme descrito acima.
 - Melhorar a estrutura e a escalabilidade da aplicação visando a migração futura do banco de dados para a AWS.
 - Refinamento da interface do usuário para melhor experiência e usabilidade.
 - Implementação de testes para garantir a estabilidade das funcionalidades desenvolvidas.
-=======
-_conteúdo_
 
 ## 8.2.2 Sprint 4
 
@@ -1295,7 +1291,91 @@ _conteúdo_
 
 ## 8.3 Testes Unitários e de Integração
 
-_conteúdo_
+### 8.3.1 Testes Unitários
+#### 8.3.1.1 Relatório de cobertura de testes
+
+Este documento apresenta o relatório de cobertura de testes gerado pelo **Jest**, detalhando a cobertura de código por diretório e arquivo.
+
+##### Resumo da Cobertura
+
+<div align="center">
+
+| Diretório/Arquivo                  | % Stmts | % Branch | % Funcs | % Lines | Linhas não cobertas                                        |
+|------------------------------------|---------|----------|---------|---------|------------------------------------------------------------|
+| **Todos os arquivos**              | **67.34** | **29.74** | **62.74** | **66.31** | -                                                          |
+| **src/**                            | **81.25** | **16.66** | **55.55** | **80.95** | -                                                          |
+| ├── `server.ts`                    | 81.25   | 16.66    | 55.55   | 80.95   | 50-54,63,69,78,109-116                                      |
+| **src/classes/**                   | **87.5** | **0**     | **100**  | **87.5** | -                                                          |
+| ├── `EnvManager.ts`                | 87.5    | 0        | 100     | 87.5    | 13                                                         |
+| **src/controllers/**               | **84.28** | **68.75** | **93.93** | **83.59** | -                                                          |
+| ├── `AlunoController.ts`           | 76.92   | 50       | 100     | 76.92   | 11,31,41,51,61,71,81,91-92                                   |
+| ├── `AtendimentoController.ts`     | 100     | 100      | 100     | 100     | -                                                          |
+| ├── `ProfissionalController.ts`    | 76.78   | 60       | 83.33   | 76      | 33-34,73,86,103,112-124                                     |
+| ├── `UserController.ts`            | 100     | 100      | 100     | 100     | -                                                          |
+| **src/middleware/**                | **45.08** | **18.18** | **46.66** | **41.59** | -                                                          |
+| ├── `cache.ts`                     | 17.64   | 0        | 20      | 12.9    | 23-61,71-80                                                 |
+| ├── `errorHandler.ts`              | 100     | 50       | 100     | 100     | 17-34,45-46                                                 |
+| ├── `healthCheck.ts`               | 23.07   | 100      | 0       | 16.66   | 9-25                                                        |
+| ├── `limiter.ts`                   | 100     | 100      | 100     | 100     | -                                                          |
+| ├── `logger.ts`                    | 92.85   | 80       | 100     | 92.3    | 19                                                         |
+| ├── `validator.ts`                 | 34.88   | 8.51     | 50      | 31.7    | 26-75,101-102,107-108,112-113                               |
+| **src/models/**                    | **70.27** | **34.34** | **82.35** | **70.34** | -                                                          |
+| ├── `Atendimento.ts`               | 75      | 42.59    | 100     | 74.64   | 63,68-71,89,124,147,154-155,158-159,166-167,170-171,175,186,192 |
+| ├── `Profissional.ts`              | 65.78   | 24.44    | 70      | 66.21   | 60,65-68,103-135,183,196-197,201-202,206-207,212,231-234    |
+| **src/routes/**                    | **63.15** | **0**     | **0**    | **63.15** | -                                                          |
+| ├── `atendimentoRoutes.ts`         | 100     | 100      | 100     | 100     | -                                                          |
+| ├── `authRoutes.ts`                | 100     | 100      | 100     | 100     | -                                                          |
+| ├── `pagesRoutes.ts`               | 50      | 100      | 0       | 50      | 19-23,33-37                                                 |
+| ├── `profissionais.ts`             | 50      | 0        | 0       | 50      | 14-25,83-84,114-116,129-131                                  |
+| **src/services/**                  | **26.31** | **100**   | **10**   | **26.31** | -                                                          |
+| ├── `AlunoService.ts`              | 26.31   | 100      | 10      | 26.31   | 10-61                                                       |
+| **src/utils/**                     | **63.88** | **0**     | **40**   | **61.29** | -                                                          |
+| ├── `asyncHandler.ts`              | 100     | 100      | 100     | 100     | -                                                          |
+| ├── `db.ts`                        | 72      | 100      | 50      | 71.42   | 13,42,53-57                                                 |
+| ├── `responseHandler.ts`           | 14.28   | 0        | 0       | 14.28   | 31-84                                                       |
+
+
+<sup>Fonte: Relatório gerado automaticamente pelo Jest</sup>
+</div>
+
+#### Análise
+
+- **Controllers:** O diretório `controllers/` apresenta uma cobertura excelente de **84.28%** para instruções e **68.75%** para branches. Embora a cobertura de funções seja alta (93.93%), os arquivos `AlunoController.ts` e `ProfissionalController.ts` têm algumas linhas não cobertas, principalmente em locais que envolvem lógica de fluxo condicional, como os intervalos **11, 31, 41, 51, 61, 71, 81, 91-92** no `AlunoController.ts` e **33-34, 73, 86, 103, 112-124** no `ProfissionalController.ts`. Esses pontos podem precisar de mais testes de integração para garantir que diferentes cenários sejam cobertos.
+
+- **Models:** O diretório `models/` tem uma cobertura de **70.27%** para instruções e **34.34%** para branches. O arquivo `Atendimento.ts` apresenta algumas lacunas, especialmente em trechos que envolvem validação e manipulação de dados do repositório. Já o arquivo `Profissional.ts` tem uma cobertura um pouco mais baixa, com várias linhas não cobertas, principalmente nas linhas **60, 65-68, 103-135, 183, 196-197**. O foco em validar e testar as interações com o banco de dados pode ser uma área a ser melhorada.
+
+- **Middleware:** O diretório `middleware/` possui uma cobertura de **45.08%** para instruções e **18.18%** para branches, o que indica que grande parte do middleware, como o `cache.ts` e o `responseHandler.ts`, ainda não foi testada adequadamente. Especificamente, o arquivo `cache.ts` tem uma grande lacuna nas linhas **23-61, 71-80**, enquanto `responseHandler.ts` não tem cobertura em nenhum caso. Melhorar a cobertura de testes nestes pontos é crucial para garantir que os fluxos de erro e as respostas sejam bem validados.
+
+- **Services:** O diretório `services/` tem uma cobertura muito baixa, com **26.31%** de instruções e **100%** de branches (a cobertura de branches em **AlunoService.ts** é total, mas as instruções não são). Isso sugere que existem poucos testes para as interações de serviços importantes, como a lógica de negócios dentro de `AlunoService.ts`. Esse é um ponto crítico para garantir que as funcionalidades principais do sistema sejam cobertas e bem testadas.
+
+- **Utils:** O diretório `utils/` apresenta **63.88%** de cobertura para instruções e **0%** para branches. O arquivo `db.ts` está razoavelmente coberto, mas o `responseHandler.ts` não tem cobertura significativa, com intervalos **31-84** sem testes. Seria importante adicionar testes unitários para garantir que os utilitários, como os manipuladores de resposta e funções de banco de dados, estejam funcionando corretamente.
+
+#### 8.3.1.2 Conclusão e Próximos Passos
+
+- A cobertura geral ainda é **boa**, mas pode ser significativamente melhorada, especialmente nas áreas de **middleware** e **services**. A cobertura de branches e instruções precisa ser aprimorada, principalmente nos arquivos que envolvem lógicas complexas e interações com bancos de dados.
+- **Ações recomendadas:**
+  - **Adicionar testes unitários e de integração** para os arquivos `cache.ts`, `responseHandler.ts` e `AlunoService.ts`.
+  - **Focar em aumentar a cobertura de branches** no `Atendimento.ts`, `Profissional.ts` e `AlunoController.ts`, abordando cenários alternativos e exceções.
+  - **Refatorar o código conforme necessário** para facilitar os testes, garantindo que o código seja modular e fácil de testar.
+  - Manter a alta cobertura de funções (que já é excelente) ao adicionar novas funcionalidades e refatorações, garantindo que todos os métodos sejam adequadamente testados.
+
+
+#### 8.3.1.3 Execução dos Testes
+
+A execução dos testes unitários utilizaram do Jest. O passo a passo para executar os testes é:
+
+1. Abra o terminal ou PowerShell
+2. Acesse a pasta /src/backend do repositório com o comando `cd <path_to_repo>/src/backend`
+3. Instale e atualize os pacotes com `npm install`
+4. Execute os testes através do comando `npm test`
+
+Todos os testes executados passaram e estão representados na imagem abaixo: 
+
+<div align="center">
+<sub>Figura X - Execução dos Testes no Terminal</sub><br>
+<img src="../documentos/img/passed_tests.png" width="80%"><br>
+<sup>Fonte: Material produzido pelos autores (2025)</sup>
+</div>
 
 ## 8.4 Documentações automáticas
 
@@ -1309,39 +1389,729 @@ _conteúdo_
 
 ## 9.1 Testes Funcionais
 
-_conteúdo_
+ Os testes funcionais validam o comportamento esperado do sistema com base nos **Requisitos Funcionais (RFs)** estabelecidos. O objetivo desses testes é garantir que todas as funcionalidades atendam aos requisitos de negócio e projeto, verificando a correção das operações realizadas, o fluxo dos dados e a resposta do sistema em diferentes cenários.
 
-## 9.1.1 Planejamento
+### 9.1.1 Estratégia de Testes
 
-_conteúdo_
+Nossa estratégia de testes funcionais abrange três categorias principais:
 
-## 9.1.2 Resultados
+1. **Testes Positivos**: Validam o comportamento esperado do sistema com entradas válidas.
+2. **Testes Negativos**: Verificam como o sistema lida com entradas inválidas ou situações de erro.
+3. **Testes de Borda**: Exploram os limites dos dados e situações extremas.
 
-_conteúdo_
+Para cada funcionalidade, consideramos:
+- Diferentes tipos de entrada (texto, números, datas)
+- Limites de tamanho e formato dos dados
+- Combinações de dados válidos e inválidos
+- Fluxos alternativos e de exceção
+
+### 9.1.2 Planejamento Detalhado
+
+#### CT001 - Cadastro de Profissional (RF001)
+
+**Cenários Positivos:**
+1. Cadastro com todos os campos preenchidos corretamente
+   - Entrada: Nome completo, email válido, unidade existente
+   - Resultado Esperado: Profissional cadastrado com sucesso
+
+**Cenários Negativos:**
+1. Cadastro com email inválido
+   - Entrada: Email sem @ ou domínio
+   - Resultado Esperado: Mensagem de erro específica sobre formato de email
+
+**Testes de Borda:**
+1. Nome com caracteres especiais
+   - Entrada: Nome com acentos, ç, hífen
+   - Resultado Esperado: Aceitar caracteres especiais válidos
+
+2. Tamanho máximo dos campos
+   - Entrada: Nome com 100 caracteres (limite máximo)
+   - Resultado Esperado: Aceitar se dentro do limite, rejeitar se exceder
+
+#### CT002 - Associação Aluno-Profissional (RF002)
+
+**Cenários Positivos:**
+1. Associação simples
+   - Entrada: Aluno e profissional válidos
+   - Resultado Esperado: Associação criada com sucesso
+
+2. Associação múltipla
+   - Entrada: Um aluno com múltiplos profissionais
+   - Resultado Esperado: Todas as associações criadas corretamente
+
+**Cenários Negativos:**
+1. Associação duplicada
+   - Entrada: Tentar associar mesmo par aluno-profissional
+   - Resultado Esperado: Mensagem de erro sobre duplicidade
+
+2. Associação com profissional inativo
+   - Entrada: Profissional com status inativo
+   - Resultado Esperado: Mensagem de erro sobre status do profissional
+
+**Testes de Borda:**
+1. Limite de associações
+   - Entrada: Tentar exceder limite máximo de profissionais por aluno
+   - Resultado Esperado: Mensagem de erro sobre limite excedido
+
+#### CT003 - Dashboard (RF003)
+
+**Cenários Positivos:**
+1. Visualização com dados completos
+   - Entrada: Período com dados disponíveis
+   - Resultado Esperado: Gráficos e métricas exibidos corretamente
+
+**Cenários Negativos:**
+1. Período sem dados
+   - Entrada: Período sem registros
+   - Resultado Esperado: Mensagem informativa sobre ausência de dados
+
+**Testes de Borda:**
+1. Grande volume de dados
+   - Entrada: Período com mais de 10.000 registros
+   - Resultado Esperado: Dashboard carregado sem degradação de performance
+
+2. Filtros combinados
+   - Entrada: Múltiplos filtros simultâneos
+   - Resultado Esperado: Dados filtrados corretamente mantendo performance
+
+#### CT004 - Acompanhamento de Alunos com Deficiência (RF004)
+
+**Cenários Positivos:**
+1. Visualização do histórico completo do aluno.
+   - Entrada: Selecionar um aluno com histórico de acompanhamento
+   - Resultado Esperado: Exibição correta de todas as entradas do histórico.
+
+2. Atualização do status do aluno.
+   - Entrada: Alterar o status do aluno e adicionar um comentário.
+   - Resultado Esperado: Status e comentário atualizados no histórico do aluno.
+
+**Cenários Negativos:**
+1. Tentativa de visualizar histórico de aluno sem registro.
+   - Entrada: Selecionar um aluno sem histórico de atendimentos ou tecnologias.
+   - Resultado Esperado: Mensagem indicando a ausência de registros.
+
+**Testes de Borda:**
+1. Histórico com grande volume de entradas.
+   - Entrada: Aluno com mais de 20 entradas no histórico.
+   - Resultado Esperado: Carregamento do histórico sem erros.
+
+#### CT005 - Autenticação e Autorização de Usuários (RF005)
+
+**Cenários Positivos:**
+1. Login com credenciais válidas.
+   - Entrada: Login realizado pelo Auth0 com usuário e senha corretos.
+   - Resultado Esperado: Acesso concedido às funcionalidades permitidas.
+
+2. Acesso a funcionalidades conforme o nível de permissão.
+   - Entrada: Usuários com diferentes níveis de permissão tentando acessar várias funcionalidades.
+   - Resultado Esperado: Acesso permitido ou negado de acordo com o nível de permissão.
+
+**Cenários Negativos:**
+1. Login com senha incorreta.
+   - Entrada: Usuário correto, senha incorreta.
+   - Resultado Esperado: Mensagem de erro de senha inválida.
+
+2. Tentativa de acesso a funcionalidades não permitidas.
+   - Entrada: Usuário tentando acessar uma funcionalidade para a qual não tem permissão.
+   - Resultado Esperado: Mensagem de acesso negado.
+
+**Testes de Borda:**
+1. Múltiplas tentativas de login com senha incorreta.
+   - Entrada: Mais de 5 tentativas de login com senha errada.
+   - Resultado Esperado: Bloqueio temporário da conta.
+
+#### CT006 - Pesquisa e Filtros Avançados (RF006)
+
+**Cenários Positivos:**
+1. Pesquisa por nome completo.
+   - Entrada: Nome completo de um aluno ou profissional.
+   - Resultado Esperado: Exibição do registro correspondente.
+
+**Cenários Negativos:**
+1. Pesquisa sem resultados.
+   - Entrada: Termo de pesquisa que não corresponde a nenhum registro.
+   - Resultado Esperado: Mensagem indicando nenhum resultado encontrado.
+
+**Testes de Borda:**
+1. Pesquisa com caracteres especiais.
+   - Entrada: Termo de pesquisa com acentos e outros caracteres especiais.
+   - Resultado Esperado: Resultados correspondentes, se existirem.
+
+#### CT007 - Histórico de Alterações (RF007)
+
+**Cenários Positivos:**
+1. Visualização do histórico completo.
+   - Entrada: Acessar o histórico de alterações.
+   - Resultado Esperado: Exibição de todas as alterações registradas.
+
+2. Filtro por tipo de alteração.
+   - Entrada: Filtrar o histórico por cadastro ou associação.
+   - Resultado Esperado: Exibição apenas das alterações do tipo selecionado.
+
+**Cenários Negativos:**
+1. Histórico vazio.
+   - Entrada: Acessar o histórico quando não há alterações registradas.
+   - Resultado Esperado: Mensagem indicando histórico vazio.
+
+2. Filtros com valores inválidos.
+   - Entrada: Filtrar por um tipo de alteração inexistente.
+   - Resultado Esperado: Mensagem de erro ou nenhum resultado.
+
+**Testes de Borda:**
+1. Histórico com grande volume de registros.
+   - Entrada: Histórico com mais de 1000 registros.
+   - Resultado Esperado: Carregamento do histórico sem erros.
+
+### 9.1.3 Matriz de Rastreabilidade
+
+Para garantir a cobertura completa dos requisitos, mantemos uma matriz relacionando cada caso de teste aos requisitos funcionais:
+
+| Caso de Teste | RF001 | RF002 | RF003 | RF004 | RF005 | RF006 | RF007 | RF008 |
+|---------------|-------|-------|-------|-------|-------|-------|-------|-------|
+| CT001         |   X   |       |       |       |       |       |       |       |
+| CT002         |       |   X   |       |       |       |       |       |       |
+| CT003         |       |       |   X   |       |       |       |       |       |
+[...]
+
+### 9.1.4 Critérios de Aceitação
+
+Para cada teste, definimos critérios específicos de aceitação:
+
+1. **Performance**
+   - Tempo de resposta dentro do limite de 0,8 segundos
+   - Sem degradação com volume de dados
+
+2. **Validação de Dados**
+   - Todos os campos obrigatórios verificados
+   - Formatos e tipos de dados validados
+   - Regras de negócio aplicadas corretamente
+
+3. **Tratamento de Erros**
+   - Mensagens claras e específicas
+   - Estado do sistema mantido em caso de erro
+   - Logs adequados gerados
+
+
+
+### 9.1.5 Execução de Testes de Requisitos Funcionais
+
+&emsp;Foram efetuados os testes de acordo com o desenvolvimento da aplicação até o momento, a sprint atual, e o andamento do projeto. Portanto, não foi possível efetuar todos os testes de requisitos funcionais, devido a etapa em que estamos. Eventualmente vão ser efetuados os testes para todos os requisitos.
+
+<div align="center">
+<sub>Tabela x - Execução de Testes de Requisitos Funcionais</sub><br>
+
+| ID    | Funcionalidade                           | Tipo de Teste | Título Descritivo                 | Entrada                                              | Resultado Esperado                                 | Resultado Obtido                                   | Observaçoes                                                                                           |
+| ----- | ---------------------------------------- | ------------- | --------------------------------- | ---------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| CT001 | Cadastro de Profissional                 | Positivo      | Cadastro correto                  | Nome completo, email válido, unidade existente       | Profissional cadastrado com sucesso                | Profissional cadastrado com sucesso                | Nenhuma observação.                                                                                   |
+| CT001 | Cadastro de Profissional                 | Negativo      | Email inválido                    | Email sem @ ou domínio                               | Mensagem de erro sobre formato de email            | Mensagem de erro sobre formato de email            | Nenhuma observação.                                                                                   |
+| CT001 | Cadastro de Profissional                 | Borda 1       | Nome com caracteres especiais     | Nome com acentos, ç, hífen                           | Aceitar caracteres especiais válidos               | Aceitar caracteres especiais válidos               | Nenhuma observação.                                                                                   |
+| CT001 | Cadastro de Profissional                 | Borda 2       | Nome com tamanho máximo           | Nome com 100 caracteres                              | Aceitar se dentro do limite, rejeitar se exceder   | Resultado diferente do esperado.                   | O site processa o input e resultado pode varia de adição ao banco de dados e sumiço. |
+| CT004 | Acompanhamento de Alunos com Deficiência | Positivo      | Visualização de histórico         | Selecionar aluno com histórico de atendimentos       | Exibição correta de todas as entradas do histórico | Exibição correta de todas as entradas do histórico | Nenhuma observação.                                                                                   |
+| CT004 | Acompanhamento de Alunos com Deficiência | Positivo      | Atualização de status             | Alterar status do aluno e adicionar comentário       | Status e comentário atualizados                    | Feature ainda não implementada.                    | Feature ainda não implementada.                                                                       |
+| CT004 | Acompanhamento de Alunos com Deficiência | Negativo      | Histórico inexistente             | Selecionar aluno sem histórico de atendimentos       | Mensagem indicando ausência de registros           | Mensagem indicando ausência de registros           | Nenhuma observação.                                                                                   |
+| CT004 | Acompanhamento de Alunos com Deficiência | Borda         | Histórico com mais de 100 entradas | Aluno com mais de 100 entradas no histórico          | Carregamento do histórico sem erros                | Não foi possível efetuar.                          | Não foi possível efetuar.                                                                             |
+| CT006 | Pesquisa e Filtros Avançados             | Positivo      | Pesquisa por nome completo        | Nome completo de um aluno ou profissional            | Exibição do registro correspondente                | Exibição do registro correspondente                | Nenhuma observação.                                                                                   |
+| CT006 | Pesquisa e Filtros Avançados             | Negativo      | Pesquisa sem resultados           | Termo de pesquisa sem correspondência                | Mensagem indicando nenhum resultado encontrado     | Mensagem indicando nenhum resultado encontrado     | Nenhuma observação.                                                                                   |
+| CT006 | Pesquisa e Filtros Avançados             | Borda         | Pesquisa com caracteres especiais | Termo de pesquisa com acentos e caracteres especiais | Resultados correspondentes, se existirem           | Nenhum resultado encontrado.                       | Nenhum resultado encontrado.                                                                          |
+
+<sup>Fonte: Material produzido pelos autores (2025) </sup>
+</div>
 
 ## 9.2 Testes de RNFs
 
-_conteúdo_
+Os testes de requisitos não funcionais validam aspectos de **desempenho, acessibilidade, segurança, compatibilidade e confiabilidade** do sistema. Diferente dos testes funcionais que verificam "o que" o sistema faz, os testes de RNFs verificam "como" o sistema realiza suas funções.
 
-## 9.2.1 Planejamento
+### 9.2.1 Estratégia de Testes
 
-_conteúdo_
+Nossa abordagem para testes de RNFs é estruturada em cinco pilares principais:
 
-## 9.2.2 Resultados
+1. **Testes de Performance**
+   - Tempo de resposta
+   - Capacidade de carga
+   - Escalabilidade
+   - Uso de recursos
 
-_conteúdo_
+2. **Testes de Segurança**
+   - Autenticação
+   - Autorização
+   - Proteção de dados
+   - Resistência a ataques
+
+3. **Testes de Usabilidade e Acessibilidade**
+   - Conformidade com WCAG
+   - Compatibilidade com leitores de tela
+   - Eficiência de navegação
+
+4. **Testes de Compatibilidade**
+   - Múltiplos navegadores
+   - Diferentes resoluções
+   - Integração com APIs
+
+5. **Testes de Confiabilidade**
+   - Disponibilidade
+   - Recuperação de falhas
+   - Backup e restauração
+
+### 9.2.2 Planejamento Detalhado
+
+#### CT-001 - Tempo de Resposta (RNF01)
+
+**Cenários de Teste:**
+
+1. **Carga Normal**
+   - Condição: 50 usuários simultâneos
+   - Métrica: Tempo de resposta para cada operação
+   - Critério: ≤ 0,8 segundos para 95% das requisições
+
+2. **Pico de Carga**
+   - Condição: 200 usuários simultâneos
+   - Métrica: Tempo de resposta médio
+   - Critério: ≤ 2 segundos para 90% das requisições
+
+3. **Teste de Estresse**
+   - Condição: Aumento gradual até 500 usuários
+   - Métrica: Ponto de degradação do sistema
+   - Critério: Identificar limite de usuários mantendo resposta ≤ 3 segundos
+
+**Ferramentas:**
+- Apache JMeter para testes de carga
+- New Relic para monitoramento
+- AWS CloudWatch para métricas
+
+#### CT-002 - Acessibilidade (RNF02)
+
+**Cenários de Teste:**
+
+1. **Navegação por Teclado**
+   - Condição: Navegação completa sem mouse
+   - Métrica: Completude de tarefas
+   - Critério: 100% das funcionalidades acessíveis
+
+2. **Compatibilidade com Leitores de Tela**
+   - Condição: Teste com NVDA e JAWS
+   - Métrica: Legibilidade do conteúdo
+   - Critério: Todos os elementos corretamente identificados
+
+3. **Contraste e Legibilidade**
+   - Condição: Verificação WCAG 2.1
+   - Métrica: Nível de contraste
+   - Critério: Mínimo 4.5:1 para texto normal
+
+**Ferramentas:**
+- WAVE para análise de acessibilidade
+- Lighthouse para auditorias
+- Axe DevTools para testes automatizados
+
+#### CT-003 - Eficiência de Navegação (RNF03)
+
+**Cenários de Teste:**
+
+1. **Contagem de Cliques**
+   - Condição: Navegação para tarefas principais
+   - Métrica: Número de cliques
+   - Critério: Máximo 3 cliques para ações frequentes
+
+2. **Tempo de Conclusão**
+   - Condição: Tarefas comuns do usuário
+   - Métrica: Tempo para completar
+   - Critério: ≤ 30 segundos por tarefa principal
+
+**Ferramentas:**
+- Hotjar para análise de comportamento
+- Google Analytics para métricas de navegação
+
+#### CT-004 - Segurança (RNF04)
+
+**Cenários de Teste:**
+
+1. **Controle de Acesso**
+   - Condição: Tentativas de acesso não autorizado
+   - Métrica: Taxa de bloqueio
+   - Critério: 100% das tentativas inválidas bloqueadas
+
+2. **Proteção contra Injeção SQL**
+   - Condição: Tentativas de injeção em campos
+   - Métrica: Taxa de prevenção
+   - Critério: 100% das tentativas detectadas e bloqueadas
+
+3. **Força de Senha**
+   - Condição: Criação de novas senhas
+   - Métrica: Complexidade mínima
+   - Critério: 8 caracteres, maiúsculas, minúsculas, números
+
+**Ferramentas:**
+- OWASP ZAP para testes de segurança
+- SonarQube para análise de código
+- AWS WAF para proteção
+
+[Continua com detalhamento similar para os demais casos de teste...]
+
+### 9.2.3 Métricas e Monitoramento
+
+Para cada categoria de teste, estabelecemos métricas específicas:
+
+1. **Performance**
+   - Tempo médio de resposta
+   - Taxa de erro
+   - Utilização de recursos
+   - Tempo de carregamento de página
+
+2. **Segurança**
+   - Número de vulnerabilidades detectadas
+   - Tempo médio de detecção
+   - Taxa de falsos positivos
+   - Cobertura de patches
+
+3. **Usabilidade**
+   - Taxa de sucesso em tarefas
+   - Tempo médio por tarefa
+   - Taxa de erro do usuário
+   - Satisfação do usuário
+
+### 9.2.4 Ambiente de Testes
+
+Os testes são executados em três ambientes distintos:
+
+1. **Desenvolvimento**
+   - Testes unitários e integração
+   - Verificações de código
+   - Testes de componentes
+
+2. **Homologação**
+   - Testes de carga
+   - Testes de segurança
+   - Validação de usuário
+
+3. **Produção**
+   - Monitoramento contínuo
+   - Análise de logs
+   - Métricas de desempenho
+
+### 9.2.5 Execução de Testes de Requisitos Não Funcionais
+
+&emsp;Os testes são efetuados de acordo com a etapa do projeto. Devido a complexidade, e necessidade de recursos, implementação, conhecimento, etc. para a execução de alguns testes de requisitos funcionais, os mesmo são efetuados de acordo com a etapa específica do projeto. Muitos desses testes dependem de recursos ainda não implementados, considerando certas etapas do projeto, portanto são feitos de acordo com a sprint específica, enquanto que outras condiçoes dependem de conhecimentos específicos a serem estudados, como injeção SQL. 
 
 ## 9.3 Testes de Usabilidade
 
-_conteúdo_
+Os testes de usabilidade são fundamentais para garantir que o sistema seja intuitivo, eficiente e acessível para todos os usuários. Nossa abordagem é centrada no usuário e considera especialmente as necessidades de acessibilidade, dado o contexto do projeto.
 
-## 9.3.1 Planejamento
+### 9.3.1 Metodologia
 
-_conteúdo_
+#### Abordagem
+- **Testes Moderados**: Sessões individuais com observação direta
+- **Pensamento em Voz Alta**: Usuários verbalizam seus pensamentos durante os testes
+- **Gravação de Sessão**: Captura de tela e áudio para análise posterior
+- **Métricas Quantitativas e Qualitativas**: Combinação de dados objetivos e feedback subjetivo
 
-## 9.3.2 Resultados
+#### Métricas Principais
+1. **Eficácia**
+   - Taxa de conclusão de tarefas
+   - Número de erros cometidos
+   - Precisão na execução
 
-_conteúdo_
+2. **Eficiência**
+   - Tempo para completar tarefas
+   - Número de cliques/passos
+   - Desvios do caminho ideal
+
+3. **Satisfação**
+   - Facilidade de uso percebida
+   - Clareza da interface
+   - Conforto com a navegação
+
+### 9.3.2 Perfis de Usuários e Cenários
+
+#### Gestor Administrativo (GA)
+**Perfil:**
+- Experiência avançada com sistemas
+- Foco em análise de dados e relatórios
+- Necessidade de visão sistêmica
+
+**Cenários Detalhados:**
+
+1. **Análise de Dashboard**
+   - **Objetivo**: Avaliar dados estatísticos dos atendimentos
+   - **Tarefas**:
+     1. Acessar o dashboard principal
+     2. Filtrar dados por período específico
+     3. Exportar relatório personalizado
+   - **Métricas Específicas**:
+     - Tempo para localizar informações específicas
+     - Precisão na interpretação dos dados
+     - Facilidade de customização de relatórios
+
+2. **Gestão de Usuários**
+   - **Objetivo**: Gerenciar permissões e acessos
+   - **Tarefas**:
+     1. Criar novo perfil de acesso
+     2. Modificar permissões existentes
+     3. Auditar logs de acesso
+   - **Critérios de Sucesso**:
+     - Conclusão sem erros de segurança
+     - Tempo máximo de 5 minutos por tarefa
+     - Confirmação adequada das alterações
+
+#### Gestor de Unidade (GU)
+**Perfil:**
+- Conhecimento intermediário de sistemas
+- Foco em gestão local
+- Necessidade de acompanhamento próximo
+
+**Cenários Detalhados:**
+
+1. **Gestão de Atendimentos**
+   - **Objetivo**: Monitorar atendimentos dos alunos da sua unidade
+   - **Tarefas**:
+     1. Visualizar lista de alunos
+     2. Acessar perfil de um aluno
+     3. Visualizar os atendimentos ativos
+   - **Métricas Específicas**:
+     - Facilidade de localização de informações
+     - Clareza dos status de atendimento
+
+2. **Acompanhamento de Alunos**
+   - **Objetivo**: Verificar progresso dos alunos
+   - **Tarefas**:
+     1. Buscar aluno específico
+     2. Revisar histórico de atendimentos
+     3. Adicionar observações ao registro
+   - **Critérios de Sucesso**:
+     - Máximo 3 cliques para localizar aluno
+     - Visualização clara do histórico
+     - Feedback imediato das atualizações
+
+#### Assessor
+**Perfil:**
+- Foco em atendimento direto
+- Possível necessidade de acessibilidade
+- Uso frequente do sistema
+
+**Cenários Detalhados:**
+
+1. **Registro de Profissional**
+   - **Objetivo**: Registrar um novo profissional
+   - **Tarefas**:
+     1. Acessar a tela de profissionais
+     2. Preencher informações necessárias
+     3. Confirmar o cadastro
+   - **Métricas Específicas**:
+     - Tempo total de registro
+     - Clareza do processo
+
+2. **Registro de Atendimento ou tecnologia assistiva**
+   - **Objetivo**: Documentar novo atendimento ou tecnologia assistiva
+   - **Tarefas**:
+     1. Iniciar novo registro de atendimento ou tecnologia assistiva
+     2. Preencher informações necessárias
+     3. Confirmar o cadastro
+   - **Métricas Específicas**:
+     - Tempo total de registro
+     - Clareza do processo
+
+3. **Edição de Atendimento**
+   - **Objetivo**: Editar um atendimento
+   - **Tarefas**:
+     1. Acessar o perfil de um aluno
+     2. Visualizar os atendimentos ativos e apertar para editar um deles
+     3. Alterar as informações necessárias
+     4. Confirmar o cadastro
+   - **Métricas Específicas**:
+     - Tempo total de edição
+     - Clareza do processo
+
+4. **Uso com Leitor de Tela**
+   - **Objetivo**: Validar acessibilidade
+   - **Tarefas**:
+     1. Navegar entre seções principais
+     2. Localizar informações específicas
+     3. Preencher formulários
+   - **Critérios de Sucesso**:
+     - Navegação completa sem mouse
+     - Descrições claras dos elementos
+     - Feedback adequado por áudio
+
+### 9.3.3 Roteiro de Testes
+
+#### Preparação
+1. **Ambiente de Teste**
+   - Computador com configuração padrão
+   - Navegadores principais instalados
+   - Ferramentas de acessibilidade configuradas
+
+2. **Documentação**
+   - Contextualização do projeto
+   - Roteiro detalhado por perfil
+   - Formulários de observação
+
+#### Execução
+1. **Introdução (5-10 min)**
+   - Apresentação dos objetivos
+   - Explicação da metodologia
+
+2. **Tarefas Principais (30-45 min)**
+   - Execução dos cenários (Descrever para o usuário quais são os seus objetivos na plataforma)
+   - Observação e registro
+   - Coleta de feedback
+
+3. **Entrevista Pós-teste (15-20 min)**
+   - Discussão das dificuldades
+   - Sugestões de melhoria
+   - Avaliação geral
+
+### 9.3.4 Análise e Documentação
+
+#### Coleta de Dados
+- Registros de tempo por tarefa
+- Anotações de observação
+- Feedback dos usuários
+
+#### Métricas de Avaliação
+1. **Quantitativas**
+   - Taxa de sucesso por tarefa
+   - Tempo médio de conclusão
+   - Número de erros
+   - Taxa de uso de ajuda
+
+2. **Qualitativas**
+   - Satisfação do usuário
+   - Pontos de frustração
+   - Sugestões de melhoria
+   - Observações gerais
+
+#### Relatório Final
+- Análise detalhada por perfil
+- Recomendações de melhoria
+- Priorização de ajustes
+
+### 9.3.5 Critérios de Sucesso
+
+Para considerar os testes bem-sucedidos, estabelecemos os seguintes critérios:
+
+1. **Eficácia**
+   - 90% de taxa de conclusão das tarefas
+   - Máximo de 2 erros por tarefa
+   - Zero erros críticos de acessibilidade
+
+2. **Eficiência**
+   - Tempo máximo de 30 segundos para tarefas frequentes
+   - Máximo 3 cliques para ações principais
+   - Navegação completa por teclado possível
+
+3. **Satisfação**
+   - Avaliação mínima de 4/5 em satisfação
+   - Feedback positivo em acessibilidade
+   - Baixa taxa de frustração reportada
+
+
+### 9.3.6 Relatório de Testes de Usabilidade
+
+Data da execução: 27/03/2025 - 28/03/2025
+
+&nbsp;&nbsp;&nbsp;&nbsp;Para esta sprint, como a nossa aplicação não encontra-se totalmente finalizada e funcional foram escolhidos alguns cenários possíveis de ser executados, sendo eles:
+
+Gestor de Unidade (GU):
+1. Gestão de Atendimentos
+2. Acompanhamento de Alunos
+
+Assessor de Inclusão:
+3. Registro de Profissional
+
+&nbsp;&nbsp;&nbsp;&nbsp;Ainda vale ressaltar que os participantes dos testes não são realmente funcionários do Centro Paula Souza, podendo divergir um pouco nas habilidades mapeadas no planejamento dos testes.
+
+Participantes:
+- Maisa Vieira - Fluência Tecnológica Média (Cenários 1 e 2 - GU)
+- Isabelle Dantas - Fluência Tecnológica Alta (Cenários 1 e 2 - GU)
+- João Oliveira - Fluência Tecnológica Alta (Cenário 3 - Assessor)
+- Gabriela Silva - Fluência Tecnológica Média (Cenário 3 - Assessor)
+
+## Resultados Detalhados
+
+## **Cenário 1 - Gestão de Atendimentos**
+
+**Tarefas:**
+   - Visualizar lista de alunos
+   - Acessar perfil de um aluno
+   - Visualizar os atendimentos ativos
+
+**Observações:**
+   - Ambas as usuárias acessaram a tela de listagem de alunos sem dificuldade.
+   - Houve dificuldade inicial em entender a necessidade de selecionar uma opção no dropdown para exibir a lista de alunos.
+   - Maisa demorou para perceber que era possível clicar na linha para acessar o perfil do aluno.
+   - Após acessar o perfil, ambas visualizaram os atendimentos ativos facilmente.
+
+**Métricas:**
+   - Tempo para localizar informações específicas: Moderado.
+   - Clareza dos status de atendimento: Alta.
+
+**Pontos de Melhoria**
+   - Melhorar a indicação visual de que a lista de alunos depende da seleção de uma unidade no dropdown.
+   - Tornar o clique na linha do aluno mais intuitivo.
+
+
+## **Cenário 2 - Acompanhamento de Alunos**
+
+**Tarefas:**
+   - Buscar aluno específico
+   - Acessar o perfil desse aluno
+   - Revisar histórico de atendimentos
+   - Adicionar observações ao registro (Essa última tarefa não foi realizada, pois o nosso sistema não tem essa funcionalidade implementada ainda)
+
+**Observações:**
+   - A busca de alunos foi eficiente, após a compreensão da necessidade de selecionar a unidade (aprendizado do cenário anterior).
+   - O acesso ao perfil do aluno foi considerado fácil por já ter sido executado antes também.
+   - Isabelle teve dificuldade em identificar a aba "Anteriores" como o histórico de atendimentos.
+   - Ambas as participantes não tiveram dificuldade de pesquisar o nome do aluno na barra de pesquisa.
+
+**Métricas:**
+   - Número médio de cliques para localizar o aluno: 2.
+   - Facilidade de localização de informações: Alta (após a superação da barreira inicial).
+   - Visualização clara do histórico: Moderada (devido à nomenclatura da aba).
+   - Feedback imediato das atualizações: Alta.
+
+**Pontos de Melhoria**
+   - Considerar a alteração da nomenclatura da aba "Anteriores" para algo mais intuitivo, como "Histórico de Atendimentos".
+
+## **Cenário 3 - Registro de Profissional**
+
+**Tarefas:**
+   - Acessar a tela de profissionais
+   - Preencher informações necessárias
+   - Confirmar o cadastro
+
+**Observações:**
+   - Ambos os usuários acessaram a tela de profissionais sem dificuldades.
+   - João Oliveira sugeriu que a homepage pode ser dispensável devido à intuitividade da barra de navegação.
+   - A seção de cadastro de profissional foi facilmente localizada.
+   - O preenchimento das informações (nome, e-mail, ocupação) foi concluído sem problemas.
+   - Gabriela expressou confusão sobre a confirmação do cadastro, devido à falta de feedback visual.
+
+**Métricas:**
+   - Tempo médio total de registro: 3,5 minutos.
+   - Clareza do processo: Alta (com ressalva na confirmação).
+
+**Pontos de Melhoria**
+   - Avaliar a necessidade da homepage, considerando a sugestão de João Oliveira.
+   - Implementar feedback visual claro após a confirmação do cadastro, como uma mensagem de sucesso ou uma atualização na lista de profissionais.
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;Os testes de usabilidade realizados na Sprint 4, embora limitados pela versão ainda não finalizada da aplicação e pela participação de usuários não diretamente ligados ao Centro Paula Souza, forneceram insights valiosos sobre a experiência do usuário.
+
+**Principais Descobertas:**
+   - Intuitividade Geral: A aplicação demonstrou uma boa usabilidade geral, com os usuários conseguindo completar as tarefas propostas com relativa facilidade.
+   - Pontos de Confusão: Foram identificados pontos de confusão em relação à clareza de algumas indicações visuais e à nomenclatura de algumas seções, como a aba "Anteriores".
+   - Necessidade de Feedback Visual: A falta de feedback visual em algumas ações, como a confirmação do cadastro de um profissional, gerou confusão e frustração nos usuários.
+   - Sugestão de Melhoria na Navegação: A sugestão de dispensar a homepage, feita por um dos usuários, indica uma possível oportunidade de simplificar a navegação da aplicação.
+
+**Recomendações:**
+   - Priorizar a melhoria da clareza das indicações visuais, especialmente em relação ao dropdown de seleção de unidade na lista de alunos.
+   - Revisar a nomenclatura das seções da aplicação, buscando termos mais intuitivos e claros para os usuários.
+   - Implementar feedback visual claro após a realização de ações importantes, como cadastros e edições.
+   - Avaliar a necessidade da homepage, considerando a sugestão de simplificar a navegação.
+   - É muito importante adicionar um feedback visual para o usuário quando ele realizar alguma ação.
+
+**Próximos Passos:**
+   - Implementar as melhorias identificadas nos testes.
+   - Realizar novos testes de usabilidade com a aplicação completa, incluindo usuários com diferentes perfis e necessidades de 
 
 # 10. Procedimentos de Implantação
 

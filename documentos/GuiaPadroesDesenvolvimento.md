@@ -121,8 +121,86 @@ _Sugestão de leitura: https://refactoring.guru/_
 
 ## 3.2 Arquitetura de Software
 
-- Utilize a Arquitetura de Três Camadas: Separe a lógica de negócios (Camada de Negócios), a interface do usuário (Camada de Apresentção) e o acesso aos dados (Camada de Dados).
-  - Exemplo: Em uma aplicação Angular, utilize serviços para lógica de negócios, componentes para a interface e controladores para gerenciar a interação.
+O projeto segue uma **arquitetura de Três Camadas**, garantindo separação de responsabilidades e organização do código. As três camadas são:
+
+1. **Camada de Apresentação (Frontend)** – Responsável pela interface do usuário.
+2. **Camada de Negócios (Lógica de Aplicação)** – Contém as regras de negócio e a lógica central do sistema.
+3. **Camada de Dados (Persistência e Comunicação com o Banco)** – Responsável pelo armazenamento e recuperação dos dados.
+
+---
+
+### **Estrutura de Diretórios**
+
+A organização do projeto segue a divisão das camadas conforme descrito acima.
+
+```
+/2025-1A-T13-ES05-G06/
+├── documentos                 # Documentação do projeto
+├── src                        # Código-fonte principal
+│   ├── backend                # Camada de Negócios
+│   │   ├── src
+│   │   │   ├── classes        
+│   │   │   ├── controllers    # Controllers que lidam com requisições HTTP
+│   │   │   ├── middleware     # Middlewares para autenticação, logs, etc.
+│   │   │   ├── models         # Modelos que representam entidades do banco de dados
+│   │   │   ├── routes         # Definição de rotas e endpoints da API
+│   │   │   ├── types          
+│   │   │   ├── utils          # Funções utilitárias
+│   │   ├── tests              # Testes do backend
+│   │   ├── database           # Configuração do banco de dados e migrations
+│   ├── frontend               # Camada de Apresentação (Frontend)
+│   │   ├── dist               # Build do frontend para produção
+│   ├── public                 # Arquivos públicos da aplicação
+│   │   ├── assets             # Recursos estáticos acessíveis publicamente
+│   ├── src                    # Estrutura principal da aplicação
+│   │   ├── app                # Camada de Apresentação no frontend
+│   │   │   ├── components     # Componentes reutilizáveis do frontend
+│   │   │   ├── models         # Modelos usados no frontend
+│   │   │   ├── pages          # Páginas da aplicação
+│   │   ├── services           # Serviços para comunicação com a API
+│   │   ├── environments       # Configurações de ambiente
+```
+
+---
+
+### **Descrição das Camadas**
+
+#### **1. Camada de Apresentação (Frontend)**
+- Localizada em `/frontend` e `/src/app`.
+- Utiliza **Angular** para gerenciar a interface do usuário.
+- Contém:
+  - **Componentes (`/src/app/components`)** – Botões, formulários, menus, etc.
+  - **Páginas (`/src/app/pages`)** – Telas completas, como login, dashboard e cadastro.
+  - **Serviços (`/src/services`)** – Comunicação com a API.
+
+---
+
+#### **2. Camada de Negócios (Backend)**
+- Localizada em `/backend/src`.
+- Utiliza **Node.js com Express** para gerenciar as regras de negócio.
+- Contém:
+  - **Controllers (`/backend/src/controllers`)** – Lógica de requisição e resposta.
+  - **Middlewares (`/backend/src/middleware`)** – Interceptadores para autenticação, logs, etc.
+  - **Rotas (`/backend/src/routes`)** – Definição dos endpoints da API.
+  - **Utilitários (`/backend/src/utils`)** – Funções auxiliares usadas no backend.
+
+---
+
+#### **3. Camada de Dados (Persistência)**
+- Localizada em `/backend/database`.
+- Responsável pelo acesso ao banco de dados MySQL.
+- Contém:
+  - **Modelos (`/backend/src/models`)** – Definição das tabelas e relações.
+  - **Banco de Dados (`/backend/database`)** – Migrations e configuração do banco.
+  - **Ambientes (`/src/environments`)** – Configurações para diferentes ambientes.
+
+#### **4. Banco de dados**
+- Localizada em `/database`.
+- Responsável pela criação do banco de dados.
+- Contém:
+  - **Banco de Dados (`/database`)** – Configuração do banco.
+
+---
 
 # 4. Práticas de Desenvolvimento
 
