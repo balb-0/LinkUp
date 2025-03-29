@@ -47,6 +47,12 @@ export class TableComponent implements OnInit, OnChanges {
 
   @Output() pageChange = new EventEmitter<{page: number, pageSize: number}>();
 
+  @Output() rowClick = new EventEmitter<any>();
+
+  onRowClick(item: any): void {
+    this.rowClick.emit(item);
+  }
+
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   paginatedData: any[] = [];
