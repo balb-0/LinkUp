@@ -72,10 +72,12 @@
     - [9.1.2 Planejamento Detalhado](#912-planejamento-detalhado)
     - [9.1.3 Matriz de Rastreabilidade](#913-matriz-de-rastreabilidade)
     - [9.1.4 Critérios de Aceitação](#914-critérios-de-aceitação)
+    - [9.1.5 Execução de Testes de Requisitos Funcionais](#915-execução-de-testes-de-requisitos-funcionais)
   - [9.2 Testes de RNFs](#92-testes-de-rnfs)
     - [9.2.1 Estratégia de Testes](#921-estratégia-de-testes)
     - [9.2.2 Planejamento Detalhado](#922-planejamento-detalhado)
     - [9.2.3 Métricas e Monitoramento](#923-métricas-e-monitoramento)
+    - [9.2.5 Execução de Testes de Requisitos Não Funcionais](#924-execução-de-testes-de-requisitos-não-funcionais)
   - [9.3 Testes de Usabilidade](#93-testes-de-usabilidade)
     - [9.3.1 Metodologia](#931-metodologia)
     - [9.3.2 Perfis de Usuários e Cenários](#932-perfis-de-usuários-e-cenários)
@@ -1489,7 +1491,7 @@ Para cada funcionalidade, consideramos:
 
 **Testes de Borda:**
 1. Histórico com grande volume de entradas.
-   - Entrada: Aluno com mais de 100 entradas no histórico.
+   - Entrada: Aluno com mais de 20 entradas no histórico.
    - Resultado Esperado: Carregamento do histórico sem erros.
 
 #### CT005 - Autenticação e Autorização de Usuários (RF005)
@@ -1589,6 +1591,30 @@ Para cada teste, definimos critérios específicos de aceitação:
    - Logs adequados gerados
 
 
+
+### 9.1.5 Execução de Testes de Requisitos Funcionais
+
+&emsp;Foram efetuados os testes de acordo com o desenvolvimento da aplicação até o momento, a sprint atual, e o andamento do projeto. Portanto, não foi possível efetuar todos os testes de requisitos funcionais, devido a etapa em que estamos. Eventualmente vão ser efetuados os testes para todos os requisitos.
+
+<div align="center">
+<sub>Tabela x - Execução de Testes de Requisitos Funcionais</sub><br>
+
+| ID    | Funcionalidade                           | Tipo de Teste | Título Descritivo                 | Entrada                                              | Resultado Esperado                                 | Resultado Obtido                                   | Observaçoes                                                                                           |
+| ----- | ---------------------------------------- | ------------- | --------------------------------- | ---------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| CT001 | Cadastro de Profissional                 | Positivo      | Cadastro correto                  | Nome completo, email válido, unidade existente       | Profissional cadastrado com sucesso                | Profissional cadastrado com sucesso                | Nenhuma observação.                                                                                   |
+| CT001 | Cadastro de Profissional                 | Negativo      | Email inválido                    | Email sem @ ou domínio                               | Mensagem de erro sobre formato de email            | Mensagem de erro sobre formato de email            | Nenhuma observação.                                                                                   |
+| CT001 | Cadastro de Profissional                 | Borda 1       | Nome com caracteres especiais     | Nome com acentos, ç, hífen                           | Aceitar caracteres especiais válidos               | Aceitar caracteres especiais válidos               | Nenhuma observação.                                                                                   |
+| CT001 | Cadastro de Profissional                 | Borda 2       | Nome com tamanho máximo           | Nome com 100 caracteres                              | Aceitar se dentro do limite, rejeitar se exceder   | Resultado diferente do esperado.                   | O site processa o input e resultado pode varia de adição ao banco de dados e sumiço. |
+| CT004 | Acompanhamento de Alunos com Deficiência | Positivo      | Visualização de histórico         | Selecionar aluno com histórico de atendimentos       | Exibição correta de todas as entradas do histórico | Exibição correta de todas as entradas do histórico | Nenhuma observação.                                                                                   |
+| CT004 | Acompanhamento de Alunos com Deficiência | Positivo      | Atualização de status             | Alterar status do aluno e adicionar comentário       | Status e comentário atualizados                    | Feature ainda não implementada.                    | Feature ainda não implementada.                                                                       |
+| CT004 | Acompanhamento de Alunos com Deficiência | Negativo      | Histórico inexistente             | Selecionar aluno sem histórico de atendimentos       | Mensagem indicando ausência de registros           | Mensagem indicando ausência de registros           | Nenhuma observação.                                                                                   |
+| CT004 | Acompanhamento de Alunos com Deficiência | Borda         | Histórico com mais de 100 entradas | Aluno com mais de 100 entradas no histórico          | Carregamento do histórico sem erros                | Não foi possível efetuar.                          | Não foi possível efetuar.                                                                             |
+| CT006 | Pesquisa e Filtros Avançados             | Positivo      | Pesquisa por nome completo        | Nome completo de um aluno ou profissional            | Exibição do registro correspondente                | Exibição do registro correspondente                | Nenhuma observação.                                                                                   |
+| CT006 | Pesquisa e Filtros Avançados             | Negativo      | Pesquisa sem resultados           | Termo de pesquisa sem correspondência                | Mensagem indicando nenhum resultado encontrado     | Mensagem indicando nenhum resultado encontrado     | Nenhuma observação.                                                                                   |
+| CT006 | Pesquisa e Filtros Avançados             | Borda         | Pesquisa com caracteres especiais | Termo de pesquisa com acentos e caracteres especiais | Resultados correspondentes, se existirem           | Nenhum resultado encontrado.                       | Nenhum resultado encontrado.                                                                          |
+
+<sup>Fonte: Material produzido pelos autores (2025) </sup>
+</div>
 
 ## 9.2 Testes de RNFs
 
@@ -1760,7 +1786,9 @@ Os testes são executados em três ambientes distintos:
    - Análise de logs
    - Métricas de desempenho
 
+### 9.2.5 Execução de Testes de Requisitos Não Funcionais
 
+&emsp;Os testes são efetuados de acordo com a etapa do projeto. Devido a complexidade, e necessidade de recursos, implementação, conhecimento, etc. para a execução de alguns testes de requisitos funcionais, os mesmo são efetuados de acordo com a etapa específica do projeto. Muitos desses testes dependem de recursos ainda não implementados, considerando certas etapas do projeto, portanto são feitos de acordo com a sprint específica, enquanto que outras condiçoes dependem de conhecimentos específicos a serem estudados, como injeção SQL. 
 
 ## 9.3 Testes de Usabilidade
 
