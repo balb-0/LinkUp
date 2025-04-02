@@ -991,43 +991,43 @@ A **topologia de rede** e a **comunicação entre os componentes** seguem uma ar
 &nbsp;&nbsp;&nbsp;&nbsp;As escolhas de implantação foram todas baseadas nos requisitos não funcionais da aplicação, principalmente os que levam em conta segurança e performance.
 
 ##### **RNF01 - Tempo de Resposta Máximo para Consultas**
-- **Justificativa**: A escolha de _AWS EC2_ para servidores de aplicação, tanto back-end quanto front-end, em conjunto com a escalabilidade horizontal, assegura que o sistema tenha capacidade de resposta rápida, distribuindo a carga de trabalho e mantendo tempos de resposta otimizados, abaixo de 0,8 segundo.
+- **Justificativa**: A escolha de _AWS EC2_ para servidores de aplicação, tanto back-end quanto front-end, em conjunto com a escalabilidade horizontal, assegura que o sistema tenha capacidade de resposta rápida, distribuindo a carga de trabalho e mantendo tempos de resposta otimizados, abaixo de 0,8 segundo [\[1\]](#ref1).
 
 ##### **RNF04 - Controle de Acesso por Tipo de Usuário**
-- **Justificativa**: A integração com _AWS Cognito_ para autenticação e autorização com _JWT_ garante que cada tipo de usuário tenha acesso somente às funcionalidades autorizadas, respeitando os requisitos de segurança e controle de acesso.
+- **Justificativa**: A integração com _AWS Cognito_ para autenticação e autorização com _JWT_ garante que cada tipo de usuário tenha acesso somente às funcionalidades autorizadas, respeitando os requisitos de segurança e controle de acesso [\[2\]](#ref2).
 
 ##### **RNF05 - Proteção de Dados Pessoais**
-- **Justificativa**: Utilizando protocolos criptografados, como _HTTPS_, e _AWS RDS_ para armazenamento, o sistema assegura que os dados de alunos e profissionais sejam protegidos, seguindo as normas de segurança da _LGPD_.
+- **Justificativa**: Utilizando protocolos criptografados, como _HTTPS_, e _AWS RDS_ para armazenamento, o sistema assegura que os dados de alunos e profissionais sejam protegidos, seguindo as normas de segurança da _LGPD_ [\[3\]](#ref3) [\[4\]](#ref4).
 
 ##### **RNF06 - Manutenibilidade e Padrão de Modularidade**
-- **Justificativa**: Com a modularidade do código e a separação das partes em serviços diferentes de nuvem da AWS, fica fácil a sua manutenção e através do _Amazon IAM_ (_Identity and Access Management_) o acesso e manutenção na própria nuvem são facilitados e, ao mesmo tempo, controlados.
+- **Justificativa**: Com a modularidade do código e a separação das partes em serviços diferentes de nuvem da AWS, fica fácil a sua manutenção e, através do _Amazon IAM_ (_Identity and Access Management_), o acesso e manutenção na própria nuvem são facilitados e, ao mesmo tempo, controlados [\[5\]](#ref5).
 
 ##### **RNF08 - Disponibilidade Alinhada com as Necessidades Operacionais**
-- **Justificativa**: A infraestrutura na AWS com escalabilidade horizontal garante alta disponibilidade, atendendo às necessidades operacionais de 8:00 às 18:00, ou por mais tempo caso necessário, sem interrupções, utilizando Auto Scaling e Amazon CloudWatch para monitoramento.
+- **Justificativa**: A infraestrutura na AWS com escalabilidade horizontal garante alta disponibilidade, atendendo às necessidades operacionais de 8:00 às 18:00, ou por mais tempo caso necessário, sem interrupções, utilizando Auto Scaling e Amazon CloudWatch para monitoramento [\[1\]](#ref1) [\[6\]](#ref6).
 
 ##### **RNF10 - Validação de Dados**
 - **Justificativa**: A validação de dados será feita tanto na interface do usuário quanto na API Interna, com a sua respectiva lógica de negócio, garantindo que somente dados válidos sejam armazenados no banco, assegurando integridade e a funcionalidade do sistema.
 
 ##### **RNF11 - Integração com API do Centro Paula Souza**
-- **Justificativa**: A integração com a API do Centro Paula Souza, representada pela "Api Externa" no diagrama é essencial para o funcionamento do sistema, por isso, o diagrama foi projetado e pensado em utilizá-la.
+- **Justificativa**: A integração com a API do Centro Paula Souza, representada pela "Api Externa" no diagrama, é essencial para o funcionamento do sistema. Por isso, o diagrama foi projetado e pensado em utilizá-la.
 
 ##### **RNF12 - Backups Automáticos**
-- **Justificativa**: Ao utilizar o _Amazon RDS_ para armazenamento dos dados, é possível configurar backups automáticos com retenção de até 35 dias, garantindo que o banco possa ser restaurado em caso de falha ou perda de dados.
+- **Justificativa**: Ao utilizar o _Amazon RDS_ para armazenamento dos dados, é possível configurar backups automáticos com retenção de até 35 dias, garantindo que o banco possa ser restaurado em caso de falha ou perda de dados [\[4\]](#ref4).
 
 
 ## 6.3 Considerações sobre Desempenho e Segurança
 
-&nbsp;&nbsp;&nbsp;&nbsp;As escolhas de tecnologias e infraestrutura foram realizadas com atenção especial aos requisito de segurança e desempnho do sistema.
-
+&nbsp;&nbsp;&nbsp;&nbsp;As escolhas de tecnologias e infraestrutura foram realizadas com atenção especial aos requisitos de segurança e desempenho do sistema.
 
 ### 6.3.1 Desempenho
-&nbsp;&nbsp;&nbsp;&nbsp;A arquitetura foi projetado para garantir alta disponibilidade, escalabilidade e eficiência, de acordo com os requisitos do sistema. Abaixo estão considerações de desempenho:
 
-- **1 - Escalabilidade Horizontal (Auto-Scaling):** As instâncias EC2 e RDS utilizam o Auto-Scaling, o que garante que a infraestrutura seja capaz de se ajustar automatiamente à carga de trabalho. Além disso, as réplicas de leitura no RDS ajudam a distribuir a carga de consultas de leitura, o que aumenta a eficiência no acesso dos dados, permitindo que a aplicação manipule grandes volumes de tráfego sem prejudicar a performance.
+&nbsp;&nbsp;&nbsp;&nbsp;A arquitetura foi projetada para garantir alta disponibilidade, escalabilidade e eficiência, de acordo com os requisitos do sistema. Abaixo estão considerações de desempenho:
 
-- **2 - Distribuição de Carga e Processamento:** O uso do AWS Cognito e da API Externa (API do CPS) permite uma divisão eficiente de carga entre os diferentes componentes do sistema. O Cognito lida com a autenticação e o gerenciamento de tokens, enquanto as demais requisições são divididas entre as APIs interna e externa.
+- **1 - Escalabilidade Horizontal (Auto-Scaling):** As instâncias EC2 e RDS utilizam o Auto-Scaling, o que garante que a infraestrutura seja capaz de se ajustar automaticamente à carga de trabalho. Além disso, as réplicas de leitura no RDS ajudam a distribuir a carga de consultas de leitura, o que aumenta a eficiência no acesso dos dados, permitindo que a aplicação manipule grandes volumes de tráfego sem prejudicar a performance. [1](#ref1), [4](#ref4)
 
-- **3 - Manutenção e Monitoramento:** A infraestrutura de logs e o uso de ferramentas de monitoramento da AWS como o CloudWatch permitem identificar gargalos no desempenho, ajudando a otimização contínua do sistema.
+- **2 - Distribuição de Carga e Processamento:** O uso do AWS Cognito e da API Externa (API do CPS) permite uma divisão eficiente de carga entre os diferentes componentes do sistema. O Cognito lida com a autenticação e o gerenciamento de tokens, enquanto as demais requisições são divididas entre as APIs interna e externa. [2](#ref2)
+
+- **3 - Manutenção e Monitoramento:** A infraestrutura de logs e o uso de ferramentas de monitoramento da AWS como o CloudWatch permitem identificar gargalos no desempenho, ajudando na otimização contínua do sistema. [6](#ref6)
 
 ### 6.3.2 Segurança
 
@@ -1036,24 +1036,28 @@ A **topologia de rede** e a **comunicação entre os componentes** seguem uma ar
 - **1 - Isolamento de Infraestrutura com VPC:** A aplicação está hospedada em uma VPC (_Virtual Private Cloud_), que proporciona um ambiente isolado para serviços críticos, protegendo-os contra acessos não autorizados da internet. Dentro da VPC foram implementadas duas sub-redes:
   - **Sub-rede Pública:** Onde o servidor de aplicação da interface está hospedado, permitindo acesso dos usuários.
   - **Sub-rede Privada:** Onde o servidor de _back-end_ e o banco de dados estão hospedados, garantindo que apenas serviços internos possam acessá-los.
+
 - **2 - Proteção das Comunicações:** Todas as comunicações utilizam protocolos de comunicação seguros:
   - **HTTPS** entre o _front-end_ e o _back-end_, garantindo a criptografia dos dados transmitidos por TLS (_Transport Layer Security_).
-  - **Autenticação com JWT** para validar usuários e evitar acessos não autorizados.
+  - **Autenticação com JWT** para validar usuários e evitar acessos não autorizados. [2](#ref2)
   - **Criptografia em trânsito** através de TLS nas conexões com o banco de dados para evitar interceptação de dados.
-  - **Criptografia em repouso** no banco de dados utilizando AWS KMS (_Key Managment Service_).
-- **3 - Controle de Acesso e Autenticação Segura:** A autenticação de usuários é gerenciada pelo AWS Cognito, utilizando OAuth2 para fornecer acesso seguro. Isso permite um gerenciamento eficiente de credenciais e tokens, implementação de autenticação multifator (MFA) e controle das permissões com base nos perfis de usuário. Além disso, o _back-end_ valida todos os tokens recebidos antes de processar qualquer requisição.
-- **4 - Proteção Contra Ataques** Para mitigar ameaças como ataques DDoS, SQL Injection e Cross-Site Scripting (XSS), podem ser adotadas as seguintes estratégias:
+  - **Criptografia em repouso** no banco de dados utilizando AWS KMS. [4](#ref4)
+
+- **3 - Controle de Acesso e Autenticação Segura:** A autenticação de usuários é gerenciada pelo AWS Cognito, utilizando OAuth2 para fornecer acesso seguro. Isso permite um gerenciamento eficiente de credenciais e tokens, implementação de autenticação multifator (MFA) e controle das permissões com base nos perfis de usuário. Além disso, o _back-end_ valida todos os tokens recebidos antes de processar qualquer requisição. [2](#ref2)
+
+- **4 - Proteção Contra Ataques:** Para mitigar ameaças como ataques DDoS, SQL Injection e Cross-Site Scripting (XSS), podem ser adotadas as seguintes estratégias:
   - **AWS WAF (_Web Application Firewall_):** para filtrar tráfego malicioso.
   - **Rate Limiting e Throttling:** na API para evitar sobrecarga e/ou abuso de requisições.
   - **Monitoramento contínuo com AWS GuardDuty:** para detectar acessos suspeitos.
-- **5 - Logs de Alterações e Backups:** Com todas as alterações registradas, é possível identificar caso haja alguma alteração maliciosa em algum arquivo no banco de dados e agir contra esse acesso, além de reverter os danos com os backups automáticos.
+
+- **5 - Logs de Alterações e Backups:** Com todas as alterações registradas, é possível identificar caso haja alguma alteração maliciosa em algum arquivo no banco de dados e agir contra esse acesso, além de reverter os danos com os backups automáticos. [4](#ref4), [5](#ref5)
 
 
-# 7. Projeto Visual da Solução
+## 7. Projeto Visual da Solução
 
 ## 7.1 Desenvolvimento de Wireframes
 
-&nbsp;&nbsp;&nbsp;&nbsp;O _Wireframe_, protótipo de baixa fidelidade, foi desenvolvidos utilizando a ferramenta [Figma](https://www.figma.com/) que é amplamente utilizada no mercado. Com ela, também foi possível fazer o _Wireframe Flow_ que demonstra como é o fluxo de utilização do usuário, ao clicar em cada botão da aplicação. Tudo pode ser visualizado [neste link](https://www.figma.com/design/Dh3whOUONs9F1R0HpX1jlH/LinkUp?node-id=7-40559&t=ZiXU0hTNdn7z8nHQ-1). Abaixo está uma breve descrição de cada tela principal.
+&nbsp;&nbsp;&nbsp;&nbsp;O *Wireframe*, protótipo de baixa fidelidade, foi desenvolvido utilizando a ferramenta [Figma](https://www.figma.com/) que é amplamente utilizada no mercado [[7]](#ref7). Com ela, também foi possível fazer o *Wireframe Flow* que demonstra como é o fluxo de utilização do usuário ao clicar em cada botão da aplicação. Tudo pode ser visualizado [neste link](https://www.figma.com/design/Dh3whOUONs9F1R0HpX1jlH/LinkUp?node-id=7-40559&t=ZiXU0hTNdn7z8nHQ-1). Abaixo está uma breve descrição de cada tela principal.
 
 ### 7.1.1 Dashboard Estatístico
 
@@ -1203,9 +1207,9 @@ Abaixo estão imagens de algumas seções dos componentes do guia.
 
 &emsp;A imagem acima apresenta exemplos de aplicação das cores em diferentes elementos da interface, como botões e componentes. Essa padronização garante consistência visual, facilitando a navegação e reforçando a identidade do projeto.
 
-# 8. Desenvolvimento do Projeto
+## 8. Desenvolvimento do Projeto
 
-&nbsp;&nbsp;&nbsp;&nbsp;Nesta seção, estão listadasas principais entregas previstas para cada etapa de desenvolvimento do projeto. O objetivo é dar uma visão da arquitetura de codificação, a estrutura de diretórios adotada e o progresso alcançado em cada sprint. O desenvolvimento é conduzido de forma iterativa e incremental, o que signigica que às vezes, as entregas reais não coincidem completamente com o previsto.
+&nbsp;&nbsp;&nbsp;&nbsp;Nesta seção, estão listadas as principais entregas previstas para cada etapa de desenvolvimento do projeto. O objetivo é dar uma visão da arquitetura de codificação, a estrutura de diretórios adotada e o progresso alcançado em cada sprint. O desenvolvimento é conduzido de forma iterativa e incremental [[8]](#ref8), o que significa que, às vezes, as entregas reais não coincidem completamente com o previsto.
 
 ## 8.1 Arquitetura de Codificação e Estrutura de Diretórios
 
@@ -1294,7 +1298,7 @@ _conteúdo_
 ### 8.3.1 Testes Unitários
 #### 8.3.1.1 Relatório de cobertura de testes
 
-Este documento apresenta o relatório de cobertura de testes gerado pelo **Jest**, detalhando a cobertura de código por diretório e arquivo.
+Este documento apresenta o relatório de cobertura de testes gerado pelo **Jest** [[9]](#ref9), detalhando a cobertura de código por diretório e arquivo.
 
 ##### Resumo da Cobertura
 
@@ -1362,7 +1366,7 @@ Este documento apresenta o relatório de cobertura de testes gerado pelo **Jest*
 
 #### 8.3.1.3 Execução dos Testes
 
-A execução dos testes unitários utilizaram do Jest. O passo a passo para executar os testes é:
+A execução dos testes unitários utilizou o **Jest**, uma das bibliotecas mais populares de testes em aplicações Node.js [[9]](#ref9).
 
 1. Abra o terminal ou PowerShell
 2. Acesse a pasta /src/backend do repositório com o comando `cd <path_to_repo>/src/backend`
@@ -1379,7 +1383,9 @@ Todos os testes executados passaram e estão representados na imagem abaixo:
 
 ## 8.4 Documentações automáticas
 
-_conteúdo_
+&nbsp;&nbsp;&nbsp;&nbsp;A documentação automática da API foi planejada utilizando o **Swagger (OpenAPI)**, por ser uma ferramenta robusta e amplamente adotada em projetos RESTful [[10]](#ref10). Com ela, é possível gerar uma interface visual da API a partir de comentários no código, facilitando o entendimento para desenvolvedores e integradores.
+
+&nbsp;&nbsp;&nbsp;&nbsp;A integração do Swagger no projeto permite a visualização dos endpoints disponíveis, seus métodos, parâmetros, retornos e códigos de erro, promovendo maior **transparência** e **agilidade no desenvolvimento**.
 
 # 9. Planejamento e Execução de Testes
 
@@ -1674,9 +1680,9 @@ Nossa abordagem para testes de RNFs é estruturada em cinco pilares principais:
    - Critério: Identificar limite de usuários mantendo resposta ≤ 3 segundos
 
 **Ferramentas:**
-- Apache JMeter para testes de carga
+- Apache JMeter para testes de carga [[11]](#ref11)
 - New Relic para monitoramento
-- AWS CloudWatch para métricas
+- AWS CloudWatch para métricas [[6]](#ref6)
 
 #### CT-002 - Acessibilidade (RNF02)
 
@@ -1698,9 +1704,9 @@ Nossa abordagem para testes de RNFs é estruturada em cinco pilares principais:
    - Critério: Mínimo 4.5:1 para texto normal
 
 **Ferramentas:**
-- WAVE para análise de acessibilidade
-- Lighthouse para auditorias
-- Axe DevTools para testes automatizados
+- WAVE para análise de acessibilidade [[12]](#ref12)
+- Lighthouse para auditorias [[13]](#ref13)
+- Axe DevTools para testes automatizados [[14]](#ref14)
 
 #### CT-003 - Eficiência de Navegação (RNF03)
 
@@ -1740,9 +1746,9 @@ Nossa abordagem para testes de RNFs é estruturada em cinco pilares principais:
    - Critério: 8 caracteres, maiúsculas, minúsculas, números
 
 **Ferramentas:**
-- OWASP ZAP para testes de segurança
-- SonarQube para análise de código
-- AWS WAF para proteção
+- OWASP ZAP para testes de segurança [[15]](#ref15)
+- SonarQube para análise de código [[16]](#ref16)
+- AWS WAF para proteção [[17]](#ref17)
 
 [Continua com detalhamento similar para os demais casos de teste...]
 
@@ -2127,4 +2133,36 @@ _conteúdo_
 
 # Referências
 
-_conteúdo_
+- <a id="ref1"></a> [1] AMAZON WEB SERVICES. *Amazon EC2: Cloud Servers & Cloud Hosting*. Disponível em: https://aws.amazon.com/ec2/. Acesso em: 01 abr. 2025.
+
+- <a id="ref2"></a> [2] AMAZON WEB SERVICES. *Amazon Cognito*. Disponível em: https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools.html. Acesso em: 01 abr. 2025.
+
+- <a id="ref3"></a> [3] BRASIL. Lei n.º 13.709, de 14 de agosto de 2018. *Lei Geral de Proteção de Dados Pessoais (LGPD)*. Disponível em: https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/L13709.htm. Acesso em: 01 abr. 2025.
+
+- <a id="ref4"></a> [4] AMAZON WEB SERVICES. *Amazon RDS - Backups e Segurança*. Disponível em: https://aws.amazon.com/rds/features/. Acesso em: 01 abr. 2025.
+
+- <a id="ref5"></a> [5] AMAZON WEB SERVICES. *AWS IAM – Identity and Access Management*. Disponível em: https://aws.amazon.com/iam/. Acesso em: 01 abr. 2025.
+
+- <a id="ref6"></a> [6] AMAZON WEB SERVICES. *Amazon CloudWatch*. Disponível em: https://docs.aws.amazon.com/cloudwatch/. Acesso em: 01 abr. 2025.
+
+- <a id="ref7"></a> [7] FIGMA. *Figma: Ferramenta de Design Colaborativo*. Disponível em: https://www.figma.com/. Acesso em: 01 abr. 2025.
+
+- <a id="ref8"></a> [8] PRESSMAN, R. S.; MAXIM, B. R. *Software Engineering: A Practitioner's Approach*. 8. ed. New York: McGraw-Hill Education, 2014.
+
+- <a id="ref9"></a> [9] JEST. *Jest Documentation*. Disponível em: https://jestjs.io/docs/getting-started. Acesso em: 01 abr. 2025.
+
+- <a id="ref10"></a> [10] SMARTBEAR. *Swagger OpenAPI Documentation*. Disponível em: https://swagger.io/specification/. Acesso em: 01 abr. 2025.
+
+- <a id="ref11"></a> [11] APACHE. *JMeter*. Disponível em: https://jmeter.apache.org/. Acesso em: 01 abr. 2025.
+
+- <a id="ref12"></a> [12] WEBAIM. *WAVE Web Accessibility Evaluation Tool*. Disponível em: https://wave.webaim.org/. Acesso em: 01 abr. 2025.
+
+- <a id="ref13"></a> [13] GOOGLE. *Lighthouse*. Disponível em: https://developer.chrome.com/docs/lighthouse/overview/. Acesso em: 01 abr. 2025.
+
+- <a id="ref14"></a> [14] DEQUE SYSTEMS. *axe DevTools*. Disponível em: https://www.deque.com/axe/devtools/. Acesso em: 01 abr. 2025.
+
+- <a id="ref15"></a> [15] OWASP. *Zed Attack Proxy (ZAP)*. Disponível em: https://owasp.org/www-project-zap/. Acesso em: 01 abr. 2025.
+
+- <a id="ref16"></a> [16] SONARSOURCE. *SonarQube Documentation*. Disponível em: https://docs.sonarsource.com/sonarqube/. Acesso em: 01 abr. 2025.
+
+- <a id="ref17"></a> [17] AMAZON WEB SERVICES. *AWS WAF*. Disponível em: https://aws.amazon.com/waf/. Acesso em: 01 abr. 2025.
