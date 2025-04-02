@@ -289,7 +289,46 @@ _conteúdo_
 
 ## 3.2 Mitigação de Riscos
 
-_conteúdo_
+&nbsp;&nbsp;&nbsp;&nbsp;Com base nos riscos identificados, o grupo propôs estratégias para prevenir, minimizar e evitar os impactos ao longo do desenvolvimento.
+
+### Riscos Técnicos
+
+- **Dependência de serviços externos**  
+  Criar páginas de erro informativas para o usuário em caso de falha da API externa e implementar mecanismos de fallback, como cache local ou retries automáticos. Sempre documentar mudanças vindas de terceiros e testar endpoints críticos.
+
+- **Falta de testes automatizados**  
+  Focar em testes manuais nas partes mais críticas durante as entregas e, quando houver tempo, implementar testes automatizados para casos de uso recorrentes. Utilizar validações internas na aplicação para detectar erros o mais cedo possível.
+
+- **Vulnerabilidades de segurança**  
+  Aplicar boas práticas de segurança como criptografia de dados sensíveis, tokens de autenticação, e validação de entradas no backend. Garantir que nenhuma informação pessoal seja exposta em logs ou mensagens de erro.
+
+- **Latência alta**  
+  Otimizar consultas ao banco de dados, usar carregamento assíncrono em partes menos críticas da aplicação e monitorar as requisições que demoram mais tempo. Priorizar performance nas funcionalidades mais utilizadas.
+
+- **Falta de acessibilidade**  
+  Aplicar diretrizes básicas de acessibilidade como contraste de cores, uso correto de semântica HTML e navegação via teclado. Realizar revisões de interface com foco em inclusão.
+
+- **Mudanças de requisitos ao longo do projeto**  
+  Registrar cada mudança de escopo, discutir impacto com o grupo e com o parceiro, e adaptar o backlog conforme necessário. Priorizar flexibilidade e alinhamento constante com os stakeholders.
+
+### Riscos Não Técnicos
+
+- **Sobrecarga da equipe**  
+  Distribuir melhor as tarefas entre os membros, levando em conta a complexidade de cada uma. Reduzir o número de entregas simultâneas e revisar a carga de trabalho com frequência.
+
+- **Comunicação ineficiente**  
+  Manter o uso ativo do Slack, incluindo marcações diretas e canais temáticos. Incentivar feedback constante nas dailys e reforçar o papel da comunicação como ferramenta de alinhamento.
+
+- **Retrabalho**  
+  Validar tarefas com o grupo antes da execução, definir critérios claros de entrega e fazer checkpoints durante a sprint. Manter histórico das decisões tomadas para evitar inconsistências.
+
+- **Gestão de tempo ineficaz**  
+  Estimar tarefas com base na experiência das sprints anteriores, focar no que é essencial e revisar prioridades semanalmente. Estabelecer checkpoints internos para não acumular tarefas no final.
+
+- **Indisponibilidade de membros**  
+  Garantir que todas as tarefas estejam bem documentadas no GitHub/Notion e que qualquer membro do grupo consiga assumir uma task em caso de imprevistos. Manter o backup de responsabilidades quando possível.
+
+&nbsp;&nbsp;&nbsp;&nbsp;Essas ações foram pensadas para tornar o grupo mais resiliente diante dos desafios do projeto. Algumas delas já foram colocadas em prática nas últimas sprints e outras serão aplicadas conforme novos riscos surgirem ou se intensificarem.
 
 # 4. Análise Post Mortem
 
