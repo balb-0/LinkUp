@@ -12,6 +12,7 @@ import authRoutes from "./routes/authRoutes";
 import pagesRoutes from "./routes/pagesRoutes";
 import atendimentoRouter from "./routes/atendimentoRoutes";
 import alunosRouter from "./routes/alunosRoutes";
+import dashboardRoutes from "./routes/dashoardRoutes";
 import { requestLogger } from "./middleware/logger";
 import { cacheMiddleware } from "./middleware/cache";
 import { createError, errorHandler } from "./middleware/errorHandler";
@@ -92,6 +93,9 @@ app.use("/api/profissionais", cacheMiddleware(300000), profissionaisRouter);
 
 //Rptas para API de atendimentos
 app.use("/api/atendimentos", cacheMiddleware(300000), atendimentoRouter);
+
+// Rotas para o dashboard
+app.use("/api/dashboard", cacheMiddleware(300000), dashboardRoutes);
 
 app.use('/api', tecnologiaRoutes); 
 // Rotas para as páginas
