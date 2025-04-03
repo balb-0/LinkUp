@@ -406,7 +406,7 @@ _conteúdo_
 
 # 4. Análise Post Mortem
 
-_conteúdo_
+A análise _Post Mortem_ tem como objetivo refletir sobre o processo de desenvolvimento do projeto, identificando os principais acertos, desafios enfrentados e lições aprendidas durante a execução. Essa prática é útil e nos ajuda a consolidar aprendizados, otimizar futuras iniciativas e fortalecer a capacidade de trabalho em equipe. Ao longo das etapas do projeto, foram observados pontos positivos, aspectos que exigiram adaptação e oportunidades claras de melhoria que serão apresentadas nas próximas subseções.
 
 ## 4.1 Sucessos do Projeto
 
