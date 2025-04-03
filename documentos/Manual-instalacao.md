@@ -21,8 +21,123 @@
 - <a href="https://www.linkedin.com/in/vitor-balbo/">Vitor Margarido Balbo</a>
 
 
+# Manual de Instalação - Projeto LinkUp
 
-Explica como montar, conectar e utilizar o protótipo.
+## 🛠️ 1. Introdução
+
+Este manual tem como objetivo orientar desenvolvedores e colaboradores sobre como montar, configurar e executar o projeto LinkUp em ambiente local, garantindo que todas as partes do sistema funcionem corretamente, incluindo backend e frontend.
+
+---
+
+## ✅ 2. Pré-requisitos
+
+Antes de iniciar a instalação, certifique-se de que os seguintes softwares estão instalados:
+
+- [Node.js (versão LTS recomendada)](https://nodejs.org/)
+- [Git](https://git-scm.com/downloads)
+- [Angular CLI](https://angular.io/cli) - versão compatível com Angular 19
+- Gerenciador de pacotes: `npm` ou `yarn`
+
+> 🔍 *Verifique suas versões:*
+> 
+> ```bash
+> node -v
+> npm -v
+> ng version
+> git --version
+> ```
+
+---
+
+## 📁 3. Estrutura de Diretórios
+
+```
+2025-1A-T13-ES05-G06/
+├── backend/       # API em Node.js + Express
+├── frontend/      # Interface em Angular
+├── database/      # Scripts e documentação do banco de dados
+└── documentos/    # Documentação geral do projeto
+```
+
+---
+
+## 📦 4. Clonando o Repositório
+
+```bash
+git clone https://github.com/Inteli-College/2025-1A-T13-ES05-G06
+cd 2025-1A-T13-ES05-G06
+```
+
+---
+
+## 🔧 5. Configurando o Backend
+
+1. Acesse a pasta do backend:
+
+```bash
+cd backend
+```
+
+2. Instale as dependências:
+
+```bash
+npm install
+```
+
+3. Inicie o servidor de desenvolvimento:
+
+```bash
+npm run dev
+```
+
+---
+
+## 🖥 6. Configurando o Frontend
+
+1. Acesse a pasta do frontend:
+
+```bash
+cd frontend
+```
+
+2. Instale as dependências:
+
+```bash
+npm install
+```
+
+3. Rode o servidor de desenvolvimento Angular:
+
+```bash
+ng serve
+```
+
+4. Acesse a aplicação em:
+
+```
+http://localhost:4200
+```
+
+---
+
+## 🧪 7. Executando Testes
+
+### Backend
+
+```bash
+cd backend
+npm run test
+```
+
+### Frontend
+
+```bash
+cd frontend
+ng test
+```
+
+---
+
 
 
 ## 📋 Licença/License
