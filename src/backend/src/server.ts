@@ -19,6 +19,7 @@ import { createError, errorHandler } from "./middleware/errorHandler";
 import { healthCheck } from "./middleware/healthCheck";
 import limiter from "./middleware/limiter";
 import tecnologiaRoutes from './routes/tecnologias';
+import alunoTecnologiaAssistivaRoutes from "./routes/alunoTecnologiaAssistivaRoutes";
 
 // Inicializando o app
 const app = express();
@@ -91,6 +92,7 @@ app.use("/api/alunos", cacheMiddleware(300000), alunosRouter);
 app.use("/api/profissionais", cacheMiddleware(300000), profissionaisRouter);
 
 //Rotas para API de atendimentos
+
 app.use("/api/atendimentos", cacheMiddleware(300000), atendimentoRouter);
 
 //Rotas para API de tecnologias
@@ -99,7 +101,9 @@ app.use('/api/tecnologias', cacheMiddleware(300000), tecnologiaRoutes);
 // Rotas para o dashboard
 app.use("/api/dashboard", cacheMiddleware(300000), dashboardRoutes);
 
-app.use('/api', tecnologiaRoutes); 
+// Rotas para associação de aluno e tecnologia
+app.use('/api', cacheMiddleware(300000), alunoTecnologiaAssistivaRoutes);
+
 // Rotas para as páginas
 app.use("/", pagesRoutes);
 
