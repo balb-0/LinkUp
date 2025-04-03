@@ -281,11 +281,85 @@ _conteúdo_
 
 # 3. Análise de Riscos
 
-_conteúdo_
+&nbsp;&nbsp;&nbsp;&nbsp; A análise de riscos nos ajuda a identificar ameaças que possam atrapalhar o desenvolvimento e a entrega do projeto. Serve também para nos ajudar a identificar oportunidades de êxito. Nesta seção, estão apresentados os principais riscos identificados pelo grupo ao longo do desenvolvimento do projeto. A identificação e o acompanhamento contínuo dos riscos nos permitem agir de forma ágil, minimizando retrabalhos, atrasos e falhas.
 
 ## 3.1 Riscos identificados
 
-_conteúdo_
+&nbsp;&nbsp;&nbsp;&nbsp;Durante o desenvolvimento do projeto, foram identificados alguns riscos que podem comprometer tanto o desempenho técnico da aplicação quanto a eficiência da equipe, se não levados em conta durante o desenvolvimento.
+
+### Riscos Técnicos
+
+- **Dependência de serviços externos**  
+  - Probabilidade: Média  
+  - Impacto: Alto  
+  - Nível de Risco: Alto  
+  A utilização de APIs externas para consultas e criação de atendimentos com informações dos alunos torna o sistema dependente às indisponibilidades ou mudanças nos serviços de fora.
+
+- **Falta de testes automatizados**  
+  - Probabilidade: Baixa  
+  - Impacto: Alto  
+  - Nível de Risco: Muito Alto  
+  A ausência ou baixa cobertura de testes robusta pode dificultar a detecção de erros e prejudicar a manutenção a longo prazo.
+
+- **Vulnerabilidades de segurança**  
+  - Probabilidade: Média  
+  - Impacto: Muito Alto  
+  - Nível de Risco: Muito Alto  
+  O tratamento inadequado de dados sensíveis pode levar a violações de privacidade e problemas com a LGPD.
+
+- **Latência alta**  
+  - Probabilidade: Média  
+  - Impacto: Médio  
+  - Nível de Risco: Alto  
+  Dependendo da infraestrutura, dos provedores escolhidos e da lógica de requisições, o sistema pode apresentar lentidão.
+
+- **Falta de acessibilidade**  
+  - Probabilidade: Baixa  
+  - Impacto: Alto  
+  - Nível de Risco: Moderado  
+  A ausência de recursos acessíveis pode excluir usuários com deficiência.
+
+- **Mudanças de requisitos ao longo do projeto**  
+  - Probabilidade: Alta  
+  - Impacto: Médio  
+  - Nível de Risco: Alto  
+  Alterações de escopo podem afetar diretamente o planejamento técnico e causar retrabalho.
+
+### Riscos Não Técnicos
+
+- **Sobrecarga da equipe**  
+  - Probabilidade: Média  
+  - Impacto: Alto  
+  - Nível de Risco: Alto  
+  Má distribuição de tarefas e prazos curtos podem afetar produtividade e qualidade do desenvolvimento das entregas.
+
+- **Comunicação ineficiente**  
+  - Probabilidade: Alta  
+  - Impacto: Alto  
+  - Nível de Risco: Alto  
+  Falhas na troca de informações entre membros do grupo podem gerar desalinhamentos, causando discordâncias que atrapalham nas entregas reais nos encontros com o parceiro.
+
+- **Retrabalho**  
+  - Probabilidade: Média  
+  - Impacto: Alto  
+  - Nível de Risco: Alto  
+  A ausência de validações intermediárias pode gerar trabalho duplicado desnecessário.
+
+- **Gestão de tempo ineficaz**  
+  - Probabilidade: Alta  
+  - Impacto: Médio  
+  - Nível de Risco: Alto  
+  Estimativas incorretas de tempo podem quebrar o cronograma e impactar as entregas.
+
+- **Indisponibilidade de membros**  
+  - Probabilidade: Baixa  
+  - Impacto: Médio  
+  - Nível de Risco: Moderado  
+  Imprevistos pessoais ou acadêmicos podem reduzir a força de trabalho.
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;A maioria dos riscos se mostrou mais evidente nas Sprints 2 e 4, principalmente relacionados à sobrecarga, comunicação e retrabalho. O monitoramento contínuo e a adaptação da equipe foram fundamentais para manter o progresso do projeto.
+
 
 ## 3.2 Mitigação de Riscos
 
