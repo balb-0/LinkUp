@@ -1,3 +1,4 @@
+
 <Table>
   <tr>
     <td><a href= "https://www.cps.sp.gov.br/"><img src="img/logo-CPS.jpg" alt="Centro Paula Souza" border="0"></td>
@@ -7,25 +8,11 @@
   </tr>
 </table>
 
-# Nome do Projeto: LinkUp
-# Nome do Projeto: LinkUp
-
-## Integrantes:
-
-- <a href="https://www.linkedin.com/in/arthur-bretas/">Arthur Bretas Oliveira</a>
-- <a href="https://www.linkedin.com/in/felipe-zillo-72b367247/">Felipe Gutierres Zillo</a>
-- <a href="https://www.linkedin.com/in/kauarodrigues/">Kauã Rodrigues dos Santos</a>
-- <a href="https://www.linkedin.com/in/lucca-henrique-pereira/">Lucca Henrique Pereira</a>
-- <a href="https://www.linkedin.com/in/milena-castro-vieira/">Milena Aparecida Vieira Castro</a>
-- <a href="https://www.linkedin.com/in/rodrigo-lee/">Rodrigo Hu Tchie Lee</a>
-- <a href="https://www.linkedin.com/in/vitor-balbo/">Vitor Margarido Balbo</a>
-
-
 # Manual de Instalação - Projeto LinkUp
 
 ## 🛠️ 1. Introdução
 
-Este manual tem como objetivo orientar desenvolvedores e colaboradores sobre como montar, configurar e executar o projeto LinkUp em ambiente local, garantindo que todas as partes do sistema funcionem corretamente, incluindo backend e frontend.
+Este manual tem como objetivo orientar desenvolvedores e colaboradores sobre como montar, configurar e executar o projeto LinkUp em ambiente local. Cada passo inclui uma breve explicação para garantir clareza no processo de inicialização do sistema.
 
 ---
 
@@ -38,8 +25,8 @@ Antes de iniciar a instalação, certifique-se de que os seguintes softwares est
 - [Angular CLI](https://angular.io/cli) - versão compatível com Angular 19
 - Gerenciador de pacotes: `npm` ou `yarn`
 
-> 🔍 *Verifique suas versões:*
-> 
+> 🔍 *Verifique suas versões executando no terminal:*
+>
 > ```bash
 > node -v
 > npm -v
@@ -50,6 +37,8 @@ Antes de iniciar a instalação, certifique-se de que os seguintes softwares est
 ---
 
 ## 📁 3. Estrutura de Diretórios
+
+A estrutura do projeto está organizada da seguinte forma:
 
 ```
 2025-1A-T13-ES05-G06/
@@ -63,6 +52,8 @@ Antes de iniciar a instalação, certifique-se de que os seguintes softwares est
 
 ## 📦 4. Clonando o Repositório
 
+Para obter o código-fonte do projeto em sua máquina local, execute:
+
 ```bash
 git clone https://github.com/Inteli-College/2025-1A-T13-ES05-G06
 cd 2025-1A-T13-ES05-G06
@@ -72,57 +63,62 @@ cd 2025-1A-T13-ES05-G06
 
 ## 🔧 5. Configurando o Backend
 
-1. Acesse a pasta do backend:
+### 5.1 Instalando dependências
+
+As dependências do backend incluem bibliotecas como Express, TypeScript, ts-node-dev e outras essenciais para a execução da API. Para instalá-las corretamente, navegue até a pasta do backend e execute:
 
 ```bash
 cd backend
-```
-
-2. Instale as dependências:
-
-```bash
 npm install
 ```
 
-3. Inicie o servidor de desenvolvimento:
+> ✅ *Após a instalação, espere a criação da pasta `node_modules/` e a ausência de mensagens de erro no terminal.*
+
+### 5.2 Executando o servidor
+
+Com as dependências instaladas, você pode iniciar o servidor de desenvolvimento:
 
 ```bash
 npm run dev
 ```
 
+> 🔎 *Você verá no terminal uma mensagem indicando que o servidor está rodando, geralmente em `http://localhost:3000`.*
+
 ---
 
 ## 🖥 6. Configurando o Frontend
 
-1. Acesse a pasta do frontend:
+### 6.1 Instalando dependências
+
+O frontend é baseado em Angular e utiliza diversas bibliotecas como Angular Material, RXJS, entre outras. Para garantir que o projeto funcione corretamente, execute:
 
 ```bash
 cd frontend
-```
-
-2. Instale as dependências:
-
-```bash
 npm install
 ```
 
-3. Rode o servidor de desenvolvimento Angular:
+> ✅ *Assim como no backend, espere a criação da pasta `node_modules/`.*
+
+### 6.2 Rodando a aplicação Angular
+
+Para iniciar o servidor Angular em ambiente de desenvolvimento, rode:
 
 ```bash
 ng serve
 ```
 
-4. Acesse a aplicação em:
-
-```
-http://localhost:4200
-```
+> 🌐 *A aplicação estará acessível via navegador em:*
+> ```
+> http://localhost:4200
+> ```
 
 ---
 
 ## 🧪 7. Executando Testes
 
 ### Backend
+
+O projeto inclui testes automatizados para verificar funcionalidades do backend. Execute:
 
 ```bash
 cd backend
@@ -131,14 +127,14 @@ npm run test
 
 ### Frontend
 
+Para rodar os testes do Angular:
+
 ```bash
 cd frontend
 ng test
 ```
 
 ---
-
-
 
 ## 📋 Licença/License
 
