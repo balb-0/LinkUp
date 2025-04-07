@@ -3,6 +3,7 @@ import { ProfissionalRepository, IProfissional } from "../models/Profissional";
 import { ResponseHandler } from "../utils/responseHandler";
 import { asyncHandler } from "../utils/asyncHandler";
 import { createError } from "../middleware/errorHandler";
+import { logChange } from "../utils/logger";
 
 export class ProfissionalController {
 
@@ -68,6 +69,13 @@ static listarPaginado = asyncHandler(async (req: Request, res: Response) => {
 
     try {
       const novoProfissional = await ProfissionalRepository.criar(dadosProfissional);
+
+      await logChange({
+        tabela: "profissional",
+        operacao: "CREATE",
+        valores_novos: novoProfissional,
+      });
+
       return ResponseHandler.criado(res, novoProfissional, "Profissional criado com sucesso");
     } catch (error) {
       // O repositório já trata erros específicos como email duplicado
@@ -93,6 +101,13 @@ static listarPaginado = asyncHandler(async (req: Request, res: Response) => {
       if (!profissionalAtualizado) {
         return ResponseHandler.naoEncontrado(res, "Profissional não encontrado");
       }
+
+      await logChange({
+        tabela: "profissional",
+        operacao: "UPDATE",
+        valores_anteriores: profissionalAtualizado,
+        valores_novos: { ...profissionalAtualizado, ...dadosAtualizados },
+      });
       
       return ResponseHandler.sucesso(
         res, 
@@ -121,6 +136,12 @@ static listarPaginado = asyncHandler(async (req: Request, res: Response) => {
     if (!removido) {
       return ResponseHandler.naoEncontrado(res, "Profissional não encontrado");
     }
+
+    await logChange({
+      tabela: "profissional",
+      operacao: "DELETE",
+      valores_anteriores: removido,
+    }); 
 
     return ResponseHandler.sucesso(res, null, "Profissional removido com sucesso");
   });
