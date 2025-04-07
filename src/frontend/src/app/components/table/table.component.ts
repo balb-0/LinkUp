@@ -40,6 +40,7 @@ export class TableComponent implements OnInit, OnChanges {
   @Input() totalItems: number = 0;
   @Input() serverPagination: boolean = false;
   @Input() pageSize: number = 6;
+  @Input() selectedId: string | null = null;
 
   @Output() pageChange = new EventEmitter<{page: number, pageSize: number}>();
 
