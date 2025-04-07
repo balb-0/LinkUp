@@ -15,12 +15,4 @@ import { PopupProfissionaisComponent } from '../../components/popup-profissionai
 export class HomepageComponent {
 
   constructor(public dialog: MatDialog) {}
-
-  abrirPopupProfissionais() {
-    const dialogRef = this.dialog.open(PopupProfissionaisComponent); // Verifique se está chamando o componente correto
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('Popup Profissionais fechado');
-    });
-  }
 }

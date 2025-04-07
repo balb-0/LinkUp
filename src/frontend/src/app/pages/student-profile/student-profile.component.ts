@@ -16,6 +16,9 @@ import { StatusBadgeComponent } from '../../components/status-badge/status-badge
 
 import { Atendimento } from '../../models/atendimento';
 import { Profissional } from '../../models/professional';
+import { PopupProfissionaisComponent } from '../../components/popup-profissionais/popup-profissionais.component';
+import { MatDialog } from '@angular/material/dialog';
+
 
 interface Enrollment {
   course_name: string;
@@ -65,7 +68,8 @@ export class StudentProfileComponent implements OnInit {
     private route: ActivatedRoute,
     private alunoService: AlunoService,
     private atendimentoService: AtendimentoService,
-    private profissionalService: ProfissionalService
+    private profissionalService: ProfissionalService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -209,4 +213,19 @@ export class StudentProfileComponent implements OnInit {
       }
     ];
   }
+
+  abrirPopupProfissionais() {
+  if (!this.student) return;
+
+  const dialogRef = this.dialog.open(PopupProfissionaisComponent, {
+    data: {
+      alunoId: this.student.id
+    }
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    console.log('Popup Profissionais fechado');
+  });
+}
+
 }

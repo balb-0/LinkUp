@@ -1,25 +1,25 @@
 export interface IAtendimento {
-    id?: string;
-    alunoId: string;
-    dataAtendimento: Date;
-    tipoAtendimento: string;
-    profissionalId: string;
+  id?: string;
+  alunoId: string;
+  dataAtendimento: string;
+  tipoAtendimento: string;
+  profissionalId: string;
 }
 
 export class Atendimento implements IAtendimento {
-    id?: string;
-    alunoId: string;
-    dataAtendimento: Date;
-    tipoAtendimento: string;
-    profissionalId: string;
+  id?: string;
+  alunoId: string;
+  dataAtendimento: string;
+  tipoAtendimento: string;
+  profissionalId: string;
 
-    constructor(atendimento: IAtendimento) {
-        this.id =  atendimento.id;
-        this.alunoId = atendimento.alunoId;
-        this.dataAtendimento = atendimento.dataAtendimento;
-        this.tipoAtendimento = atendimento.tipoAtendimento;
-        this.profissionalId = atendimento.profissionalId;
-    }
+  constructor(atendimento: IAtendimento) {
+    this.id = atendimento.id;
+    this.alunoId = atendimento.alunoId;
+    this.dataAtendimento = atendimento.dataAtendimento;
+    this.tipoAtendimento = atendimento.tipoAtendimento;
+    this.profissionalId = atendimento.profissionalId;
+  }
 }
 
 import { query } from '../utils/db';
@@ -87,7 +87,7 @@ export class AtendimentoRepository {
     return result.map(row => new Atendimento({
       id: row.id.toString(),
       alunoId: row.aluno_id.toString(),
-      dataAtendimento: new Date(row.data_atendimento),
+      dataAtendimento: row.data_atendimento,
       tipoAtendimento: row.tipo_atendimento,
       profissionalId: row.profissional_id.toString(),
     }));
@@ -121,7 +121,7 @@ export class AtendimentoRepository {
     return new Atendimento({
       id: row.id.toString(),
       alunoId: row.aluno_id.toString(),
-      dataAtendimento: new Date(row.data_atendimento),
+      dataAtendimento: row.data_atendimento,
       tipoAtendimento: row.tipo_atendimento,
       profissionalId: row.profissional_id.toString(),
     });
@@ -224,5 +224,5 @@ export class AtendimentoRepository {
     return {
       total_alunos_atendidos: Number(result[0].total_alunos_atendidos)
     };
-  }
+}
 }

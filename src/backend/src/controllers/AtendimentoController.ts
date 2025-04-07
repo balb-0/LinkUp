@@ -4,8 +4,11 @@ import { ResponseHandler } from '../utils/responseHandler';
 import { asyncHandler } from '../utils/asyncHandler'; 
 import AlunoService from '../services/AlunoService';
 
+
 export class AtendimentoController {
     static criar = asyncHandler(async (req: Request, res: Response) => {
+        console.log('Dados recebidos para criar atendimento:', req.body);
+
         const atendimento = await AtendimentoRepository.criar(req.body);
         return ResponseHandler.criado(res, atendimento);
     });

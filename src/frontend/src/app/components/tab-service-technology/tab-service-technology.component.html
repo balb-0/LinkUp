@@ -21,10 +21,7 @@
       </button>
     </div>
 
-    <app-add-button
-      *ngIf="botaoAdicionar"
-      [text]="textoBotaoAdicionar"
-    ></app-add-button>
+    <app-add-button *ngIf="botaoAdicionar" [text]="textoBotaoAdicionar" (click)="onClickAdicionar()"></app-add-button>
   </div>
 
   <!-- Conteúdo das abas -->

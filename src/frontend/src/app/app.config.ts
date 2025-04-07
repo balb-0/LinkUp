@@ -1,4 +1,4 @@
-import { ApplicationConfig, provideZoneChangeDetection, isDevMode } from '@angular/core';
+import { ApplicationConfig, provideZoneChangeDetection, isDevMode, importProvidersFrom } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { provideHttpClient, withFetch } from '@angular/common/http';
@@ -6,6 +6,7 @@ import { provideClientHydration, withEventReplay } from '@angular/platform-brows
 import { provideAuth0 } from '@auth0/auth0-angular';
 import { authConfig } from './auth/auth.config';
 import { ProfessionalStateService } from './services/professional-state.service';
+import { MatNativeDateModule } from '@angular/material/core'; // 👈 IMPORTADO AQUI
 
 // Verificar se estamos no ambiente do navegador para poder utilizar do SSR
 const isBrowser = typeof window !== 'undefined';
@@ -19,8 +20,8 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideClientHydration(withEventReplay()),
     provideHttpClient(withFetch()),
+    importProvidersFrom(MatNativeDateModule), // ✅ ADICIONADO AQUI
     ProfessionalStateService,
-    // Só fornecemos o Auth0 se estivermos no navegador
     ...(isBrowser ? [provideAuth0(authConfig)] : [])
   ]
 };

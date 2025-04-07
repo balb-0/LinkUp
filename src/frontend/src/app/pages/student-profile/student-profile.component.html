@@ -31,6 +31,7 @@
       [titulo]="'Atendimentos'"
       [textoAtendimentos]="'Ativos'"
       [textoHistorico]="'Anteriores'"
+      (clickAdicionar)="abrirPopupProfissionais()"
     >
       <div conteudoAtendimentos class="grid grid-cols-1 md:grid-cols-3 gap-6">
         @if (atendimentosAtivos.length === 0) {

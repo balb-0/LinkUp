@@ -26,6 +26,7 @@
     /* Adiciona bordas arredondadas */
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     /* Sombra para dar profundidade */
+    overflow: visible !important
 }
 
 .popup-header {

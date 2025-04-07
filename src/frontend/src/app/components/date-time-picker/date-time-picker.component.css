@@ -3,6 +3,7 @@
   gap: 16px;
   align-items: center;
   justify-content: center;
+  overflow: visible !important
 }
 
 mat-form-field {
@@ -13,4 +14,5 @@ mat-form-field {
 .date-field input,
 .time-field input {
   text-align: center;
+  overflow: visible !important
 }
