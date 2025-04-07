@@ -2121,15 +2121,35 @@ Participantes:
 
 # 10. Procedimentos de Implantação
 
-_conteúdo_
+&nbsp;&nbsp;&nbsp;&nbsp; Este capítulo descreve as etapas executadas para disponibilizar a solução em ambiente de uso. A implantação foi segmentada em duas partes: configuração do banco de dados e ativação do protótipo em nuvem. Cada etapa visa garantir o funcionamento da aplicação conforme os requisitos definidos.
+
+&nbsp;&nbsp;&nbsp;&nbsp; A arquitetura já foi apresentada anteriormente por meio do [diagrama de implantação](#6-mapeamento-técnico-de-infraestrutura-e-implantação). Neste ponto, o foco é relatar os procedimentos necessários para colocar a aplicação em operação, considerando os serviços utilizados, os acessos habilitados e a comunicação entre os componentes.
 
 ## 10.1 Implantação e Configuração do Banco de Dados
 
-_conteúdo_
+&nbsp;&nbsp;&nbsp;&nbsp; A implantação do banco de dados foi realizada utilizando o serviço Amazon RDS com o mecanismo MySQL. A instância foi provisionada em uma sub-rede privada da VPC, de forma que apenas componentes internos da aplicação possam estabelecer conexão direta com o banco, via TCP/IP.
+
+&nbsp;&nbsp;&nbsp;&nbsp; A configuração inicial incluiu a definição do schema, criação de tabelas e tipos de dados necessários, com base no modelo relacional previamente definido. Scripts SQL foram utilizados para automatizar esse processo e garantir a consistência da estrutura entre ambientes. Os dados de acesso ao banco foram armazenados de forma segura em variáveis de ambiente, não sendo expostos diretamente no código-fonte.
+
+&nbsp;&nbsp;&nbsp;&nbsp; O acesso à instância é restrito por grupos de segurança, permitindo conexões apenas da instância EC2 que executa a API interna. O tráfego entre a API e o banco ocorre exclusivamente dentro da VPC, com possibilidade de criptografia em trânsito utilizando SSL.
+
+&nbsp;&nbsp;&nbsp;&nbsp; O banco foi configurado com backups automáticos diários, com retenção de até 35 dias, e replicação de leitura opcional para escalar operações de consulta, se necessário. Todas as alterações feitas por meio da API são registradas em arquivos de log para fins de auditoria e rastreamento.
+
+&nbsp;&nbsp;&nbsp;&nbsp; A comunicação entre a API e o banco foi validada por meio de testes de conectividade e inserção de registros de exemplo, assegurando o funcionamento dos principais fluxos da aplicação antes da ativação completa do protótipo.
+
 
 ## 10.2 Implantação do Protótipo para uso por equipe de desenvolvimento
 
-_conteúdo_
+&nbsp;&nbsp;&nbsp;&nbsp; O protótipo foi implantado em ambiente de nuvem com infraestrutura baseada em instâncias EC2 da AWS. A aplicação foi dividida em duas camadas principais: interface (front-end) e lógica de negócio (back-end), executadas em instâncias separadas para facilitar a manutenção, testes e controle de acesso.
+
+&nbsp;&nbsp;&nbsp;&nbsp; A instância do front-end foi configurada em uma sub-rede pública da VPC, permitindo acesso via navegador por meio do protocolo HTTPS. A instância do back-end, responsável pela API interna, foi alocada em uma sub-rede privada, comunicando-se com o banco de dados e com a API externa. A comunicação entre os componentes ocorre por meio de rede privada, com controle de tráfego definido por grupos de segurança.
+
+&nbsp;&nbsp;&nbsp;&nbsp; O protótipo foi disponibilizado à equipe de desenvolvimento com dados de acesso restrito, utilizando autenticação via AWS Cognito. Cada usuário recebe um token JWT válido para acesso aos recursos da aplicação conforme o perfil atribuído.
+
+&nbsp;&nbsp;&nbsp;&nbsp; A infraestrutura de monitoramento foi ativada com o AWS CloudWatch para registrar o consumo de recursos, falhas de execução e comportamento do sistema durante os testes. Além disso, todos os serviços foram organizados em um ambiente replicável por meio de scripts de provisionamento, garantindo consistência em futuras reinstalações.
+
+&nbsp;&nbsp;&nbsp;&nbsp; A disponibilização do protótipo permite que a equipe de desenvolvimento execute testes de interface, integração e autenticação, além de validar os fluxos de uso da aplicação conforme os requisitos levantados no início do projeto.
+
 
 # Referências
 
