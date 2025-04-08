@@ -96,14 +96,11 @@ app.use("/api/profissionais", cacheMiddleware(300000), profissionaisRouter);
 
 app.use("/api/atendimentos", cacheMiddleware(300000), atendimentoRouter);
 
-//Rotas para API de tecnologias
-app.use('/api/tecnologias', cacheMiddleware(300000), tecnologiaRoutes);
-
 // Rotas para o dashboard
 app.use("/api/dashboard", cacheMiddleware(300000), dashboardRoutes);
 
 // Rotas para associação de aluno e tecnologia
-app.use('/api', cacheMiddleware(300000), alunoTecnologiaAssistivaRoutes);
+app.use('/api', cacheMiddleware(300000), alunoTecnologiaAssistivaRoutes, tecnologiaRoutes);
 
 // Rotas para o histórico de logs
 app.use('/api/historico', historicoRoutes);

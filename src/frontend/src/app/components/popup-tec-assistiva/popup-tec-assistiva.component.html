@@ -2,7 +2,7 @@
   <div class="popup-content" (click)="$event.stopPropagation()">
 
     <div class="popup-header">
-      <button class="close-button" (click)="closeDialog()">&times;</button>
+      <button class="close-button" [disabled]="processando" (click)="closeDialog()">&times;</button>
     </div>
 
     <div class="popup-body">
@@ -10,20 +10,22 @@
 
       <app-drop-down
         class="popup-select"
-        [items]="tecnologias"
+        [items]="nomesParaDropdown"
         (itemSelected)="onTecnologiaSelecionada($event)">
       </app-drop-down>
 
       <div class="popup-slots" *ngIf="tecnologiasSelecionadas.length > 0">
-        <div class="slot-item" *ngFor="let tecnologia of tecnologiasSelecionadas">
-          {{ tecnologia }}
-          <button class="remove-button" (click)="removerTecnologia(tecnologia)">×</button>
+        <div class="slot-item" *ngFor="let nome of tecnologiasSelecionadas">
+          {{ nome }}
+          <button class="remove-button" [disabled]="processando" (click)="removerTecnologia(nome)">×</button>
         </div>
       </div>
 
       <div class="popup-footer">
-        <app-date-time-picker></app-date-time-picker>
-        <button class="confirm-button" (click)="confirm()">Confirmar</button>
+        <button class="confirm-button" [disabled]="processando" (click)="confirm()">
+          <span *ngIf="!processando">Confirmar</span>
+          <span *ngIf="processando">Processando...</span>
+        </button>
       </div>
     </div>
 
