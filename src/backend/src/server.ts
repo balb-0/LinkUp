@@ -8,11 +8,12 @@ import path from 'path'
 import EnvManager from "./classes/EnvManager";
 import { testConnection } from "./utils/db";
 import profissionaisRouter from "./routes/profissionais";
-import authRoutes from "./routes/authRoutes";
+
 import pagesRoutes from "./routes/pagesRoutes";
 import atendimentoRouter from "./routes/atendimentoRoutes";
 import alunosRouter from "./routes/alunosRoutes";
 import dashboardRoutes from "./routes/dashoardRoutes";
+import historicoRoutes from "./routes/historicoRoutes";
 import { requestLogger } from "./middleware/logger";
 import { cacheMiddleware } from "./middleware/cache";
 import { createError, errorHandler } from "./middleware/errorHandler";
@@ -83,7 +84,7 @@ app.get("/api", (req, res) => {
 });
 
 // Rotas para autenticação
-app.use("/api/auth", authRoutes);
+
 
 // Rotas para a API de alunos
 app.use("/api/alunos", cacheMiddleware(300000), alunosRouter);
@@ -103,6 +104,9 @@ app.use("/api/dashboard", cacheMiddleware(300000), dashboardRoutes);
 
 // Rotas para associação de aluno e tecnologia
 app.use('/api', cacheMiddleware(300000), alunoTecnologiaAssistivaRoutes);
+
+// Rotas para o histórico de logs
+app.use('/api/historico', historicoRoutes);
 
 // Rotas para as páginas
 app.use("/", pagesRoutes);

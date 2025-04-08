@@ -30,8 +30,7 @@ static listarPaginado = asyncHandler(async (req: Request, res: Response) => {
     
     const profissionais = await ProfissionalRepository.listarComPaginacao(pagina, tamanhoPagina);
     
-    return ResponseHandler.sucesso(res, profissionais, "Profissionais listados com sucesso");
-  } catch (error) {
+    return ResponseHandler.sucesso(res, profissionais, "Profissionais listados com sucesso"); } catch (error) {
     console.error('Erro ao listar profissionais:', error);
     throw error;
   }
