@@ -1,10 +1,10 @@
 import { Request, Response, NextFunction } from 'express';
-import { AtendimentoController } from '../src/controllers/AtendimentoController';
-import { AtendimentoRepository } from '../src/models/Atendimento';
-import { ResponseHandler } from '../src/utils/responseHandler';
+import { AtendimentoController } from '../../src/controllers/AtendimentoController';
+import { AtendimentoRepository } from '../../src/models/Atendimento';
+import { ResponseHandler } from '../../src/utils/responseHandler';
 
-jest.mock('../src/models/Atendimento');
-jest.mock('../src/utils/responseHandler');
+jest.mock('../../src/models/Atendimento');
+jest.mock('../../src/utils/responseHandler');
 
 describe('AtendimentoController', () => {
     let mockRequest: Partial<Request>;

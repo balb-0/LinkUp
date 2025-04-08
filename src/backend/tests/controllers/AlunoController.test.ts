@@ -1,8 +1,8 @@
 import { Request, Response } from 'express';
-import AlunoController from '../src/controllers/AlunoController';
-import AlunoService from '../src/services/AlunoService';
+import AlunoController from '../../src/controllers/AlunoController';
+import AlunoService from '../../src/services/AlunoService';
 
-jest.mock('../src/services/AlunoService');
+jest.mock('../../src/services/AlunoService');
 
 describe('AlunoController', () => {
   let mockRequest: Partial<Request>;
@@ -33,6 +33,16 @@ describe('AlunoController', () => {
 
       expect(mockJson).toHaveBeenCalledWith(institutions);
     });
+
+    it('deve retornar erro 500 ao falhar em getInstitutions', async () => {
+      (AlunoService.getInstitutions as jest.Mock).mockRejectedValue(new Error('Erro inesperado'));
+    
+      await AlunoController.getInstitutions(mockRequest as Request, mockResponse as Response);
+    
+      expect(mockStatus).toHaveBeenCalledWith(500);
+      expect(mockJson).toHaveBeenCalledWith({ error: 'Erro inesperado' });
+    });
+    
   });
 
   describe('getInstitutionById', () => {
@@ -45,6 +55,17 @@ describe('AlunoController', () => {
 
       expect(mockJson).toHaveBeenCalledWith(institution);
     });
+
+    it('deve retornar erro 500 ao falhar em getStudentsByInstitution', async () => {
+      mockRequest.params = { id: '1' };
+      (AlunoService.getStudentsByInstitution as jest.Mock).mockRejectedValue(new Error('Erro ao buscar alunos'));
+    
+      await AlunoController.getStudentsByInstitution(mockRequest as Request, mockResponse as Response);
+    
+      expect(mockStatus).toHaveBeenCalledWith(500);
+      expect(mockJson).toHaveBeenCalledWith({ error: 'Erro ao buscar alunos' });
+    });
+    
   });
 
   describe('getStudentsByInstitution', () => {
@@ -69,6 +90,17 @@ describe('AlunoController', () => {
 
       expect(mockJson).toHaveBeenCalledWith(student);
     });
+
+    it('deve retornar erro 500 ao falhar em getStudentById', async () => {
+      mockRequest.params = { id: '1' };
+      (AlunoService.getStudentById as jest.Mock).mockRejectedValue(new Error('Erro ao buscar aluno'));
+    
+      await AlunoController.getStudentById(mockRequest as Request, mockResponse as Response);
+    
+      expect(mockStatus).toHaveBeenCalledWith(500);
+      expect(mockJson).toHaveBeenCalledWith({ error: 'Erro ao buscar aluno' });
+    });
+    
   });
 
   describe('getEnrollmentsByStudent', () => {

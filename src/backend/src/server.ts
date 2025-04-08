@@ -146,3 +146,5 @@ app.listen(port, () => {
   console.log(`\x1b[32m[SERVIDOR]\x1b[0m Health check: http://localhost:${port}/health`);
   console.log(`\x1b[32m[SERVIDOR]\x1b[0m Frontend: http://localhost:${portFrontend}`);
 });
+
+export default app;

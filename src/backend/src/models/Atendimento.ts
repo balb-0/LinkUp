@@ -1,7 +1,7 @@
 export interface IAtendimento {
   id?: string;
   alunoId: string;
-  dataAtendimento: string;
+  dataAtendimento: string | Date;
   tipoAtendimento: string;
   profissionalId: string;
 }
@@ -9,7 +9,7 @@ export interface IAtendimento {
 export class Atendimento implements IAtendimento {
   id?: string;
   alunoId: string;
-  dataAtendimento: string;
+  dataAtendimento: string | Date;
   tipoAtendimento: string;
   profissionalId: string;
 
