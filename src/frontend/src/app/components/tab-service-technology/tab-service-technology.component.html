@@ -31,7 +31,7 @@
     <app-add-button
       *ngIf="botaoAdicionar"
       [text]="textoBotaoAdicionar"
-      aria-label="Adicionar novo item"
+      (clicked)="onClickAdicionar()"
     ></app-add-button>
 
   </div>
