@@ -277,7 +277,56 @@
 
 ## 2.5 Sprint 5
 
-_conteúdo_
+### Análise da Sprint Review
+
+#### **Pontos Fortes**
+
+- Aprendizado coletivo com os erros das sprints anteriores.
+- Aumento da autonomia dos membros na execução das tasks.
+- Kanban visualmente mais organizado e com maior rotatividade de tarefas.
+- Mais proatividade na revisão de PRs.
+
+#### **Pontos Fracos**
+
+- Falta de testes adequados em algumas entregas.
+- Pouco tempo reservado para revisão e testes antes do fim da sprint.
+- Cansaço excessivo devido ao encerramento do módulo.
+
+---
+
+### Ações de Melhoria para os Pontos Fracos
+
+#### 1. Falta de testes adequados em algumas entregas
+
+##### Ações de melhoria:
+
+- Criar uma etapa fixa de validação/testes nas tasks de desenvolvimento.
+- Reforçar o uso de checklist para garantir que a testagem foi feita antes da finalização da tarefa.
+- Atribuir responsáveis pela verificação de qualidade para cada grupo de entregas.
+
+#### 2. Pouco tempo reservado para revisão e testes antes do fim da sprint
+
+##### Ações de melhoria:
+
+- Reorganizar o planejamento para que o término das tasks críticas aconteça antes dos últimos dias da sprint.
+- Estabelecer um “Freeze Day” (ex: penúltimo dia da sprint) para revisão e testes de todas as tasks pendentes.
+- Priorizar a entrega gradual ao longo da sprint, evitando acúmulo no final.
+
+#### 3. Cansaço excessivo devido ao encerramento do módulo
+
+##### Ações de melhoria:
+
+- Incluir buffers de tempo no planejamento considerando o calendário acadêmico e pessoal da equipe.
+- Priorizar a saúde mental e o equilíbrio da carga de trabalho com pausas estratégicas.
+- Redistribuir tarefas de forma mais equilibrada entre os membros, respeitando a disponibilidade individual.
+
+---
+
+### Ações realizadas após a Sprint 4
+
+&nbsp;&nbsp;&nbsp;&nbsp;A equipe deu continuidade às melhorias iniciadas na sprint anterior, com destaque para a organização do kanban e a proatividade na revisão de PRs. As tarefas circularam com mais fluidez e os membros demonstraram maior autonomia durante a execução das demandas, resultado direto da aprendizagem acumulada nas últimas sprints.
+
+&nbsp;&nbsp;&nbsp;&nbsp;Alguns gargalos, no entanto, ainda foram observados, como a ausência de testes mais robustos em algumas entregas e a concentração de revisões no fim da sprint. Além disso, o cansaço acumulado pelo encerramento do módulo afetou o ritmo da equipe, demonstrando a necessidade de maior atenção ao planejamento em períodos de alta demanda acadêmica.
 
 # 3. Análise de Riscos
 
