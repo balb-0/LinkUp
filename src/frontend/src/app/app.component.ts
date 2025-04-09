@@ -12,7 +12,6 @@ import { ProfileHeaderComponent } from './components/profile-header/profile-head
 import { DropDownComponent } from './components/drop-down/drop-down.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TabServiceTechnologyComponent } from './components/tab-service-technology/tab-service-technology.component';
-import { RadialGaugeComponent } from './components/radial-gauge/radial-gauge.component';
 
 @Component({
   selector: 'app-root',
@@ -23,7 +22,7 @@ import { RadialGaugeComponent } from './components/radial-gauge/radial-gauge.com
     CommonModule,
     RouterModule,
     ReactiveFormsModule,
-    RadialGaugeComponent],
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
