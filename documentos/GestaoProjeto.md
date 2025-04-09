@@ -406,16 +406,32 @@ _conteúdo_
 
 # 4. Análise Post Mortem
 
-A análise _Post Mortem_ tem como objetivo refletir sobre o processo de desenvolvimento do projeto, identificando os principais acertos, desafios enfrentados e lições aprendidas durante a execução. Essa prática é útil e nos ajuda a consolidar aprendizados, otimizar futuras iniciativas e fortalecer a capacidade de trabalho em equipe. Ao longo das etapas do projeto, foram observados pontos positivos, aspectos que exigiram adaptação e oportunidades claras de melhoria que serão apresentadas nas próximas subseções.
+
+A análise Post Mortem tem como objetivo refletir sobre o processo de desenvolvimento do projeto, identificando os principais acertos, desafios enfrentados e lições aprendidas durante a execução. Essa prática é útil e nos ajuda a consolidar aprendizados, otimizar futuras iniciativas e fortalecer a capacidade de trabalho em equipe. Ao longo das etapas do projeto, foram observados pontos positivos, aspectos que exigiram adaptação e oportunidades claras de melhoria que serão apresentadas nas próximas subseções.
+
 
 ## 4.1 Sucessos do Projeto
 
-_conteúdo_
+&nbsp;&nbsp;&nbsp;&nbsp; Ao longo das cinco sprints do projeto, o grupo demonstrou capacidade de compreensão dos objetivos propostos pelos parceiros. Foi possível identificar com precisão as principais necessidades e expectativas, permitindo o desenvolvimento de features dentro do website alinhadas com essas demandas. Como resultado, as soluções entregues conseguiram atender de forma eficaz às "dores" apresentadas, agregando valor real ao projeto.
+
+&nbsp;&nbsp;&nbsp;&nbsp;  Os parceiros se mostraram, na maior parte do tempo, extremamente solícitos e colaborativos, contribuindo com questionamentos relevantes e validando o progresso do projeto a cada sprint. Mesmo nos momentos em que o grupo não conseguiu atingir integralmente as metas estabelecidas, demonstraram compreensão e ofereceram o suporte necessário para que o time pudesse se reorganizar e seguir com o desenvolvimento de forma eficiente.
+
+&nbsp;&nbsp;&nbsp;&nbsp; Outro ponto positivo foi a sinergia entre os membros do grupo, que mantiveram uma comunicação clara e constante durante todo o ciclo de desenvolvimento. A adoção de boas práticas de organização e gestão, como o uso eficaz das cerimônias ágeis e ferramentas de acompanhamento, permitiu que o time se mantivesse alinhado, mesmo diante de imprevistos e mudanças de escopo. Essa colaboração ativa foi essencial para manter o ritmo do projeto e garantir entregas contínuas com qualidade.
+
+&nbsp;&nbsp;&nbsp;&nbsp; Além disso, todos os integrantes do grupo apresentaram uma evolução significativa em suas capacidades técnicas. Esse progresso pode ser, em parte, atribuído ao próprio sucesso do projeto, uma vez que um dos princípios fundamentais de projetos desenvolvidos no Inteli é justamente a proposição de desafios que exijam a aquisição de novos conhecimentos.
 
 ## 4.2 Oportunidades de Melhoria
 
-_conteúdo_
+&nbsp;&nbsp;&nbsp;&nbsp; Apesar dos bons resultados alcançados, alguns pontos ao longo do projeto evidenciaram oportunidades claras de melhoria. Um deles foi a definição inicial do escopo, que poderia ter sido mais detalhada e validada com os parceiros desde as primeiras sprints. Em alguns momentos, mudanças de direção ou ajustes nos requisitos causaram retrabalho, o que impactou o ritmo de entrega. Um dos maiores exemplos que nos afetou durante as últimas sprints, foi o retrabalho relacionado ao banco de dados, onde muitas vezes tivemos que adicionar novas informações ou até retirar outras.
+
+&nbsp;&nbsp;&nbsp;&nbsp; Outro aspecto a ser aprimorado é a gestão de tempo durante as sprints. Em certas sprints, a priorização de tarefas e o dimensionamento do esforço necessário não foram totalmente precisos, gerando acúmulo de atividades próximas ao final de cada uma das sprints. Isso evidenciou a necessidade de um planejamento mais realista e criterioso para garantir um fluxo de trabalho mais equilibrado.
+
+&nbsp;&nbsp;&nbsp;&nbsp; Por fim, a comunicação com os parceiros, embora positiva no geral, poderia ter sido mais frequente e estruturada em algumas fases, especialmente nas apresentações de final de sprint, onde mais perguntas poderiam ter sido feitas para evitar retrabalhos desnecessários.
 
 ## 4.3 Lições Aprendidas
 
-_conteúdo_
+&nbsp;&nbsp;&nbsp;&nbsp; Uma das principais lições aprendidas ao longo do projeto foi a importância de um planejamento inicial mais aprofundado. A ausência de uma definição mais clara e detalhada do escopo nas etapas iniciais resultou em ajustes e redefinições ao longo das sprints. Com isso, ficou evidente que investir tempo no alinhamento de expectativas, na priorização de entregas e na estruturação do backlog desde o início pode evitar retrabalho e tornar o desenvolvimento mais fluido e eficiente.
+
+&nbsp;&nbsp;&nbsp;&nbsp; A comunicação dentro do grupo também se mostrou um ponto crucial. Durante boa parte do projeto, a troca de informações funcionou bem; no entanto, uma falha na comunicação ao final da quarta sprint acabou gerando conflitos em relação ao entendimento de responsabilidades e prazos. Essa experiência destacou a necessidade de manter um canal de diálogo constante e transparente entre todos os membros, com alinhamentos frequentes para garantir que todos estejam na mesma página durante cada etapa do desenvolvimento.
+
+&nbsp;&nbsp;&nbsp;&nbsp; Por outro lado, uma prática que se mostrou extremamente positiva foi a colaboração entre os membros nas tarefas mais desafiadoras. O uso do pair programming em momentos críticos do projeto possibilitou a troca de conhecimentos em tempo real, a identificação mais rápida de problemas e o fortalecimento da coesão do time. Essa abordagem não apenas aumentou a qualidade do código, como também contribuiu para o crescimento técnico coletivo, reforçando a importância de trabalhar em conjunto em vez de isolar as responsabilidades.
