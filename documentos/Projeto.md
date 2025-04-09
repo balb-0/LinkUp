@@ -1642,178 +1642,235 @@ Para cada teste, definimos critérios específicos de aceitação:
 </div>
 
 ## 9.2 Testes de RNFs
-
-Os testes de requisitos não funcionais validam aspectos de **desempenho, acessibilidade, segurança, compatibilidade e confiabilidade** do sistema. Diferente dos testes funcionais que verificam "o que" o sistema faz, os testes de RNFs verificam "como" o sistema realiza suas funções.
+&emsp;Os testes de requisitos não funcionais validam aspectos de desempenho, usabilidade, segurança, compatibilidade, confiabilidade, manutenibilidade e integridade do sistema, com base no modelo de qualidade da norma ISO/IEC 25010. Esses testes avaliam “como” o sistema realiza suas funções, e não apenas “o que” ele faz.
 
 ### 9.2.1 Estratégia de Testes
+&emsp;Nossa abordagem está estruturada em sete pilares principais:
 
-Nossa abordagem para testes de RNFs é estruturada em cinco pilares principais:
-
-1. **Testes de Performance**
+- **Eficiência de Desempenho**
    - Tempo de resposta
-   - Capacidade de carga
-   - Escalabilidade
-   - Uso de recursos
+   - Atualizações em tempo real
+<br>
 
-2. **Testes de Segurança**
-   - Autenticação
-   - Autorização
+- **Usabilidade**
+   - Acessibilidade
+   - Operacionalidade
+   - Clareza de mensagens
+<br>
+
+- **Segurança**
+   - Controle de acesso
    - Proteção de dados
-   - Resistência a ataques
+<br>
 
-3. **Testes de Usabilidade e Acessibilidade**
-   - Conformidade com WCAG
-   - Compatibilidade com leitores de tela
-   - Eficiência de navegação
+- **Compatibilidade**
+   - Navegadores suportados
+   - Integração com APIs externas
+<br>
 
-4. **Testes de Compatibilidade**
-   - Múltiplos navegadores
-   - Diferentes resoluções
-   - Integração com APIs
-
-5. **Testes de Confiabilidade**
+- **Confiabilidade**
    - Disponibilidade
-   - Recuperação de falhas
-   - Backup e restauração
+   - Tolerância a falhas
+   - Backup e recuperação
+<br>
+
+- **Manutenibilidade**
+   - Modularidade
+   - Documentação
+<br>
+
+- **Integridade**
+   - Validação e consistência dos dados
 
 ### 9.2.2 Planejamento Detalhado
-
 #### CT-001 - Tempo de Resposta (RNF01)
-
 **Cenários de Teste:**
 
-1. **Carga Normal**
+1. **Consulta de Dados em Condição Normal**
    - Condição: 50 usuários simultâneos
-   - Métrica: Tempo de resposta para cada operação
-   - Critério: ≤ 0,8 segundos para 95% das requisições
+   - Métrica: Tempo de resposta
+   - Critério: ≤ 0,8 segundo para 95% das requisições
 
-2. **Pico de Carga**
-   - Condição: 200 usuários simultâneos
-   - Métrica: Tempo de resposta médio
-   - Critério: ≤ 2 segundos para 90% das requisições
+   - **Ferramentas:**
+      - AWS CloudWatch
 
-3. **Teste de Estresse**
-   - Condição: Aumento gradual até 500 usuários
-   - Métrica: Ponto de degradação do sistema
-   - Critério: Identificar limite de usuários mantendo resposta ≤ 3 segundos
-
-**Ferramentas:**
-- Apache JMeter para testes de carga [[11]](#ref11)
-- New Relic para monitoramento
-- AWS CloudWatch para métricas [[6]](#ref6)
-
-#### CT-002 - Acessibilidade (RNF02)
-
+#### CT-002 - Acessibilidade (RNF02 & RNF13)
 **Cenários de Teste:**
+1. Navegação por Teclado
+2. Compatibilidade com Leitores de Tela (NVDA, JAWS)
+3. Verificação de Contraste e Elementos WCAG 2.1
 
-1. **Navegação por Teclado**
-   - Condição: Navegação completa sem mouse
-   - Métrica: Completude de tarefas
-   - Critério: 100% das funcionalidades acessíveis
-
-2. **Compatibilidade com Leitores de Tela**
-   - Condição: Teste com NVDA e JAWS
-   - Métrica: Legibilidade do conteúdo
-   - Critério: Todos os elementos corretamente identificados
-
-3. **Contraste e Legibilidade**
-   - Condição: Verificação WCAG 2.1
-   - Métrica: Nível de contraste
-   - Critério: Mínimo 4.5:1 para texto normal
+**Critérios:**
+1. Conformidade total com as diretrizes WCAG
+2. Todas as funcionalidades acessíveis por teclado
+3. Todos os elementos corretamente identificados pelos leitores de tela
 
 **Ferramentas:**
-- WAVE para análise de acessibilidade [[12]](#ref12)
-- Lighthouse para auditorias [[13]](#ref13)
-- Axe DevTools para testes automatizados [[14]](#ref14)
+- WAVE
+- Axe DevTools
+- Lighthouse
 
 #### CT-003 - Eficiência de Navegação (RNF03)
-
 **Cenários de Teste:**
 
-1. **Contagem de Cliques**
-   - Condição: Navegação para tarefas principais
-   - Métrica: Número de cliques
-   - Critério: Máximo 3 cliques para ações frequentes
+1. **Busca por Alunos e Profissionais**
+   - Condição: execução por assessores
+   - Métrica: número de cliques
+   - Critério: máximo de 3 cliques até o destino
 
-2. **Tempo de Conclusão**
-   - Condição: Tarefas comuns do usuário
-   - Métrica: Tempo para completar
-   - Critério: ≤ 30 segundos por tarefa principal
+- **Ferramentas:**
+   - Hotjar
+   - Google Analytics
 
-**Ferramentas:**
-- Hotjar para análise de comportamento
-- Google Analytics para métricas de navegação
-
-#### CT-004 - Segurança (RNF04)
-
+#### CT-004 - Controle de Acesso (RNF04)
 **Cenários de Teste:**
 
-1. **Controle de Acesso**
-   - Condição: Tentativas de acesso não autorizado
-   - Métrica: Taxa de bloqueio
-   - Critério: 100% das tentativas inválidas bloqueadas
+1. Tentativas de Acesso Indevido
+- **Critério:** 100% das tentativas inválidas devem ser bloqueadas
 
-2. **Proteção contra Injeção SQL**
-   - Condição: Tentativas de injeção em campos
-   - Métrica: Taxa de prevenção
-   - Critério: 100% das tentativas detectadas e bloqueadas
+- **Ferramentas:**
+   - OWASP ZAP
+   - SonarQube
+   - AWS Cognito / WAF
+   - BurpSuite
 
-3. **Força de Senha**
-   - Condição: Criação de novas senhas
-   - Métrica: Complexidade mínima
-   - Critério: 8 caracteres, maiúsculas, minúsculas, números
+#### CT-005 - Proteção de Dados e LGPD (RNF05)
+**Cenários de Teste:**
 
-**Ferramentas:**
-- OWASP ZAP para testes de segurança [[15]](#ref15)
-- SonarQube para análise de código [[16]](#ref16)
-- AWS WAF para proteção [[17]](#ref17)
+1. Criptografia em Trânsito e em Repouso
+2. Consentimento de Dados
+3. Anonimização quando necessário
 
-[Continua com detalhamento similar para os demais casos de teste...]
+- **Critério:** conformidade com LGPD e boas práticas
+- **Ferramentas:**
+   - OWASP ZAP
+   - DataDog Security Monitoring
+   - Wireshark
 
-### 9.2.3 Métricas e Monitoramento
+#### CT-006 - Manutenibilidade (RNF06)
+**Cenários de Teste:**
 
-Para cada categoria de teste, estabelecemos métricas específicas:
+1. Organização Modular do Código
+2. Documentação Técnica
 
-1. **Performance**
-   - Tempo médio de resposta
-   - Taxa de erro
-   - Utilização de recursos
-   - Tempo de carregamento de página
+- **Critério:** código com documentação clara e atualizada
 
-2. **Segurança**
-   - Número de vulnerabilidades detectadas
-   - Tempo médio de detecção
-   - Taxa de falsos positivos
-   - Cobertura de patches
+- **Ferramentas:**
+   - SonarQube
+   - Swagger 
+   - Repositório Git com wiki
 
-3. **Usabilidade**
-   - Taxa de sucesso em tarefas
-   - Tempo médio por tarefa
-   - Taxa de erro do usuário
-   - Satisfação do usuário
+#### CT-007 - Compatibilidade com Navegadores (RNF07)
+**Cenários de Teste:**
+
+1. **Testes em Navegadores Modernos**
+   - Chrome, Firefox, Edge, Safari (últimas versões)
+
+- **Critério:** funcionalidades intactas e interface responsiva
+
+- **Ferramentas:**
+   - BrowserStack
+   - Selenium
+
+#### CT-008 - Disponibilidade (RNF08)
+**Cenários de Teste:**
+
+1. Simulação de Falhas
+2. Tempo Médio de Atividade
+
+- **Critério:** disponibilidade conforme plano de infraestrutura.
+- **Ferramentas:** 
+   - AWS CloudWatch
+   - UptimeRobot
+
+#### CT-009 - Tolerância a Falhas (RNF09)
+**Cenários de Teste:**
+
+1. Exibição de Mensagens em Falhas
+
+- **Condição:** falhas simuladas (ex: conexão, inserção inválida)
+- **Critério:** mensagens claras, sem termos técnicos, com sugestões de ação
+- **Ferramentas:** 
+   - Cypress (testes de UI)
+   - Testes manuais
+
+#### CT-010 - Validação e Atualizações em Tempo Real (RNF10)
+**Cenários de Teste:**
+
+1. Validação de Formulários
+2. Atualização em Tempo Real sem Corrupção de Dados
+
+- **Critério:** dados consistentes e integridade mantida
+- **Ferramentas:**
+   - Cypress
+   - Jest
+
+#### CT-011 - Integração com API Centro Paula Souza (RNF11)
+**Cenários de Teste:**
+
+1. Chamadas para API Externa
+2. Tratamento de Erros de Comunicação
+- **Critério:** integração sem falhas e com tratamento de exceções
+- **Ferramentas:**
+   - Postman
+   - Swagger
+   - Insomnia
+
+#### CT-012 - Backup e Restauração (RNF12)
+**Cenários de Teste:**
+
+1. Execução de Backups Automáticos
+2. Simulação de Perda de Dados e Restauração
+
+- **Critério:** restauração completa em até 30 minutos após falha crítica
+- **Ferramentas:**
+   - AWS Backup
+   - Scripts automatizados
+
+###  9.2.3 Métricas e Monitoramento
+&emsp;Para cada aspecto testado, as métricas incluem:
+- Tempo de resposta
+- Taxa de acessibilidade
+- Número de falhas de segurança
+- Cobertura de testes em navegadores
+- Taxa de sucesso em backups
+- Tempo de restauração
+- Taxa de erros do usuário
 
 ### 9.2.4 Ambiente de Testes
-
-Os testes são executados em três ambientes distintos:
-
 1. **Desenvolvimento**
-   - Testes unitários e integração
-   - Verificações de código
-   - Testes de componentes
+   - Testes unitários e de integração contínua
 
 2. **Homologação**
-   - Testes de carga
-   - Testes de segurança
-   - Validação de usuário
+    - Testes de carga, segurança, usabilidade e integração
 
 3. **Produção**
-   - Monitoramento contínuo
-   - Análise de logs
-   - Métricas de desempenho
+   - Monitoramento contínuo, métricas, logs e backups
 
 ### 9.2.5 Execução de Testes de Requisitos Não Funcionais
 
-&emsp;Os testes são efetuados de acordo com a etapa do projeto. Devido a complexidade, e necessidade de recursos, implementação, conhecimento, etc. para a execução de alguns testes de requisitos funcionais, os mesmo são efetuados de acordo com a etapa específica do projeto. Muitos desses testes dependem de recursos ainda não implementados, considerando certas etapas do projeto, portanto são feitos de acordo com a sprint específica, enquanto que outras condiçoes dependem de conhecimentos específicos a serem estudados, como injeção SQL. 
+&emsp;Os testes de RNFs são distribuídos conforme as sprints do projeto, considerando a implementação das funcionalidades correspondentes e a disponibilidade dos recursos necessários. Alguns testes, como controle de acesso e proteção contra injeções maliciosas, exigem maior profundidade técnica e foram planejados para etapas mais maduras do desenvolvimento. A seguir, são apresentados testes simulados realizados ao longo das sprints:
+
+<div align="center">
+<sub>Tabela x - Execução de Testes de Requisitos Não Funcionais</sub><br>
+
+| **Sprint** | **Requisito** | **Teste Realizado** | **Resultado** | **Ação Recomendada** |
+|-----------|----------------|----------------------|----------------|----------------------|
+| Sprint 3 | RNF06 – Modularidade e documentação | Verificação da estrutura de código e padrão de comentários | Estrutura modular adequada; documentação superficial | Definir padrão de comentários e documentação para as próximas sprints |
+| Sprint 4 | RNF02 – Acessibilidade | Navegação via teclado e leitores de tela (NVDA) | 90% cobertura funcional via teclado; leitura correta dos elementos | Ajustar foco em componentes dinâmicos |
+| Sprint 4 | RNF03 – Navegação em até 3 cliques | Teste de fluxo do assessor para localizar aluno/profissional | Acesso realizado com 2 a 3 cliques | Melhorar organização de atalhos |
+| Sprint 4 | RNF10 – Validação de dados | Teste com inserção de dados inválidos | Dados rejeitados corretamente; mensagens claras | Melhorar validação de datas futuras |
+| Sprint 4 | RNF11 – Integração com API externa | Consulta de dados reais na API do Centro Paula Souza | Integração funcional; tempo alto de resposta | Adicionar cache local |
+| Sprint 5 | RNF01 – Tempo de resposta | Teste com 100 usuários simultâneos (JMeter) | 94% das requisições ≤ 0,8s | Otimizar queries no banco de dados |
+| Sprint 5 | RNF04 – Controle de acesso | Tentativas de acesso indevido por tipo de usuário | 100% das tentativas bloqueadas | Nenhuma ação necessária |
+| Sprint 5 | RNF05 – Proteção de dados | Armazenamento e transmissão de dados sensíveis | HTTPS ativo; senhas com hash Bcrypt | Revisar consentimento de dados nos formulários |
+| Sprint 5 | RNF07 – Compatibilidade entre navegadores | Execução em Chrome, Firefox, Edge e Safari | Layout e funções consistentes | Ajustar ícones no Safari |
+| Sprint 5 | RNF08 – Disponibilidade | Monitoramento em produção por 72h (AWS CloudWatch) | 100% uptime no período | Configurar alertas automáticos |
+| Sprint 5 | RNF09 – Mensagens de erro claras | Simulação de falhas no backend | Mensagens compreensíveis e orientativas | Tornar linguagem mais empática |
+| Sprint 5 | RNF12 – Backup automático | Verificação de rotina de backup AWS | Backups diários em S3 | Testar restauração em ambiente de homologação |
+
+<sup>Fonte: Material produzido pelos autores (2025) </sup>
+</div>
 
 ## 9.3 Testes de Usabilidade
 
