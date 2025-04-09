@@ -2,7 +2,7 @@
   <h1 class="text-xl font-bold text-preto mb-2">{{ titulo }}</h1>
   <hr class="border-t-2 border-preto w-full mb-4" />
 
-  <div class="flex justify-between items-center mb-3" role="tablist" aria-label="Seleção de abas entre atendimentos e histórico">
+  <div *ngIf="exibirAbas" class="flex justify-between items-center mb-3" role="tablist" aria-label="Seleção de abas entre atendimentos e histórico">
     <div class="flex">
       <button
         role="tab"
@@ -32,11 +32,19 @@
       *ngIf="botaoAdicionar"
       [text]="textoBotaoAdicionar"
       aria-label="Adicionar novo item"
+      (click)="onClickAdicionar()"
     ></app-add-button>
-
   </div>
 
-  <div>
+  <div *ngIf="!exibirAbas && botaoAdicionar" class="flex justify-end mb-3">
+    <app-add-button
+      [text]="textoBotaoAdicionar"
+      aria-label="Adicionar novo item"
+      (click)="onClickAdicionar()"
+    ></app-add-button>
+  </div>
+
+  <div *ngIf="exibirAbas">
     <div
       *ngIf="abaSelecionada === 'atendimentos'"
       id="painel-atendimentos"
@@ -56,5 +64,9 @@
     >
       <ng-content select="[conteudoHistorico]"></ng-content>
     </div>
+  </div>
+
+  <div *ngIf="!exibirAbas" class="py-2 text-preto">
+    <ng-content></ng-content>
   </div>
 </div>

@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { NgFor, NgIf } from '@angular/common';
 
 interface InfoItem {
   label: string;
@@ -8,7 +7,7 @@ interface InfoItem {
 
 @Component({
   selector: 'app-dashboard-info',
-  imports: [NgFor, NgIf],
+  imports: [],
   templateUrl: './dashboard-info.component.html',
   styleUrl: './dashboard-info.component.css'
 })

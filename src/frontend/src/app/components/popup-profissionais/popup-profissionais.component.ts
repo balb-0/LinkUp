@@ -1,7 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { NgIf } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
@@ -16,10 +15,6 @@ import { AtendimentoService } from '../../services/atendimento.service';
 import { Profissional } from '../../models/professional';
 import { Atendimento } from '../../models/atendimento';
 import { IAtendimento } from '../../models/atendimento';
-
-
-
-
 @Component({
   selector: 'app-popup-profissionais',
   templateUrl: './popup-profissionais.component.html',
@@ -27,7 +22,6 @@ import { IAtendimento } from '../../models/atendimento';
   imports: [
     SearchBarComponent,
     DateTimePickerComponent,
-    NgIf,
     MatButtonModule,
     TableComponent,
     ButtonComponent,

@@ -2,7 +2,6 @@ import { Component, Input, Output, EventEmitter  } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AddButtonComponent } from "../add-button/add-button.component";
 
-
 @Component({
   selector: 'app-tab-service-technology',
   imports: [CommonModule, AddButtonComponent],
@@ -16,6 +15,8 @@ export class TabServiceTechnologyComponent {
   @Input() textoHistorico: string = 'Histórico';
   @Input() botaoAdicionar: boolean = false;
   @Input() textoBotaoAdicionar: string = 'Adicionar';
+  @Input() exibirAbas: boolean = true;
+  @Input() conteudoPadrao: 'atendimentos' | 'historico' = 'atendimentos'; 
   @Output() clickAdicionar = new EventEmitter<void>();
 
   abaSelecionada: 'atendimentos' | 'historico' = 'atendimentos';

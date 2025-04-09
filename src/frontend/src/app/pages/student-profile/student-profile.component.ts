@@ -1,5 +1,5 @@
 import { PopupTecnologiasComponent } from './../../components/popup-tec-assistiva/popup-tec-assistiva.component';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { RouterModule } from '@angular/router';
@@ -20,6 +20,11 @@ import { Profissional } from '../../models/professional';
 import { PopupProfissionaisComponent } from '../../components/popup-profissionais/popup-profissionais.component';
 import { MatDialog } from '@angular/material/dialog';
 
+import { TecnologiaAssistivaService } from '../../services/tecnologia-assistiva.service';
+import { TecnologiaAlunoService } from '../../services/tecnologia-aluno.service';
+import { TecnologiaAssistiva } from '../../models/tecnologiaAssistiva';
+import { AlunoTecnologiaAssistiva } from '../../models/tecnologiaAluno';
+
 
 interface Enrollment {
   course_name: string;
@@ -39,6 +44,13 @@ interface StudentProfile {
   date_of_birth: string;
   contact_phone: string;
   enrollments: Enrollment[];
+}
+
+interface ApiResponse<T> {
+  sucesso: boolean;
+  mensagem: string;
+  dados: T;
+  timestamp: string;
 }
 
 @Component({
@@ -64,12 +76,17 @@ export class StudentProfileComponent implements OnInit {
 
   atendimentosAtivos: (Atendimento & { profissionalNome?: string })[] = [];
   atendimentosHistorico: (Atendimento & { profissionalNome?: string })[] = [];
+  // Substitua as duas propriedades por uma única
+  tecnologiasAluno: TecnologiaAssistiva[] = [];
 
   constructor(
     private route: ActivatedRoute,
     private alunoService: AlunoService,
     private atendimentoService: AtendimentoService,
     private profissionalService: ProfissionalService,
+    private tecnologiaAssistivaService: TecnologiaAssistivaService,
+    private tecnologiaAlunoService: TecnologiaAlunoService,
+    private cdr: ChangeDetectorRef,
     private dialog: MatDialog
   ) {}
 
@@ -87,6 +104,7 @@ export class StudentProfileComponent implements OnInit {
         this.updateSections();
 
         this.buscarAtendimentosAluno(id);
+        this.buscarTecnologiasAluno(id);
       },
       error: (err) => {
         console.error('Erro ao buscar aluno:', err);
@@ -151,6 +169,51 @@ export class StudentProfileComponent implements OnInit {
       },
       error: (err) => {
         console.error('Erro ao buscar nomes dos profissionais:', err);
+      }
+    });
+  }
+
+  buscarTecnologiasAluno(alunoId: string) {
+    console.log('Iniciando busca de tecnologias para aluno ID:', alunoId);
+
+    this.tecnologiaAlunoService.listarPorAluno(alunoId).subscribe({
+      next: (response: ApiResponse<AlunoTecnologiaAssistiva[]> | AlunoTecnologiaAssistiva[]) => {
+        console.log('Associações recebidas:', response);
+
+        const associacoes = 'dados' in response ? response.dados : response;
+        console.log('Número de associações:', associacoes.length);
+
+        if (associacoes && associacoes.length > 0) {
+          const tecnologiaRequests = associacoes.map((associacao: AlunoTecnologiaAssistiva) => {
+            console.log('Solicitando tecnologia ID:', associacao.tecnologiaAssistivaId);
+            return this.tecnologiaAssistivaService.buscarPorId(associacao.tecnologiaAssistivaId);
+          });
+
+          forkJoin(tecnologiaRequests).subscribe({
+            next: (tecnologias: TecnologiaAssistiva[]) => {
+              console.log('Tecnologias recebidas completas:', tecnologias);
+
+              this.tecnologiasAluno = tecnologias.map((tecnologia: TecnologiaAssistiva) => {
+                const tech = 'dados' in tecnologia && tecnologia.dados ? tecnologia.dados : tecnologia;
+                console.log('Tecnologia processada:', tech);
+                return tech;
+              });
+
+              console.log('Array final de tecnologias:', this.tecnologiasAluno);
+              this.cdr.detectChanges();
+            },
+            error: (err) => {
+              console.error('Erro ao buscar detalhes das tecnologias:', err);
+            }
+          });
+        } else {
+          console.log('Nenhuma associação de tecnologia encontrada para este aluno');
+          this.tecnologiasAluno = [];
+          this.cdr.detectChanges();
+        }
+      },
+      error: (err) => {
+        console.error('Erro ao buscar tecnologias do aluno:', err);
       }
     });
   }

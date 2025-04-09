@@ -21,9 +21,8 @@ import { AlunoTecnologiaAssistiva } from '../../models/tecnologiaAluno';
     NgIf,
     NgFor,
     DropDownComponent,
-    ButtonComponent,
     MatIconModule
-  ],
+],
   standalone: true
 })
 export class PopupTecnologiasComponent implements OnInit {
