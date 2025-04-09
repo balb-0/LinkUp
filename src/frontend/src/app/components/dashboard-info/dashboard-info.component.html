@@ -1,0 +1,19 @@
+<div class="w-full max-w-[895px] rounded-lg border border-[#9FA2BA]">
+    <div class="px-6 py-6 pb-0">
+      <h3 class="text-4xl font-bold relative pb-1">
+        Informações Gerais
+        <span class="absolute bottom-0 left-0 w-[250px] h-[3px] bg-[#B20000]"></span>
+      </h3>
+    </div>
+    <div class="px-6 pt-6">
+      @for (item of infoData; track $index) {
+        <div class="flex justify-between py-4">
+          <span class="text-xl text-[#9FA2BA]">{{ item.label }}</span>
+          <span class="text-xl text-[#9FA2BA] font-medium">{{ item.value }}</span>
+        </div>
+        @if (isNotLastItem($index)) {
+          <hr class="border-t border-[#9FA2BA]">
+        }
+      }
+    </div>
+</div>

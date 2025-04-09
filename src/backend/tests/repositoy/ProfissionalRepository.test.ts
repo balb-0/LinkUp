@@ -1,7 +1,7 @@
-import { ProfissionalRepository } from '../src/models/Profissional';
-import { query } from '../src/utils/db';
+import { ProfissionalRepository } from '../../src/models/Profissional';
+import { query } from '../../src/utils/db';
 
-jest.mock('../src/utils/db', () => ({
+jest.mock('../../src/utils/db', () => ({
   query: jest.fn()
 }));
 

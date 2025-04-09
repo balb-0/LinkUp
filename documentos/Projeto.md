@@ -1304,64 +1304,82 @@ Este documento apresenta o relatório de cobertura de testes gerado pelo **Jest*
 
 <div align="center">
 
-| Diretório/Arquivo                  | % Stmts | % Branch | % Funcs | % Lines | Linhas não cobertas                                        |
-|------------------------------------|---------|----------|---------|---------|------------------------------------------------------------|
-| **Todos os arquivos**              | **67.34** | **29.74** | **62.74** | **66.31** | -                                                          |
-| **src/**                            | **81.25** | **16.66** | **55.55** | **80.95** | -                                                          |
-| ├── `server.ts`                    | 81.25   | 16.66    | 55.55   | 80.95   | 50-54,63,69,78,109-116                                      |
-| **src/classes/**                   | **87.5** | **0**     | **100**  | **87.5** | -                                                          |
-| ├── `EnvManager.ts`                | 87.5    | 0        | 100     | 87.5    | 13                                                         |
-| **src/controllers/**               | **84.28** | **68.75** | **93.93** | **83.59** | -                                                          |
-| ├── `AlunoController.ts`           | 76.92   | 50       | 100     | 76.92   | 11,31,41,51,61,71,81,91-92                                   |
-| ├── `AtendimentoController.ts`     | 100     | 100      | 100     | 100     | -                                                          |
-| ├── `ProfissionalController.ts`    | 76.78   | 60       | 83.33   | 76      | 33-34,73,86,103,112-124                                     |
-| ├── `UserController.ts`            | 100     | 100      | 100     | 100     | -                                                          |
-| **src/middleware/**                | **45.08** | **18.18** | **46.66** | **41.59** | -                                                          |
-| ├── `cache.ts`                     | 17.64   | 0        | 20      | 12.9    | 23-61,71-80                                                 |
-| ├── `errorHandler.ts`              | 100     | 50       | 100     | 100     | 17-34,45-46                                                 |
-| ├── `healthCheck.ts`               | 23.07   | 100      | 0       | 16.66   | 9-25                                                        |
-| ├── `limiter.ts`                   | 100     | 100      | 100     | 100     | -                                                          |
-| ├── `logger.ts`                    | 92.85   | 80       | 100     | 92.3    | 19                                                         |
-| ├── `validator.ts`                 | 34.88   | 8.51     | 50      | 31.7    | 26-75,101-102,107-108,112-113                               |
-| **src/models/**                    | **70.27** | **34.34** | **82.35** | **70.34** | -                                                          |
-| ├── `Atendimento.ts`               | 75      | 42.59    | 100     | 74.64   | 63,68-71,89,124,147,154-155,158-159,166-167,170-171,175,186,192 |
-| ├── `Profissional.ts`              | 65.78   | 24.44    | 70      | 66.21   | 60,65-68,103-135,183,196-197,201-202,206-207,212,231-234    |
-| **src/routes/**                    | **63.15** | **0**     | **0**    | **63.15** | -                                                          |
-| ├── `atendimentoRoutes.ts`         | 100     | 100      | 100     | 100     | -                                                          |
-| ├── `authRoutes.ts`                | 100     | 100      | 100     | 100     | -                                                          |
-| ├── `pagesRoutes.ts`               | 50      | 100      | 0       | 50      | 19-23,33-37                                                 |
-| ├── `profissionais.ts`             | 50      | 0        | 0       | 50      | 14-25,83-84,114-116,129-131                                  |
-| **src/services/**                  | **26.31** | **100**   | **10**   | **26.31** | -                                                          |
-| ├── `AlunoService.ts`              | 26.31   | 100      | 10      | 26.31   | 10-61                                                       |
-| **src/utils/**                     | **63.88** | **0**     | **40**   | **61.29** | -                                                          |
-| ├── `asyncHandler.ts`              | 100     | 100      | 100     | 100     | -                                                          |
-| ├── `db.ts`                        | 72      | 100      | 50      | 71.42   | 13,42,53-57                                                 |
-| ├── `responseHandler.ts`           | 14.28   | 0        | 0       | 14.28   | 31-84                                                       |
+| Diretório/Arquivo                            | % Stmts | % Branch | % Funcs | % Lines | Linhas não cobertas                                            |
+|---------------------------------------------|---------|----------|---------|---------|-----------------------------------------------------------------|
+| **Todos os arquivos**                        | **81.13** | **38.15** | **91.83** | **80.4** | -                                                               |
+| **controllers/**                             | **86.48** | **70.83** | **93.22** | **85.78** | -                                                               |
+| ├── `AlunoController.ts`                     | 84.61   | 50       | 100     | 84.61   | 51,61,71,81,91-92                                               |
+| ├── `AlunoTecnologiaAssistivaController.ts`  | 100     | 100      | 100     | 100     | -                                                               |
+| ├── `AtendimentoController.ts`               | 80.48   | 75       | 83.33   | 80      | 46-59                                                           |
+| ├── `ProfissionalController.ts`              | 76.78   | 60       | 83.33   | 76      | 34-35,74,87,104,113-125                                         |
+| ├── `TecnologiaAssistivaController.ts`       | 93.47   | 83.33    | 100     | 92.68   | 51,64,80                                                        |
+| **models/**                                  | **76.09** | **32.03** | **89.18** | **75.81** | -                                                               |
+| ├── `AlunoTecnologiaAssistiva.ts`            | 89.28   | 72.72    | 100     | 88.67   | 47,54,71,102,127,152                                            |
+| ├── `Atendimento.ts`                         | 72.6    | 31.25    | 87.5    | 72.22   | 58,63-66,84,118,147-148,151-152,159-160,164,175,181,211-224     |
+| ├── `Profissional.ts`                        | 65.78   | 24.44    | 70      | 66.21   | 60,65-68,103-135,183,196-197,201-202,206-207,212,231-234       |
+| ├── `tecnologiaAssistiva.ts`                 | 82.6    | 13.79    | 100     | 82.22   | 40,45-48,114,130-133                                            |
+| **utils/**                                   | **100**  | **100**   | **100**  | **100**  | -                                                               |
+| ├── `asyncHandler.ts`                        | 100     | 100      | 100     | 100     | -                                                               |
 
 
 <sup>Fonte: Relatório gerado automaticamente pelo Jest</sup>
 </div>
 
-#### Análise
+#### Análise de Cobertura de Testes
 
-- **Controllers:** O diretório `controllers/` apresenta uma cobertura excelente de **84.28%** para instruções e **68.75%** para branches. Embora a cobertura de funções seja alta (93.93%), os arquivos `AlunoController.ts` e `ProfissionalController.ts` têm algumas linhas não cobertas, principalmente em locais que envolvem lógica de fluxo condicional, como os intervalos **11, 31, 41, 51, 61, 71, 81, 91-92** no `AlunoController.ts` e **33-34, 73, 86, 103, 112-124** no `ProfissionalController.ts`. Esses pontos podem precisar de mais testes de integração para garantir que diferentes cenários sejam cobertos.
+A cobertura geral dos testes está em um patamar **razoável**, com **81.13%** de cobertura de instruções. No entanto, alguns diretórios e arquivos críticos ainda apresentam **lacunas importantes** que devem ser endereçadas para garantir a confiabilidade do sistema.
 
-- **Models:** O diretório `models/` tem uma cobertura de **70.27%** para instruções e **34.34%** para branches. O arquivo `Atendimento.ts` apresenta algumas lacunas, especialmente em trechos que envolvem validação e manipulação de dados do repositório. Já o arquivo `Profissional.ts` tem uma cobertura um pouco mais baixa, com várias linhas não cobertas, principalmente nas linhas **60, 65-68, 103-135, 183, 196-197**. O foco em validar e testar as interações com o banco de dados pode ser uma área a ser melhorada.
+- **Controllers:**
 
-- **Middleware:** O diretório `middleware/` possui uma cobertura de **45.08%** para instruções e **18.18%** para branches, o que indica que grande parte do middleware, como o `cache.ts` e o `responseHandler.ts`, ainda não foi testada adequadamente. Especificamente, o arquivo `cache.ts` tem uma grande lacuna nas linhas **23-61, 71-80**, enquanto `responseHandler.ts` não tem cobertura em nenhum caso. Melhorar a cobertura de testes nestes pontos é crucial para garantir que os fluxos de erro e as respostas sejam bem validados.
+   - **Cobertura geral**: `86.48%` de instruções | `70.83%` de branches.
+   - **Destaques positivos**:
+      - Arquivos como `AlunoTecnologiaAssistivaController.ts` e `UserController.ts` possuem **100%** de cobertura.
+   - **Pontos de atenção**:
+      - `AlunoController.ts`: Linhas **11, 31, 41, 51, 61, 71, 81, 91-92** não estão cobertas — focar em testar fluxos condicionais e retornos de erro.
+      - `ProfissionalController.ts`: Linhas **33-34, 73, 86, 103, 112-124** indicam necessidade de mais testes em cenários alternativos.
+<br>
 
-- **Services:** O diretório `services/` tem uma cobertura muito baixa, com **26.31%** de instruções e **100%** de branches (a cobertura de branches em **AlunoService.ts** é total, mas as instruções não são). Isso sugere que existem poucos testes para as interações de serviços importantes, como a lógica de negócios dentro de `AlunoService.ts`. Esse é um ponto crítico para garantir que as funcionalidades principais do sistema sejam cobertas e bem testadas.
+- **Models:**
 
-- **Utils:** O diretório `utils/` apresenta **63.88%** de cobertura para instruções e **0%** para branches. O arquivo `db.ts` está razoavelmente coberto, mas o `responseHandler.ts` não tem cobertura significativa, com intervalos **31-84** sem testes. Seria importante adicionar testes unitários para garantir que os utilitários, como os manipuladores de resposta e funções de banco de dados, estejam funcionando corretamente.
+   - **Cobertura geral**: `70.27%` de instruções | `34.34%` de branches.
+   - **Pontos de atenção**:
+      - `Atendimento.ts`: Lacunas em validações e manipulação de dados do repositório.
+      - `Profissional.ts`: Diversas linhas sem cobertura, especialmente **60, 65-68, 103-135, 183, 196-197** — sugerido revisar métodos com lógica interna ou interações com o banco de dados.
+<br>
+
+- **Middleware:**
+   - **Cobertura geral**: `45.08%` de instruções | `18.18%` de branches.
+   - **Pontos de atenção**:
+      - `cache.ts`: Linhas **23-61, 71-80** sem cobertura — importante testar lógica de cache e cenários com e sem dados armazenados.
+      - `responseHandler.ts`: Nenhuma linha coberta — essencial validar manipulação de respostas e tratamento de erros.
+
+<br>
+
+- **Recomendações Gerais:**
+
+   - Priorizar a cobertura de **branches e cenários alternativos**, especialmente onde há lógica condicional.
+   - Adicionar testes específicos para **middleware e services**, que são áreas críticas com baixa cobertura.
+   - Revisar arquivos com alta responsabilidade de negócio (`Profissional.ts`, `AlunoService.ts`) e garantir que todos os caminhos possíveis sejam testados.
+
 
 #### 8.3.1.2 Conclusão e Próximos Passos
 
-- A cobertura geral ainda é **boa**, mas pode ser significativamente melhorada, especialmente nas áreas de **middleware** e **services**. A cobertura de branches e instruções precisa ser aprimorada, principalmente nos arquivos que envolvem lógicas complexas e interações com bancos de dados.
-- **Ações recomendadas:**
-  - **Adicionar testes unitários e de integração** para os arquivos `cache.ts`, `responseHandler.ts` e `AlunoService.ts`.
-  - **Focar em aumentar a cobertura de branches** no `Atendimento.ts`, `Profissional.ts` e `AlunoController.ts`, abordando cenários alternativos e exceções.
-  - **Refatorar o código conforme necessário** para facilitar os testes, garantindo que o código seja modular e fácil de testar.
-  - Manter a alta cobertura de funções (que já é excelente) ao adicionar novas funcionalidades e refatorações, garantindo que todos os métodos sejam adequadamente testados.
+- **Próximos Passos:** A cobertura geral do projeto é **boa** (acima de 80%), especialmente na cobertura de funções, que está excelente (**91.83%**). No entanto, há **oportunidades claras de melhoria**, principalmente na cobertura de **branches (38.15%)** e em arquivos com lógica condicional ou integração com banco de dados.
+<br>
+
+- **Ações Recomendadas:**
+
+   - **Adicionar testes unitários e de integração** para os seguintes arquivos:
+      - `cache.ts` e `responseHandler.ts` (middleware)
+      - `AlunoService.ts` (services)
+
+   - **Focar na cobertura de branches e caminhos alternativos**, especialmente nos seguintes arquivos:
+      - `Atendimento.ts` e `Profissional.ts` (models)
+      - `AlunoController.ts` (controllers)
+
+   - **Refatorar trechos com baixa testabilidade**, separando responsabilidades e extraindo lógicas complexas para funções menores, facilitando a criação de testes.
+
+   - **Manter a alta cobertura de funções**: garantir que novas funcionalidades e alterações no código continuem com testes adequados para todos os métodos implementados.
 
 
 #### 8.3.1.3 Execução dos Testes
@@ -2121,15 +2139,35 @@ Participantes:
 
 # 10. Procedimentos de Implantação
 
-_conteúdo_
+&nbsp;&nbsp;&nbsp;&nbsp; Este capítulo descreve as etapas executadas para disponibilizar a solução em ambiente de uso. A implantação foi segmentada em duas partes: configuração do banco de dados e ativação do protótipo em nuvem. Cada etapa visa garantir o funcionamento da aplicação conforme os requisitos definidos.
+
+&nbsp;&nbsp;&nbsp;&nbsp; A arquitetura já foi apresentada anteriormente por meio do [diagrama de implantação](#6-mapeamento-técnico-de-infraestrutura-e-implantação). Neste ponto, o foco é relatar os procedimentos necessários para colocar a aplicação em operação, considerando os serviços utilizados, os acessos habilitados e a comunicação entre os componentes.
 
 ## 10.1 Implantação e Configuração do Banco de Dados
 
-_conteúdo_
+&nbsp;&nbsp;&nbsp;&nbsp; A implantação do banco de dados foi realizada utilizando o serviço Amazon RDS com o mecanismo MySQL. A instância foi provisionada em uma sub-rede privada da VPC, de forma que apenas componentes internos da aplicação possam estabelecer conexão direta com o banco, via TCP/IP.
+
+&nbsp;&nbsp;&nbsp;&nbsp; A configuração inicial incluiu a definição do schema, criação de tabelas e tipos de dados necessários, com base no modelo relacional previamente definido. Scripts SQL foram utilizados para automatizar esse processo e garantir a consistência da estrutura entre ambientes. Os dados de acesso ao banco foram armazenados de forma segura em variáveis de ambiente, não sendo expostos diretamente no código-fonte.
+
+&nbsp;&nbsp;&nbsp;&nbsp; O acesso à instância é restrito por grupos de segurança, permitindo conexões apenas da instância EC2 que executa a API interna. O tráfego entre a API e o banco ocorre exclusivamente dentro da VPC, com possibilidade de criptografia em trânsito utilizando SSL.
+
+&nbsp;&nbsp;&nbsp;&nbsp; O banco foi configurado com backups automáticos diários, com retenção de até 35 dias, e replicação de leitura opcional para escalar operações de consulta, se necessário. Todas as alterações feitas por meio da API são registradas em arquivos de log para fins de auditoria e rastreamento.
+
+&nbsp;&nbsp;&nbsp;&nbsp; A comunicação entre a API e o banco foi validada por meio de testes de conectividade e inserção de registros de exemplo, assegurando o funcionamento dos principais fluxos da aplicação antes da ativação completa do protótipo.
+
 
 ## 10.2 Implantação do Protótipo para uso por equipe de desenvolvimento
 
-_conteúdo_
+&nbsp;&nbsp;&nbsp;&nbsp; O protótipo foi implantado em ambiente de nuvem com infraestrutura baseada em instâncias EC2 da AWS. A aplicação foi dividida em duas camadas principais: interface (front-end) e lógica de negócio (back-end), executadas em instâncias separadas para facilitar a manutenção, testes e controle de acesso.
+
+&nbsp;&nbsp;&nbsp;&nbsp; A instância do front-end foi configurada em uma sub-rede pública da VPC, permitindo acesso via navegador por meio do protocolo HTTPS. A instância do back-end, responsável pela API interna, foi alocada em uma sub-rede privada, comunicando-se com o banco de dados e com a API externa. A comunicação entre os componentes ocorre por meio de rede privada, com controle de tráfego definido por grupos de segurança.
+
+&nbsp;&nbsp;&nbsp;&nbsp; O protótipo foi disponibilizado à equipe de desenvolvimento com dados de acesso restrito, utilizando autenticação via AWS Cognito. Cada usuário recebe um token JWT válido para acesso aos recursos da aplicação conforme o perfil atribuído.
+
+&nbsp;&nbsp;&nbsp;&nbsp; A infraestrutura de monitoramento foi ativada com o AWS CloudWatch para registrar o consumo de recursos, falhas de execução e comportamento do sistema durante os testes. Além disso, todos os serviços foram organizados em um ambiente replicável por meio de scripts de provisionamento, garantindo consistência em futuras reinstalações.
+
+&nbsp;&nbsp;&nbsp;&nbsp; A disponibilização do protótipo permite que a equipe de desenvolvimento execute testes de interface, integração e autenticação, além de validar os fluxos de uso da aplicação conforme os requisitos levantados no início do projeto.
+
 
 # Referências
 

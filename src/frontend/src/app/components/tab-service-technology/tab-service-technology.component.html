@@ -1,38 +1,59 @@
-<!-- atendimentos-profissionais.component.html -->
-<div class="w-full border border-cinzaEscuro rounded-lg bg-cinza p-5">
+<div class="w-full border border-cinzaEscuro rounded-lg bg-cinza p-5" role="region" aria-label="Área de atendimentos e histórico">
   <h1 class="text-xl font-bold text-preto mb-2">{{ titulo }}</h1>
+  <hr class="border-t-2 border-preto w-full mb-4" />
 
-  <!-- Linha divisória entre título e botões -->
-  <hr class="border-t-2 border-preto w-full mb-4">
-
-  <div class="flex justify-between items-center mb-3">
+  <div class="flex justify-between items-center mb-3" role="tablist" aria-label="Seleção de abas entre atendimentos e histórico">
     <div class="flex">
       <button
+        role="tab"
+        [attr.aria-selected]="abaSelecionada === 'atendimentos'"
+        aria-controls="painel-atendimentos"
+        id="aba-atendimentos"
         [ngClass]="{'bg-[#7E0000] text-[#F6F4F4]': abaSelecionada === 'atendimentos', 'bg-[#B9B9B9] text-[#333333]': abaSelecionada !== 'atendimentos'}"
         class="font-medium w-[154px] h-[34px] rounded mr-[15px]"
-        (click)="selecionarAba('atendimentos')">
+        (click)="selecionarAba('atendimentos')"
+      >
         {{ textoAtendimentos }}
       </button>
+
       <button
+        role="tab"
+        [attr.aria-selected]="abaSelecionada === 'historico'"
+        aria-controls="painel-historico"
+        id="aba-historico"
         [ngClass]="{'bg-[#7E0000] text-[#F6F4F4]': abaSelecionada === 'historico', 'bg-[#B9B9B9] text-[#333333]': abaSelecionada !== 'historico'}"
         class="font-medium w-[154px] h-[34px] rounded"
-        (click)="selecionarAba('historico')">
+        (click)="selecionarAba('historico')"
+      >
         {{ textoHistorico }}
       </button>
     </div>
+    <app-add-button
+      *ngIf="botaoAdicionar"
+      [text]="textoBotaoAdicionar"
+      aria-label="Adicionar novo item"
+    ></app-add-button>
 
-    <app-add-button *ngIf="botaoAdicionar" [text]="textoBotaoAdicionar" (click)="onClickAdicionar()"></app-add-button>
   </div>
 
-  <!-- Conteúdo das abas -->
   <div>
-    <!-- Conteúdo da aba Atendimentos -->
-    <div *ngIf="abaSelecionada === 'atendimentos'" class="py-2 text-preto">
+    <div
+      *ngIf="abaSelecionada === 'atendimentos'"
+      id="painel-atendimentos"
+      role="tabpanel"
+      aria-labelledby="aba-atendimentos"
+      class="py-2 text-preto"
+    >
       <ng-content select="[conteudoAtendimentos]"></ng-content>
     </div>
 
-    <!-- Conteúdo da aba Histórico -->
-    <div *ngIf="abaSelecionada === 'historico'" class="py-2 text-preto">
+    <div
+      *ngIf="abaSelecionada === 'historico'"
+      id="painel-historico"
+      role="tabpanel"
+      aria-labelledby="aba-historico"
+      class="py-2 text-preto"
+    >
       <ng-content select="[conteudoHistorico]"></ng-content>
     </div>
   </div>

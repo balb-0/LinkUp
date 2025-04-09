@@ -1,10 +1,17 @@
-<form [formGroup]="profissionalForm" (ngSubmit)="cadastrarProfissional()">  
-  <fieldset class="flex justify-center items-center flex-col gap-[10px]">
-    <legend class="text-center text-[25px] font-bold mb-[20px]">Cadastrar Profissional</legend>
+<form [formGroup]="profissionalForm" (ngSubmit)="cadastrarProfissional()">
+  <fieldset aria-labelledby="cadastroProfissionalLegend" class="flex justify-center items-center flex-col gap-[10px]">
+    <legend id="cadastroProfissionalLegend" accesskey="1" class="text-center text-[25px] font-bold mb-[20px]">
+      Cadastrar Profissional
+    </legend>
 
     <div>
       <label class="mb-4 block font-medium" for="nome">Nome Completo</label>
-      <input id="nome" type="text" formControlName="nome"
+      <input
+        id="nome"
+        type="text"
+        formControlName="nome"
+        aria-required="true"
+        aria-label="Nome completo"
         class="w-[460px] h-[60px] p-2 rounded-md mb-4 bg-branco"
         [ngClass]="{'border border-red-500': campoInvalido('nome')}">
       @if (campoInvalido('nome')) {
@@ -14,7 +21,12 @@
 
     <div>
       <label class="mb-4 block font-medium" for="email">E-mail</label>
-      <input id="email" type="email" formControlName="email"
+      <input
+        id="email"
+        type="email"
+        formControlName="email"
+        aria-required="true"
+        aria-label="Endereço de e-mail"
         class="w-[460px] h-[60px] p-2 rounded-md mb-4 bg-branco"
         [ngClass]="{'border border-red-500': campoInvalido('email')}">
       @if (campoInvalido('email')) {
@@ -24,7 +36,12 @@
 
     <div>
       <label class="mb-4 block font-medium" for="ocupacao">Ocupação</label>
-      <input id="ocupacao" type="text" formControlName="ocupacao"
+      <input
+        id="ocupacao"
+        type="text"
+        formControlName="ocupacao"
+        aria-required="true"
+        aria-label="Ocupação profissional"
         class="w-[460px] h-[60px] p-2 rounded-md mb-6 bg-branco"
         [ngClass]="{'border border-red-500': campoInvalido('ocupacao')}">
       @if (campoInvalido('ocupacao')) {
@@ -32,9 +49,12 @@
       }
     </div>
 
-    <button type="submit" class="font-poppins w-[220px] h-[50px] text-[24px] bg-verde text-white py-2 rounded-md">
+    <button
+      type="submit"
+      class="font-poppins w-[220px] h-[50px] text-[24px] bg-verde text-white py-2 rounded-md"
+      [attr.aria-label]="isSubmitting ? 'Enviando cadastro de profissional' : 'Cadastrar profissional'"
+    >
       {{ isSubmitting ? 'Enviando...' : 'Cadastrar' }}
     </button>
-
   </fieldset>
 </form>

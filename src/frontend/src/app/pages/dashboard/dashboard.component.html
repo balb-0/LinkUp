@@ -1,1 +1,14 @@
-<p>dashboard works!</p>
+<main class="flex flex-col lg:flex-row gap-8 p-4 justify-center items-center">
+    <div class="w-full items-center lg:w-[895px]">
+      <app-dashboard-info [infoData]="dashboardInfo"></app-dashboard-info>
+    </div>
+    <div class="w-full items-center lg:w-[385px]">
+      <app-radial-gauge
+        [value]="percentualAtendimento"
+        [opcoes]="opcoesDropdown"
+        [selecionado]="selecionada"
+        (selecaoChange)="onSelecionado($event)">
+      </app-radial-gauge>
+    </div>
+</main>
+  

@@ -1,3 +1,4 @@
+import { PopupTecnologiasComponent } from './../../components/popup-tec-assistiva/popup-tec-assistiva.component';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
@@ -227,5 +228,19 @@ export class StudentProfileComponent implements OnInit {
     console.log('Popup Profissionais fechado');
   });
 }
+
+  abrirPopupTecnologias() {
+    if (!this.student) return;
+
+    const dialogRef = this.dialog.open(PopupTecnologiasComponent, {
+      data: {
+        alunoId: this.student.id
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Popup Tecnologias fechado');
+    });
+  }
 
 }

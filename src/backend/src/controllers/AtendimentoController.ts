@@ -3,6 +3,7 @@ import { AtendimentoRepository } from '../models/Atendimento';
 import { ResponseHandler } from '../utils/responseHandler'; 
 import { asyncHandler } from '../utils/asyncHandler'; 
 import AlunoService from '../services/AlunoService';
+import { logChange } from '../utils/logger';
 
 
 export class AtendimentoController {
@@ -10,6 +11,12 @@ export class AtendimentoController {
         console.log('Dados recebidos para criar atendimento:', req.body);
 
         const atendimento = await AtendimentoRepository.criar(req.body);
+
+        await logChange({
+            tabela: "atendimentos",
+            operacao: "CREATE",
+            valores_novos: atendimento,
+        });
         return ResponseHandler.criado(res, atendimento);
     });
 
@@ -31,6 +38,14 @@ export class AtendimentoController {
         if (!atendimentoAtualizado) {
             return ResponseHandler.naoEncontrado(res);
         }
+
+        await logChange({
+            tabela: "atendimentos",
+            operacao: "UPDATE",
+            valores_anteriores: atendimentoAtualizado,
+            valores_novos: req.body,
+        });
+
         return ResponseHandler.sucesso(res, atendimentoAtualizado);
     });
 
@@ -39,6 +54,11 @@ export class AtendimentoController {
         if (!removido) {
             return ResponseHandler.naoEncontrado(res);
         }
+        await logChange({
+            tabela: "atendimentos",
+            operacao: "DELETE",
+            valores_anteriores: removido,
+        });
         return ResponseHandler.sucesso(res, undefined, 'Atendimento removido com sucesso', 204);
     });
 

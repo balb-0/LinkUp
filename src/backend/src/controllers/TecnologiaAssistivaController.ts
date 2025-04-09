@@ -3,6 +3,7 @@ import { TecnologiaAssistivaRepository, ITecnologiaAssistiva } from "../models/t
 import { ResponseHandler } from "../utils/responseHandler";
 import { asyncHandler } from "../utils/asyncHandler";
 import { createError } from "../middleware/errorHandler";
+import { logChange } from "../utils/logger";
 
 export class TecnologiaAssistivaController {
 
@@ -46,6 +47,12 @@ export class TecnologiaAssistivaController {
     
     try {
       const novaTecnologia = await TecnologiaAssistivaRepository.criar(dadosTecnologia);
+
+      await logChange({
+        tabela: "tecnologia_assistiva",
+        operacao: "CREATE",
+        valores_novos: novaTecnologia,
+      });
       return ResponseHandler.criado(res, novaTecnologia, "Tecnologia assistiva criada com sucesso");
     } catch (error) {
       throw error;
@@ -65,12 +72,20 @@ export class TecnologiaAssistivaController {
     }
 
     try {
+      const tecnologiaAtual = await TecnologiaAssistivaRepository.buscarPorId(id);
       const tecnologiaAtualizada = await TecnologiaAssistivaRepository.atualizar(id, dadosAtualizados);
       
       if (!tecnologiaAtualizada) {
         return ResponseHandler.naoEncontrado(res, "Tecnologia assistiva não encontrada");
       }
       
+      await logChange({
+        tabela: "tecnologia_assistiva",
+        operacao: "UPDATE",
+        valores_novos: tecnologiaAtualizada,
+        valores_anteriores: tecnologiaAtual
+      });
+
       return ResponseHandler.sucesso(
         res, 
         tecnologiaAtualizada, 
@@ -92,12 +107,19 @@ export class TecnologiaAssistivaController {
       throw createError("ID da tecnologia assistiva não fornecido", 400);
     }
 
+    const antes = await TecnologiaAssistivaRepository.buscarPorId(id);
+
     const removido = await TecnologiaAssistivaRepository.remover(id);
     
     if (!removido) {
       return ResponseHandler.naoEncontrado(res, "Tecnologia assistiva não encontrada");
     }
 
+    await logChange({
+      tabela: "tecnologia_assistiva",
+      operacao: "DELETE",
+      valores_anteriores: antes
+  })
     return ResponseHandler.sucesso(res, null, "Tecnologia assistiva removida com sucesso");
   });
 }

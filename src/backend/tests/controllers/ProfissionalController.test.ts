@@ -1,13 +1,13 @@
 import { Request, Response, NextFunction } from 'express';
-import { ProfissionalController } from '../src/controllers/ProfissionalController';
-import { ProfissionalRepository, IProfissional, Profissional } from '../src/models/Profissional';
-import { ResponseHandler } from '../src/utils/responseHandler';
-import { createError } from '../src/middleware/errorHandler';
+import { ProfissionalController } from '../../src/controllers/ProfissionalController';
+import { ProfissionalRepository, IProfissional, Profissional } from '../../src/models/Profissional';
+import { ResponseHandler } from '../../src/utils/responseHandler';
+import { createError } from '../../src/middleware/errorHandler';
 
 // Mock do ProfissionalRepository
-jest.mock('../src/models/Profissional');
-jest.mock('../src/utils/responseHandler');
-jest.mock('../src/middleware/errorHandler');
+jest.mock('../../src/models/Profissional');
+jest.mock('../../src/utils/responseHandler');
+jest.mock('../../src/middleware/errorHandler');
 
 describe('ProfissionalController', () => {
   let mockRequest: Partial<Request>;
