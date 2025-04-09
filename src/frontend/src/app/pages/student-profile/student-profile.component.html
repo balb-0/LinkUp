@@ -67,22 +67,33 @@
       </div>
     </app-tab-service-technology>
     <app-tab-service-technology
-    [botaoAdicionar]="true"
-    [titulo]="'Tecnologias Assistivas'"
-    [textoAtendimentos]="'Em uso'"
-    [textoHistorico]="'Anteriores'"
-    (clickAdicionar)="abrirPopupTecnologias()"
-  >
-    <div conteudoAtendimentos class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div class="text-center text-gray-500 mt-4">
-        Não há tecnologias ativas.
+      [botaoAdicionar]="true"
+      [titulo]="'Tecnologias Assistivas'"
+      [textoAtendimentos]="'Em uso'"
+      [textoHistorico]="'Anteriores'"
+      (clickAdicionar)="abrirPopupTecnologias()"
+    >
+      <div conteudoAtendimentos class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        @if (tecnologiasAluno.length === 0) {
+          <div class="text-center text-gray-500 mt-4">
+            Não há tecnologias ativas.
+          </div>
+        }
+        @for (tecnologia of tecnologiasAluno; track tecnologia.id) {
+          <div class="mt-2 flex flex-row">
+            <app-service-technology-card
+              [name]="tecnologia.nome || 'Carregando...'"
+              [title]="'Tecnologia Assistiva'"
+              [showDateTime]="false"
+            ></app-service-technology-card>
+          </div>
+        }
       </div>
-    </div>
-    <div conteudoHistorico class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div class="text-center text-gray-500 mt-4">
-        Não há tecnologias anteriores.
+      <div conteudoHistorico class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="text-center text-gray-500 mt-4">
+          Não há tecnologias anteriores.
+        </div>
       </div>
-    </div>
-  </app-tab-service-technology>
+    </app-tab-service-technology>
   </div>
 }
