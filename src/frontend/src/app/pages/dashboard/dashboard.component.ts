@@ -13,7 +13,7 @@ import axios from 'axios';
 export class DashboardComponent implements OnInit {
   dashboardInfo = [
     { label: 'Total de Alunos', value: '0' },
-    { label: 'Alunos Atendidos', value: '0' },
+    { label: 'Alunos Atendidos (em todas unidades)', value: '0' },
   ];
   
   percentualAtendimento = 0;
@@ -48,7 +48,7 @@ export class DashboardComponent implements OnInit {
 
       this.dashboardInfo = [
         { label: 'Total de Alunos', value: total.toString() },
-        { label: 'Alunos Atendidos', value: atendidos.toString() },
+        { label: 'Alunos Atendidos (em todas unidades)', value: atendidos.toString() },
       ];
     } catch (e) {
       console.error('Erro ao buscar dados de atendimento', e);
