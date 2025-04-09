@@ -63,7 +63,7 @@ export class ProfessionalRegistrationComponent implements OnInit {
       next: (response: any) => {
         console.log('Profissional cadastrado com sucesso', response);
         // Limpar formulário após sucesso
-        this.snackBarService.showMessage('Profissional cadastrado com sucesso!', false, 'custom-snackbar');
+        this.snackBarService.showMessage('Profissional cadastrado com sucesso!', false, 'custom-snackbar', 'bottom');
         this.profissionalForm.reset();
         this.isSubmitting = false;
 
@@ -71,23 +71,23 @@ export class ProfessionalRegistrationComponent implements OnInit {
         this.profissionalService.limparCache().subscribe({
           next: () => {
             console.log('Cache limpo com sucesso');
-            
-            // Redirecionar para a própria tela para forçar recarregamento completo 
+
+            // Redirecionar para a própria tela para forçar recarregamento completo
             // Isso garante que a página será renderizada do zero
             // Indicamos um timestamp como query param para evitar cache do navegador
             this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-              this.router.navigate(['/professionals'], { 
-                queryParams: { refresh: new Date().getTime() } 
+              this.router.navigate(['/professionals'], {
+                queryParams: { refresh: new Date().getTime() }
               });
             });
           },
           error: (error) => {
             console.error('Erro ao limpar cache:', error);
-            
+
             // Mesmo se falhar o limpamento de cache, ainda forçamos navegação
             this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-              this.router.navigate(['/professionals'], { 
-                queryParams: { refresh: new Date().getTime() } 
+              this.router.navigate(['/professionals'], {
+                queryParams: { refresh: new Date().getTime() }
               });
             });
           }

@@ -5,13 +5,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { forkJoin, of, catchError } from 'rxjs';
 
 import { DropDownComponent } from '../drop-down/drop-down.component';
-import { ButtonComponent } from '../button/button.component';
+import { SnackBarService } from '../../services/snack-bar.service';
 
 import { TecnologiaAssistivaService } from '../../services/tecnologia-assistiva.service';
 import { TecnologiaAlunoService } from '../../services/tecnologia-aluno.service';
-
 import { TecnologiaAssistiva } from '../../models/tecnologiaAssistiva';
-import { AlunoTecnologiaAssistiva } from '../../models/tecnologiaAluno';
 
 @Component({
   selector: 'app-popup-tec-assistiva',
@@ -21,8 +19,8 @@ import { AlunoTecnologiaAssistiva } from '../../models/tecnologiaAluno';
     NgIf,
     NgFor,
     DropDownComponent,
-    MatIconModule
-],
+    MatIconModule,
+  ],
   standalone: true
 })
 export class PopupTecnologiasComponent implements OnInit {
@@ -37,6 +35,7 @@ export class PopupTecnologiasComponent implements OnInit {
     private dialogRef: MatDialogRef<PopupTecnologiasComponent>,
     private tecnologiaService: TecnologiaAssistivaService,
     private tecnologiaAlunoService: TecnologiaAlunoService,
+    private snackBarService: SnackBarService, 
     @Inject(MAT_DIALOG_DATA) public data: { alunoId: string }
   ) {
     this.alunoId = data.alunoId;
@@ -124,7 +123,7 @@ export class PopupTecnologiasComponent implements OnInit {
 
   confirm(): void {
     if (this.tecnologiasSelecionadas.length === 0) {
-      alert('Selecione pelo menos uma tecnologia assistiva antes de confirmar.');
+      this.snackBarService.showMessage('Selecione pelo menos uma tecnologia assistiva antes de confirmar.', true);
       return;
     }
 
@@ -163,7 +162,7 @@ export class PopupTecnologiasComponent implements OnInit {
     // Se não houver associações válidas
     if (associacoes.length === 0) {
       this.processando = false;
-      alert('Nenhuma tecnologia válida para associar.');
+      this.snackBarService.showMessage('Nenhuma tecnologia válida para associar.', true);
       return;
     }
 
@@ -176,11 +175,11 @@ export class PopupTecnologiasComponent implements OnInit {
         const total = this.tecnologiasSelecionadas.length;
 
         if (sucessos === 0) {
-          alert('Erro ao associar as tecnologias assistivas. Verifique os dados e tente novamente.');
+          this.snackBarService.showMessage('Erro ao associar as tecnologias assistivas. Verifique os dados e tente novamente.', true);
         } else if (sucessos < total) {
-          alert(`${sucessos} de ${total} tecnologias foram associadas com sucesso.`);
+          this.snackBarService.showMessage(`${sucessos} de ${total} tecnologias foram associadas com sucesso.`, false);
         } else {
-          alert('Todas as tecnologias assistivas foram associadas com sucesso!');
+          this.snackBarService.showMessage('Todas as tecnologias assistivas foram associadas com sucesso!', false);
         }
 
         this.processando = false;
@@ -188,7 +187,7 @@ export class PopupTecnologiasComponent implements OnInit {
       },
       error: (err) => {
         console.error('Erro geral ao processar associações:', err);
-        alert('Erro ao associar tecnologias assistivas. Verifique os dados e tente novamente.');
+        this.snackBarService.showMessage('Erro ao associar tecnologias assistivas. Verifique os dados e tente novamente.', true);
         this.processando = false;
       }
     });
