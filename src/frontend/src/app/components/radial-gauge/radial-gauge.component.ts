@@ -21,8 +21,8 @@ export class RadialGaugeComponent implements OnChanges {
     chart: {
       type: 'radialBar',
       offsetY: -20,
-      width: 385,
-      height: 300
+      width: 586,
+      height: 639
     } as ApexChart,
     plotOptions: {
       radialBar: {

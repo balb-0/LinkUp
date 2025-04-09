@@ -1,14 +1,15 @@
-<main class="flex flex-col lg:flex-row gap-8 p-4 justify-center items-center">
-    <div class="w-full items-center lg:w-[895px]">
-      <app-dashboard-info [infoData]="dashboardInfo"></app-dashboard-info>
-    </div>
-    <div class="w-full items-center lg:w-[385px]">
+<main class="!justify-center flex flex-col !items-center">
+  <p class="!mb-6 !mt-2 text-gray-600 text-center">Clique em uma instituição para visualizar dados.</p>
+    <div class="!justify-center flex flex-col w-full items-center lg:w-[385px] !mb-6">
       <app-radial-gauge
         [value]="percentualAtendimento"
         [opcoes]="opcoesDropdown"
         [selecionado]="selecionada"
         (selecaoChange)="onSelecionado($event)">
       </app-radial-gauge>
+    </div>
+    <div class="!justify-center flex-col w-full items-center w-full lg:w-[895px]">
+      <app-dashboard-info [infoData]="dashboardInfo"></app-dashboard-info>
     </div>
 </main>
   
