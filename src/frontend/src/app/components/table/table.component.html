@@ -17,10 +17,9 @@
     </ng-container>
   </div>
 
-  <div *ngFor="let item of paginatedData"
-    class="flex items-center border border-gray-200 rounded-md mb-2 py-4 px-6 hover:bg-gray-50 transition-colors"
-    role="row" tabindex="0" (keydown.enter)="onRowClick(item)" (click)="onRowClick(item)"
-    [attr.aria-label]="columns.length > 0 ? 'Clique para visualizar o perfil do profissional de nome ' + item[columns[0].key] : 'Clique para visualizar o perfil do profissional'">
+  <div *ngFor="let item of paginatedData; let i = index"
+    class="flex items-center border border-gray-200 rounded-md mb-2 py-4 px-6 hover:bg-gray-50 transition-colors cursor-pointer"
+    [ngClass]="{ 'bg-gray-200 border-gray-400': selectedId === item.id }" (click)="onRowClick(item)">
     <ng-container *ngFor="let column of columns; let isFirst = first; let isLast = last">
       <div role="cell" [ngClass]="{
           'w-1/2': columns.length === 2,
