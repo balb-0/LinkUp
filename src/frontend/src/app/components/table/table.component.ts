@@ -1,8 +1,9 @@
-import { Component, Input, OnInit, OnChanges, SimpleChanges, Output, EventEmitter, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChanges, Output, EventEmitter, ViewChild, Injectable } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatPaginatorModule, MatPaginator, PageEvent, MatPaginatorIntl } from '@angular/material/paginator';
 import { Subject } from 'rxjs';
 
+@Injectable()
 export class CustomMatPaginatorIntl extends MatPaginatorIntl {
   override itemsPerPageLabel = '';
   override nextPageLabel = 'Próxima página';
