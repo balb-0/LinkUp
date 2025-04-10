@@ -1291,7 +1291,44 @@ A organização do projeto segue a divisão das camadas conforme descrito acima.
 
 ## 8.2.3 Sprint 5
 
-_conteúdo_
+### Overview do Desenvolvimento
+
+&nbsp;&nbsp;&nbsp;&nbsp;Na Sprint 5, o foco foi finalizar as funcionalidades essenciais do sistema e refinar a experiência do usuário. Foram implementadas as últimas features planejadas, incluindo o dashboard estatístico, histórico de atendimentos, e melhorias significativas na acessibilidade do sistema.
+
+### Backend
+- Implementação do **sistema de histórico de atividades**, permitindo rastrear todas as alterações e ações realizadas no sistema.
+- Desenvolvimento do **módulo de estatísticas** para alimentar o dashboard com dados em tempo real sobre atendimentos e alunos.
+- Criação de endpoints para **gerenciamento de tecnologias assistivas**, possibilitando vincular diferentes tecnologias aos alunos.
+- Implementação de **validações avançadas** para garantir a integridade dos dados e conformidade com as regras de negócio.
+- Otimização das queries do banco de dados para melhorar o desempenho geral do sistema.
+- Implementação do leitor de tela para acessibilidade
+
+### Frontend
+- Desenvolvimento do **dashboard interativo** com gráficos e métricas relevantes para gestores.
+- Implementação de **notificações em tempo real** para alertar usuários sobre novos atendimentos ou alterações importantes.
+- Criação da interface para **classificação e categorização de atendimentos**.
+- Melhorias significativas na **acessibilidade**, incluindo:
+  - Suporte completo para navegação via teclado
+  - Compatibilidade com leitores de tela (NVDA e JAWS)
+  - Implementação de alto contraste e ajustes de fonte
+- Refinamento da interface do usuário com base no feedback dos testes de usabilidade.
+
+### Melhorias de Sistema
+
+- Aprimoramento do sistema de **logs** para melhor rastreabilidade das ações.
+- Reforço na **segurança** com validações adicionais de tokens e permissões.
+- Otimização do **desempenho geral** da aplicação, garantindo tempos de resposta dentro dos requisitos não funcionais.
+
+### Documentação e Testes
+- Finalização da **documentação técnica** do sistema.
+- Implementação de **testes automatizados** para as novas funcionalidades.
+- Realização de **testes de carga** para validar o desempenho sob diferentes condições de uso.
+- Documentação detalhada dos **procedimentos de implantação**.
+
+### Próximos Passos
+- Monitoramento contínuo do sistema em produção.
+- Planejamento de novas funcionalidades baseado nas necessidades identificadas durante o uso.
+- Manutenção e suporte contínuo para garantir a estabilidade do sistema.
 
 ## 8.3 Testes Unitários e de Integração
 
@@ -1413,7 +1450,79 @@ Todos os testes executados passaram e estão representados na imagem abaixo:
 
 ## 9.1 Testes Funcionais
 
- Os testes funcionais validam o comportamento esperado do sistema com base nos **Requisitos Funcionais (RFs)** estabelecidos. O objetivo desses testes é garantir que todas as funcionalidades atendam aos requisitos de negócio e projeto, verificando a correção das operações realizadas, o fluxo dos dados e a resposta do sistema em diferentes cenários.
+### Objetivo dos Testes Funcionais
+
+Os testes funcionais têm como principal objetivo validar que cada funcionalidade do sistema se comporta conforme o especificado nos requisitos funcionais (RFs). Ao testar cada caso, é verificada a conformidade das operações realizadas, a consistência dos fluxos de dados entre as interfaces e a correta resposta do sistema, tanto em cenários de sucesso quanto em situações que devem resultar em mensagens de erro ou negação de operação.
+
+### Metodologia e Estratégia
+
+Para garantir uma cobertura abrangente dos requisitos, os testes serão conduzidos conforme as seguintes diretrizes:
+
+- **Validação de Operações CRUD**: Testar todas as operações relacionadas ao cadastro, atualização, leitura e deleção de profissionais (RF001) para manter a integridade dos dados.
+- **Associação de Alunos a Profissionais**: Confirmar que o sistema associa corretamente alunos aos responsáveis (RF002) e que esta informação é refletida tanto na interface quanto nos dados armazenados.
+- **Interface Interativa**: Verificar a exibição do dashboard (RF003) por meio da apresentação adequada de gráficos e tabelas, com dados atualizados em tempo real.
+- **Acompanhamento Detalhado**: Confirmar o registro e a visualização do histórico dos alunos com deficiência (RF004), garantindo que todas as interações e atualizações sejam refletidas corretamente.
+- **Autenticação e Autorização**: Validar que o sistema autentica os usuários e aplica as regras de autorização (RF005) de acordo com os níveis de permissão definidos.
+- **Funcionalidades de Pesquisa e Filtro**: Testar os mecanismos de pesquisa e filtragem (RF006) para assegurar que os usuários possam localizar informações específicas com facilidade.
+- **Log de Atividades**: Confirmar que todas as alterações realizadas no sistema (cadastros, atualizações, associações) sejam registradas adequadamente (RF007), permitindo rastreabilidade e auditoria.
+
+### Cenários de Teste e Casos de Aceitação
+
+- **CT001 – Cadastro de Profissionais (RF001):**  
+  - **Pré-condição**: O sistema encontra-se online e o usuário tem permissão para cadastrar profissionais.  
+  - **Caso de Aceite**: O novo profissional é cadastrado com sucesso e listado corretamente na base de dados.  
+  - **Caso de Recusa**: O sistema exibe uma mensagem de erro ou não realiza nenhuma ação após a tentativa de cadastro.
+
+- **CT002 – Associação de Alunos a Profissionais (RF002):**  
+  - **Pré-condição**: Tanto o aluno quanto o profissional já devem estar cadastrados no sistema.  
+  - **Caso de Aceite**: A associação entre aluno e profissional é realizada com sucesso e registrada na lista de associações.  
+  - **Caso de Recusa**: O sistema exibe mensagem de erro ou não realiza a associação.
+
+- **CT003 – Exibição do Dashboard (RF003):**  
+  - **Pré-condição**: O sistema já contém dados de alunos, unidades e informações de gestão.  
+  - **Caso de Aceite**: O dashboard é exibido com gráficos e tabelas interativos e devidamente atualizados.  
+  - **Caso de Recusa**: O dashboard não é exibido ou os dados apresentados estão incorretos.
+
+- **CT004 – Acompanhamento de Alunos com Deficiência (RF004):**  
+  - **Pré-condição**: O aluno e o profissional devem ter sido previamente cadastrados e associados.  
+  - **Caso de Aceite**: O histórico completo e o status atual do aluno são exibidos corretamente na interface.  
+  - **Caso de Recusa**: O sistema apresenta uma mensagem de erro ou os dados exibidos estão incompletos ou incorretos.
+
+- **CT005 – Autenticação de Usuários (RF005):**  
+  - **Pré-condição**: O usuário deve possuir credenciais válidas para acesso ao sistema.  
+  - **Caso de Aceite**: O usuário é autenticado com sucesso e tem acesso às funcionalidades conforme seu nível de permissão.  
+  - **Caso de Recusa**: O sistema exibe mensagem de erro ou nega o acesso, mesmo com credenciais válidas.
+
+- **CT006 – Pesquisa e Filtros Avançados (RF006):**  
+  - **Pré-condição**: O sistema já possui um conjunto de registros de alunos e profissionais.  
+  - **Caso de Aceite**: Os resultados da pesquisa e os filtros aplicados retornam os dados corretos e relevantes à consulta.  
+  - **Caso de Recusa**: O sistema não apresenta os resultados esperados, exibindo erro ou informações incompletas.
+
+- **CT007 – Histórico de Alterações (RF007):**  
+  - **Pré-condição**: Deve haver registros de atividades no sistema (cadastros e associações previamente realizados).  
+  - **Caso de Aceite**: O histórico de alterações é exibido de forma detalhada e correta, permitindo a auditoria das atividades.  
+  - **Caso de Recusa**: O sistema não apresenta o histórico ou exibe dados inconsistentes.
+
+### Fluxo de Execução dos Testes
+
+1. **Preparação do Ambiente:**  
+   - Configuração do ambiente de testes, com o sistema online e a base de dados preparada.
+   - Definição dos dados de teste para profissionais, alunos e associações.
+   
+2. **Execução dos Testes:**  
+   - Realização dos testes de forma sequencial, cobrindo todos os RFs listados.
+   - Registro dos resultados e identificação de falhas, caso ocorram.
+   
+3. **Validação e Conclusão:**  
+   - Comparação dos resultados obtidos com os casos de aceitação definidos.
+   - Relato de inconsistências e realização de novos testes após correção dos defeitos identificados.
+   - Aprovação final dos testes quando o sistema atende plenamente aos requisitos funcionais.
+
+### Conclusão
+
+A execução dos testes funcionais é fundamental para garantir que o sistema opere de acordo com as necessidades dos usuários e dos gestores, assegurando a consistência dos dados e a experiência do usuário final. Por meio da validação de cada funcionalidade, desde a criação e manipulação de registros até a autenticação e rastreabilidade de alterações, o sistema se torna robusto e preparado para atender as demandas do ambiente de produção, minimizando riscos e facilitando a manutenção contínua.
+
+
 
 ### 9.1.1 Estratégia de Testes
 
@@ -1915,22 +2024,9 @@ Os testes de usabilidade são fundamentais para garantir que o sistema seja intu
    - **Tarefas**:
      1. Acessar o dashboard principal
      2. Filtrar dados por período específico
-     3. Exportar relatório personalizado
    - **Métricas Específicas**:
      - Tempo para localizar informações específicas
      - Precisão na interpretação dos dados
-     - Facilidade de customização de relatórios
-
-2. **Gestão de Usuários**
-   - **Objetivo**: Gerenciar permissões e acessos
-   - **Tarefas**:
-     1. Criar novo perfil de acesso
-     2. Modificar permissões existentes
-     3. Auditar logs de acesso
-   - **Critérios de Sucesso**:
-     - Conclusão sem erros de segurança
-     - Tempo máximo de 5 minutos por tarefa
-     - Confirmação adequada das alterações
 
 #### Gestor de Unidade (GU)
 **Perfil:**
@@ -1955,7 +2051,6 @@ Os testes de usabilidade são fundamentais para garantir que o sistema seja intu
    - **Tarefas**:
      1. Buscar aluno específico
      2. Revisar histórico de atendimentos
-     3. Adicionar observações ao registro
    - **Critérios de Sucesso**:
      - Máximo 3 cliques para localizar aluno
      - Visualização clara do histórico
@@ -1989,13 +2084,12 @@ Os testes de usabilidade são fundamentais para garantir que o sistema seja intu
      - Tempo total de registro
      - Clareza do processo
 
-3. **Edição de Atendimento**
-   - **Objetivo**: Editar um atendimento
+3. **Remoção de Atendimento/Tecnologia**
+   - **Objetivo**: Remover um atendimento ou tecnologias assistivas
    - **Tarefas**:
      1. Acessar o perfil de um aluno
-     2. Visualizar os atendimentos ativos e apertar para editar um deles
-     3. Alterar as informações necessárias
-     4. Confirmar o cadastro
+     2. Visualizar os atendimentos/tecnologias ativos e apertar para excluir um deles
+     3. Confirmar exclusão
    - **Métricas Específicas**:
      - Tempo total de edição
      - Clareza do processo
@@ -2086,16 +2180,32 @@ Para considerar os testes bem-sucedidos, estabelecemos os seguintes critérios:
 
 ### 9.3.6 Relatório de Testes de Usabilidade
 
-Data da execução: 27/03/2025 - 28/03/2025
+Data da execução: 
+- 4 primeiros testes: 27/03/2025 - 28/03/2025
+- 2 últimos testes: 09/04/2025
 
-&nbsp;&nbsp;&nbsp;&nbsp;Para esta sprint, como a nossa aplicação não encontra-se totalmente finalizada e funcional foram escolhidos alguns cenários possíveis de ser executados, sendo eles:
+&nbsp;&nbsp;&nbsp;&nbsp;Para a sprint 4, como a nossa aplicação não encontra-se totalmente finalizada e funcional foram escolhidos alguns cenários possíveis de ser executados, sendo eles:
 
 Gestor de Unidade (GU):
 1. Gestão de Atendimentos
 2. Acompanhamento de Alunos
 
 Assessor de Inclusão:
+
 3. Registro de Profissional
+
+&nbsp;&nbsp;&nbsp;&nbsp;Quanto aos testes executados na sprint 5, estes envolvem testar apenas as funcionalidades novas do sistema sendo elas:
+
+Gestor administrativo (GA):
+
+4. Análise de Dashboard
+
+Assessor de Inclusão:
+
+5. Registro de Atendimento ou tecnologia assistiva
+6. Remoção de Atendimento/Tecnologia
+7. Uso com Leitor de Tela
+
 
 &nbsp;&nbsp;&nbsp;&nbsp;Ainda vale ressaltar que os participantes dos testes não são realmente funcionários do Centro Paula Souza, podendo divergir um pouco nas habilidades mapeadas no planejamento dos testes.
 
@@ -2104,6 +2214,8 @@ Participantes:
 - Isabelle Dantas - Fluência Tecnológica Alta (Cenários 1 e 2 - GU)
 - João Oliveira - Fluência Tecnológica Alta (Cenário 3 - Assessor)
 - Gabriela Silva - Fluência Tecnológica Média (Cenário 3 - Assessor)
+- Iasmin Jesus - Fluência Tecnológica Alta (Cenário 2 e 3 - Assessor e Cenário 1 - GA)
+- Leonarndo Martins - Fluência Tecnológica Alta (Cenário 4 - Assessor)
 
 ## Resultados Detalhados
 
@@ -2174,25 +2286,115 @@ Participantes:
    - Avaliar a necessidade da homepage, considerando a sugestão de João Oliveira.
    - Implementar feedback visual claro após a confirmação do cadastro, como uma mensagem de sucesso ou uma atualização na lista de profissionais.
 
+## **Cenário 4 - Análise de Dashboard**
 
-&nbsp;&nbsp;&nbsp;&nbsp;Os testes de usabilidade realizados na Sprint 4, embora limitados pela versão ainda não finalizada da aplicação e pela participação de usuários não diretamente ligados ao Centro Paula Souza, forneceram insights valiosos sobre a experiência do usuário.
+**Tarefas:**
+   - Acessar o dashboard principal
+   - Filtrar dados por unidade
+   - Visualizar os dados
+
+**Observações:**
+   - Iasmin acessou o dashboard sem dificuldades.
+   - A funcionalidade de filtro por unidade foi localizada rapidamente. 
+   - A visualização dos dados após a aplicação do filtro foi clara e a animação do gráfico foi elogiada por ela.
+
+**Métricas:**
+   - Tempo para localizar a opção de filtro por unidade: Rápido.
+   - Clareza da apresentação dos dados filtrados: Alta.
+
+**Pontos de Melhoria**
+   - Considerar a possibilidade de salvar filtros frequentemente utilizados para facilitar o acesso futuro.
+
+## **Cenário 5 - Registro de Atendimento ou Tecnologia Assistiva**
+
+**Tarefas:**
+   - Iniciar novo registro de atendimento  
+   - Preencher informações necessárias
+   - Confirmar o cadastro
+
+   - Iniciar novo registro de tecnologia assistiva
+   - Preencher informações necessárias
+   - Confirmar o cadastro
+
+**Observações:**
+   - Iasmin conseguiu localizar os cadastros sem problemas.
+   - O preenchimento dos campos foi feito rapidamente, tanto na criação da tecnologia assistiva quanto o atendimento.
+   - A confirmação do cadastro foi bem-sucedida e houve feedback visual adequado (mensagem de sucesso) que foi inclusive elogiado pela usuária.
+
+**Métricas:**
+   - Tempo total de registro: 2 minutos.
+   - Clareza do processo: Alta.
+
+**Pontos de Melhoria**
+   - Nenhum ponto de melhoria significativo identificado neste cenário.
+
+## **Cenário 6 - Remoção de Atendimento/Tecnologia**
+
+**Tarefas:**
+   - Acessar o perfil de um aluno
+   - Visualizar os atendimentos/tecnologias ativos e apertar para excluir um deles
+   - Confirmar exclusão
+
+**Observações:**
+   - O acesso ao perfil do aluno e a visualização dos itens ativos foram realizados sem dificuldades.
+   - O botão de exclusão foi facilmente identificado.
+   - A confirmação da exclusão exigiu um passo adicional (modal de confirmação), o que foi considerado seguro.
+
+**Métricas:**
+   - Tempo total de edição: Rápido.
+   - Clareza do processo: Alta.
+
+**Pontos de Melhoria**
+   - Nenhum ponto de melhoria significativo identificado neste cenário.
+
+## **Cenário 7 - Uso com Leitor de Tela**
+
+**Tarefas:**
+   - Navegar entre seções principais
+   - Localizar tela de "Profissionais"
+   - Preencher formulário de cadastro de profissional
+   - Confirmar cadastro
+
+**Observações:**
+   - A navegação entre as seções principais foi possível utilizando as teclas de tabulação e as setas, mas a navegação foi um pouco confusa, pulando alguns elementos ou seguindo uma ordem inesperada.
+   - A localização da tela de "Profissionais" exigiu alguma exploração do menu de navegação, mas não foi considerada difícil pelo usuário.
+   - O preenchimento do formulário de cadastro de profissional foi realizado com alguma dificuldade, pois a leitura das labels dos campos pelo leitor de tela foi meio confusa.
+   - A confirmação do cadastro foi bem-sucedida.
+
+**Métricas:**
+   - Navegação completa sem mouse: Parcialmente atingido (necessidade de melhoria na ordem de foco).
+   - Descrições claras dos elementos: Parcialmente atingido (problemas com a leitura das labels dos campos).
+   - Feedback adequado por áudio: Parcialmente atingido (confirmação bem-sucedida, mas sem detalhes sobre outros feedbacks).
+
+**Pontos de Melhoria**
+   - Investigar e corrigir a ordem de foco dos elementos interativos para garantir uma navegação lógica e sequencial.
+   - Revisar a estrutura HTML do formulário para garantir que as labels estejam corretamente associadas aos seus respectivos campos.
+   - Embora a confirmação tenha sido bem-sucedida, é importante garantir que outros feedbacks relevantes (como erros de preenchimento) também sejam comunicados de forma audível pelo leitor de tela.
+
+## Conclusões Finais
+
+&nbsp;&nbsp;&nbsp;&nbsp;Os testes de usabilidade realizados nas Sprints 4 e 5, apesar das limitações da versão em desenvolvimento e da participação de usuários com perfis tecnológicos diversos dos mapeados, proporcionaram insights valiosos sobre a interação com o sistema.
 
 **Principais Descobertas:**
-   - Intuitividade Geral: A aplicação demonstrou uma boa usabilidade geral, com os usuários conseguindo completar as tarefas propostas com relativa facilidade.
-   - Pontos de Confusão: Foram identificados pontos de confusão em relação à clareza de algumas indicações visuais e à nomenclatura de algumas seções, como a aba "Anteriores".
-   - Necessidade de Feedback Visual: A falta de feedback visual em algumas ações, como a confirmação do cadastro de um profissional, gerou confusão e frustração nos usuários.
-   - Sugestão de Melhoria na Navegação: A sugestão de dispensar a homepage, feita por um dos usuários, indica uma possível oportunidade de simplificar a navegação da aplicação.
+   - Usabilidade Geral: A aplicação demonstrou uma usabilidade básica funcional, permitindo a conclusão das tarefas propostas, embora com variações na fluidez dependendo do perfil do usuário e da tarefa específica.
+
+   - Pontos de Confusão: Persistiram dificuldades relacionadas à clareza de algumas indicações visuais, como a seleção de unidades, e à nomenclatura de seções, impactando a eficiência em algumas tarefas.
+
+   - Necessidade de Feedback Visual e Audível: A ausência de feedback visual em ações importantes, como a confirmação de cadastros, e a leitura confusa de rótulos para usuários de leitores de tela, geraram incerteza e dificultaram a interação.
+
+   - Acessibilidade como Prioridade: Os testes com leitor de tela revelaram barreiras significativas na navegação e na compreensão do conteúdo, indicando a necessidade de melhorias para garantir a acessibilidade para usuários com deficiência visual.
+
+   - Navegação e Fluxo: A sugestão de simplificar a navegação, eliminando a homepage, e as dificuldades encontradas na ordem de foco durante a navegação por teclado apontam para oportunidades de otimizar o fluxo de uso.
+
+   - Dashboard: A funcionalidade de análise de dados no dashboard demonstrou potencial, mas a descoberta e a utilização dos filtros requerem refinamento para melhorar a experiência do usuário.
 
 **Recomendações:**
    - Priorizar a melhoria da clareza das indicações visuais, especialmente em relação ao dropdown de seleção de unidade na lista de alunos.
-   - Revisar a nomenclatura das seções da aplicação, buscando termos mais intuitivos e claros para os usuários.
-   - Implementar feedback visual claro após a realização de ações importantes, como cadastros e edições.
    - Avaliar a necessidade da homepage, considerando a sugestão de simplificar a navegação.
-   - É muito importante adicionar um feedback visual para o usuário quando ele realizar alguma ação.
+   - Aprimorar o conteúdo e as informações do dashboard
 
 **Próximos Passos:**
-   - Implementar as melhorias identificadas nos testes.
-   - Realizar novos testes de usabilidade com a aplicação completa, incluindo usuários com diferentes perfis e necessidades de 
+   - Implementar as melhorias identificadas nos testes das Sprints 4 e 5, priorizando as correções de acessibilidade.
 
 # 10. Procedimentos de Implantação
 
