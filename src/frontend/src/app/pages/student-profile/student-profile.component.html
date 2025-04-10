@@ -34,38 +34,42 @@
       [textoHistorico]="'Anteriores'"
       (clickAdicionar)="abrirPopupProfissionais()"
     >
-      <div conteudoAtendimentos class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        @if (atendimentosAtivos.length === 0) {
-          <div class="text-center text-gray-500 mt-4">
-            Não há atendimentos ativos.
-          </div>
-        }
-        @for (atendimento of atendimentosAtivos; track atendimento.id) {
-          <div class="mt-2 flex flex-row">
-            <app-service-technology-card
-              [name]="atendimento.profissionalNome || 'Carregando...'"
-              [title]="atendimento.tipoAtendimento"
-              [dateTime]="atendimento.dataAtendimento.toString()"
-            ></app-service-technology-card>
-          </div>
-        }
-      </div>
-      <div conteudoHistorico class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        @if (atendimentosHistorico.length === 0) {
-          <div class="col-span-full text-center text-gray-500 mt-4">
-            Não há atendimentos anteriores.
-          </div>
-        }
-        @for (atendimento of atendimentosHistorico; track atendimento.id) {
-          <div>
-            <app-service-technology-card
-              [name]="atendimento.profissionalNome || 'Carregando...'"
-              [title]="atendimento.tipoAtendimento"
-              [dateTime]="atendimento.dataAtendimento.toString()"
-            ></app-service-technology-card>
-          </div>
-        }
-      </div>
+    <div conteudoAtendimentos class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      @if (atendimentosAtivos.length === 0) {
+        <div class="text-center text-gray-500 mt-4">
+          Não há atendimentos ativos.
+        </div>
+      }
+      @for (atendimento of atendimentosAtivos; track atendimento.id) {
+        <div class="mt-2 flex flex-row">
+          <app-service-technology-card
+            [name]="atendimento.profissionalNome || 'Carregando...'"
+            [title]="atendimento.tipoAtendimento"
+            [dateTime]="atendimento.dataAtendimento.toString()"
+            [showDeleteButton]="true"
+            [itemId]="atendimento.id || ''"
+            (deleteClick)="removerAtendimento($event)"
+          ></app-service-technology-card>
+        </div>
+      }
+    </div>
+    <div conteudoHistorico class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      @if (atendimentosHistorico.length === 0) {
+        <div class="col-span-full text-center text-gray-500 mt-4">
+          Não há atendimentos anteriores.
+        </div>
+      }
+      @for (atendimento of atendimentosHistorico; track atendimento.id) {
+        <div>
+          <app-service-technology-card
+            [name]="atendimento.profissionalNome || 'Carregando...'"
+            [title]="atendimento.tipoAtendimento"
+            [dateTime]="atendimento.dataAtendimento.toString()"
+            [showDeleteButton]="false"
+          ></app-service-technology-card>
+        </div>
+      }
+    </div>
     </app-tab-service-technology>
     <app-tab-service-technology
       [botaoAdicionar]="true"
@@ -85,6 +89,9 @@
               [name]="tecnologia.nome || 'Carregando...'"
               [title]="'Tecnologia Assistiva'"
               [showDateTime]="false"
+              [showDeleteButton]="true"
+              [itemId]="tecnologia.id"
+              (deleteClick)="removerTecnologia($event)"
             ></app-service-technology-card>
           </div>
         }
