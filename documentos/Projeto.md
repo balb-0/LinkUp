@@ -1291,7 +1291,44 @@ A organização do projeto segue a divisão das camadas conforme descrito acima.
 
 ## 8.2.3 Sprint 5
 
-_conteúdo_
+### Overview do Desenvolvimento
+
+&nbsp;&nbsp;&nbsp;&nbsp;Na Sprint 5, o foco foi finalizar as funcionalidades essenciais do sistema e refinar a experiência do usuário. Foram implementadas as últimas features planejadas, incluindo o dashboard estatístico, histórico de atendimentos, e melhorias significativas na acessibilidade do sistema.
+
+### Backend
+- Implementação do **sistema de histórico de atividades**, permitindo rastrear todas as alterações e ações realizadas no sistema.
+- Desenvolvimento do **módulo de estatísticas** para alimentar o dashboard com dados em tempo real sobre atendimentos e alunos.
+- Criação de endpoints para **gerenciamento de tecnologias assistivas**, possibilitando vincular diferentes tecnologias aos alunos.
+- Implementação de **validações avançadas** para garantir a integridade dos dados e conformidade com as regras de negócio.
+- Otimização das queries do banco de dados para melhorar o desempenho geral do sistema.
+- Implementação do leitor de tela para acessibilidade
+
+### Frontend
+- Desenvolvimento do **dashboard interativo** com gráficos e métricas relevantes para gestores.
+- Implementação de **notificações em tempo real** para alertar usuários sobre novos atendimentos ou alterações importantes.
+- Criação da interface para **classificação e categorização de atendimentos**.
+- Melhorias significativas na **acessibilidade**, incluindo:
+  - Suporte completo para navegação via teclado
+  - Compatibilidade com leitores de tela (NVDA e JAWS)
+  - Implementação de alto contraste e ajustes de fonte
+- Refinamento da interface do usuário com base no feedback dos testes de usabilidade.
+
+### Melhorias de Sistema
+
+- Aprimoramento do sistema de **logs** para melhor rastreabilidade das ações.
+- Reforço na **segurança** com validações adicionais de tokens e permissões.
+- Otimização do **desempenho geral** da aplicação, garantindo tempos de resposta dentro dos requisitos não funcionais.
+
+### Documentação e Testes
+- Finalização da **documentação técnica** do sistema.
+- Implementação de **testes automatizados** para as novas funcionalidades.
+- Realização de **testes de carga** para validar o desempenho sob diferentes condições de uso.
+- Documentação detalhada dos **procedimentos de implantação**.
+
+### Próximos Passos
+- Monitoramento contínuo do sistema em produção.
+- Planejamento de novas funcionalidades baseado nas necessidades identificadas durante o uso.
+- Manutenção e suporte contínuo para garantir a estabilidade do sistema.
 
 ## 8.3 Testes Unitários e de Integração
 
@@ -1413,7 +1450,79 @@ Todos os testes executados passaram e estão representados na imagem abaixo:
 
 ## 9.1 Testes Funcionais
 
- Os testes funcionais validam o comportamento esperado do sistema com base nos **Requisitos Funcionais (RFs)** estabelecidos. O objetivo desses testes é garantir que todas as funcionalidades atendam aos requisitos de negócio e projeto, verificando a correção das operações realizadas, o fluxo dos dados e a resposta do sistema em diferentes cenários.
+### Objetivo dos Testes Funcionais
+
+Os testes funcionais têm como principal objetivo validar que cada funcionalidade do sistema se comporta conforme o especificado nos requisitos funcionais (RFs). Ao testar cada caso, é verificada a conformidade das operações realizadas, a consistência dos fluxos de dados entre as interfaces e a correta resposta do sistema, tanto em cenários de sucesso quanto em situações que devem resultar em mensagens de erro ou negação de operação.
+
+### Metodologia e Estratégia
+
+Para garantir uma cobertura abrangente dos requisitos, os testes serão conduzidos conforme as seguintes diretrizes:
+
+- **Validação de Operações CRUD**: Testar todas as operações relacionadas ao cadastro, atualização, leitura e deleção de profissionais (RF001) para manter a integridade dos dados.
+- **Associação de Alunos a Profissionais**: Confirmar que o sistema associa corretamente alunos aos responsáveis (RF002) e que esta informação é refletida tanto na interface quanto nos dados armazenados.
+- **Interface Interativa**: Verificar a exibição do dashboard (RF003) por meio da apresentação adequada de gráficos e tabelas, com dados atualizados em tempo real.
+- **Acompanhamento Detalhado**: Confirmar o registro e a visualização do histórico dos alunos com deficiência (RF004), garantindo que todas as interações e atualizações sejam refletidas corretamente.
+- **Autenticação e Autorização**: Validar que o sistema autentica os usuários e aplica as regras de autorização (RF005) de acordo com os níveis de permissão definidos.
+- **Funcionalidades de Pesquisa e Filtro**: Testar os mecanismos de pesquisa e filtragem (RF006) para assegurar que os usuários possam localizar informações específicas com facilidade.
+- **Log de Atividades**: Confirmar que todas as alterações realizadas no sistema (cadastros, atualizações, associações) sejam registradas adequadamente (RF007), permitindo rastreabilidade e auditoria.
+
+### Cenários de Teste e Casos de Aceitação
+
+- **CT001 – Cadastro de Profissionais (RF001):**  
+  - **Pré-condição**: O sistema encontra-se online e o usuário tem permissão para cadastrar profissionais.  
+  - **Caso de Aceite**: O novo profissional é cadastrado com sucesso e listado corretamente na base de dados.  
+  - **Caso de Recusa**: O sistema exibe uma mensagem de erro ou não realiza nenhuma ação após a tentativa de cadastro.
+
+- **CT002 – Associação de Alunos a Profissionais (RF002):**  
+  - **Pré-condição**: Tanto o aluno quanto o profissional já devem estar cadastrados no sistema.  
+  - **Caso de Aceite**: A associação entre aluno e profissional é realizada com sucesso e registrada na lista de associações.  
+  - **Caso de Recusa**: O sistema exibe mensagem de erro ou não realiza a associação.
+
+- **CT003 – Exibição do Dashboard (RF003):**  
+  - **Pré-condição**: O sistema já contém dados de alunos, unidades e informações de gestão.  
+  - **Caso de Aceite**: O dashboard é exibido com gráficos e tabelas interativos e devidamente atualizados.  
+  - **Caso de Recusa**: O dashboard não é exibido ou os dados apresentados estão incorretos.
+
+- **CT004 – Acompanhamento de Alunos com Deficiência (RF004):**  
+  - **Pré-condição**: O aluno e o profissional devem ter sido previamente cadastrados e associados.  
+  - **Caso de Aceite**: O histórico completo e o status atual do aluno são exibidos corretamente na interface.  
+  - **Caso de Recusa**: O sistema apresenta uma mensagem de erro ou os dados exibidos estão incompletos ou incorretos.
+
+- **CT005 – Autenticação de Usuários (RF005):**  
+  - **Pré-condição**: O usuário deve possuir credenciais válidas para acesso ao sistema.  
+  - **Caso de Aceite**: O usuário é autenticado com sucesso e tem acesso às funcionalidades conforme seu nível de permissão.  
+  - **Caso de Recusa**: O sistema exibe mensagem de erro ou nega o acesso, mesmo com credenciais válidas.
+
+- **CT006 – Pesquisa e Filtros Avançados (RF006):**  
+  - **Pré-condição**: O sistema já possui um conjunto de registros de alunos e profissionais.  
+  - **Caso de Aceite**: Os resultados da pesquisa e os filtros aplicados retornam os dados corretos e relevantes à consulta.  
+  - **Caso de Recusa**: O sistema não apresenta os resultados esperados, exibindo erro ou informações incompletas.
+
+- **CT007 – Histórico de Alterações (RF007):**  
+  - **Pré-condição**: Deve haver registros de atividades no sistema (cadastros e associações previamente realizados).  
+  - **Caso de Aceite**: O histórico de alterações é exibido de forma detalhada e correta, permitindo a auditoria das atividades.  
+  - **Caso de Recusa**: O sistema não apresenta o histórico ou exibe dados inconsistentes.
+
+### Fluxo de Execução dos Testes
+
+1. **Preparação do Ambiente:**  
+   - Configuração do ambiente de testes, com o sistema online e a base de dados preparada.
+   - Definição dos dados de teste para profissionais, alunos e associações.
+   
+2. **Execução dos Testes:**  
+   - Realização dos testes de forma sequencial, cobrindo todos os RFs listados.
+   - Registro dos resultados e identificação de falhas, caso ocorram.
+   
+3. **Validação e Conclusão:**  
+   - Comparação dos resultados obtidos com os casos de aceitação definidos.
+   - Relato de inconsistências e realização de novos testes após correção dos defeitos identificados.
+   - Aprovação final dos testes quando o sistema atende plenamente aos requisitos funcionais.
+
+### Conclusão
+
+A execução dos testes funcionais é fundamental para garantir que o sistema opere de acordo com as necessidades dos usuários e dos gestores, assegurando a consistência dos dados e a experiência do usuário final. Por meio da validação de cada funcionalidade, desde a criação e manipulação de registros até a autenticação e rastreabilidade de alterações, o sistema se torna robusto e preparado para atender as demandas do ambiente de produção, minimizando riscos e facilitando a manutenção contínua.
+
+
 
 ### 9.1.1 Estratégia de Testes
 
