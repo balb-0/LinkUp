@@ -2024,22 +2024,9 @@ Os testes de usabilidade são fundamentais para garantir que o sistema seja intu
    - **Tarefas**:
      1. Acessar o dashboard principal
      2. Filtrar dados por período específico
-     3. Exportar relatório personalizado
    - **Métricas Específicas**:
      - Tempo para localizar informações específicas
      - Precisão na interpretação dos dados
-     - Facilidade de customização de relatórios
-
-2. **Gestão de Usuários**
-   - **Objetivo**: Gerenciar permissões e acessos
-   - **Tarefas**:
-     1. Criar novo perfil de acesso
-     2. Modificar permissões existentes
-     3. Auditar logs de acesso
-   - **Critérios de Sucesso**:
-     - Conclusão sem erros de segurança
-     - Tempo máximo de 5 minutos por tarefa
-     - Confirmação adequada das alterações
 
 #### Gestor de Unidade (GU)
 **Perfil:**
@@ -2064,7 +2051,6 @@ Os testes de usabilidade são fundamentais para garantir que o sistema seja intu
    - **Tarefas**:
      1. Buscar aluno específico
      2. Revisar histórico de atendimentos
-     3. Adicionar observações ao registro
    - **Critérios de Sucesso**:
      - Máximo 3 cliques para localizar aluno
      - Visualização clara do histórico
@@ -2098,13 +2084,12 @@ Os testes de usabilidade são fundamentais para garantir que o sistema seja intu
      - Tempo total de registro
      - Clareza do processo
 
-3. **Edição de Atendimento**
-   - **Objetivo**: Editar um atendimento
+3. **Remoção de Atendimento/Tecnologia**
+   - **Objetivo**: Remover um atendimento ou tecnologias assistivas
    - **Tarefas**:
      1. Acessar o perfil de um aluno
-     2. Visualizar os atendimentos ativos e apertar para editar um deles
-     3. Alterar as informações necessárias
-     4. Confirmar o cadastro
+     2. Visualizar os atendimentos/tecnologias ativos e apertar para excluir um deles
+     3. Confirmar exclusão
    - **Métricas Específicas**:
      - Tempo total de edição
      - Clareza do processo
@@ -2195,16 +2180,32 @@ Para considerar os testes bem-sucedidos, estabelecemos os seguintes critérios:
 
 ### 9.3.6 Relatório de Testes de Usabilidade
 
-Data da execução: 27/03/2025 - 28/03/2025
+Data da execução: 
+- 4 primeiros testes: 27/03/2025 - 28/03/2025
+- 2 últimos testes: 09/04/2025
 
-&nbsp;&nbsp;&nbsp;&nbsp;Para esta sprint, como a nossa aplicação não encontra-se totalmente finalizada e funcional foram escolhidos alguns cenários possíveis de ser executados, sendo eles:
+&nbsp;&nbsp;&nbsp;&nbsp;Para a sprint 4, como a nossa aplicação não encontra-se totalmente finalizada e funcional foram escolhidos alguns cenários possíveis de ser executados, sendo eles:
 
 Gestor de Unidade (GU):
 1. Gestão de Atendimentos
 2. Acompanhamento de Alunos
 
 Assessor de Inclusão:
+
 3. Registro de Profissional
+
+&nbsp;&nbsp;&nbsp;&nbsp;Quanto aos testes executados na sprint 5, estes envolvem testar apenas as funcionalidades novas do sistema sendo elas:
+
+Gestor administrativo (GA):
+
+4. Análise de Dashboard
+
+Assessor de Inclusão:
+
+5. Registro de Atendimento ou tecnologia assistiva
+6. Remoção de Atendimento/Tecnologia
+7. Uso com Leitor de Tela
+
 
 &nbsp;&nbsp;&nbsp;&nbsp;Ainda vale ressaltar que os participantes dos testes não são realmente funcionários do Centro Paula Souza, podendo divergir um pouco nas habilidades mapeadas no planejamento dos testes.
 
@@ -2213,6 +2214,8 @@ Participantes:
 - Isabelle Dantas - Fluência Tecnológica Alta (Cenários 1 e 2 - GU)
 - João Oliveira - Fluência Tecnológica Alta (Cenário 3 - Assessor)
 - Gabriela Silva - Fluência Tecnológica Média (Cenário 3 - Assessor)
+- Iasmin Jesus - Fluência Tecnológica Alta (Cenário 2 e 3 - Assessor e Cenário 1 - GA)
+- Leonarndo Martins - Fluência Tecnológica Alta (Cenário 4 - Assessor)
 
 ## Resultados Detalhados
 
@@ -2283,25 +2286,115 @@ Participantes:
    - Avaliar a necessidade da homepage, considerando a sugestão de João Oliveira.
    - Implementar feedback visual claro após a confirmação do cadastro, como uma mensagem de sucesso ou uma atualização na lista de profissionais.
 
+## **Cenário 4 - Análise de Dashboard**
 
-&nbsp;&nbsp;&nbsp;&nbsp;Os testes de usabilidade realizados na Sprint 4, embora limitados pela versão ainda não finalizada da aplicação e pela participação de usuários não diretamente ligados ao Centro Paula Souza, forneceram insights valiosos sobre a experiência do usuário.
+**Tarefas:**
+   - Acessar o dashboard principal
+   - Filtrar dados por unidade
+   - Visualizar os dados
+
+**Observações:**
+   - Iasmin acessou o dashboard sem dificuldades.
+   - A funcionalidade de filtro por unidade foi localizada rapidamente. 
+   - A visualização dos dados após a aplicação do filtro foi clara e a animação do gráfico foi elogiada por ela.
+
+**Métricas:**
+   - Tempo para localizar a opção de filtro por unidade: Rápido.
+   - Clareza da apresentação dos dados filtrados: Alta.
+
+**Pontos de Melhoria**
+   - Considerar a possibilidade de salvar filtros frequentemente utilizados para facilitar o acesso futuro.
+
+## **Cenário 5 - Registro de Atendimento ou Tecnologia Assistiva**
+
+**Tarefas:**
+   - Iniciar novo registro de atendimento  
+   - Preencher informações necessárias
+   - Confirmar o cadastro
+
+   - Iniciar novo registro de tecnologia assistiva
+   - Preencher informações necessárias
+   - Confirmar o cadastro
+
+**Observações:**
+   - Iasmin conseguiu localizar os cadastros sem problemas.
+   - O preenchimento dos campos foi feito rapidamente, tanto na criação da tecnologia assistiva quanto o atendimento.
+   - A confirmação do cadastro foi bem-sucedida e houve feedback visual adequado (mensagem de sucesso) que foi inclusive elogiado pela usuária.
+
+**Métricas:**
+   - Tempo total de registro: 2 minutos.
+   - Clareza do processo: Alta.
+
+**Pontos de Melhoria**
+   - Nenhum ponto de melhoria significativo identificado neste cenário.
+
+## **Cenário 6 - Remoção de Atendimento/Tecnologia**
+
+**Tarefas:**
+   - Acessar o perfil de um aluno
+   - Visualizar os atendimentos/tecnologias ativos e apertar para excluir um deles
+   - Confirmar exclusão
+
+**Observações:**
+   - O acesso ao perfil do aluno e a visualização dos itens ativos foram realizados sem dificuldades.
+   - O botão de exclusão foi facilmente identificado.
+   - A confirmação da exclusão exigiu um passo adicional (modal de confirmação), o que foi considerado seguro.
+
+**Métricas:**
+   - Tempo total de edição: Rápido.
+   - Clareza do processo: Alta.
+
+**Pontos de Melhoria**
+   - Nenhum ponto de melhoria significativo identificado neste cenário.
+
+## **Cenário 7 - Uso com Leitor de Tela**
+
+**Tarefas:**
+   - Navegar entre seções principais
+   - Localizar tela de "Profissionais"
+   - Preencher formulário de cadastro de profissional
+   - Confirmar cadastro
+
+**Observações:**
+   - A navegação entre as seções principais foi possível utilizando as teclas de tabulação e as setas, mas a navegação foi um pouco confusa, pulando alguns elementos ou seguindo uma ordem inesperada.
+   - A localização da tela de "Profissionais" exigiu alguma exploração do menu de navegação, mas não foi considerada difícil pelo usuário.
+   - O preenchimento do formulário de cadastro de profissional foi realizado com alguma dificuldade, pois a leitura das labels dos campos pelo leitor de tela foi meio confusa.
+   - A confirmação do cadastro foi bem-sucedida.
+
+**Métricas:**
+   - Navegação completa sem mouse: Parcialmente atingido (necessidade de melhoria na ordem de foco).
+   - Descrições claras dos elementos: Parcialmente atingido (problemas com a leitura das labels dos campos).
+   - Feedback adequado por áudio: Parcialmente atingido (confirmação bem-sucedida, mas sem detalhes sobre outros feedbacks).
+
+**Pontos de Melhoria**
+   - Investigar e corrigir a ordem de foco dos elementos interativos para garantir uma navegação lógica e sequencial.
+   - Revisar a estrutura HTML do formulário para garantir que as labels estejam corretamente associadas aos seus respectivos campos.
+   - Embora a confirmação tenha sido bem-sucedida, é importante garantir que outros feedbacks relevantes (como erros de preenchimento) também sejam comunicados de forma audível pelo leitor de tela.
+
+## Conclusões Finais
+
+&nbsp;&nbsp;&nbsp;&nbsp;Os testes de usabilidade realizados nas Sprints 4 e 5, apesar das limitações da versão em desenvolvimento e da participação de usuários com perfis tecnológicos diversos dos mapeados, proporcionaram insights valiosos sobre a interação com o sistema.
 
 **Principais Descobertas:**
-   - Intuitividade Geral: A aplicação demonstrou uma boa usabilidade geral, com os usuários conseguindo completar as tarefas propostas com relativa facilidade.
-   - Pontos de Confusão: Foram identificados pontos de confusão em relação à clareza de algumas indicações visuais e à nomenclatura de algumas seções, como a aba "Anteriores".
-   - Necessidade de Feedback Visual: A falta de feedback visual em algumas ações, como a confirmação do cadastro de um profissional, gerou confusão e frustração nos usuários.
-   - Sugestão de Melhoria na Navegação: A sugestão de dispensar a homepage, feita por um dos usuários, indica uma possível oportunidade de simplificar a navegação da aplicação.
+   - Usabilidade Geral: A aplicação demonstrou uma usabilidade básica funcional, permitindo a conclusão das tarefas propostas, embora com variações na fluidez dependendo do perfil do usuário e da tarefa específica.
+
+   - Pontos de Confusão: Persistiram dificuldades relacionadas à clareza de algumas indicações visuais, como a seleção de unidades, e à nomenclatura de seções, impactando a eficiência em algumas tarefas.
+
+   - Necessidade de Feedback Visual e Audível: A ausência de feedback visual em ações importantes, como a confirmação de cadastros, e a leitura confusa de rótulos para usuários de leitores de tela, geraram incerteza e dificultaram a interação.
+
+   - Acessibilidade como Prioridade: Os testes com leitor de tela revelaram barreiras significativas na navegação e na compreensão do conteúdo, indicando a necessidade de melhorias para garantir a acessibilidade para usuários com deficiência visual.
+
+   - Navegação e Fluxo: A sugestão de simplificar a navegação, eliminando a homepage, e as dificuldades encontradas na ordem de foco durante a navegação por teclado apontam para oportunidades de otimizar o fluxo de uso.
+
+   - Dashboard: A funcionalidade de análise de dados no dashboard demonstrou potencial, mas a descoberta e a utilização dos filtros requerem refinamento para melhorar a experiência do usuário.
 
 **Recomendações:**
    - Priorizar a melhoria da clareza das indicações visuais, especialmente em relação ao dropdown de seleção de unidade na lista de alunos.
-   - Revisar a nomenclatura das seções da aplicação, buscando termos mais intuitivos e claros para os usuários.
-   - Implementar feedback visual claro após a realização de ações importantes, como cadastros e edições.
    - Avaliar a necessidade da homepage, considerando a sugestão de simplificar a navegação.
-   - É muito importante adicionar um feedback visual para o usuário quando ele realizar alguma ação.
+   - Aprimorar o conteúdo e as informações do dashboard
 
 **Próximos Passos:**
-   - Implementar as melhorias identificadas nos testes.
-   - Realizar novos testes de usabilidade com a aplicação completa, incluindo usuários com diferentes perfis e necessidades de 
+   - Implementar as melhorias identificadas nos testes das Sprints 4 e 5, priorizando as correções de acessibilidade.
 
 # 10. Procedimentos de Implantação
 
