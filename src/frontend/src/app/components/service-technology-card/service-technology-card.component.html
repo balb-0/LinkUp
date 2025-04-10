@@ -1,16 +1,11 @@
 <div
-  class="text-[14px] flex flex-col w-[480px] h-[60px] bg-transparent border-preto border-2 rounded-md shadow-none justify-center p-5">
+  class="text-[14px] flex flex-col w-[480px] h-[60px] bg-transparent border border-preto border-2 rounded-md shadow-none px-2 justify-center">
   @if (showDateTime) {
   <div class="flex flex-row items-center justify-between">
     <span>{{ title }}: {{ name }}</span>
-    <div>
-      @if (showDeleteButton) {
-        <button
-          (click)="onDeleteClick()">
-          <mat-icon class="hover:text-vermelhoInstitucional" style="font-size: 30px;">close</mat-icon>
-        </button>
-      }
-      </div>
+    <button>
+      <img class="pt-0.5" src="assets/edit.svg" alt="">
+    </button>
   </div>
   <div class="flex flex-row items-center justify-start gap-6">
     <div class="flex flex-row gap-1">
@@ -25,14 +20,9 @@
   } @else {
     <div class="flex flex-row items-center justify-between">
       <span>{{ title }}: {{ name }}</span>
-      <div>
-      @if (showDeleteButton) {
-        <button
-          (click)="onDeleteClick()">
-          <mat-icon class="hover:text-vermelhoInstitucional" style="font-size: 30px;">close</mat-icon>
-        </button>
-      }
-      </div>
+      <button>
+        <img class="pt-0.5" src="assets/edit.svg" alt="">
+      </button>
     </div>
   }
 </div>

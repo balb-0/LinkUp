@@ -1,17 +1,15 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-
+import { MatDialogRef } from '@angular/material/dialog';
 import { SearchBarComponent } from '../search-bar/search-bar.component';
 import { DateTimePickerComponent } from '../date-time-picker/date-time-picker.component';
-import { TableComponent, TableColumn } from '../table/table.component';
+import { MatButtonModule } from '@angular/material/button';
+import { NgIf } from '@angular/common';
+import { TableComponent } from '../table/table.component';
+import { TableColumn } from '../table/table.component';
 import { ButtonComponent } from '../button/button.component';
-
+import { MatIconModule } from '@angular/material/icon';
 import { ProfissionalService } from '../../services/professionalservice';
-import { AtendimentoService } from '../../services/atendimento.service';
-import { SnackBarService } from '../../services/snack-bar.service';
 import { Profissional } from '../../models/professional';
 
 
@@ -22,6 +20,7 @@ import { Profissional } from '../../models/professional';
   imports: [
     SearchBarComponent,
     DateTimePickerComponent,
+    NgIf,
     MatButtonModule,
     TableComponent,
     ButtonComponent,
@@ -29,124 +28,77 @@ import { Profissional } from '../../models/professional';
   ]
 })
 export class PopupProfissionaisComponent implements OnInit {
-  alunoId!: number;
-  profissionalSelecionadoId!: string;
-  dataSelecionada!: Date;
-  tipoAtendimento: string = 'Atendimento Padrão';
-  searchText: string = '';
-
-  tableData: Profissional[] = [];
-  tableColumns: TableColumn[] = [
-    { key: 'nome', header: 'Nome' },
-    { key: 'email', header: 'Contato' }
-  ];
-
-  profissionais: Profissional[] = [];
-
   constructor(
     private router: Router,
     private dialogRef: MatDialogRef<PopupProfissionaisComponent>,
-    private profissionalService: ProfissionalService,
-    private atendimentoService: AtendimentoService,
-    private snackBarService: SnackBarService, 
-    @Inject(MAT_DIALOG_DATA) public data: { alunoId: number }
-  ) {
-    this.alunoId = data.alunoId;
-    console.log('ID do aluno recebido no popup:', this.alunoId)
-  }
+    private profissionalService: ProfissionalService
+  ) {}
+
+  searchText: string = '';
+
+  // Dados da tabela
+  tableData: any[] = [];
+  tableColumns: TableColumn[] = [
+    { key: 'nome', header: 'Nome' },
+    { key: 'contato', header: 'Contato' }
+  ];
+
+  // Armazena os profissionais carregados
+  profissionais: Profissional[] = [];
 
   ngOnInit(): void {
     this.carregarProfissionais();
   }
 
   carregarProfissionais(): void {
-    this.profissionalService.listarComPaginacao(0, 50).subscribe({
-      next: (response) => {
-        if (response && response.dados) {
-          this.profissionais = response.dados.profissionais || [];
-          this.tableData = this.profissionais;
-        } else {
-          console.error('Formato de resposta inesperado:', response);
+    // Exemplo: carregando os primeiros 50 profissionais (ajuste os parâmetros conforme necessário)
+    this.profissionalService.listarComPaginacao(0, 50)
+      .subscribe({
+        next: (response) => {
+          if (response && response.dados) {
+            const { profissionais } = response.dados;
+            this.profissionais = profissionais || [];
+            this.tableData = this.profissionais.map(prof => ({
+              nome: prof.nome,
+              contato: prof.email || 'Não informado'
+            }));
+          } else {
+            console.error('Formato de resposta inesperado:', response);
+          }
+        },
+        error: (err) => {
+          console.error('Erro ao carregar profissionais:', err);
         }
-      },
-      error: (err) => {
-        console.error('Erro ao carregar profissionais:', err);
-      }
-    });
+      });
   }
+
+  onSearch(searchTerm: string) {
+  this.searchText = searchTerm.trim().toLowerCase();
+
+  // Se não houver texto de busca, retorna todos
+  if (!this.searchText) {
+    this.tableData = this.profissionais.map(prof => ({
+      nome: prof.nome,
+      contato: prof.email || 'Não informado'
+    }));
+    return;
+  }
+
+  // Caso contrário, filtra a lista de profissionais
+  const filtered = this.profissionais.filter(prof =>
+    prof.nome.toLowerCase().includes(this.searchText)
+    // Se quiser buscar também por e-mail, inclua outra condição:
+    // || prof.email.toLowerCase().includes(this.searchText)
+  );
+
+  // Atualiza tableData com os itens filtrados
+  this.tableData = filtered.map(prof => ({
+    nome: prof.nome,
+    contato: prof.email || 'Não informado'
+  }));
+}
 
   closeDialog() {
     this.dialogRef.close();
-  }
-
-  onSearch(searchTerm: string): void {
-    this.searchText = searchTerm.trim().toLowerCase();
-
-    if (!this.searchText) {
-      this.tableData = this.profissionais;
-      return;
-    }
-
-    this.tableData = this.profissionais.filter(prof =>
-      prof.nome.toLowerCase().includes(this.searchText)
-    );
-  }
-
-  onDataSelecionada(data: Date): void {
-    console.log('Data recebida do date-time-picker:', data);
-    this.dataSelecionada = data;
-  }
-
-  selecionarProfissional(profissional: Profissional): void {
-    if (!profissional?.id) {
-      console.warn('Profissional inválido');
-      return;
-    }
-
-    this.profissionalSelecionadoId = profissional.id.toString();
-    console.log('Profissional selecionado:', profissional);
-  }
-
-  criarAtendimento(): void {
-    console.log('Profissional:', this.profissionalSelecionadoId);
-    console.log('Data selecionada:', this.dataSelecionada);
-
-    if (!this.profissionalSelecionadoId || !this.dataSelecionada) {
-      this.snackBarService.showMessage('Preencha todos os campos antes de confirmar.', true, '', 'top');
-      return;
-    }
-
-    function formatarParaMySQL(data: Date): string {
-      const pad = (n: number) => n.toString().padStart(2, '0');
-      const ano = data.getFullYear();
-      const mes = pad(data.getMonth() + 1); // meses começam do 0
-      const dia = pad(data.getDate());
-      const hora = pad(data.getHours());
-      const minuto = pad(data.getMinutes());
-      const segundo = pad(data.getSeconds());
-      return `${ano}-${mes}-${dia} ${hora}:${minuto}:${segundo}`;
-    }
-
-    const dataFormatada = formatarParaMySQL(this.dataSelecionada);
-
-    const novoAtendimento = {
-      alunoId: this.alunoId.toString(),
-      profissionalId: this.profissionalSelecionadoId,
-      dataAtendimento: dataFormatada,
-      tipoAtendimento: this.tipoAtendimento
-    };
-
-    console.log('Novo atendimento formatado:', novoAtendimento);
-
-    this.atendimentoService.criar(novoAtendimento).subscribe({
-      next: (res) => {
-        this.snackBarService.showMessage('Atendimento criado com sucesso!', false, 'snackbar-success', 'top');
-        this.dialogRef.close(true);
-      },
-      error: (err) => {
-        console.error('Erro ao criar atendimento:', err);
-        this.snackBarService.showMessage('Erro ao criar atendimento. Verifique os dados e tente novamente.', true, 'snackbar-error', 'top');
-      }
-    });
   }
 }

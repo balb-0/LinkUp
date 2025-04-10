@@ -8,19 +8,16 @@ import path from 'path'
 import EnvManager from "./classes/EnvManager";
 import { testConnection } from "./utils/db";
 import profissionaisRouter from "./routes/profissionais";
-
+import authRoutes from "./routes/authRoutes";
 import pagesRoutes from "./routes/pagesRoutes";
 import atendimentoRouter from "./routes/atendimentoRoutes";
 import alunosRouter from "./routes/alunosRoutes";
-import dashboardRoutes from "./routes/dashoardRoutes";
-import historicoRoutes from "./routes/historicoRoutes";
 import { requestLogger } from "./middleware/logger";
 import { cacheMiddleware } from "./middleware/cache";
 import { createError, errorHandler } from "./middleware/errorHandler";
 import { healthCheck } from "./middleware/healthCheck";
 import limiter from "./middleware/limiter";
 import tecnologiaRoutes from './routes/tecnologias';
-import alunoTecnologiaAssistivaRoutes from "./routes/alunoTecnologiaAssistivaRoutes";
 
 // Inicializando o app
 const app = express();
@@ -84,7 +81,7 @@ app.get("/api", (req, res) => {
 });
 
 // Rotas para autenticação
-
+app.use("/api/auth", authRoutes);
 
 // Rotas para a API de alunos
 app.use("/api/alunos", cacheMiddleware(300000), alunosRouter);
@@ -92,19 +89,11 @@ app.use("/api/alunos", cacheMiddleware(300000), alunosRouter);
 // Rotas para a API de profissionais
 app.use("/api/profissionais", cacheMiddleware(300000), profissionaisRouter);
 
-//Rotas para API de atendimentos
 
+//Rptas para API de atendimentos
 app.use("/api/atendimentos", cacheMiddleware(300000), atendimentoRouter);
 
-// Rotas para o dashboard
-app.use("/api/dashboard", cacheMiddleware(300000), dashboardRoutes);
-
-// Rotas para associação de aluno e tecnologia
-app.use('/api', cacheMiddleware(300000), alunoTecnologiaAssistivaRoutes, tecnologiaRoutes);
-
-// Rotas para o histórico de logs
-app.use('/api/historico', historicoRoutes);
-
+app.use('/api', tecnologiaRoutes); 
 // Rotas para as páginas
 app.use("/", pagesRoutes);
 
@@ -143,5 +132,3 @@ app.listen(port, () => {
   console.log(`\x1b[32m[SERVIDOR]\x1b[0m Health check: http://localhost:${port}/health`);
   console.log(`\x1b[32m[SERVIDOR]\x1b[0m Frontend: http://localhost:${portFrontend}`);
 });
-
-export default app;

@@ -991,43 +991,43 @@ A **topologia de rede** e a **comunicação entre os componentes** seguem uma ar
 &nbsp;&nbsp;&nbsp;&nbsp;As escolhas de implantação foram todas baseadas nos requisitos não funcionais da aplicação, principalmente os que levam em conta segurança e performance.
 
 ##### **RNF01 - Tempo de Resposta Máximo para Consultas**
-- **Justificativa**: A escolha de _AWS EC2_ para servidores de aplicação, tanto back-end quanto front-end, em conjunto com a escalabilidade horizontal, assegura que o sistema tenha capacidade de resposta rápida, distribuindo a carga de trabalho e mantendo tempos de resposta otimizados, abaixo de 0,8 segundo [\[1\]](#ref1).
+- **Justificativa**: A escolha de _AWS EC2_ para servidores de aplicação, tanto back-end quanto front-end, em conjunto com a escalabilidade horizontal, assegura que o sistema tenha capacidade de resposta rápida, distribuindo a carga de trabalho e mantendo tempos de resposta otimizados, abaixo de 0,8 segundo.
 
 ##### **RNF04 - Controle de Acesso por Tipo de Usuário**
-- **Justificativa**: A integração com _AWS Cognito_ para autenticação e autorização com _JWT_ garante que cada tipo de usuário tenha acesso somente às funcionalidades autorizadas, respeitando os requisitos de segurança e controle de acesso [\[2\]](#ref2).
+- **Justificativa**: A integração com _AWS Cognito_ para autenticação e autorização com _JWT_ garante que cada tipo de usuário tenha acesso somente às funcionalidades autorizadas, respeitando os requisitos de segurança e controle de acesso.
 
 ##### **RNF05 - Proteção de Dados Pessoais**
-- **Justificativa**: Utilizando protocolos criptografados, como _HTTPS_, e _AWS RDS_ para armazenamento, o sistema assegura que os dados de alunos e profissionais sejam protegidos, seguindo as normas de segurança da _LGPD_ [\[3\]](#ref3) [\[4\]](#ref4).
+- **Justificativa**: Utilizando protocolos criptografados, como _HTTPS_, e _AWS RDS_ para armazenamento, o sistema assegura que os dados de alunos e profissionais sejam protegidos, seguindo as normas de segurança da _LGPD_.
 
 ##### **RNF06 - Manutenibilidade e Padrão de Modularidade**
-- **Justificativa**: Com a modularidade do código e a separação das partes em serviços diferentes de nuvem da AWS, fica fácil a sua manutenção e, através do _Amazon IAM_ (_Identity and Access Management_), o acesso e manutenção na própria nuvem são facilitados e, ao mesmo tempo, controlados [\[5\]](#ref5).
+- **Justificativa**: Com a modularidade do código e a separação das partes em serviços diferentes de nuvem da AWS, fica fácil a sua manutenção e através do _Amazon IAM_ (_Identity and Access Management_) o acesso e manutenção na própria nuvem são facilitados e, ao mesmo tempo, controlados.
 
 ##### **RNF08 - Disponibilidade Alinhada com as Necessidades Operacionais**
-- **Justificativa**: A infraestrutura na AWS com escalabilidade horizontal garante alta disponibilidade, atendendo às necessidades operacionais de 8:00 às 18:00, ou por mais tempo caso necessário, sem interrupções, utilizando Auto Scaling e Amazon CloudWatch para monitoramento [\[1\]](#ref1) [\[6\]](#ref6).
+- **Justificativa**: A infraestrutura na AWS com escalabilidade horizontal garante alta disponibilidade, atendendo às necessidades operacionais de 8:00 às 18:00, ou por mais tempo caso necessário, sem interrupções, utilizando Auto Scaling e Amazon CloudWatch para monitoramento.
 
 ##### **RNF10 - Validação de Dados**
 - **Justificativa**: A validação de dados será feita tanto na interface do usuário quanto na API Interna, com a sua respectiva lógica de negócio, garantindo que somente dados válidos sejam armazenados no banco, assegurando integridade e a funcionalidade do sistema.
 
 ##### **RNF11 - Integração com API do Centro Paula Souza**
-- **Justificativa**: A integração com a API do Centro Paula Souza, representada pela "Api Externa" no diagrama, é essencial para o funcionamento do sistema. Por isso, o diagrama foi projetado e pensado em utilizá-la.
+- **Justificativa**: A integração com a API do Centro Paula Souza, representada pela "Api Externa" no diagrama é essencial para o funcionamento do sistema, por isso, o diagrama foi projetado e pensado em utilizá-la.
 
 ##### **RNF12 - Backups Automáticos**
-- **Justificativa**: Ao utilizar o _Amazon RDS_ para armazenamento dos dados, é possível configurar backups automáticos com retenção de até 35 dias, garantindo que o banco possa ser restaurado em caso de falha ou perda de dados [\[4\]](#ref4).
+- **Justificativa**: Ao utilizar o _Amazon RDS_ para armazenamento dos dados, é possível configurar backups automáticos com retenção de até 35 dias, garantindo que o banco possa ser restaurado em caso de falha ou perda de dados.
 
 
 ## 6.3 Considerações sobre Desempenho e Segurança
 
-&nbsp;&nbsp;&nbsp;&nbsp;As escolhas de tecnologias e infraestrutura foram realizadas com atenção especial aos requisitos de segurança e desempenho do sistema.
+&nbsp;&nbsp;&nbsp;&nbsp;As escolhas de tecnologias e infraestrutura foram realizadas com atenção especial aos requisito de segurança e desempnho do sistema.
+
 
 ### 6.3.1 Desempenho
+&nbsp;&nbsp;&nbsp;&nbsp;A arquitetura foi projetado para garantir alta disponibilidade, escalabilidade e eficiência, de acordo com os requisitos do sistema. Abaixo estão considerações de desempenho:
 
-&nbsp;&nbsp;&nbsp;&nbsp;A arquitetura foi projetada para garantir alta disponibilidade, escalabilidade e eficiência, de acordo com os requisitos do sistema. Abaixo estão considerações de desempenho:
+- **1 - Escalabilidade Horizontal (Auto-Scaling):** As instâncias EC2 e RDS utilizam o Auto-Scaling, o que garante que a infraestrutura seja capaz de se ajustar automatiamente à carga de trabalho. Além disso, as réplicas de leitura no RDS ajudam a distribuir a carga de consultas de leitura, o que aumenta a eficiência no acesso dos dados, permitindo que a aplicação manipule grandes volumes de tráfego sem prejudicar a performance.
 
-- **1 - Escalabilidade Horizontal (Auto-Scaling):** As instâncias EC2 e RDS utilizam o Auto-Scaling, o que garante que a infraestrutura seja capaz de se ajustar automaticamente à carga de trabalho. Além disso, as réplicas de leitura no RDS ajudam a distribuir a carga de consultas de leitura, o que aumenta a eficiência no acesso dos dados, permitindo que a aplicação manipule grandes volumes de tráfego sem prejudicar a performance. [1](#ref1), [4](#ref4)
+- **2 - Distribuição de Carga e Processamento:** O uso do AWS Cognito e da API Externa (API do CPS) permite uma divisão eficiente de carga entre os diferentes componentes do sistema. O Cognito lida com a autenticação e o gerenciamento de tokens, enquanto as demais requisições são divididas entre as APIs interna e externa.
 
-- **2 - Distribuição de Carga e Processamento:** O uso do AWS Cognito e da API Externa (API do CPS) permite uma divisão eficiente de carga entre os diferentes componentes do sistema. O Cognito lida com a autenticação e o gerenciamento de tokens, enquanto as demais requisições são divididas entre as APIs interna e externa. [2](#ref2)
-
-- **3 - Manutenção e Monitoramento:** A infraestrutura de logs e o uso de ferramentas de monitoramento da AWS como o CloudWatch permitem identificar gargalos no desempenho, ajudando na otimização contínua do sistema. [6](#ref6)
+- **3 - Manutenção e Monitoramento:** A infraestrutura de logs e o uso de ferramentas de monitoramento da AWS como o CloudWatch permitem identificar gargalos no desempenho, ajudando a otimização contínua do sistema.
 
 ### 6.3.2 Segurança
 
@@ -1036,28 +1036,24 @@ A **topologia de rede** e a **comunicação entre os componentes** seguem uma ar
 - **1 - Isolamento de Infraestrutura com VPC:** A aplicação está hospedada em uma VPC (_Virtual Private Cloud_), que proporciona um ambiente isolado para serviços críticos, protegendo-os contra acessos não autorizados da internet. Dentro da VPC foram implementadas duas sub-redes:
   - **Sub-rede Pública:** Onde o servidor de aplicação da interface está hospedado, permitindo acesso dos usuários.
   - **Sub-rede Privada:** Onde o servidor de _back-end_ e o banco de dados estão hospedados, garantindo que apenas serviços internos possam acessá-los.
-
 - **2 - Proteção das Comunicações:** Todas as comunicações utilizam protocolos de comunicação seguros:
   - **HTTPS** entre o _front-end_ e o _back-end_, garantindo a criptografia dos dados transmitidos por TLS (_Transport Layer Security_).
-  - **Autenticação com JWT** para validar usuários e evitar acessos não autorizados. [2](#ref2)
+  - **Autenticação com JWT** para validar usuários e evitar acessos não autorizados.
   - **Criptografia em trânsito** através de TLS nas conexões com o banco de dados para evitar interceptação de dados.
-  - **Criptografia em repouso** no banco de dados utilizando AWS KMS. [4](#ref4)
-
-- **3 - Controle de Acesso e Autenticação Segura:** A autenticação de usuários é gerenciada pelo AWS Cognito, utilizando OAuth2 para fornecer acesso seguro. Isso permite um gerenciamento eficiente de credenciais e tokens, implementação de autenticação multifator (MFA) e controle das permissões com base nos perfis de usuário. Além disso, o _back-end_ valida todos os tokens recebidos antes de processar qualquer requisição. [2](#ref2)
-
-- **4 - Proteção Contra Ataques:** Para mitigar ameaças como ataques DDoS, SQL Injection e Cross-Site Scripting (XSS), podem ser adotadas as seguintes estratégias:
+  - **Criptografia em repouso** no banco de dados utilizando AWS KMS (_Key Managment Service_).
+- **3 - Controle de Acesso e Autenticação Segura:** A autenticação de usuários é gerenciada pelo AWS Cognito, utilizando OAuth2 para fornecer acesso seguro. Isso permite um gerenciamento eficiente de credenciais e tokens, implementação de autenticação multifator (MFA) e controle das permissões com base nos perfis de usuário. Além disso, o _back-end_ valida todos os tokens recebidos antes de processar qualquer requisição.
+- **4 - Proteção Contra Ataques** Para mitigar ameaças como ataques DDoS, SQL Injection e Cross-Site Scripting (XSS), podem ser adotadas as seguintes estratégias:
   - **AWS WAF (_Web Application Firewall_):** para filtrar tráfego malicioso.
   - **Rate Limiting e Throttling:** na API para evitar sobrecarga e/ou abuso de requisições.
   - **Monitoramento contínuo com AWS GuardDuty:** para detectar acessos suspeitos.
+- **5 - Logs de Alterações e Backups:** Com todas as alterações registradas, é possível identificar caso haja alguma alteração maliciosa em algum arquivo no banco de dados e agir contra esse acesso, além de reverter os danos com os backups automáticos.
 
-- **5 - Logs de Alterações e Backups:** Com todas as alterações registradas, é possível identificar caso haja alguma alteração maliciosa em algum arquivo no banco de dados e agir contra esse acesso, além de reverter os danos com os backups automáticos. [4](#ref4), [5](#ref5)
 
-
-## 7. Projeto Visual da Solução
+# 7. Projeto Visual da Solução
 
 ## 7.1 Desenvolvimento de Wireframes
 
-&nbsp;&nbsp;&nbsp;&nbsp;O *Wireframe*, protótipo de baixa fidelidade, foi desenvolvido utilizando a ferramenta [Figma](https://www.figma.com/) que é amplamente utilizada no mercado [[7]](#ref7). Com ela, também foi possível fazer o *Wireframe Flow* que demonstra como é o fluxo de utilização do usuário ao clicar em cada botão da aplicação. Tudo pode ser visualizado [neste link](https://www.figma.com/design/Dh3whOUONs9F1R0HpX1jlH/LinkUp?node-id=7-40559&t=ZiXU0hTNdn7z8nHQ-1). Abaixo está uma breve descrição de cada tela principal.
+&nbsp;&nbsp;&nbsp;&nbsp;O _Wireframe_, protótipo de baixa fidelidade, foi desenvolvidos utilizando a ferramenta [Figma](https://www.figma.com/) que é amplamente utilizada no mercado. Com ela, também foi possível fazer o _Wireframe Flow_ que demonstra como é o fluxo de utilização do usuário, ao clicar em cada botão da aplicação. Tudo pode ser visualizado [neste link](https://www.figma.com/design/Dh3whOUONs9F1R0HpX1jlH/LinkUp?node-id=7-40559&t=ZiXU0hTNdn7z8nHQ-1). Abaixo está uma breve descrição de cada tela principal.
 
 ### 7.1.1 Dashboard Estatístico
 
@@ -1207,9 +1203,9 @@ Abaixo estão imagens de algumas seções dos componentes do guia.
 
 &emsp;A imagem acima apresenta exemplos de aplicação das cores em diferentes elementos da interface, como botões e componentes. Essa padronização garante consistência visual, facilitando a navegação e reforçando a identidade do projeto.
 
-## 8. Desenvolvimento do Projeto
+# 8. Desenvolvimento do Projeto
 
-&nbsp;&nbsp;&nbsp;&nbsp;Nesta seção, estão listadas as principais entregas previstas para cada etapa de desenvolvimento do projeto. O objetivo é dar uma visão da arquitetura de codificação, a estrutura de diretórios adotada e o progresso alcançado em cada sprint. O desenvolvimento é conduzido de forma iterativa e incremental [[8]](#ref8), o que significa que, às vezes, as entregas reais não coincidem completamente com o previsto.
+&nbsp;&nbsp;&nbsp;&nbsp;Nesta seção, estão listadasas principais entregas previstas para cada etapa de desenvolvimento do projeto. O objetivo é dar uma visão da arquitetura de codificação, a estrutura de diretórios adotada e o progresso alcançado em cada sprint. O desenvolvimento é conduzido de forma iterativa e incremental, o que signigica que às vezes, as entregas reais não coincidem completamente com o previsto.
 
 ## 8.1 Arquitetura de Codificação e Estrutura de Diretórios
 
@@ -1291,137 +1287,82 @@ A organização do projeto segue a divisão das camadas conforme descrito acima.
 
 ## 8.2.3 Sprint 5
 
-### Overview do Desenvolvimento
-
-&nbsp;&nbsp;&nbsp;&nbsp;Na Sprint 5, o foco foi finalizar as funcionalidades essenciais do sistema e refinar a experiência do usuário. Foram implementadas as últimas features planejadas, incluindo o dashboard estatístico, histórico de atendimentos, e melhorias significativas na acessibilidade do sistema.
-
-### Backend
-- Implementação do **sistema de histórico de atividades**, permitindo rastrear todas as alterações e ações realizadas no sistema.
-- Desenvolvimento do **módulo de estatísticas** para alimentar o dashboard com dados em tempo real sobre atendimentos e alunos.
-- Criação de endpoints para **gerenciamento de tecnologias assistivas**, possibilitando vincular diferentes tecnologias aos alunos.
-- Implementação de **validações avançadas** para garantir a integridade dos dados e conformidade com as regras de negócio.
-- Otimização das queries do banco de dados para melhorar o desempenho geral do sistema.
-- Implementação do leitor de tela para acessibilidade
-
-### Frontend
-- Desenvolvimento do **dashboard interativo** com gráficos e métricas relevantes para gestores.
-- Implementação de **notificações em tempo real** para alertar usuários sobre novos atendimentos ou alterações importantes.
-- Criação da interface para **classificação e categorização de atendimentos**.
-- Melhorias significativas na **acessibilidade**, incluindo:
-  - Suporte completo para navegação via teclado
-  - Compatibilidade com leitores de tela (NVDA e JAWS)
-  - Implementação de alto contraste e ajustes de fonte
-- Refinamento da interface do usuário com base no feedback dos testes de usabilidade.
-
-### Melhorias de Sistema
-
-- Aprimoramento do sistema de **logs** para melhor rastreabilidade das ações.
-- Reforço na **segurança** com validações adicionais de tokens e permissões.
-- Otimização do **desempenho geral** da aplicação, garantindo tempos de resposta dentro dos requisitos não funcionais.
-
-### Documentação e Testes
-- Finalização da **documentação técnica** do sistema.
-- Implementação de **testes automatizados** para as novas funcionalidades.
-- Realização de **testes de carga** para validar o desempenho sob diferentes condições de uso.
-- Documentação detalhada dos **procedimentos de implantação**.
-
-### Próximos Passos
-- Monitoramento contínuo do sistema em produção.
-- Planejamento de novas funcionalidades baseado nas necessidades identificadas durante o uso.
-- Manutenção e suporte contínuo para garantir a estabilidade do sistema.
+_conteúdo_
 
 ## 8.3 Testes Unitários e de Integração
 
 ### 8.3.1 Testes Unitários
 #### 8.3.1.1 Relatório de cobertura de testes
 
-Este documento apresenta o relatório de cobertura de testes gerado pelo **Jest** [[9]](#ref9), detalhando a cobertura de código por diretório e arquivo.
+Este documento apresenta o relatório de cobertura de testes gerado pelo **Jest**, detalhando a cobertura de código por diretório e arquivo.
 
 ##### Resumo da Cobertura
 
 <div align="center">
 
-| Diretório/Arquivo                            | % Stmts | % Branch | % Funcs | % Lines | Linhas não cobertas                                            |
-|---------------------------------------------|---------|----------|---------|---------|-----------------------------------------------------------------|
-| **Todos os arquivos**                        | **81.13** | **38.15** | **91.83** | **80.4** | -                                                               |
-| **controllers/**                             | **86.48** | **70.83** | **93.22** | **85.78** | -                                                               |
-| ├── `AlunoController.ts`                     | 84.61   | 50       | 100     | 84.61   | 51,61,71,81,91-92                                               |
-| ├── `AlunoTecnologiaAssistivaController.ts`  | 100     | 100      | 100     | 100     | -                                                               |
-| ├── `AtendimentoController.ts`               | 80.48   | 75       | 83.33   | 80      | 46-59                                                           |
-| ├── `ProfissionalController.ts`              | 76.78   | 60       | 83.33   | 76      | 34-35,74,87,104,113-125                                         |
-| ├── `TecnologiaAssistivaController.ts`       | 93.47   | 83.33    | 100     | 92.68   | 51,64,80                                                        |
-| **models/**                                  | **76.09** | **32.03** | **89.18** | **75.81** | -                                                               |
-| ├── `AlunoTecnologiaAssistiva.ts`            | 89.28   | 72.72    | 100     | 88.67   | 47,54,71,102,127,152                                            |
-| ├── `Atendimento.ts`                         | 72.6    | 31.25    | 87.5    | 72.22   | 58,63-66,84,118,147-148,151-152,159-160,164,175,181,211-224     |
-| ├── `Profissional.ts`                        | 65.78   | 24.44    | 70      | 66.21   | 60,65-68,103-135,183,196-197,201-202,206-207,212,231-234       |
-| ├── `tecnologiaAssistiva.ts`                 | 82.6    | 13.79    | 100     | 82.22   | 40,45-48,114,130-133                                            |
-| **utils/**                                   | **100**  | **100**   | **100**  | **100**  | -                                                               |
-| ├── `asyncHandler.ts`                        | 100     | 100      | 100     | 100     | -                                                               |
+| Diretório/Arquivo                  | % Stmts | % Branch | % Funcs | % Lines | Linhas não cobertas                                        |
+|------------------------------------|---------|----------|---------|---------|------------------------------------------------------------|
+| **Todos os arquivos**              | **67.34** | **29.74** | **62.74** | **66.31** | -                                                          |
+| **src/**                            | **81.25** | **16.66** | **55.55** | **80.95** | -                                                          |
+| ├── `server.ts`                    | 81.25   | 16.66    | 55.55   | 80.95   | 50-54,63,69,78,109-116                                      |
+| **src/classes/**                   | **87.5** | **0**     | **100**  | **87.5** | -                                                          |
+| ├── `EnvManager.ts`                | 87.5    | 0        | 100     | 87.5    | 13                                                         |
+| **src/controllers/**               | **84.28** | **68.75** | **93.93** | **83.59** | -                                                          |
+| ├── `AlunoController.ts`           | 76.92   | 50       | 100     | 76.92   | 11,31,41,51,61,71,81,91-92                                   |
+| ├── `AtendimentoController.ts`     | 100     | 100      | 100     | 100     | -                                                          |
+| ├── `ProfissionalController.ts`    | 76.78   | 60       | 83.33   | 76      | 33-34,73,86,103,112-124                                     |
+| ├── `UserController.ts`            | 100     | 100      | 100     | 100     | -                                                          |
+| **src/middleware/**                | **45.08** | **18.18** | **46.66** | **41.59** | -                                                          |
+| ├── `cache.ts`                     | 17.64   | 0        | 20      | 12.9    | 23-61,71-80                                                 |
+| ├── `errorHandler.ts`              | 100     | 50       | 100     | 100     | 17-34,45-46                                                 |
+| ├── `healthCheck.ts`               | 23.07   | 100      | 0       | 16.66   | 9-25                                                        |
+| ├── `limiter.ts`                   | 100     | 100      | 100     | 100     | -                                                          |
+| ├── `logger.ts`                    | 92.85   | 80       | 100     | 92.3    | 19                                                         |
+| ├── `validator.ts`                 | 34.88   | 8.51     | 50      | 31.7    | 26-75,101-102,107-108,112-113                               |
+| **src/models/**                    | **70.27** | **34.34** | **82.35** | **70.34** | -                                                          |
+| ├── `Atendimento.ts`               | 75      | 42.59    | 100     | 74.64   | 63,68-71,89,124,147,154-155,158-159,166-167,170-171,175,186,192 |
+| ├── `Profissional.ts`              | 65.78   | 24.44    | 70      | 66.21   | 60,65-68,103-135,183,196-197,201-202,206-207,212,231-234    |
+| **src/routes/**                    | **63.15** | **0**     | **0**    | **63.15** | -                                                          |
+| ├── `atendimentoRoutes.ts`         | 100     | 100      | 100     | 100     | -                                                          |
+| ├── `authRoutes.ts`                | 100     | 100      | 100     | 100     | -                                                          |
+| ├── `pagesRoutes.ts`               | 50      | 100      | 0       | 50      | 19-23,33-37                                                 |
+| ├── `profissionais.ts`             | 50      | 0        | 0       | 50      | 14-25,83-84,114-116,129-131                                  |
+| **src/services/**                  | **26.31** | **100**   | **10**   | **26.31** | -                                                          |
+| ├── `AlunoService.ts`              | 26.31   | 100      | 10      | 26.31   | 10-61                                                       |
+| **src/utils/**                     | **63.88** | **0**     | **40**   | **61.29** | -                                                          |
+| ├── `asyncHandler.ts`              | 100     | 100      | 100     | 100     | -                                                          |
+| ├── `db.ts`                        | 72      | 100      | 50      | 71.42   | 13,42,53-57                                                 |
+| ├── `responseHandler.ts`           | 14.28   | 0        | 0       | 14.28   | 31-84                                                       |
 
 
 <sup>Fonte: Relatório gerado automaticamente pelo Jest</sup>
 </div>
 
-#### Análise de Cobertura de Testes
+#### Análise
 
-A cobertura geral dos testes está em um patamar **razoável**, com **81.13%** de cobertura de instruções. No entanto, alguns diretórios e arquivos críticos ainda apresentam **lacunas importantes** que devem ser endereçadas para garantir a confiabilidade do sistema.
+- **Controllers:** O diretório `controllers/` apresenta uma cobertura excelente de **84.28%** para instruções e **68.75%** para branches. Embora a cobertura de funções seja alta (93.93%), os arquivos `AlunoController.ts` e `ProfissionalController.ts` têm algumas linhas não cobertas, principalmente em locais que envolvem lógica de fluxo condicional, como os intervalos **11, 31, 41, 51, 61, 71, 81, 91-92** no `AlunoController.ts` e **33-34, 73, 86, 103, 112-124** no `ProfissionalController.ts`. Esses pontos podem precisar de mais testes de integração para garantir que diferentes cenários sejam cobertos.
 
-- **Controllers:**
+- **Models:** O diretório `models/` tem uma cobertura de **70.27%** para instruções e **34.34%** para branches. O arquivo `Atendimento.ts` apresenta algumas lacunas, especialmente em trechos que envolvem validação e manipulação de dados do repositório. Já o arquivo `Profissional.ts` tem uma cobertura um pouco mais baixa, com várias linhas não cobertas, principalmente nas linhas **60, 65-68, 103-135, 183, 196-197**. O foco em validar e testar as interações com o banco de dados pode ser uma área a ser melhorada.
 
-   - **Cobertura geral**: `86.48%` de instruções | `70.83%` de branches.
-   - **Destaques positivos**:
-      - Arquivos como `AlunoTecnologiaAssistivaController.ts` e `UserController.ts` possuem **100%** de cobertura.
-   - **Pontos de atenção**:
-      - `AlunoController.ts`: Linhas **11, 31, 41, 51, 61, 71, 81, 91-92** não estão cobertas — focar em testar fluxos condicionais e retornos de erro.
-      - `ProfissionalController.ts`: Linhas **33-34, 73, 86, 103, 112-124** indicam necessidade de mais testes em cenários alternativos.
-<br>
+- **Middleware:** O diretório `middleware/` possui uma cobertura de **45.08%** para instruções e **18.18%** para branches, o que indica que grande parte do middleware, como o `cache.ts` e o `responseHandler.ts`, ainda não foi testada adequadamente. Especificamente, o arquivo `cache.ts` tem uma grande lacuna nas linhas **23-61, 71-80**, enquanto `responseHandler.ts` não tem cobertura em nenhum caso. Melhorar a cobertura de testes nestes pontos é crucial para garantir que os fluxos de erro e as respostas sejam bem validados.
 
-- **Models:**
+- **Services:** O diretório `services/` tem uma cobertura muito baixa, com **26.31%** de instruções e **100%** de branches (a cobertura de branches em **AlunoService.ts** é total, mas as instruções não são). Isso sugere que existem poucos testes para as interações de serviços importantes, como a lógica de negócios dentro de `AlunoService.ts`. Esse é um ponto crítico para garantir que as funcionalidades principais do sistema sejam cobertas e bem testadas.
 
-   - **Cobertura geral**: `70.27%` de instruções | `34.34%` de branches.
-   - **Pontos de atenção**:
-      - `Atendimento.ts`: Lacunas em validações e manipulação de dados do repositório.
-      - `Profissional.ts`: Diversas linhas sem cobertura, especialmente **60, 65-68, 103-135, 183, 196-197** — sugerido revisar métodos com lógica interna ou interações com o banco de dados.
-<br>
-
-- **Middleware:**
-   - **Cobertura geral**: `45.08%` de instruções | `18.18%` de branches.
-   - **Pontos de atenção**:
-      - `cache.ts`: Linhas **23-61, 71-80** sem cobertura — importante testar lógica de cache e cenários com e sem dados armazenados.
-      - `responseHandler.ts`: Nenhuma linha coberta — essencial validar manipulação de respostas e tratamento de erros.
-
-<br>
-
-- **Recomendações Gerais:**
-
-   - Priorizar a cobertura de **branches e cenários alternativos**, especialmente onde há lógica condicional.
-   - Adicionar testes específicos para **middleware e services**, que são áreas críticas com baixa cobertura.
-   - Revisar arquivos com alta responsabilidade de negócio (`Profissional.ts`, `AlunoService.ts`) e garantir que todos os caminhos possíveis sejam testados.
-
+- **Utils:** O diretório `utils/` apresenta **63.88%** de cobertura para instruções e **0%** para branches. O arquivo `db.ts` está razoavelmente coberto, mas o `responseHandler.ts` não tem cobertura significativa, com intervalos **31-84** sem testes. Seria importante adicionar testes unitários para garantir que os utilitários, como os manipuladores de resposta e funções de banco de dados, estejam funcionando corretamente.
 
 #### 8.3.1.2 Conclusão e Próximos Passos
 
-- **Próximos Passos:** A cobertura geral do projeto é **boa** (acima de 80%), especialmente na cobertura de funções, que está excelente (**91.83%**). No entanto, há **oportunidades claras de melhoria**, principalmente na cobertura de **branches (38.15%)** e em arquivos com lógica condicional ou integração com banco de dados.
-<br>
-
-- **Ações Recomendadas:**
-
-   - **Adicionar testes unitários e de integração** para os seguintes arquivos:
-      - `cache.ts` e `responseHandler.ts` (middleware)
-      - `AlunoService.ts` (services)
-
-   - **Focar na cobertura de branches e caminhos alternativos**, especialmente nos seguintes arquivos:
-      - `Atendimento.ts` e `Profissional.ts` (models)
-      - `AlunoController.ts` (controllers)
-
-   - **Refatorar trechos com baixa testabilidade**, separando responsabilidades e extraindo lógicas complexas para funções menores, facilitando a criação de testes.
-
-   - **Manter a alta cobertura de funções**: garantir que novas funcionalidades e alterações no código continuem com testes adequados para todos os métodos implementados.
+- A cobertura geral ainda é **boa**, mas pode ser significativamente melhorada, especialmente nas áreas de **middleware** e **services**. A cobertura de branches e instruções precisa ser aprimorada, principalmente nos arquivos que envolvem lógicas complexas e interações com bancos de dados.
+- **Ações recomendadas:**
+  - **Adicionar testes unitários e de integração** para os arquivos `cache.ts`, `responseHandler.ts` e `AlunoService.ts`.
+  - **Focar em aumentar a cobertura de branches** no `Atendimento.ts`, `Profissional.ts` e `AlunoController.ts`, abordando cenários alternativos e exceções.
+  - **Refatorar o código conforme necessário** para facilitar os testes, garantindo que o código seja modular e fácil de testar.
+  - Manter a alta cobertura de funções (que já é excelente) ao adicionar novas funcionalidades e refatorações, garantindo que todos os métodos sejam adequadamente testados.
 
 
 #### 8.3.1.3 Execução dos Testes
 
-A execução dos testes unitários utilizou o **Jest**, uma das bibliotecas mais populares de testes em aplicações Node.js [[9]](#ref9).
+A execução dos testes unitários utilizaram do Jest. O passo a passo para executar os testes é:
 
 1. Abra o terminal ou PowerShell
 2. Acesse a pasta /src/backend do repositório com o comando `cd <path_to_repo>/src/backend`
@@ -1438,9 +1379,7 @@ Todos os testes executados passaram e estão representados na imagem abaixo:
 
 ## 8.4 Documentações automáticas
 
-&nbsp;&nbsp;&nbsp;&nbsp;A documentação automática da API foi planejada utilizando o **Swagger (OpenAPI)**, por ser uma ferramenta robusta e amplamente adotada em projetos RESTful [[10]](#ref10). Com ela, é possível gerar uma interface visual da API a partir de comentários no código, facilitando o entendimento para desenvolvedores e integradores.
-
-&nbsp;&nbsp;&nbsp;&nbsp;A integração do Swagger no projeto permite a visualização dos endpoints disponíveis, seus métodos, parâmetros, retornos e códigos de erro, promovendo maior **transparência** e **agilidade no desenvolvimento**.
+_conteúdo_
 
 # 9. Planejamento e Execução de Testes
 
@@ -1450,79 +1389,7 @@ Todos os testes executados passaram e estão representados na imagem abaixo:
 
 ## 9.1 Testes Funcionais
 
-### Objetivo dos Testes Funcionais
-
-Os testes funcionais têm como principal objetivo validar que cada funcionalidade do sistema se comporta conforme o especificado nos requisitos funcionais (RFs). Ao testar cada caso, é verificada a conformidade das operações realizadas, a consistência dos fluxos de dados entre as interfaces e a correta resposta do sistema, tanto em cenários de sucesso quanto em situações que devem resultar em mensagens de erro ou negação de operação.
-
-### Metodologia e Estratégia
-
-Para garantir uma cobertura abrangente dos requisitos, os testes serão conduzidos conforme as seguintes diretrizes:
-
-- **Validação de Operações CRUD**: Testar todas as operações relacionadas ao cadastro, atualização, leitura e deleção de profissionais (RF001) para manter a integridade dos dados.
-- **Associação de Alunos a Profissionais**: Confirmar que o sistema associa corretamente alunos aos responsáveis (RF002) e que esta informação é refletida tanto na interface quanto nos dados armazenados.
-- **Interface Interativa**: Verificar a exibição do dashboard (RF003) por meio da apresentação adequada de gráficos e tabelas, com dados atualizados em tempo real.
-- **Acompanhamento Detalhado**: Confirmar o registro e a visualização do histórico dos alunos com deficiência (RF004), garantindo que todas as interações e atualizações sejam refletidas corretamente.
-- **Autenticação e Autorização**: Validar que o sistema autentica os usuários e aplica as regras de autorização (RF005) de acordo com os níveis de permissão definidos.
-- **Funcionalidades de Pesquisa e Filtro**: Testar os mecanismos de pesquisa e filtragem (RF006) para assegurar que os usuários possam localizar informações específicas com facilidade.
-- **Log de Atividades**: Confirmar que todas as alterações realizadas no sistema (cadastros, atualizações, associações) sejam registradas adequadamente (RF007), permitindo rastreabilidade e auditoria.
-
-### Cenários de Teste e Casos de Aceitação
-
-- **CT001 – Cadastro de Profissionais (RF001):**  
-  - **Pré-condição**: O sistema encontra-se online e o usuário tem permissão para cadastrar profissionais.  
-  - **Caso de Aceite**: O novo profissional é cadastrado com sucesso e listado corretamente na base de dados.  
-  - **Caso de Recusa**: O sistema exibe uma mensagem de erro ou não realiza nenhuma ação após a tentativa de cadastro.
-
-- **CT002 – Associação de Alunos a Profissionais (RF002):**  
-  - **Pré-condição**: Tanto o aluno quanto o profissional já devem estar cadastrados no sistema.  
-  - **Caso de Aceite**: A associação entre aluno e profissional é realizada com sucesso e registrada na lista de associações.  
-  - **Caso de Recusa**: O sistema exibe mensagem de erro ou não realiza a associação.
-
-- **CT003 – Exibição do Dashboard (RF003):**  
-  - **Pré-condição**: O sistema já contém dados de alunos, unidades e informações de gestão.  
-  - **Caso de Aceite**: O dashboard é exibido com gráficos e tabelas interativos e devidamente atualizados.  
-  - **Caso de Recusa**: O dashboard não é exibido ou os dados apresentados estão incorretos.
-
-- **CT004 – Acompanhamento de Alunos com Deficiência (RF004):**  
-  - **Pré-condição**: O aluno e o profissional devem ter sido previamente cadastrados e associados.  
-  - **Caso de Aceite**: O histórico completo e o status atual do aluno são exibidos corretamente na interface.  
-  - **Caso de Recusa**: O sistema apresenta uma mensagem de erro ou os dados exibidos estão incompletos ou incorretos.
-
-- **CT005 – Autenticação de Usuários (RF005):**  
-  - **Pré-condição**: O usuário deve possuir credenciais válidas para acesso ao sistema.  
-  - **Caso de Aceite**: O usuário é autenticado com sucesso e tem acesso às funcionalidades conforme seu nível de permissão.  
-  - **Caso de Recusa**: O sistema exibe mensagem de erro ou nega o acesso, mesmo com credenciais válidas.
-
-- **CT006 – Pesquisa e Filtros Avançados (RF006):**  
-  - **Pré-condição**: O sistema já possui um conjunto de registros de alunos e profissionais.  
-  - **Caso de Aceite**: Os resultados da pesquisa e os filtros aplicados retornam os dados corretos e relevantes à consulta.  
-  - **Caso de Recusa**: O sistema não apresenta os resultados esperados, exibindo erro ou informações incompletas.
-
-- **CT007 – Histórico de Alterações (RF007):**  
-  - **Pré-condição**: Deve haver registros de atividades no sistema (cadastros e associações previamente realizados).  
-  - **Caso de Aceite**: O histórico de alterações é exibido de forma detalhada e correta, permitindo a auditoria das atividades.  
-  - **Caso de Recusa**: O sistema não apresenta o histórico ou exibe dados inconsistentes.
-
-### Fluxo de Execução dos Testes
-
-1. **Preparação do Ambiente:**  
-   - Configuração do ambiente de testes, com o sistema online e a base de dados preparada.
-   - Definição dos dados de teste para profissionais, alunos e associações.
-   
-2. **Execução dos Testes:**  
-   - Realização dos testes de forma sequencial, cobrindo todos os RFs listados.
-   - Registro dos resultados e identificação de falhas, caso ocorram.
-   
-3. **Validação e Conclusão:**  
-   - Comparação dos resultados obtidos com os casos de aceitação definidos.
-   - Relato de inconsistências e realização de novos testes após correção dos defeitos identificados.
-   - Aprovação final dos testes quando o sistema atende plenamente aos requisitos funcionais.
-
-### Conclusão
-
-A execução dos testes funcionais é fundamental para garantir que o sistema opere de acordo com as necessidades dos usuários e dos gestores, assegurando a consistência dos dados e a experiência do usuário final. Por meio da validação de cada funcionalidade, desde a criação e manipulação de registros até a autenticação e rastreabilidade de alterações, o sistema se torna robusto e preparado para atender as demandas do ambiente de produção, minimizando riscos e facilitando a manutenção contínua.
-
-
+ Os testes funcionais validam o comportamento esperado do sistema com base nos **Requisitos Funcionais (RFs)** estabelecidos. O objetivo desses testes é garantir que todas as funcionalidades atendam aos requisitos de negócio e projeto, verificando a correção das operações realizadas, o fluxo dos dados e a resposta do sistema em diferentes cenários.
 
 ### 9.1.1 Estratégia de Testes
 
@@ -1751,235 +1618,178 @@ Para cada teste, definimos critérios específicos de aceitação:
 </div>
 
 ## 9.2 Testes de RNFs
-&emsp;Os testes de requisitos não funcionais validam aspectos de desempenho, usabilidade, segurança, compatibilidade, confiabilidade, manutenibilidade e integridade do sistema, com base no modelo de qualidade da norma ISO/IEC 25010. Esses testes avaliam “como” o sistema realiza suas funções, e não apenas “o que” ele faz.
+
+Os testes de requisitos não funcionais validam aspectos de **desempenho, acessibilidade, segurança, compatibilidade e confiabilidade** do sistema. Diferente dos testes funcionais que verificam "o que" o sistema faz, os testes de RNFs verificam "como" o sistema realiza suas funções.
 
 ### 9.2.1 Estratégia de Testes
-&emsp;Nossa abordagem está estruturada em sete pilares principais:
 
-- **Eficiência de Desempenho**
+Nossa abordagem para testes de RNFs é estruturada em cinco pilares principais:
+
+1. **Testes de Performance**
    - Tempo de resposta
-   - Atualizações em tempo real
-<br>
+   - Capacidade de carga
+   - Escalabilidade
+   - Uso de recursos
 
-- **Usabilidade**
-   - Acessibilidade
-   - Operacionalidade
-   - Clareza de mensagens
-<br>
-
-- **Segurança**
-   - Controle de acesso
+2. **Testes de Segurança**
+   - Autenticação
+   - Autorização
    - Proteção de dados
-<br>
+   - Resistência a ataques
 
-- **Compatibilidade**
-   - Navegadores suportados
-   - Integração com APIs externas
-<br>
+3. **Testes de Usabilidade e Acessibilidade**
+   - Conformidade com WCAG
+   - Compatibilidade com leitores de tela
+   - Eficiência de navegação
 
-- **Confiabilidade**
+4. **Testes de Compatibilidade**
+   - Múltiplos navegadores
+   - Diferentes resoluções
+   - Integração com APIs
+
+5. **Testes de Confiabilidade**
    - Disponibilidade
-   - Tolerância a falhas
-   - Backup e recuperação
-<br>
-
-- **Manutenibilidade**
-   - Modularidade
-   - Documentação
-<br>
-
-- **Integridade**
-   - Validação e consistência dos dados
+   - Recuperação de falhas
+   - Backup e restauração
 
 ### 9.2.2 Planejamento Detalhado
+
 #### CT-001 - Tempo de Resposta (RNF01)
+
 **Cenários de Teste:**
 
-1. **Consulta de Dados em Condição Normal**
+1. **Carga Normal**
    - Condição: 50 usuários simultâneos
-   - Métrica: Tempo de resposta
-   - Critério: ≤ 0,8 segundo para 95% das requisições
+   - Métrica: Tempo de resposta para cada operação
+   - Critério: ≤ 0,8 segundos para 95% das requisições
 
-   - **Ferramentas:**
-      - AWS CloudWatch
+2. **Pico de Carga**
+   - Condição: 200 usuários simultâneos
+   - Métrica: Tempo de resposta médio
+   - Critério: ≤ 2 segundos para 90% das requisições
 
-#### CT-002 - Acessibilidade (RNF02 & RNF13)
-**Cenários de Teste:**
-1. Navegação por Teclado
-2. Compatibilidade com Leitores de Tela (NVDA, JAWS)
-3. Verificação de Contraste e Elementos WCAG 2.1
-
-**Critérios:**
-1. Conformidade total com as diretrizes WCAG
-2. Todas as funcionalidades acessíveis por teclado
-3. Todos os elementos corretamente identificados pelos leitores de tela
+3. **Teste de Estresse**
+   - Condição: Aumento gradual até 500 usuários
+   - Métrica: Ponto de degradação do sistema
+   - Critério: Identificar limite de usuários mantendo resposta ≤ 3 segundos
 
 **Ferramentas:**
-- WAVE
-- Axe DevTools
-- Lighthouse
+- Apache JMeter para testes de carga
+- New Relic para monitoramento
+- AWS CloudWatch para métricas
+
+#### CT-002 - Acessibilidade (RNF02)
+
+**Cenários de Teste:**
+
+1. **Navegação por Teclado**
+   - Condição: Navegação completa sem mouse
+   - Métrica: Completude de tarefas
+   - Critério: 100% das funcionalidades acessíveis
+
+2. **Compatibilidade com Leitores de Tela**
+   - Condição: Teste com NVDA e JAWS
+   - Métrica: Legibilidade do conteúdo
+   - Critério: Todos os elementos corretamente identificados
+
+3. **Contraste e Legibilidade**
+   - Condição: Verificação WCAG 2.1
+   - Métrica: Nível de contraste
+   - Critério: Mínimo 4.5:1 para texto normal
+
+**Ferramentas:**
+- WAVE para análise de acessibilidade
+- Lighthouse para auditorias
+- Axe DevTools para testes automatizados
 
 #### CT-003 - Eficiência de Navegação (RNF03)
+
 **Cenários de Teste:**
 
-1. **Busca por Alunos e Profissionais**
-   - Condição: execução por assessores
-   - Métrica: número de cliques
-   - Critério: máximo de 3 cliques até o destino
+1. **Contagem de Cliques**
+   - Condição: Navegação para tarefas principais
+   - Métrica: Número de cliques
+   - Critério: Máximo 3 cliques para ações frequentes
 
-- **Ferramentas:**
-   - Hotjar
-   - Google Analytics
+2. **Tempo de Conclusão**
+   - Condição: Tarefas comuns do usuário
+   - Métrica: Tempo para completar
+   - Critério: ≤ 30 segundos por tarefa principal
 
-#### CT-004 - Controle de Acesso (RNF04)
+**Ferramentas:**
+- Hotjar para análise de comportamento
+- Google Analytics para métricas de navegação
+
+#### CT-004 - Segurança (RNF04)
+
 **Cenários de Teste:**
 
-1. Tentativas de Acesso Indevido
-- **Critério:** 100% das tentativas inválidas devem ser bloqueadas
+1. **Controle de Acesso**
+   - Condição: Tentativas de acesso não autorizado
+   - Métrica: Taxa de bloqueio
+   - Critério: 100% das tentativas inválidas bloqueadas
 
-- **Ferramentas:**
-   - OWASP ZAP
-   - SonarQube
-   - AWS Cognito / WAF
-   - BurpSuite
+2. **Proteção contra Injeção SQL**
+   - Condição: Tentativas de injeção em campos
+   - Métrica: Taxa de prevenção
+   - Critério: 100% das tentativas detectadas e bloqueadas
 
-#### CT-005 - Proteção de Dados e LGPD (RNF05)
-**Cenários de Teste:**
+3. **Força de Senha**
+   - Condição: Criação de novas senhas
+   - Métrica: Complexidade mínima
+   - Critério: 8 caracteres, maiúsculas, minúsculas, números
 
-1. Criptografia em Trânsito e em Repouso
-2. Consentimento de Dados
-3. Anonimização quando necessário
+**Ferramentas:**
+- OWASP ZAP para testes de segurança
+- SonarQube para análise de código
+- AWS WAF para proteção
 
-- **Critério:** conformidade com LGPD e boas práticas
-- **Ferramentas:**
-   - OWASP ZAP
-   - DataDog Security Monitoring
-   - Wireshark
+[Continua com detalhamento similar para os demais casos de teste...]
 
-#### CT-006 - Manutenibilidade (RNF06)
-**Cenários de Teste:**
+### 9.2.3 Métricas e Monitoramento
 
-1. Organização Modular do Código
-2. Documentação Técnica
+Para cada categoria de teste, estabelecemos métricas específicas:
 
-- **Critério:** código com documentação clara e atualizada
+1. **Performance**
+   - Tempo médio de resposta
+   - Taxa de erro
+   - Utilização de recursos
+   - Tempo de carregamento de página
 
-- **Ferramentas:**
-   - SonarQube
-   - Swagger 
-   - Repositório Git com wiki
+2. **Segurança**
+   - Número de vulnerabilidades detectadas
+   - Tempo médio de detecção
+   - Taxa de falsos positivos
+   - Cobertura de patches
 
-#### CT-007 - Compatibilidade com Navegadores (RNF07)
-**Cenários de Teste:**
-
-1. **Testes em Navegadores Modernos**
-   - Chrome, Firefox, Edge, Safari (últimas versões)
-
-- **Critério:** funcionalidades intactas e interface responsiva
-
-- **Ferramentas:**
-   - BrowserStack
-   - Selenium
-
-#### CT-008 - Disponibilidade (RNF08)
-**Cenários de Teste:**
-
-1. Simulação de Falhas
-2. Tempo Médio de Atividade
-
-- **Critério:** disponibilidade conforme plano de infraestrutura.
-- **Ferramentas:** 
-   - AWS CloudWatch
-   - UptimeRobot
-
-#### CT-009 - Tolerância a Falhas (RNF09)
-**Cenários de Teste:**
-
-1. Exibição de Mensagens em Falhas
-
-- **Condição:** falhas simuladas (ex: conexão, inserção inválida)
-- **Critério:** mensagens claras, sem termos técnicos, com sugestões de ação
-- **Ferramentas:** 
-   - Cypress (testes de UI)
-   - Testes manuais
-
-#### CT-010 - Validação e Atualizações em Tempo Real (RNF10)
-**Cenários de Teste:**
-
-1. Validação de Formulários
-2. Atualização em Tempo Real sem Corrupção de Dados
-
-- **Critério:** dados consistentes e integridade mantida
-- **Ferramentas:**
-   - Cypress
-   - Jest
-
-#### CT-011 - Integração com API Centro Paula Souza (RNF11)
-**Cenários de Teste:**
-
-1. Chamadas para API Externa
-2. Tratamento de Erros de Comunicação
-- **Critério:** integração sem falhas e com tratamento de exceções
-- **Ferramentas:**
-   - Postman
-   - Swagger
-   - Insomnia
-
-#### CT-012 - Backup e Restauração (RNF12)
-**Cenários de Teste:**
-
-1. Execução de Backups Automáticos
-2. Simulação de Perda de Dados e Restauração
-
-- **Critério:** restauração completa em até 30 minutos após falha crítica
-- **Ferramentas:**
-   - AWS Backup
-   - Scripts automatizados
-
-###  9.2.3 Métricas e Monitoramento
-&emsp;Para cada aspecto testado, as métricas incluem:
-- Tempo de resposta
-- Taxa de acessibilidade
-- Número de falhas de segurança
-- Cobertura de testes em navegadores
-- Taxa de sucesso em backups
-- Tempo de restauração
-- Taxa de erros do usuário
+3. **Usabilidade**
+   - Taxa de sucesso em tarefas
+   - Tempo médio por tarefa
+   - Taxa de erro do usuário
+   - Satisfação do usuário
 
 ### 9.2.4 Ambiente de Testes
+
+Os testes são executados em três ambientes distintos:
+
 1. **Desenvolvimento**
-   - Testes unitários e de integração contínua
+   - Testes unitários e integração
+   - Verificações de código
+   - Testes de componentes
 
 2. **Homologação**
-    - Testes de carga, segurança, usabilidade e integração
+   - Testes de carga
+   - Testes de segurança
+   - Validação de usuário
 
 3. **Produção**
-   - Monitoramento contínuo, métricas, logs e backups
+   - Monitoramento contínuo
+   - Análise de logs
+   - Métricas de desempenho
 
 ### 9.2.5 Execução de Testes de Requisitos Não Funcionais
 
-&emsp;Os testes de RNFs são distribuídos conforme as sprints do projeto, considerando a implementação das funcionalidades correspondentes e a disponibilidade dos recursos necessários. Alguns testes, como controle de acesso e proteção contra injeções maliciosas, exigem maior profundidade técnica e foram planejados para etapas mais maduras do desenvolvimento. A seguir, são apresentados testes simulados realizados ao longo das sprints:
-
-<div align="center">
-<sub>Tabela x - Execução de Testes de Requisitos Não Funcionais</sub><br>
-
-| **Sprint** | **Requisito** | **Teste Realizado** | **Resultado** | **Ação Recomendada** |
-|-----------|----------------|----------------------|----------------|----------------------|
-| Sprint 3 | RNF06 – Modularidade e documentação | Verificação da estrutura de código e padrão de comentários | Estrutura modular adequada; documentação superficial | Definir padrão de comentários e documentação para as próximas sprints |
-| Sprint 4 | RNF02 – Acessibilidade | Navegação via teclado e leitores de tela (NVDA) | 90% cobertura funcional via teclado; leitura correta dos elementos | Ajustar foco em componentes dinâmicos |
-| Sprint 4 | RNF03 – Navegação em até 3 cliques | Teste de fluxo do assessor para localizar aluno/profissional | Acesso realizado com 2 a 3 cliques | Melhorar organização de atalhos |
-| Sprint 4 | RNF10 – Validação de dados | Teste com inserção de dados inválidos | Dados rejeitados corretamente; mensagens claras | Melhorar validação de datas futuras |
-| Sprint 4 | RNF11 – Integração com API externa | Consulta de dados reais na API do Centro Paula Souza | Integração funcional; tempo alto de resposta | Adicionar cache local |
-| Sprint 5 | RNF01 – Tempo de resposta | Teste com 100 usuários simultâneos (JMeter) | 94% das requisições ≤ 0,8s | Otimizar queries no banco de dados |
-| Sprint 5 | RNF04 – Controle de acesso | Tentativas de acesso indevido por tipo de usuário | 100% das tentativas bloqueadas | Nenhuma ação necessária |
-| Sprint 5 | RNF05 – Proteção de dados | Armazenamento e transmissão de dados sensíveis | HTTPS ativo; senhas com hash Bcrypt | Revisar consentimento de dados nos formulários |
-| Sprint 5 | RNF07 – Compatibilidade entre navegadores | Execução em Chrome, Firefox, Edge e Safari | Layout e funções consistentes | Ajustar ícones no Safari |
-| Sprint 5 | RNF08 – Disponibilidade | Monitoramento em produção por 72h (AWS CloudWatch) | 100% uptime no período | Configurar alertas automáticos |
-| Sprint 5 | RNF09 – Mensagens de erro claras | Simulação de falhas no backend | Mensagens compreensíveis e orientativas | Tornar linguagem mais empática |
-| Sprint 5 | RNF12 – Backup automático | Verificação de rotina de backup AWS | Backups diários em S3 | Testar restauração em ambiente de homologação |
-
-<sup>Fonte: Material produzido pelos autores (2025) </sup>
-</div>
+&emsp;Os testes são efetuados de acordo com a etapa do projeto. Devido a complexidade, e necessidade de recursos, implementação, conhecimento, etc. para a execução de alguns testes de requisitos funcionais, os mesmo são efetuados de acordo com a etapa específica do projeto. Muitos desses testes dependem de recursos ainda não implementados, considerando certas etapas do projeto, portanto são feitos de acordo com a sprint específica, enquanto que outras condiçoes dependem de conhecimentos específicos a serem estudados, como injeção SQL. 
 
 ## 9.3 Testes de Usabilidade
 
@@ -2024,9 +1834,22 @@ Os testes de usabilidade são fundamentais para garantir que o sistema seja intu
    - **Tarefas**:
      1. Acessar o dashboard principal
      2. Filtrar dados por período específico
+     3. Exportar relatório personalizado
    - **Métricas Específicas**:
      - Tempo para localizar informações específicas
      - Precisão na interpretação dos dados
+     - Facilidade de customização de relatórios
+
+2. **Gestão de Usuários**
+   - **Objetivo**: Gerenciar permissões e acessos
+   - **Tarefas**:
+     1. Criar novo perfil de acesso
+     2. Modificar permissões existentes
+     3. Auditar logs de acesso
+   - **Critérios de Sucesso**:
+     - Conclusão sem erros de segurança
+     - Tempo máximo de 5 minutos por tarefa
+     - Confirmação adequada das alterações
 
 #### Gestor de Unidade (GU)
 **Perfil:**
@@ -2051,6 +1874,7 @@ Os testes de usabilidade são fundamentais para garantir que o sistema seja intu
    - **Tarefas**:
      1. Buscar aluno específico
      2. Revisar histórico de atendimentos
+     3. Adicionar observações ao registro
    - **Critérios de Sucesso**:
      - Máximo 3 cliques para localizar aluno
      - Visualização clara do histórico
@@ -2084,12 +1908,13 @@ Os testes de usabilidade são fundamentais para garantir que o sistema seja intu
      - Tempo total de registro
      - Clareza do processo
 
-3. **Remoção de Atendimento/Tecnologia**
-   - **Objetivo**: Remover um atendimento ou tecnologias assistivas
+3. **Edição de Atendimento**
+   - **Objetivo**: Editar um atendimento
    - **Tarefas**:
      1. Acessar o perfil de um aluno
-     2. Visualizar os atendimentos/tecnologias ativos e apertar para excluir um deles
-     3. Confirmar exclusão
+     2. Visualizar os atendimentos ativos e apertar para editar um deles
+     3. Alterar as informações necessárias
+     4. Confirmar o cadastro
    - **Métricas Específicas**:
      - Tempo total de edição
      - Clareza do processo
@@ -2180,32 +2005,16 @@ Para considerar os testes bem-sucedidos, estabelecemos os seguintes critérios:
 
 ### 9.3.6 Relatório de Testes de Usabilidade
 
-Data da execução: 
-- 4 primeiros testes: 27/03/2025 - 28/03/2025
-- 2 últimos testes: 09/04/2025
+Data da execução: 27/03/2025 - 28/03/2025
 
-&nbsp;&nbsp;&nbsp;&nbsp;Para a sprint 4, como a nossa aplicação não encontra-se totalmente finalizada e funcional foram escolhidos alguns cenários possíveis de ser executados, sendo eles:
+&nbsp;&nbsp;&nbsp;&nbsp;Para esta sprint, como a nossa aplicação não encontra-se totalmente finalizada e funcional foram escolhidos alguns cenários possíveis de ser executados, sendo eles:
 
 Gestor de Unidade (GU):
 1. Gestão de Atendimentos
 2. Acompanhamento de Alunos
 
 Assessor de Inclusão:
-
 3. Registro de Profissional
-
-&nbsp;&nbsp;&nbsp;&nbsp;Quanto aos testes executados na sprint 5, estes envolvem testar apenas as funcionalidades novas do sistema sendo elas:
-
-Gestor administrativo (GA):
-
-4. Análise de Dashboard
-
-Assessor de Inclusão:
-
-5. Registro de Atendimento ou tecnologia assistiva
-6. Remoção de Atendimento/Tecnologia
-7. Uso com Leitor de Tela
-
 
 &nbsp;&nbsp;&nbsp;&nbsp;Ainda vale ressaltar que os participantes dos testes não são realmente funcionários do Centro Paula Souza, podendo divergir um pouco nas habilidades mapeadas no planejamento dos testes.
 
@@ -2214,8 +2023,6 @@ Participantes:
 - Isabelle Dantas - Fluência Tecnológica Alta (Cenários 1 e 2 - GU)
 - João Oliveira - Fluência Tecnológica Alta (Cenário 3 - Assessor)
 - Gabriela Silva - Fluência Tecnológica Média (Cenário 3 - Assessor)
-- Iasmin Jesus - Fluência Tecnológica Alta (Cenário 2 e 3 - Assessor e Cenário 1 - GA)
-- Leonarndo Martins - Fluência Tecnológica Alta (Cenário 4 - Assessor)
 
 ## Resultados Detalhados
 
@@ -2286,180 +2093,38 @@ Participantes:
    - Avaliar a necessidade da homepage, considerando a sugestão de João Oliveira.
    - Implementar feedback visual claro após a confirmação do cadastro, como uma mensagem de sucesso ou uma atualização na lista de profissionais.
 
-## **Cenário 4 - Análise de Dashboard**
 
-**Tarefas:**
-   - Acessar o dashboard principal
-   - Filtrar dados por unidade
-   - Visualizar os dados
-
-**Observações:**
-   - Iasmin acessou o dashboard sem dificuldades.
-   - A funcionalidade de filtro por unidade foi localizada rapidamente. 
-   - A visualização dos dados após a aplicação do filtro foi clara e a animação do gráfico foi elogiada por ela.
-
-**Métricas:**
-   - Tempo para localizar a opção de filtro por unidade: Rápido.
-   - Clareza da apresentação dos dados filtrados: Alta.
-
-**Pontos de Melhoria**
-   - Considerar a possibilidade de salvar filtros frequentemente utilizados para facilitar o acesso futuro.
-
-## **Cenário 5 - Registro de Atendimento ou Tecnologia Assistiva**
-
-**Tarefas:**
-   - Iniciar novo registro de atendimento  
-   - Preencher informações necessárias
-   - Confirmar o cadastro
-
-   - Iniciar novo registro de tecnologia assistiva
-   - Preencher informações necessárias
-   - Confirmar o cadastro
-
-**Observações:**
-   - Iasmin conseguiu localizar os cadastros sem problemas.
-   - O preenchimento dos campos foi feito rapidamente, tanto na criação da tecnologia assistiva quanto o atendimento.
-   - A confirmação do cadastro foi bem-sucedida e houve feedback visual adequado (mensagem de sucesso) que foi inclusive elogiado pela usuária.
-
-**Métricas:**
-   - Tempo total de registro: 2 minutos.
-   - Clareza do processo: Alta.
-
-**Pontos de Melhoria**
-   - Nenhum ponto de melhoria significativo identificado neste cenário.
-
-## **Cenário 6 - Remoção de Atendimento/Tecnologia**
-
-**Tarefas:**
-   - Acessar o perfil de um aluno
-   - Visualizar os atendimentos/tecnologias ativos e apertar para excluir um deles
-   - Confirmar exclusão
-
-**Observações:**
-   - O acesso ao perfil do aluno e a visualização dos itens ativos foram realizados sem dificuldades.
-   - O botão de exclusão foi facilmente identificado.
-   - A confirmação da exclusão exigiu um passo adicional (modal de confirmação), o que foi considerado seguro.
-
-**Métricas:**
-   - Tempo total de edição: Rápido.
-   - Clareza do processo: Alta.
-
-**Pontos de Melhoria**
-   - Nenhum ponto de melhoria significativo identificado neste cenário.
-
-## **Cenário 7 - Uso com Leitor de Tela**
-
-**Tarefas:**
-   - Navegar entre seções principais
-   - Localizar tela de "Profissionais"
-   - Preencher formulário de cadastro de profissional
-   - Confirmar cadastro
-
-**Observações:**
-   - A navegação entre as seções principais foi possível utilizando as teclas de tabulação e as setas, mas a navegação foi um pouco confusa, pulando alguns elementos ou seguindo uma ordem inesperada.
-   - A localização da tela de "Profissionais" exigiu alguma exploração do menu de navegação, mas não foi considerada difícil pelo usuário.
-   - O preenchimento do formulário de cadastro de profissional foi realizado com alguma dificuldade, pois a leitura das labels dos campos pelo leitor de tela foi meio confusa.
-   - A confirmação do cadastro foi bem-sucedida.
-
-**Métricas:**
-   - Navegação completa sem mouse: Parcialmente atingido (necessidade de melhoria na ordem de foco).
-   - Descrições claras dos elementos: Parcialmente atingido (problemas com a leitura das labels dos campos).
-   - Feedback adequado por áudio: Parcialmente atingido (confirmação bem-sucedida, mas sem detalhes sobre outros feedbacks).
-
-**Pontos de Melhoria**
-   - Investigar e corrigir a ordem de foco dos elementos interativos para garantir uma navegação lógica e sequencial.
-   - Revisar a estrutura HTML do formulário para garantir que as labels estejam corretamente associadas aos seus respectivos campos.
-   - Embora a confirmação tenha sido bem-sucedida, é importante garantir que outros feedbacks relevantes (como erros de preenchimento) também sejam comunicados de forma audível pelo leitor de tela.
-
-## Conclusões Finais
-
-&nbsp;&nbsp;&nbsp;&nbsp;Os testes de usabilidade realizados nas Sprints 4 e 5, apesar das limitações da versão em desenvolvimento e da participação de usuários com perfis tecnológicos diversos dos mapeados, proporcionaram insights valiosos sobre a interação com o sistema.
+&nbsp;&nbsp;&nbsp;&nbsp;Os testes de usabilidade realizados na Sprint 4, embora limitados pela versão ainda não finalizada da aplicação e pela participação de usuários não diretamente ligados ao Centro Paula Souza, forneceram insights valiosos sobre a experiência do usuário.
 
 **Principais Descobertas:**
-   - Usabilidade Geral: A aplicação demonstrou uma usabilidade básica funcional, permitindo a conclusão das tarefas propostas, embora com variações na fluidez dependendo do perfil do usuário e da tarefa específica.
-
-   - Pontos de Confusão: Persistiram dificuldades relacionadas à clareza de algumas indicações visuais, como a seleção de unidades, e à nomenclatura de seções, impactando a eficiência em algumas tarefas.
-
-   - Necessidade de Feedback Visual e Audível: A ausência de feedback visual em ações importantes, como a confirmação de cadastros, e a leitura confusa de rótulos para usuários de leitores de tela, geraram incerteza e dificultaram a interação.
-
-   - Acessibilidade como Prioridade: Os testes com leitor de tela revelaram barreiras significativas na navegação e na compreensão do conteúdo, indicando a necessidade de melhorias para garantir a acessibilidade para usuários com deficiência visual.
-
-   - Navegação e Fluxo: A sugestão de simplificar a navegação, eliminando a homepage, e as dificuldades encontradas na ordem de foco durante a navegação por teclado apontam para oportunidades de otimizar o fluxo de uso.
-
-   - Dashboard: A funcionalidade de análise de dados no dashboard demonstrou potencial, mas a descoberta e a utilização dos filtros requerem refinamento para melhorar a experiência do usuário.
+   - Intuitividade Geral: A aplicação demonstrou uma boa usabilidade geral, com os usuários conseguindo completar as tarefas propostas com relativa facilidade.
+   - Pontos de Confusão: Foram identificados pontos de confusão em relação à clareza de algumas indicações visuais e à nomenclatura de algumas seções, como a aba "Anteriores".
+   - Necessidade de Feedback Visual: A falta de feedback visual em algumas ações, como a confirmação do cadastro de um profissional, gerou confusão e frustração nos usuários.
+   - Sugestão de Melhoria na Navegação: A sugestão de dispensar a homepage, feita por um dos usuários, indica uma possível oportunidade de simplificar a navegação da aplicação.
 
 **Recomendações:**
    - Priorizar a melhoria da clareza das indicações visuais, especialmente em relação ao dropdown de seleção de unidade na lista de alunos.
+   - Revisar a nomenclatura das seções da aplicação, buscando termos mais intuitivos e claros para os usuários.
+   - Implementar feedback visual claro após a realização de ações importantes, como cadastros e edições.
    - Avaliar a necessidade da homepage, considerando a sugestão de simplificar a navegação.
-   - Aprimorar o conteúdo e as informações do dashboard
+   - É muito importante adicionar um feedback visual para o usuário quando ele realizar alguma ação.
 
 **Próximos Passos:**
-   - Implementar as melhorias identificadas nos testes das Sprints 4 e 5, priorizando as correções de acessibilidade.
+   - Implementar as melhorias identificadas nos testes.
+   - Realizar novos testes de usabilidade com a aplicação completa, incluindo usuários com diferentes perfis e necessidades de 
 
 # 10. Procedimentos de Implantação
 
-&nbsp;&nbsp;&nbsp;&nbsp; Este capítulo descreve as etapas executadas para disponibilizar a solução em ambiente de uso. A implantação foi segmentada em duas partes: configuração do banco de dados e ativação do protótipo em nuvem. Cada etapa visa garantir o funcionamento da aplicação conforme os requisitos definidos.
-
-&nbsp;&nbsp;&nbsp;&nbsp; A arquitetura já foi apresentada anteriormente por meio do [diagrama de implantação](#6-mapeamento-técnico-de-infraestrutura-e-implantação). Neste ponto, o foco é relatar os procedimentos necessários para colocar a aplicação em operação, considerando os serviços utilizados, os acessos habilitados e a comunicação entre os componentes.
+_conteúdo_
 
 ## 10.1 Implantação e Configuração do Banco de Dados
 
-&nbsp;&nbsp;&nbsp;&nbsp; A implantação do banco de dados foi realizada utilizando o serviço Amazon RDS com o mecanismo MySQL. A instância foi provisionada em uma sub-rede privada da VPC, de forma que apenas componentes internos da aplicação possam estabelecer conexão direta com o banco, via TCP/IP.
-
-&nbsp;&nbsp;&nbsp;&nbsp; A configuração inicial incluiu a definição do schema, criação de tabelas e tipos de dados necessários, com base no modelo relacional previamente definido. Scripts SQL foram utilizados para automatizar esse processo e garantir a consistência da estrutura entre ambientes. Os dados de acesso ao banco foram armazenados de forma segura em variáveis de ambiente, não sendo expostos diretamente no código-fonte.
-
-&nbsp;&nbsp;&nbsp;&nbsp; O acesso à instância é restrito por grupos de segurança, permitindo conexões apenas da instância EC2 que executa a API interna. O tráfego entre a API e o banco ocorre exclusivamente dentro da VPC, com possibilidade de criptografia em trânsito utilizando SSL.
-
-&nbsp;&nbsp;&nbsp;&nbsp; O banco foi configurado com backups automáticos diários, com retenção de até 35 dias, e replicação de leitura opcional para escalar operações de consulta, se necessário. Todas as alterações feitas por meio da API são registradas em arquivos de log para fins de auditoria e rastreamento.
-
-&nbsp;&nbsp;&nbsp;&nbsp; A comunicação entre a API e o banco foi validada por meio de testes de conectividade e inserção de registros de exemplo, assegurando o funcionamento dos principais fluxos da aplicação antes da ativação completa do protótipo.
-
+_conteúdo_
 
 ## 10.2 Implantação do Protótipo para uso por equipe de desenvolvimento
 
-&nbsp;&nbsp;&nbsp;&nbsp; O protótipo foi implantado em ambiente de nuvem com infraestrutura baseada em instâncias EC2 da AWS. A aplicação foi dividida em duas camadas principais: interface (front-end) e lógica de negócio (back-end), executadas em instâncias separadas para facilitar a manutenção, testes e controle de acesso.
-
-&nbsp;&nbsp;&nbsp;&nbsp; A instância do front-end foi configurada em uma sub-rede pública da VPC, permitindo acesso via navegador por meio do protocolo HTTPS. A instância do back-end, responsável pela API interna, foi alocada em uma sub-rede privada, comunicando-se com o banco de dados e com a API externa. A comunicação entre os componentes ocorre por meio de rede privada, com controle de tráfego definido por grupos de segurança.
-
-&nbsp;&nbsp;&nbsp;&nbsp; O protótipo foi disponibilizado à equipe de desenvolvimento com dados de acesso restrito, utilizando autenticação via AWS Cognito. Cada usuário recebe um token JWT válido para acesso aos recursos da aplicação conforme o perfil atribuído.
-
-&nbsp;&nbsp;&nbsp;&nbsp; A infraestrutura de monitoramento foi ativada com o AWS CloudWatch para registrar o consumo de recursos, falhas de execução e comportamento do sistema durante os testes. Além disso, todos os serviços foram organizados em um ambiente replicável por meio de scripts de provisionamento, garantindo consistência em futuras reinstalações.
-
-&nbsp;&nbsp;&nbsp;&nbsp; A disponibilização do protótipo permite que a equipe de desenvolvimento execute testes de interface, integração e autenticação, além de validar os fluxos de uso da aplicação conforme os requisitos levantados no início do projeto.
-
+_conteúdo_
 
 # Referências
 
-- <a id="ref1"></a> [1] AMAZON WEB SERVICES. *Amazon EC2: Cloud Servers & Cloud Hosting*. Disponível em: https://aws.amazon.com/ec2/. Acesso em: 01 abr. 2025.
-
-- <a id="ref2"></a> [2] AMAZON WEB SERVICES. *Amazon Cognito*. Disponível em: https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools.html. Acesso em: 01 abr. 2025.
-
-- <a id="ref3"></a> [3] BRASIL. Lei n.º 13.709, de 14 de agosto de 2018. *Lei Geral de Proteção de Dados Pessoais (LGPD)*. Disponível em: https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/L13709.htm. Acesso em: 01 abr. 2025.
-
-- <a id="ref4"></a> [4] AMAZON WEB SERVICES. *Amazon RDS - Backups e Segurança*. Disponível em: https://aws.amazon.com/rds/features/. Acesso em: 01 abr. 2025.
-
-- <a id="ref5"></a> [5] AMAZON WEB SERVICES. *AWS IAM – Identity and Access Management*. Disponível em: https://aws.amazon.com/iam/. Acesso em: 01 abr. 2025.
-
-- <a id="ref6"></a> [6] AMAZON WEB SERVICES. *Amazon CloudWatch*. Disponível em: https://docs.aws.amazon.com/cloudwatch/. Acesso em: 01 abr. 2025.
-
-- <a id="ref7"></a> [7] FIGMA. *Figma: Ferramenta de Design Colaborativo*. Disponível em: https://www.figma.com/. Acesso em: 01 abr. 2025.
-
-- <a id="ref8"></a> [8] PRESSMAN, R. S.; MAXIM, B. R. *Software Engineering: A Practitioner's Approach*. 8. ed. New York: McGraw-Hill Education, 2014.
-
-- <a id="ref9"></a> [9] JEST. *Jest Documentation*. Disponível em: https://jestjs.io/docs/getting-started. Acesso em: 01 abr. 2025.
-
-- <a id="ref10"></a> [10] SMARTBEAR. *Swagger OpenAPI Documentation*. Disponível em: https://swagger.io/specification/. Acesso em: 01 abr. 2025.
-
-- <a id="ref11"></a> [11] APACHE. *JMeter*. Disponível em: https://jmeter.apache.org/. Acesso em: 01 abr. 2025.
-
-- <a id="ref12"></a> [12] WEBAIM. *WAVE Web Accessibility Evaluation Tool*. Disponível em: https://wave.webaim.org/. Acesso em: 01 abr. 2025.
-
-- <a id="ref13"></a> [13] GOOGLE. *Lighthouse*. Disponível em: https://developer.chrome.com/docs/lighthouse/overview/. Acesso em: 01 abr. 2025.
-
-- <a id="ref14"></a> [14] DEQUE SYSTEMS. *axe DevTools*. Disponível em: https://www.deque.com/axe/devtools/. Acesso em: 01 abr. 2025.
-
-- <a id="ref15"></a> [15] OWASP. *Zed Attack Proxy (ZAP)*. Disponível em: https://owasp.org/www-project-zap/. Acesso em: 01 abr. 2025.
-
-- <a id="ref16"></a> [16] SONARSOURCE. *SonarQube Documentation*. Disponível em: https://docs.sonarsource.com/sonarqube/. Acesso em: 01 abr. 2025.
-
-- <a id="ref17"></a> [17] AMAZON WEB SERVICES. *AWS WAF*. Disponível em: https://aws.amazon.com/waf/. Acesso em: 01 abr. 2025.
+_conteúdo_

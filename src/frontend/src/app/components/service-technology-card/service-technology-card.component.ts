@@ -1,10 +1,9 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { MatIconModule } from '@angular/material/icon';
+import { Component, Input } from '@angular/core';
 
 
 @Component({
   selector: 'app-service-technology-card',
-  imports: [MatIconModule],
+  imports: [],
   templateUrl: './service-technology-card.component.html',
   styleUrl: './service-technology-card.component.css'
 })
@@ -14,18 +13,10 @@ export class ServiceTechnologyCardComponent {
   @Input() title: string = '';
   @Input() dateTime: string = '';
   @Input() showDateTime: boolean = true;
-  @Input() showDeleteButton: boolean = false;
-  @Input() itemId: string | undefined = '';
-
-  @Output() deleteClick = new EventEmitter<string>();
 
   date: string = '';
   time: string = '';
   isEditing: boolean | undefined;
-
-  onDeleteClick() {
-    this.deleteClick.emit(this.itemId);
-  }
 
   ngOnInit() {
     if (this.dateTime) {
@@ -51,6 +42,10 @@ export class ServiceTechnologyCardComponent {
 
   get formattedTime(): string {
     return this.time || 'HH:MM';
+  }
+
+  toggleEdit() {
+    this.isEditing = !this.isEditing;
   }
 
 }

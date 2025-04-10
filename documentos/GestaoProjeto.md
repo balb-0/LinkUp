@@ -277,210 +277,32 @@
 
 ## 2.5 Sprint 5
 
-### Análise da Sprint Review
-
-#### **Pontos Fortes**
-
-- Aprendizado coletivo com os erros das sprints anteriores.
-- Aumento da autonomia dos membros na execução das tasks.
-- Kanban visualmente mais organizado e com maior rotatividade de tarefas.
-- Mais proatividade na revisão de PRs.
-
-#### **Pontos Fracos**
-
-- Falta de testes adequados em algumas entregas.
-- Pouco tempo reservado para revisão e testes antes do fim da sprint.
-- Cansaço excessivo devido ao encerramento do módulo.
-
----
-
-### Ações de Melhoria para os Pontos Fracos
-
-#### 1. Falta de testes adequados em algumas entregas
-
-##### Ações de melhoria:
-
-- Criar uma etapa fixa de validação/testes nas tasks de desenvolvimento.
-- Reforçar o uso de checklist para garantir que a testagem foi feita antes da finalização da tarefa.
-- Atribuir responsáveis pela verificação de qualidade para cada grupo de entregas.
-
-#### 2. Pouco tempo reservado para revisão e testes antes do fim da sprint
-
-##### Ações de melhoria:
-
-- Reorganizar o planejamento para que o término das tasks críticas aconteça antes dos últimos dias da sprint.
-- Estabelecer um “Freeze Day” (ex: penúltimo dia da sprint) para revisão e testes de todas as tasks pendentes.
-- Priorizar a entrega gradual ao longo da sprint, evitando acúmulo no final.
-
-#### 3. Cansaço excessivo devido ao encerramento do módulo
-
-##### Ações de melhoria:
-
-- Incluir buffers de tempo no planejamento considerando o calendário acadêmico e pessoal da equipe.
-- Priorizar a saúde mental e o equilíbrio da carga de trabalho com pausas estratégicas.
-- Redistribuir tarefas de forma mais equilibrada entre os membros, respeitando a disponibilidade individual.
-
----
-
-### Ações realizadas após a Sprint 4
-
-&nbsp;&nbsp;&nbsp;&nbsp;A equipe deu continuidade às melhorias iniciadas na sprint anterior, com destaque para a organização do kanban e a proatividade na revisão de PRs. As tarefas circularam com mais fluidez e os membros demonstraram maior autonomia durante a execução das demandas, resultado direto da aprendizagem acumulada nas últimas sprints.
-
-&nbsp;&nbsp;&nbsp;&nbsp;Alguns gargalos, no entanto, ainda foram observados, como a ausência de testes mais robustos em algumas entregas e a concentração de revisões no fim da sprint. Além disso, o cansaço acumulado pelo encerramento do módulo afetou o ritmo da equipe, demonstrando a necessidade de maior atenção ao planejamento em períodos de alta demanda acadêmica.
+_conteúdo_
 
 # 3. Análise de Riscos
 
-&nbsp;&nbsp;&nbsp;&nbsp; A análise de riscos nos ajuda a identificar ameaças que possam atrapalhar o desenvolvimento e a entrega do projeto. Serve também para nos ajudar a identificar oportunidades de êxito. Nesta seção, estão apresentados os principais riscos identificados pelo grupo ao longo do desenvolvimento do projeto. A identificação e o acompanhamento contínuo dos riscos nos permitem agir de forma ágil, minimizando retrabalhos, atrasos e falhas.
+_conteúdo_
 
 ## 3.1 Riscos identificados
 
-&nbsp;&nbsp;&nbsp;&nbsp;Durante o desenvolvimento do projeto, foram identificados alguns riscos que podem comprometer tanto o desempenho técnico da aplicação quanto a eficiência da equipe, se não levados em conta durante o desenvolvimento.
-
-### Riscos Técnicos
-
-- **Dependência de serviços externos**  
-  - Probabilidade: Média  
-  - Impacto: Alto  
-  - Nível de Risco: Alto  
-  A utilização de APIs externas para consultas e criação de atendimentos com informações dos alunos torna o sistema dependente às indisponibilidades ou mudanças nos serviços de fora.
-
-- **Falta de testes automatizados**  
-  - Probabilidade: Baixa  
-  - Impacto: Alto  
-  - Nível de Risco: Muito Alto  
-  A ausência ou baixa cobertura de testes robusta pode dificultar a detecção de erros e prejudicar a manutenção a longo prazo.
-
-- **Vulnerabilidades de segurança**  
-  - Probabilidade: Média  
-  - Impacto: Muito Alto  
-  - Nível de Risco: Muito Alto  
-  O tratamento inadequado de dados sensíveis pode levar a violações de privacidade e problemas com a LGPD.
-
-- **Latência alta**  
-  - Probabilidade: Média  
-  - Impacto: Médio  
-  - Nível de Risco: Alto  
-  Dependendo da infraestrutura, dos provedores escolhidos e da lógica de requisições, o sistema pode apresentar lentidão.
-
-- **Falta de acessibilidade**  
-  - Probabilidade: Baixa  
-  - Impacto: Alto  
-  - Nível de Risco: Moderado  
-  A ausência de recursos acessíveis pode excluir usuários com deficiência.
-
-- **Mudanças de requisitos ao longo do projeto**  
-  - Probabilidade: Alta  
-  - Impacto: Médio  
-  - Nível de Risco: Alto  
-  Alterações de escopo podem afetar diretamente o planejamento técnico e causar retrabalho.
-
-### Riscos Não Técnicos
-
-- **Sobrecarga da equipe**  
-  - Probabilidade: Média  
-  - Impacto: Alto  
-  - Nível de Risco: Alto  
-  Má distribuição de tarefas e prazos curtos podem afetar produtividade e qualidade do desenvolvimento das entregas.
-
-- **Comunicação ineficiente**  
-  - Probabilidade: Alta  
-  - Impacto: Alto  
-  - Nível de Risco: Alto  
-  Falhas na troca de informações entre membros do grupo podem gerar desalinhamentos, causando discordâncias que atrapalham nas entregas reais nos encontros com o parceiro.
-
-- **Retrabalho**  
-  - Probabilidade: Média  
-  - Impacto: Alto  
-  - Nível de Risco: Alto  
-  A ausência de validações intermediárias pode gerar trabalho duplicado desnecessário.
-
-- **Gestão de tempo ineficaz**  
-  - Probabilidade: Alta  
-  - Impacto: Médio  
-  - Nível de Risco: Alto  
-  Estimativas incorretas de tempo podem quebrar o cronograma e impactar as entregas.
-
-- **Indisponibilidade de membros**  
-  - Probabilidade: Baixa  
-  - Impacto: Médio  
-  - Nível de Risco: Moderado  
-  Imprevistos pessoais ou acadêmicos podem reduzir a força de trabalho.
-
-
-&nbsp;&nbsp;&nbsp;&nbsp;A maioria dos riscos se mostrou mais evidente nas Sprints 2 e 4, principalmente relacionados à sobrecarga, comunicação e retrabalho. O monitoramento contínuo e a adaptação da equipe foram fundamentais para manter o progresso do projeto.
-
+_conteúdo_
 
 ## 3.2 Mitigação de Riscos
 
-&nbsp;&nbsp;&nbsp;&nbsp;Com base nos riscos identificados, o grupo propôs estratégias para prevenir, minimizar e evitar os impactos ao longo do desenvolvimento.
-
-### Riscos Técnicos
-
-- **Dependência de serviços externos**  
-  Criar páginas de erro informativas para o usuário em caso de falha da API externa e implementar mecanismos de fallback, como cache local ou retries automáticos. Sempre documentar mudanças vindas de terceiros e testar endpoints críticos.
-
-- **Falta de testes automatizados**  
-  Focar em testes manuais nas partes mais críticas durante as entregas e, quando houver tempo, implementar testes automatizados para casos de uso recorrentes. Utilizar validações internas na aplicação para detectar erros o mais cedo possível.
-
-- **Vulnerabilidades de segurança**  
-  Aplicar boas práticas de segurança como criptografia de dados sensíveis, tokens de autenticação, e validação de entradas no backend. Garantir que nenhuma informação pessoal seja exposta em logs ou mensagens de erro.
-
-- **Latência alta**  
-  Otimizar consultas ao banco de dados, usar carregamento assíncrono em partes menos críticas da aplicação e monitorar as requisições que demoram mais tempo. Priorizar performance nas funcionalidades mais utilizadas.
-
-- **Falta de acessibilidade**  
-  Aplicar diretrizes básicas de acessibilidade como contraste de cores, uso correto de semântica HTML e navegação via teclado. Realizar revisões de interface com foco em inclusão.
-
-- **Mudanças de requisitos ao longo do projeto**  
-  Registrar cada mudança de escopo, discutir impacto com o grupo e com o parceiro, e adaptar o backlog conforme necessário. Priorizar flexibilidade e alinhamento constante com os stakeholders.
-
-### Riscos Não Técnicos
-
-- **Sobrecarga da equipe**  
-  Distribuir melhor as tarefas entre os membros, levando em conta a complexidade de cada uma. Reduzir o número de entregas simultâneas e revisar a carga de trabalho com frequência.
-
-- **Comunicação ineficiente**  
-  Manter o uso ativo do Slack, incluindo marcações diretas e canais temáticos. Incentivar feedback constante nas dailys e reforçar o papel da comunicação como ferramenta de alinhamento.
-
-- **Retrabalho**  
-  Validar tarefas com o grupo antes da execução, definir critérios claros de entrega e fazer checkpoints durante a sprint. Manter histórico das decisões tomadas para evitar inconsistências.
-
-- **Gestão de tempo ineficaz**  
-  Estimar tarefas com base na experiência das sprints anteriores, focar no que é essencial e revisar prioridades semanalmente. Estabelecer checkpoints internos para não acumular tarefas no final.
-
-- **Indisponibilidade de membros**  
-  Garantir que todas as tarefas estejam bem documentadas no GitHub/Notion e que qualquer membro do grupo consiga assumir uma task em caso de imprevistos. Manter o backup de responsabilidades quando possível.
-
-&nbsp;&nbsp;&nbsp;&nbsp;Essas ações foram pensadas para tornar o grupo mais resiliente diante dos desafios do projeto. Algumas delas já foram colocadas em prática nas últimas sprints e outras serão aplicadas conforme novos riscos surgirem ou se intensificarem.
+_conteúdo_
 
 # 4. Análise Post Mortem
 
-
-A análise Post Mortem tem como objetivo refletir sobre o processo de desenvolvimento do projeto, identificando os principais acertos, desafios enfrentados e lições aprendidas durante a execução. Essa prática é útil e nos ajuda a consolidar aprendizados, otimizar futuras iniciativas e fortalecer a capacidade de trabalho em equipe. Ao longo das etapas do projeto, foram observados pontos positivos, aspectos que exigiram adaptação e oportunidades claras de melhoria que serão apresentadas nas próximas subseções.
-
+_conteúdo_
 
 ## 4.1 Sucessos do Projeto
 
-&nbsp;&nbsp;&nbsp;&nbsp; Ao longo das cinco sprints do projeto, o grupo demonstrou capacidade de compreensão dos objetivos propostos pelos parceiros. Foi possível identificar com precisão as principais necessidades e expectativas, permitindo o desenvolvimento de features dentro do website alinhadas com essas demandas. Como resultado, as soluções entregues conseguiram atender de forma eficaz às "dores" apresentadas, agregando valor real ao projeto.
-
-&nbsp;&nbsp;&nbsp;&nbsp;  Os parceiros se mostraram, na maior parte do tempo, extremamente solícitos e colaborativos, contribuindo com questionamentos relevantes e validando o progresso do projeto a cada sprint. Mesmo nos momentos em que o grupo não conseguiu atingir integralmente as metas estabelecidas, demonstraram compreensão e ofereceram o suporte necessário para que o time pudesse se reorganizar e seguir com o desenvolvimento de forma eficiente.
-
-&nbsp;&nbsp;&nbsp;&nbsp; Outro ponto positivo foi a sinergia entre os membros do grupo, que mantiveram uma comunicação clara e constante durante todo o ciclo de desenvolvimento. A adoção de boas práticas de organização e gestão, como o uso eficaz das cerimônias ágeis e ferramentas de acompanhamento, permitiu que o time se mantivesse alinhado, mesmo diante de imprevistos e mudanças de escopo. Essa colaboração ativa foi essencial para manter o ritmo do projeto e garantir entregas contínuas com qualidade.
-
-&nbsp;&nbsp;&nbsp;&nbsp; Além disso, todos os integrantes do grupo apresentaram uma evolução significativa em suas capacidades técnicas. Esse progresso pode ser, em parte, atribuído ao próprio sucesso do projeto, uma vez que um dos princípios fundamentais de projetos desenvolvidos no Inteli é justamente a proposição de desafios que exijam a aquisição de novos conhecimentos.
+_conteúdo_
 
 ## 4.2 Oportunidades de Melhoria
 
-&nbsp;&nbsp;&nbsp;&nbsp; Apesar dos bons resultados alcançados, alguns pontos ao longo do projeto evidenciaram oportunidades claras de melhoria. Um deles foi a definição inicial do escopo, que poderia ter sido mais detalhada e validada com os parceiros desde as primeiras sprints. Em alguns momentos, mudanças de direção ou ajustes nos requisitos causaram retrabalho, o que impactou o ritmo de entrega. Um dos maiores exemplos que nos afetou durante as últimas sprints, foi o retrabalho relacionado ao banco de dados, onde muitas vezes tivemos que adicionar novas informações ou até retirar outras.
-
-&nbsp;&nbsp;&nbsp;&nbsp; Outro aspecto a ser aprimorado é a gestão de tempo durante as sprints. Em certas sprints, a priorização de tarefas e o dimensionamento do esforço necessário não foram totalmente precisos, gerando acúmulo de atividades próximas ao final de cada uma das sprints. Isso evidenciou a necessidade de um planejamento mais realista e criterioso para garantir um fluxo de trabalho mais equilibrado.
-
-&nbsp;&nbsp;&nbsp;&nbsp; Por fim, a comunicação com os parceiros, embora positiva no geral, poderia ter sido mais frequente e estruturada em algumas fases, especialmente nas apresentações de final de sprint, onde mais perguntas poderiam ter sido feitas para evitar retrabalhos desnecessários.
+_conteúdo_
 
 ## 4.3 Lições Aprendidas
 
-&nbsp;&nbsp;&nbsp;&nbsp; Uma das principais lições aprendidas ao longo do projeto foi a importância de um planejamento inicial mais aprofundado. A ausência de uma definição mais clara e detalhada do escopo nas etapas iniciais resultou em ajustes e redefinições ao longo das sprints. Com isso, ficou evidente que investir tempo no alinhamento de expectativas, na priorização de entregas e na estruturação do backlog desde o início pode evitar retrabalho e tornar o desenvolvimento mais fluido e eficiente.
-
-&nbsp;&nbsp;&nbsp;&nbsp; A comunicação dentro do grupo também se mostrou um ponto crucial. Durante boa parte do projeto, a troca de informações funcionou bem; no entanto, uma falha na comunicação ao final da quarta sprint acabou gerando conflitos em relação ao entendimento de responsabilidades e prazos. Essa experiência destacou a necessidade de manter um canal de diálogo constante e transparente entre todos os membros, com alinhamentos frequentes para garantir que todos estejam na mesma página durante cada etapa do desenvolvimento.
-
-&nbsp;&nbsp;&nbsp;&nbsp; Por outro lado, uma prática que se mostrou extremamente positiva foi a colaboração entre os membros nas tarefas mais desafiadoras. O uso do pair programming em momentos críticos do projeto possibilitou a troca de conhecimentos em tempo real, a identificação mais rápida de problemas e o fortalecimento da coesão do time. Essa abordagem não apenas aumentou a qualidade do código, como também contribuiu para o crescimento técnico coletivo, reforçando a importância de trabalhar em conjunto em vez de isolar as responsabilidades.
+_conteúdo_

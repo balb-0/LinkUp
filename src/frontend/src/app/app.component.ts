@@ -13,6 +13,7 @@ import { DropDownComponent } from './components/drop-down/drop-down.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TabServiceTechnologyComponent } from './components/tab-service-technology/tab-service-technology.component';
 
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -21,8 +22,7 @@ import { TabServiceTechnologyComponent } from './components/tab-service-technolo
     MenuNavComponent,
     CommonModule,
     RouterModule,
-    ReactiveFormsModule,
-  ],
+    ReactiveFormsModule,],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

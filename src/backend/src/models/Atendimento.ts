@@ -1,25 +1,26 @@
+
 export interface IAtendimento {
-  id?: string;
-  alunoId: string;
-  dataAtendimento: string | Date;
-  tipoAtendimento: string;
-  profissionalId: string;
+    id?: string;
+    alunoId: string;
+    dataAtendimento: Date;
+    tipoAtendimento: string;
+    profissionalId: string;
 }
 
 export class Atendimento implements IAtendimento {
-  id?: string;
-  alunoId: string;
-  dataAtendimento: string | Date;
-  tipoAtendimento: string;
-  profissionalId: string;
+    id?: string;
+    alunoId: string;
+    dataAtendimento: Date;
+    tipoAtendimento: string;
+    profissionalId: string;
 
-  constructor(atendimento: IAtendimento) {
-    this.id = atendimento.id;
-    this.alunoId = atendimento.alunoId;
-    this.dataAtendimento = atendimento.dataAtendimento;
-    this.tipoAtendimento = atendimento.tipoAtendimento;
-    this.profissionalId = atendimento.profissionalId;
-  }
+    constructor(atendimento: IAtendimento) {
+        this.id =  atendimento.id;
+        this.alunoId = atendimento.alunoId;
+        this.dataAtendimento = atendimento.dataAtendimento;
+        this.tipoAtendimento = atendimento.tipoAtendimento;
+        this.profissionalId = atendimento.profissionalId;
+    }
 }
 
 import { query } from '../utils/db';
@@ -87,7 +88,7 @@ export class AtendimentoRepository {
     return result.map(row => new Atendimento({
       id: row.id.toString(),
       alunoId: row.aluno_id.toString(),
-      dataAtendimento: row.data_atendimento,
+      dataAtendimento: new Date(row.data_atendimento),
       tipoAtendimento: row.tipo_atendimento,
       profissionalId: row.profissional_id.toString(),
     }));
@@ -121,7 +122,7 @@ export class AtendimentoRepository {
     return new Atendimento({
       id: row.id.toString(),
       alunoId: row.aluno_id.toString(),
-      dataAtendimento: row.data_atendimento,
+      dataAtendimento: new Date(row.data_atendimento),
       tipoAtendimento: row.tipo_atendimento,
       profissionalId: row.profissional_id.toString(),
     });
@@ -198,31 +199,5 @@ export class AtendimentoRepository {
     
     return true;
   }
-/**
- * Esta função recupera o número total de alunos e o número total de alunos que receberam
- * atendimento de um banco de dados usando consultas SQL.
- * @returns A função `listarAtendimentosPorTotalDeAlunos` retorna uma Promise que resolve para um
- * objeto com duas propriedades: `total_alunos_atendidos` e `atendimentos_por_tipo`. Essas propriedades representam
- * o número total de alunos atendidos e o número total de alunos no banco de dados,
- * respectivamente. Se não houver resultados na consulta, retorna um objeto com ambos os contadores definidos como
- * zero.
- */
-  static async listarAtendimentosPorTotalDeAlunos(): Promise<{ total_alunos_atendidos: number }> {
-    const sql = `
-      SELECT COUNT(DISTINCT aluno_id) as total_alunos_atendidos
-      FROM Atendimento
-    `;
-
-    const result: any[] | null = await query(sql);
     
-    if (!result || result.length === 0) {
-      return {
-        total_alunos_atendidos: 0
-      };
-    }
-
-    return {
-      total_alunos_atendidos: Number(result[0].total_alunos_atendidos)
-    };
-}
 }

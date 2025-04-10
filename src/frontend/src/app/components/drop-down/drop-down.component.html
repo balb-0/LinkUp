@@ -5,7 +5,7 @@
       [style.height.px]="height"
       class="relative bg-[#E2E2E2] rounded flex px-3 items-center justify-between cursor-pointer"
       (click)="toggleDropdown($event)">
-      <span class="whitespace-nowrap overflow-hidden text-ellipsis block w-full">{{ selectedItem || placeholder }}</span>
+      <span class="text-truncate">{{ selectedItem || placeholder }}</span>
       <svg
         [ngClass]="{'transform rotate-180': isOpen}"
         class="transition-transform duration-200 ml-2"

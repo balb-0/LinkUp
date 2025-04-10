@@ -14,7 +14,7 @@ describe('ServiceTechnologyCardComponent', () => {
 
     fixture = TestBed.createComponent(ServiceTechnologyCardComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges(); 
+    fixture.detectChanges();
   });
 
   it('should create', () => {

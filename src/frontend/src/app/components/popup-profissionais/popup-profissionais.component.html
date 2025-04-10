@@ -11,12 +11,12 @@
             <!-- Barra de busca -->
             <app-search-bar (search)="onSearch($event)"></app-search-bar>
             <!-- Tabela com os profissionais -->
-            <app-table [data]="tableData" [columns]="tableColumns" [pageSize]="3" [selectedId]="profissionalSelecionadoId" (rowClick)="selecionarProfissional($event)"></app-table>
+            <app-table [data]="tableData" [columns]="tableColumns" [pageSize]="3"></app-table>
 
             <!-- Date-time picker + Botão Confirmar -->
             <div class="date-time-picker-container">
-                <app-date-time-picker (dataSelecionada)="onDataSelecionada($event)"></app-date-time-picker>
-                <app-button (click)="criarAtendimento()"></app-button>
+                <app-date-time-picker></app-date-time-picker>
+                <app-button></app-button>
             </div>
         </div>
 

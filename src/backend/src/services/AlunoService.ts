@@ -59,19 +59,6 @@ class AlunoService {
     async getStudentsByCourse(id: string) {
         return this.fetchData(`${this.API_URL}/courses/${id}/students`);
     }
-
-    // Get total number of students from all institutions
-    async getTotalStudents() {
-        const institutions = await this.getInstitutions();
-        let totalStudents = 0;
-        
-        for (const institution of institutions) {
-            const students = await this.getStudentsByInstitution(institution.id);
-            totalStudents += students.length;
-        }
-        
-        return totalStudents;
-    }
 }
 
 export default new AlunoService();

@@ -39,8 +39,7 @@ export class StudentsComponent implements OnInit {
 
   colunasDaTabela: TableColumn[] = [
     { key: 'name', header: 'Nome' },
-    { key: 'academic_id', header: 'RA' },
-    { key: 'contact_phone', header: 'Telefone'}
+    { key: 'unidade', header: 'Unidade' }
   ];
 
   allEstudantes: Estudante[] = [];

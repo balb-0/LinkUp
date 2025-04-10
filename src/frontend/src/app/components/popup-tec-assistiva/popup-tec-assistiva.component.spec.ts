@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PopupTecnologiasComponent } from './popup-tec-assistiva.component';
+import { PopupTecAssistivaComponent } from './popup-tec-assistiva.component';
 
 describe('PopupTecAssistivaComponent', () => {
-  let component: PopupTecnologiasComponent;
-  let fixture: ComponentFixture<PopupTecnologiasComponent>;
+  let component: PopupTecAssistivaComponent;
+  let fixture: ComponentFixture<PopupTecAssistivaComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PopupTecnologiasComponent]
+      imports: [PopupTecAssistivaComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(PopupTecnologiasComponent);
+    fixture = TestBed.createComponent(PopupTecAssistivaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
