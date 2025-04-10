@@ -275,16 +275,6 @@ export class StudentProfileComponent implements OnInit {
     });
   }
   
-  private createDisabilitySections(): TableSection[] {
-    return [
-      {
-        title: 'Deficiência(s)',
-        columns: ['', '', ''],
-        rows: [[]]
-      }
-    ];
-  }
-
   removerTecnologia(tecnologiaId: string) {
     if (!this.student) return;
 
@@ -363,7 +353,7 @@ export class StudentProfileComponent implements OnInit {
       }
     });
   }
-  
+
   abrirPopupProfissionais() {
   if (!this.student) return;
 
