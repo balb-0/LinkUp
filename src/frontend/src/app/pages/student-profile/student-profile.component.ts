@@ -24,6 +24,7 @@ import { TecnologiaAssistivaService } from '../../services/tecnologia-assistiva.
 import { TecnologiaAlunoService } from '../../services/tecnologia-aluno.service';
 import { TecnologiaAssistiva } from '../../models/tecnologiaAssistiva';
 import { AlunoTecnologiaAssistiva } from '../../models/tecnologiaAluno';
+import { ConfirmationDialogComponent } from '../../components/confirmation-dialog/confirmation-dialog.component';
 
 
 interface Enrollment {
@@ -278,6 +279,85 @@ export class StudentProfileComponent implements OnInit {
     ];
   }
 
+  removerTecnologia(tecnologiaId: string) {
+    if (!this.student) return;
+
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      data: {
+        title: 'Confirmar exclusão',
+        message: 'Tem certeza que deseja remover esta tecnologia assistiva?',
+        confirmText: 'Sim, remover',
+        cancelText: 'Cancelar'
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.tecnologiaAlunoService.listarPorAluno(this.student!.id.toString()).subscribe({
+          next: (response: ApiResponse<AlunoTecnologiaAssistiva[]> | AlunoTecnologiaAssistiva[]) => {
+            // Garantir tipo correto com verificação explícita
+            const associacoes = ('dados' in response ? response.dados : response) as AlunoTecnologiaAssistiva[];
+
+            const associacao = associacoes.find((a: AlunoTecnologiaAssistiva) =>
+              a.tecnologiaAssistivaId === tecnologiaId
+            );
+
+            if (associacao && associacao.id) { // Verificando se o ID existe
+              this.tecnologiaAlunoService.remover(associacao.id).subscribe({
+                next: () => {
+                  console.log('Tecnologia removida com sucesso');
+                  // Atualiza a lista de tecnologias após a remoção
+                  this.tecnologiasAluno = this.tecnologiasAluno.filter(t => t.id !== tecnologiaId);
+                  this.cdr.detectChanges();
+                },
+                error: (err) => {
+                  console.error('Erro ao remover tecnologia:', err);
+                }
+              });
+            } else {
+              console.error('Não foi possível encontrar o ID da associação para remoção');
+            }
+          },
+          error: (err) => {
+            console.error('Erro ao buscar associações:', err);
+          }
+        });
+      }
+    });
+  }
+
+  removerAtendimento(atendimentoId: string) {
+    if (!this.student) return;
+
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      data: {
+        title: 'Confirmar exclusão',
+        message: 'Tem certeza que deseja remover este atendimento?',
+        confirmText: 'Sim, remover',
+        cancelText: 'Cancelar'
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.atendimentoService.remover(atendimentoId).subscribe({
+          next: () => {
+            console.log('Atendimento removido com sucesso');
+
+            // Atualiza as listas de atendimentos após a remoção
+            this.atendimentosAtivos = this.atendimentosAtivos.filter(a => a.id !== atendimentoId);
+            this.atendimentosHistorico = this.atendimentosHistorico.filter(a => a.id !== atendimentoId);
+
+            this.cdr.detectChanges();
+          },
+          error: (err) => {
+            console.error('Erro ao remover atendimento:', err);
+          }
+        });
+      }
+    });
+  }
+  
   abrirPopupProfissionais() {
   if (!this.student) return;
 
