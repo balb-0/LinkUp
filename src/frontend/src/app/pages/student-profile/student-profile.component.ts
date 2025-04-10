@@ -54,6 +54,12 @@ interface ApiResponse<T> {
   timestamp: string;
 }
 
+interface DeficienciaInfo {
+  nome: string;
+  cid?: string;
+  descricao?: string;
+}
+
 @Component({
   selector: 'app-student-profile',
   standalone: true,
@@ -268,7 +274,7 @@ export class StudentProfileComponent implements OnInit {
       year: 'numeric'
     });
   }
-
+  
   private createDisabilitySections(): TableSection[] {
     return [
       {
@@ -385,5 +391,82 @@ export class StudentProfileComponent implements OnInit {
       console.log('Popup Tecnologias fechado');
     });
   }
+
+private deficiencias: DeficienciaInfo[] = [
+  // Deficiência Visual
+  { nome: 'Cegueira', cid: 'H54.0', descricao: 'Cegueira, ambos os olhos' },
+  { nome: 'Visão Subnormal', cid: 'H54.2', descricao: 'Visão subnormal de ambos os olhos' },
+  { nome: 'Cegueira em um olho', cid: 'H54.4', descricao: 'Cegueira em um olho' },
+
+  // Deficiência Auditiva
+  { nome: 'Surdez', cid: 'H91.3', descricao: 'Surdo-mudez não classificada em outra parte' },
+  { nome: 'Perda Auditiva', cid: 'H91.9', descricao: 'Perda não especificada de audição' },
+
+  // Deficiência Física
+  { nome: 'Paralisia Cerebral', cid: 'G80.0', descricao: 'Paralisia cerebral espástica' },
+  { nome: 'Hemiplegia', cid: 'G81.0', descricao: 'Hemiplegia flácida' },
+  { nome: 'Distrofia Muscular', cid: 'G71.0', descricao: 'Distrofia Muscular' },
+  { nome: 'Nanismo', cid: 'E34.3', descricao: 'Nanismo não classificado em outra parte' },
+
+  // Transtorno do Espectro Autista
+  { nome: 'Autismo Infantil', cid: 'F84.0', descricao: 'Autismo infantil' },
+  { nome: 'Síndrome de Asperger', cid: 'F84.5', descricao: 'Síndrome de Asperger' },
+  { nome: 'Autismo Atípico', cid: 'F84.1', descricao: 'Autismo atípico' },
+
+  // Deficiência Intelectual
+  { nome: 'Deficiência Intelectual Leve', cid: 'F70', descricao: 'Retardo mental leve' },
+  { nome: 'Deficiência Intelectual Moderada', cid: 'F71', descricao: 'Retardo mental moderado' },
+  { nome: 'Deficiência Intelectual Grave', cid: 'F72', descricao: 'Retardo mental grave' },
+
+  // TDAH
+  { nome: 'Transtorno de Déficit de Atenção e Hiperatividade', cid: 'F90', descricao: 'TDAH' }
+];
+
+private determinarDeficiencias(id: string): DeficienciaInfo[] {
+  const numId = parseInt(id, 10);
+
+  const numDeficiencias = 1 + (numId % 3);
+
+  const deficienciasSelecionadas: DeficienciaInfo[] = [];
+
+  const seed = numId;
+
+  let hashValue = seed;
+  while (deficienciasSelecionadas.length < numDeficiencias) {
+    hashValue = (hashValue * 1103515245 + 12345) % 2147483647;
+
+    const indice = hashValue % this.deficiencias.length;
+
+    if (!deficienciasSelecionadas.some(d => d.nome === this.deficiencias[indice].nome)) {
+      deficienciasSelecionadas.push(this.deficiencias[indice]);
+    }
+  }
+
+  return deficienciasSelecionadas;
+}
+
+private createDisabilitySections(): TableSection[] {
+  if (!this.student || !this.student.id) {
+    return [{
+      title: 'Deficiência(s)',
+      columns: ['Tipo', 'CID', 'Descrição'],
+      rows: [['Não informado', '', '']]
+    }];
+  }
+
+  const deficienciasAluno = this.determinarDeficiencias(this.student.id.toString());
+
+  const rows = deficienciasAluno.map(deficiencia => [
+    deficiencia.nome,
+    deficiencia.cid || '',
+    deficiencia.descricao || ''
+  ]);
+
+  return [{
+    title: 'Deficiência(s)',
+    columns: ['Tipo', 'CID', 'Descrição'],
+    rows: rows
+  }];
+}
 
 }
