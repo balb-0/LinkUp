@@ -26,21 +26,21 @@
 ### Orientador(a) 
 - <a href="https://www.linkedin.com/in/vanunes/">Vanessa Nunes</a>
 ### Instrutores
-- <a href="https://www.linkedin.com/in/professor1/">Computação - Jefferson de Oliveira</a>
-- <a href="https://www.linkedin.com/in/professor1/">Matemática e Física - Diogo Morais</a>
-- <a href="https://www.linkedin.com/in/professor1/">Negócios - Lisane Valdo</a>
-- <a href="https://www.linkedin.com/in/professor1/">Design - Guilherme Cestari</a> 
-- <a href="https://www.linkedin.com/in/professor1/">Liderança - Filipe Gonçalves</a>
+- <a href="https://www.linkedin.com/in/jefferson-o-silva/">Computação - Jefferson de Oliveira</a>
+- <a href="https://www.linkedin.com/in/diogo-martins-gon%C3%A7alves-de-morais-96404732/">Matemática e Física - Diogo Morais</a>
+- <a href="https://www.linkedin.com/in/lisane-valdo/">Negócios - Lisane Valdo</a>
+- <a href="https://www.linkedin.com/in/gui-cestari/">Design - Guilherme Cestari</a> 
+- <a href="https://www.linkedin.com/in/filipe-gon%C3%A7alves-08a55015b/">Liderança - Filipe Gonçalves</a>
 
 ## 📝 Descrição
 
-<Descrição do Desafio>.
+&nbsp;&nbsp;&nbsp;&nbsp;Este projeto é uma aplicação web para auxiliar o registro de atendimentos a alunos PCD no Centro Paula Souza, associando-o a um profissional que o antederá e/ou uma tecnologia assistiva para auxiliá-lo, conforme a necessidade identificada do(a) aluno(a). <br>
+&nbsp;&nbsp;&nbsp;&nbsp;A aplicação só deve ser acessada por funcionários autorizados pelo Centro Paula Souza através das credenciais que a própria organização enviará, limitando o acesso aos dados da plataforma, conforme o nível de acesso. <br>
+&nbsp;&nbsp;&nbsp;&nbsp;Os dados referente aos alunos veem de outra API que deve simular a API existente do Centro Paula Souza, enquanto os demais dados são do banco de dados da própria aplicação LinkUp.
 
 ## 📝 LINKS
 
-<a href="/documentos/manual-instalacao.md">Link para o Manual de Instruções</a> que explica como montar, conectar e utilizar o protótipo.
-
-<a href="/documentos/index.md">Link para a documentação geral</a> do projeto.
+<a href="./documentos/Projeto.md">Link para a documentação geral</a> do projeto.
 
 ## 📁 Estrutura de pastas
 
@@ -68,8 +68,6 @@ Dentre os arquivos presentes na raiz do projeto, definem-se:
 - **README.md**: arquivo que serve como guia e explicação geral sobre o projeto (o mesmo que você está lendo agora).
 
 - **documentos**: aqui estarão todos os documentos do projeto. Há também uma pasta denominada **outros** onde podem estar presentes documentos complementares à documentação principal.
-
-- **imagens**: imagens relacionadas ao projeto como um todo (por exemplo imagens do sistema, do grupo, logotipos e afins).
 
 - **src**: nesta pasta encontra-se todo o código fonte do sistema (circuito e eventuais sistemas complementares).
 
