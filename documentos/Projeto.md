@@ -45,7 +45,6 @@
 - [4. Modelagem de Dados](#4-modelagem-de-dados)
   - [4.1 Modelo Conceitual de Dados](#41-modelo-conceitual-de-dados)
   - [4.2 Modelo Lógico de Dados](#42-modelo-lógico-de-dados)
-  - [4.3 Modelo Físico de Dados](#43-modelo-físico-de-dados)
 - [5. Solução Técnica (Design)](#5-solução-técnica-design)
   - [5.1 Diagrama de Componentes da UML](#51-diagrama-de-componentes-da-uml)
   - [5.2 Diagramas de Sequência da UML](#52-diagramas-de-sequência-da-uml)
@@ -747,12 +746,6 @@ As chaves estrangeiras estabelecem os relacionamentos entre as tabelas, garantin
 | id  | INT (PK) | Identificador único da tecnologia assistiva |
 | aluno_id  | INT | Referência ao ID do aluno da API externa |
 | tecnologia_assistiva_id| INT (FK) | Referência à tecnologia assistiva |
-
-## 4.3 Modelo Físico de Dados
-
-_conteúdo_
-
-**Nota:** Insira uma explicação e direcionamento para o readme.md da pasta database.
 
 # 5. Solução Técnica (Design)
 
